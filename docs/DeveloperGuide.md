@@ -252,13 +252,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​                | I want to …​                                             | So that I can…​                                            |
 | -------- | --------------------- | ------------------------------------------------------- | --------------------------------------------------------- |
 | `* * *`  | logistics clerk       | add client information                                  | store data of clients                                     |
-| `* * *`  | logistics clerk       | add order information                                   | store order data of clients                               |                                                                       |
+| `* * *`  | logistics clerk       | add order information                                   | store order data of clients                               |          
 | `* * *`  | logistics clerk       | add warehouse inventory information                     | store inventory data of warehouse                         |
 | `* * *`  | logistics clerk       | delete client information                               | remove client from the client list                        |
 | `* * *`  | logistics clerk       | delete order information                                | remove order from the data                                |
 | `* * *`  | logistics clerk       | delete warehouse inventory information                  | remove outdated information                               |
-| `* * *`  | logistics clerk       | view details of individual orders                       | easily view the information i need for every order placed |                                            |
-| `* * *`  | logistics clerk       | attach orders to clients                                | easily track all orders involving the particular client   |                                             |
+| `* * *`  | logistics clerk       | view details of individual orders                       | easily view the information i need for every order placed | 
+| `* * *`  | logistics clerk       | attach orders to clients                                | easily track all orders involving the particular client   | 
 *{More to be added}*
 
 ### Use cases
