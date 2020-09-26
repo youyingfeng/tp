@@ -249,15 +249,16 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
+| Priority | As a …​                | I want to …​                                             | So that I can…​                                            |
+| -------- | --------------------- | ------------------------------------------------------- | --------------------------------------------------------- |
+| `* * *`  | logistics clerk       | add client information                                  | store data of clients                                     |
+| `* * *`  | logistics clerk       | add order information                                   | store order data of clients                               |                                                                       |
+| `* * *`  | logistics clerk       | add warehouse inventory information                     | store inventory data of warehouse                         |
+| `* * *`  | logistics clerk       | delete client information                               | remove client from the client list                        |
+| `* * *`  | logistics clerk       | delete order information                                | remove order from the data                                |
+| `* * *`  | logistics clerk       | delete warehouse inventory information                  | remove outdated information                               |
+| `* * *`  | logistics clerk       | view details of individual orders                       | easily view the information i need for every order placed |                                            |
+| `* * *`  | logistics clerk       | attach orders to clients                                | easily track all orders involving the particular client   |                                             |
 *{More to be added}*
 
 ### Use cases
