@@ -242,22 +242,26 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: Convenient and fast for the logistics clerk to generate internal documents for archiving. 
+The application would speed up their work as they would no longer need to fill up separate forms (invoices, 
+shipping manifests etc) with overlapping data as it would now be automated, thus increasing productivity. 
+The product will be a base application that can be customized to fit different company standards.
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
+| Priority | As a …​                | I want to …​                                             | So that I can…​                                            |
+| -------- | --------------------- | ------------------------------------------------------- | --------------------------------------------------------- |
+| `* * *`  | logistics clerk       | add client information                                  | store data of clients                                     |
+| `* * *`  | logistics clerk       | add order information                                   | store order data of clients                               |          
+| `* * *`  | logistics clerk       | add warehouse inventory information                     | store inventory data of warehouse                         |
+| `* * *`  | logistics clerk       | delete client information                               | remove client from the client list                        |
+| `* * *`  | logistics clerk       | delete order information                                | remove order from the data                                |
+| `* * *`  | logistics clerk       | delete warehouse inventory information                  | remove outdated information                               |
+| `* * *`  | logistics clerk       | view details of individual orders                       | easily view the information i need for every order placed | 
+| `* * *`  | logistics clerk       | attach orders to clients                                | easily track all orders involving the particular client   | 
 *{More to be added}*
 
 ### Use cases
@@ -291,16 +295,56 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+1. Technical Requirements
+    * Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+    * The system software should work without requiring an installer.
+    * The system software should not depend on any of the developers' or user's remote server.
+    * The file sizes of the deliverables should not exceed the limit of 100Mb (JAR file) or 15Mb (PDF file).
+2. Performance Requirements
+    * Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+    * Should be able to send a response to user within 2 seconds.
+    * Should be able to access the data storage within 2 seconds.
+    * Tasks that require accessing data storage should be performed immediately upon accessing data storage.
+3. Quality Requirements
+    * A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+    * The system should be usable by a novice logistics clerk who has prior knowledge on logistical operations but no work experience
+    * The system should not contain any audible information or data.
+    * A user with experience on handling logistical data should be able to adapt to the system easily.
+    * The system should contain visual information or data.
+    * The user input should be primarily Command Line Interface (CLI).
+    * The system should use Graphical User Interface (GUI) to give visual feedback to users.
+4. Security Requirements
+    * Any user with access to the system will be able to use it, regardless of administrator rights.
+5. Business/Domain Requirements
+    * The system should abide to general logistics guidelines and operations.
+    * The system does not need to cater specifically to any company's logistics operations.
+6. Constraints
+    * The system provides general logistical operations and is not catered to any organisation's guidelines or needs.
+    * The system should be for a single user.
+    * The data should be stored locally and should be in a human editable text file.
+    * The system should not use any form of Database Management System.
+    * The system software should primarily follow the Object-oriented paradigm.
+    * The system software should not be heavily dependent on remote or public APIs.
+7. Others
+    * The source code should be open source.
+    * The system product should be a free online service.     
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Data entry**: An information that is to be keyed into the logistics database
+* **Dangerous goods declaration**: Document(s) prepared by a consignor or shipper to certify that the dangerous goods 
+being transported have been packaged, labeled, and declared in accordance with the standard international shipping regulations
+* **Shipping manifests**: A document that contains a summary of cargo shipping details relevant to the shipping process
+* **Certificate of origin**: international trade document, certifying that goods in a particular export shipment are 
+wholly obtained, produced, manufactured or processed in a particular country
+* **Bill of lading**: legal document issued by a carrier to a shipper that details the type, quantity and destination 
+of the goods being carried
+* **Freight forwarder**: Intermediary between a shipper and various transportation services
+* **Third party warehousing**: organization's use of third-party businesses to outsource elements of its distribution, 
+warehousing, and fulfillment services
+
 
 --------------------------------------------------------------------------------------------------------------------
 
