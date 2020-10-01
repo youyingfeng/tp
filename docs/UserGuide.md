@@ -57,7 +57,7 @@ Example :<br>
 
 ### Listing Orders : `list` 
 
-Returns a list of orders. 
+Returns a list of orders. The token `-a` can be used to list completed orders as well. 
 
 Format : `list`<br>
 Displays a list of all orders in the order list (and the client that placed the order respectively)
