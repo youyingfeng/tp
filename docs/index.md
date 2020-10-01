@@ -1,17 +1,14 @@
 ---
 layout: page
-title: AddressBook Level-3
+title: LogOnce
 ---
+[![CI Status](https://github.com/AY2021S1-CS2103-F09-4/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103-F09-4/tp/actions)
 
-[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
-[![codecov](https://codecov.io/gh/se-edu/addressbook-level3/branch/master/graph/badge.svg)](https://codecov.io/gh/se-edu/addressbook-level3)
+![Ui](docs/images/Ui.png)
 
-![Ui](images/Ui.png)
+# LogOnce
 
-**AddressBook is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
-
-* If you are interested in using AddressBook, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
-* If you are interested about developing AddressBook, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
+**LogOnce** is a one-stop logistics tracker app for clerks to monitor shipping statuses of all clients and perform common logistics operations. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, LogOnce can get your tracking tasks done faster than traditional GUI apps.
 
 
 **Acknowledgements**
