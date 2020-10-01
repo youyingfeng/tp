@@ -285,8 +285,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    
         Use case ends.
 
-**Extensions**
-
 * 1b. The client's address is missing
 
     * 1b1. LogOnce shows an error message.
