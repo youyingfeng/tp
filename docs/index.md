@@ -4,7 +4,7 @@ title: LogOnce
 ---
 [![CI Status](https://github.com/AY2021S1-CS2103-F09-4/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103-F09-4/tp/actions)
 
-![Ui](docs/images/Ui.png)
+![Ui](images/Ui.png)
 
 # LogOnce
 
