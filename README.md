@@ -6,3 +6,14 @@
 # LogOnce
 
 **LogOnce** is a one-stop logistics tracker app for clerks to monitor shipping statuses of all clients and perform common logistics operations. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, LogOnce can get your tracking tasks done faster than traditional GUI apps.
+
+## Features for v1.2
+
+v1.2 will have very basic features.
+
+* Managing relevant information to tracking orders
+  * Managing client information - Name, address, orders under this client etc.
+  * Managing order data - Client information, address, order date, item etc.
+  * Associate clients with orders (Relationship between clients and orders)
+* CLI for user input
+  * (Extension- Shortcuts for user input (fast typists))
