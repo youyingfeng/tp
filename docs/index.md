@@ -21,6 +21,7 @@ v1.2 will have very basic features.
 * CLI for user input
   * (Extension- Shortcuts for user input (fast typists))
 
+More features coming soon!
 
 **Acknowledgements**
 
