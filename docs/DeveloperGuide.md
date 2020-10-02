@@ -266,30 +266,108 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
-
-**Use case: Delete a person**
+(For all use cases below, the **System** is the `LogOnce` and the **Actor** is the `user`, unless specified otherwise)
+      
+**Use case: create client **
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User requests to create a client
+2. LogOnce shows a success message, along with the client that was just added.
 
     Use case ends.
-
+    
 **Extensions**
 
-* 2a. The list is empty.
+* 1a. The client name is missing
+    
+   * 1a1. LogOnce shows an error message.
+   
+        Use case ends.
 
-  Use case ends.
+* 1b. The client's address is missing
 
-* 3a. The given index is invalid.
+    * 1b1. LogOnce shows an error message.
+        
+        Use case ends.
+        
+**Use case: create order **
 
-    * 3a1. AddressBook shows an error message.
+**MSS**
 
-      Use case resumes at step 2.
+1. User requests to create a order, which was ordered by a specific client.
+2. LogOnce shows a success message, along with the order that was just created and attached to the specified client.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The client name is invalid
+    
+   * 1a1. LogOnce shows an error message.
+   
+        Use case ends.
+
+* 1b. The order description is missing
+
+    * 1b1. LogOnce shows an error message.
+        
+        Use case ends.
+        
+**Use case: delete order **
+
+**MSS**
+
+1. User requests to delete an order made by a client
+2. LogOnce shows a success message, along with the order that was just removed, and the client that initially placed the order.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The client id is invalid.
+    
+   * 1a1. LogOnce shows an error message.
+   
+        Use case ends.
+
+* 1b. The order id is invalid.
+
+    * 1b1. LogOnce shows an error message.
+        
+        Use case ends.
+
+**Use case: list **
+
+**MSS**
+
+1. User requests to list all orders in the client list
+2. LogOnce displays a list of all orders in the order list (and the client that placed the order respectively).
+
+    Use case ends.
+    
+**Use case: done order **
+
+**MSS**
+
+1. User requests to marks an order attached to a certain client as done.
+2. LogOnce shows a success message, along with the order that was marked done, and the client that ordered the order.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The client id is invalid.
+    
+   * 1a1. LogOnce shows an error message.
+   
+        Use case ends.
+
+* 1b. The order id is invalid.
+
+    * 1b1. LogOnce shows an error message.
+        
+        Use case ends.
 
 *{More to be added}*
 
