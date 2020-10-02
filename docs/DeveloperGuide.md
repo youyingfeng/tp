@@ -242,7 +242,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Convenient and fast for the logistics clerk to generate internal documents for archiving. 
+**Value proposition**: Allows for convenient and fast generation of internal documents for archiving for the logistics clerk. 
 The application would speed up their work as they would no longer need to fill up separate forms (invoices, 
 shipping manifests etc) with overlapping data as it would now be automated, thus increasing productivity. 
 The product will be a base application that can be customized to fit different company standards.
