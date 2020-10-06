@@ -2,7 +2,6 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -27,13 +26,12 @@ public class Client {
     /**
      * Every field must be present and not null.
      */
-    public Client(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Client(Name name, Phone phone, Email email, Address address) {
+        requireAllNonNull(name, phone, email, address);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.tags.addAll(tags);
     }
 
     public Name getName() {
@@ -50,14 +48,6 @@ public class Client {
 
     public Address getAddress() {
         return address;
-    }
-
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
     }
 
     /**
@@ -92,8 +82,7 @@ public class Client {
         return otherClient.getName().equals(getName())
                 && otherClient.getPhone().equals(getPhone())
                 && otherClient.getEmail().equals(getEmail())
-                && otherClient.getAddress().equals(getAddress())
-                && otherClient.getTags().equals(getTags());
+                && otherClient.getAddress().equals(getAddress());
     }
 
     @Override
@@ -106,14 +95,12 @@ public class Client {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
-                .append(" Tags: ");
-        getTags().forEach(builder::append);
+               .append(" Phone: ")
+               .append(getPhone())
+               .append(" Email: ")
+               .append(getEmail())
+               .append(" Address: ")
+               .append(getAddress());
         return builder.toString();
     }
 
