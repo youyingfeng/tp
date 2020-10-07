@@ -61,7 +61,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
-    public boolean hasPerson(Client client) {
+    public boolean hasClient(Client client) {
         requireNonNull(client);
         return persons.contains(client);
     }
@@ -70,7 +70,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Adds a person to the address book.
      * The person must not already exist in the address book.
      */
-    public void addPerson(Client p) {
+    public void addClient(Client p) {
         persons.add(p);
     }
 
@@ -79,7 +79,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * {@code target} must exist in the address book.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
      */
-    public void setPerson(Client target, Client editedClient) {
+    public void setClient(Client target, Client editedClient) {
         requireNonNull(editedClient);
 
         persons.setPerson(target, editedClient);
@@ -89,7 +89,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
      */
-    public void removePerson(Client key) {
+    public void removeClient(Client key) {
         persons.remove(key);
     }
 

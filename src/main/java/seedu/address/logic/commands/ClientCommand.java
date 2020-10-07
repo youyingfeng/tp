@@ -16,8 +16,8 @@ public class ClientCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a client to LogOnce. "
             + "Parameters: "
             + CLIENT_PREFIX_NAME + "NAME "
-            + CLIENT_PREFIX_ADDRESS + "ADDRESS"
-            + CLIENT_PREFIX_EMAIL + "EMAIL"
+            + CLIENT_PREFIX_ADDRESS + "ADDRESS "
+            + CLIENT_PREFIX_EMAIL + "EMAIL "
             + CLIENT_PREFIX_PHONE + "PHONE";
 
     public static final String MESSAGE_SUCCESS = "New client added: %1$s";

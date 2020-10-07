@@ -17,11 +17,11 @@ import seedu.address.testutil.PersonBuilder;
 
 public class ClientTest {
 
-    @Test
-    public void asObservableList_modifyList_throwsUnsupportedOperationException() {
-        Client client = new PersonBuilder().build();
-        assertThrows(UnsupportedOperationException.class, () -> client.getTags().remove(0));
-    }
+    // @Test
+    // public void asObservableList_modifyList_throwsUnsupportedOperationException() {
+    //     Client client = new PersonBuilder().build();
+    //     assertThrows(UnsupportedOperationException.class, () -> client.getTags().remove(0));
+    // }
 
     @Test
     public void isSamePerson() {

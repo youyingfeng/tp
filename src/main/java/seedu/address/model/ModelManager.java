@@ -91,17 +91,17 @@ public class ModelManager implements Model {
     @Override
     public boolean hasPerson(Client client) {
         requireNonNull(client);
-        return addressBook.hasPerson(client);
+        return addressBook.hasClient(client);
     }
 
     @Override
     public void deletePerson(Client target) {
-        addressBook.removePerson(target);
+        addressBook.removeClient(target);
     }
 
     @Override
     public void addPerson(Client client) {
-        addressBook.addPerson(client);
+        addressBook.addClient(client);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -109,7 +109,7 @@ public class ModelManager implements Model {
     public void setPerson(Client target, Client editedClient) {
         requireAllNonNull(target, editedClient);
 
-        addressBook.setPerson(target, editedClient);
+        addressBook.setClient(target, editedClient);
     }
 
     //=========== Filtered Person List Accessors =============================================================
