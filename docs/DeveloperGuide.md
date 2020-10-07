@@ -243,6 +243,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * is reasonably comfortable using CLI apps
 
 **Value proposition**: Allows for convenient and fast generation of internal documents for archiving for the logistics clerk. 
+
 The application would speed up their work as they would no longer need to fill up separate forms (invoices, 
 shipping manifests etc) with overlapping data as it would now be automated, thus increasing productivity. 
 The product will be a base application that can be customized to fit different company standards.
@@ -364,7 +365,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         Use case ends.
 
 * 1b. The order id is invalid.
-
     * 1b1. LogOnce shows an error message.
         
         Use case ends.
