@@ -18,7 +18,7 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ### Syasya Azman
 
-<img src="images/Syasyazman.png" width="200px">
+<img src="images/syasyazman.png" width="200px">
 
 [[github](http://github.com/Syasyazman)]
 [[portfolio](team/Syasyazman.md)]
