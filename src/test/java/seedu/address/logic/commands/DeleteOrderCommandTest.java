@@ -4,9 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CLIENT;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_CLIENT;
+import static seedu.address.logic.commands.CommandTestUtil.showOrderAtIndex;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ORDER;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ORDER;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Client;
+import seedu.address.model.person.Order;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -35,7 +35,7 @@ public class DeleteOrderCommandTest {
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deleteOrder(orderToDelete);
 
-        assertCommandSuccess(orderCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(deleteOrderCommand, model, expectedMessage, expectedModel);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class DeleteOrderCommandTest {
         showOrderAtIndex(model, INDEX_FIRST_ORDER);
 
         Order orderToDelete = model.getFilteredOrderList().get(INDEX_FIRST_ORDER.getZeroBased());
-        DeleteOrderCommand deleteOrderCommand = new DeleteClientCommand(INDEX_FIRST_ORDER);
+        DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(INDEX_FIRST_ORDER);
 
         String expectedMessage = String.format(DeleteOrderCommand.MESSAGE_DELETE_ORDER_SUCCESS, orderToDelete);
 
@@ -98,9 +98,9 @@ public class DeleteOrderCommandTest {
     }
 
     /**
-     * Updates {@code model}'s filtered list to show no one.
+     * Updates {@code model}'s filtered list to show no order.
      */
-    private void showNoPerson(Model model) {
+    private void showNoOrder(Model model) {
         model.updateFilteredOrderList(p -> false);
 
         assertTrue(model.getFilteredOrderList().isEmpty());

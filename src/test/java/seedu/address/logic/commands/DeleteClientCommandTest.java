@@ -98,7 +98,7 @@ public class DeleteClientCommandTest {
     }
 
     /**
-     * Updates {@code model}'s filtered list to show no one.
+     * Updates {@code model}'s filtered list to show no client.
      */
     private void showNoPerson(Model model) {
         model.updateFilteredPersonList(p -> false);
