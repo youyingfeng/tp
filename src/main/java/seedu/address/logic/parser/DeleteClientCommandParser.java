@@ -4,6 +4,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.logic.parser.CliSyntax.DELETE_PREFIX_CLIENT;
 
 import java.util.stream.Stream;
+
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeleteClientCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
