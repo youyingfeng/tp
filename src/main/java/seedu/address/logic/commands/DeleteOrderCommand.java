@@ -18,11 +18,11 @@ public class DeleteOrderCommand extends Command {
     public static final String COMMAND_WORD = "delete-order";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the displayed person list.\n"
+            + ": Deletes the order identified by the index number used in the displayed order list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Order: %1$s";
+    public static final String MESSAGE_DELETE_ORDER_SUCCESS = "Deleted Order: %1$s";
 
     private final Index targetIndex;
 
@@ -36,12 +36,12 @@ public class DeleteOrderCommand extends Command {
         List<Order> lastShownList = model.getFilteredOrderList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
         }
 
         Order orderToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteOrder(orderToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, orderToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_ORDER_SUCCESS, orderToDelete));
     }
 
     @Override

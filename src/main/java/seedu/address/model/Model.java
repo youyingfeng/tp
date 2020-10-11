@@ -88,10 +88,29 @@ public interface Model {
 
     /**
      * Deletes the given order.
-     * The order must exist in the address book
+     * The order must exist in the order book
      */
     void deleteOrder(Order target);
 
+    /**
+     * Adds the given order.
+     * {@code order} must not already exist in the order book.
+     */
+    void addOrder(Order order);
+
+    /**
+     * Replaces the given order {@code target} with {@code editedOrder}.
+     * {@code target} must exist in the order book.
+     * The person identity of {@code editedOrder} must not be the same as another existing order in the order book.
+     */
+    void setOrder(Order target, Order editedOrder);
+
     /** Returns an unmodifiable view of the filtered order list */
     ObservableList<Order> getFilteredOrderList();
+
+    /**
+     * Updates the filter of the filtered order list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredOrderList(Predicate<Order> predicate);
 }

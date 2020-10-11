@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Client;
+import seedu.address.model.person.Order;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -112,7 +113,25 @@ public class ModelManager implements Model {
         addressBook.setClient(target, editedClient);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== OrderBook ================================================================================
+
+    @Override
+    public void deleteOrder(Order target) {
+        // not yet implemented
+    }
+
+    @Override
+    public void addOrder(Order order) {
+        // not yet implemented
+    }
+
+    @Override
+    public void setOrder(Order target, Order editedOrder) {
+        // not yet implemented
+    }
+
+
+    //=========== Filtered Client List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
@@ -148,4 +167,20 @@ public class ModelManager implements Model {
                 && filteredClients.equals(other.filteredClients);
     }
 
+    //=========== Filtered Order List Accessors =============================================================
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Order} backed by the internal list of
+     * {@code versionedOrderBook}
+     */
+    @Override
+    public ObservableList<Order> getFilteredOrderList() {
+        // not yet implemented
+        return null;
+    }
+
+    @Override
+    public void updateFilteredOrderList(Predicate<Order> predicate) {
+        // not yet implemented
+    }
 }
