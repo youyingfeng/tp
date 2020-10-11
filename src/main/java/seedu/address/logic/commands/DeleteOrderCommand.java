@@ -7,6 +7,7 @@ import java.util.List;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
+import static seedu.address.logic.parser.CliSyntax.DELETE_PREFIX_ORDER;
 import seedu.address.model.Model;
 import seedu.address.model.person.Order;
 
@@ -20,7 +21,7 @@ public class DeleteOrderCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the order identified by the index number used in the displayed order list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+            + "Example: " + COMMAND_WORD + " " + DELETE_PREFIX_ORDER + " 1";
 
     public static final String MESSAGE_DELETE_ORDER_SUCCESS = "Deleted Order: %1$s";
 
