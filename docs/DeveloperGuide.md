@@ -315,12 +315,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         
         Use case ends.
         
-**Use case: delete order **
+**Use case: delete client **
 
 **MSS**
 
-1. User requests to delete an order made by a client
-2. LogOnce shows a success message, along with the order that was just removed, and the client that initially placed the order.
+1. User requests to delete a client from client list
+2. LogOnce shows a success message along with the client that was just removed.
 
     Use case ends.
     
@@ -331,10 +331,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    * 1a1. LogOnce shows an error message.
    
         Use case ends.
+        
+**Use case: delete order **
 
-* 1b. The order id is invalid.
+**MSS**
 
-    * 1b1. LogOnce shows an error message.
+1. User requests to delete an order from order list
+2. LogOnce shows a success message, along with the order that was just removed, and the client that initially placed the order.
+
+    Use case ends.
+    
+**Extensions**
+
+* 1a. The order id is invalid.
+
+    * 1a1. LogOnce shows an error message.
         
         Use case ends.
 
