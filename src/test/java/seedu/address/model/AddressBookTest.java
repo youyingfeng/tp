@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import seedu.address.model.person.Order;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalPersons.ALICE;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -96,6 +97,12 @@ public class AddressBookTest {
         @Override
         public ObservableList<Client> getPersonList() {
             return clients;
+        }
+
+        @Override
+        public ObservableList<Order> getOrderList() {
+            // not yet implemented
+            return null;
         }
     }
 

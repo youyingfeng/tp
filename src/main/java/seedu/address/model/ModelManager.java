@@ -116,6 +116,12 @@ public class ModelManager implements Model {
     //=========== OrderBook ================================================================================
 
     @Override
+    public boolean hasOrder(Order order) {
+        // not yet implemented
+        return false;
+    }
+
+    @Override
     public void deleteOrder(Order target) {
         // not yet implemented
     }

@@ -87,6 +87,11 @@ public interface Model {
     void updateFilteredPersonList(Predicate<Client> predicate);
 
     /**
+     * Returns true if a order with the same identity as {@code order} exists in the order book.
+     */
+    boolean hasOrder(Order client);
+
+    /**
      * Deletes the given order.
      * The order must exist in the order book
      */
