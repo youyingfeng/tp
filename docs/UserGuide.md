@@ -65,18 +65,29 @@ Displays a list of all orders in the order list (and the client that placed the 
 `list -a`<br>
 Displays a list of current orders, and past orders (completed)
 
-### Deleting Client Orders : `delete`
+### Deleting a Client : `delete-client`
 
-Deletes an order made by a client.
+Deletes a client from client list.
 
-Format : `delete --client <client id> --order <order id>`
+Format : `delete --client <client id>`
 
-Deletes `<order id>` of client identified by `<client id>`
+Deletes client identified by `<client id>`
 `<client id>` must exist in the client list.
-`<order id>` must exist in the client's order list.
 
 Example :
-`delete --client 999 --order 123` : deletes the order no. 123 of client with client id 999 
+`delete-client --client 999` : deletes the client with client id 999 
+
+### Deleting an Order : `delete-order`
+
+Deletes an order from order list.
+
+Format : `delete --order <order id>`
+
+Deletes order identified by `<order id>`
+`<order id>` must exist in the order list.
+
+Example :
+`delete-order --order 123` : deletes the order with order id 123
 
 ### Completing Orders : `done`
 
