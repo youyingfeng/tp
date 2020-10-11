@@ -1,10 +1,10 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.DELETE_PREFIX_ORDER;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeleteOrderCommand;
-import static seedu.address.logic.parser.CliSyntax.DELETE_PREFIX_ORDER;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 import java.util.stream.Stream;
@@ -27,7 +27,8 @@ public class DeleteOrderCommandParser implements Parser<DeleteOrderCommand> {
             if (!arePrefixesPresent(argMultimap,
                     DELETE_PREFIX_ORDER)
                     || !argMultimap.getPreamble().isEmpty()) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteOrderCommand.MESSAGE_USAGE));
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        DeleteOrderCommand.MESSAGE_USAGE));
             }
 
             Index index = ParserUtil.parseOrderIndex(argMultimap.getValue(DELETE_PREFIX_ORDER).get());
