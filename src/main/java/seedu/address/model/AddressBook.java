@@ -6,6 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Client;
+import seedu.address.model.person.Order;
 import seedu.address.model.person.UniquePersonList;
 
 /**
@@ -104,6 +105,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Client> getPersonList() {
         return persons.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Order> getOrderList() {
+        // not implemented yet
+        return null;
     }
 
     @Override

@@ -125,4 +125,11 @@ public class CommandTestUtil {
         assertEquals(1, model.getFilteredPersonList().size());
     }
 
+    /**
+     * Updates {@code model}'s filtered list to show only the order at the given {@code targetIndex} in the
+     * {@code model}'s order book.
+     */
+    public static void showOrderAtIndex(Model model, Index targetIndex) {
+        // not yet implemented
+    }
 }

@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Client;
+import seedu.address.model.person.Order;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.testutil.PersonBuilder;
 
@@ -96,6 +97,12 @@ public class AddressBookTest {
         @Override
         public ObservableList<Client> getPersonList() {
             return clients;
+        }
+
+        @Override
+        public ObservableList<Order> getOrderList() {
+            // not yet implemented
+            return null;
         }
     }
 
