@@ -37,9 +37,16 @@
                      <padding>
                         <Insets left="5.0" right="5.0" />
                      </padding></StackPane>
-                  <SplitPane dividerPositions="0.17484946734599352, 0.5" prefHeight="576.0" prefWidth="865.0" stylesheets="@LightTheme.css" GridPane.rowIndex="1">
-                    <items>
-                      <AnchorPane maxWidth="-Infinity" minHeight="0.0" minWidth="-Infinity" prefHeight="160.0" prefWidth="150.0" styleClass="menupane" stylesheets="@LightTheme.css">
+                  <GridPane GridPane.rowIndex="1">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="150.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                      <AnchorPane styleClass="menupane" stylesheets="@LightTheme.css">
                            <children>
                               <VBox layoutY="68.0" styleClass="menupane">
                                  <children>
@@ -51,19 +58,23 @@
                               </VBox>
                            </children>
                         </AnchorPane>
-                        <VBox>
-                           <children>
-                              <Label prefHeight="70.0" prefWidth="282.0" text=" Clients" textFill="#7f7f7f">
-                                 <font>
-                                    <Font size="36.0" />
-                                 </font>
-                              </Label>
-                              <StackPane fx:id="personListPanelPlaceholder" prefHeight="430.0" prefWidth="279.0" VBox.vgrow="ALWAYS" />
-                           </children>
-                        </VBox>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
-                    </items>
-                  </SplitPane>
+                        <SplitPane dividerPositions="0.5" prefHeight="576.0" prefWidth="865.0" stylesheets="@LightTheme.css" GridPane.columnIndex="1">
+                          <items>
+                              <VBox prefHeight="506.0" prefWidth="266.0">
+                                 <children>
+                                    <Label prefHeight="70.0" prefWidth="250.0" text=" Clients" textFill="#7f7f7f">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <StackPane fx:id="personListPanelPlaceholder" prefHeight="435.0" prefWidth="246.0" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </GridPane>
                   <GridPane GridPane.rowIndex="2">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="100.0" />
