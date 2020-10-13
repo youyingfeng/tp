@@ -5,55 +5,52 @@ title: About Us
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
-### John Doe
+### Xiao Chengxin
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/cx0810.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/cx0810)]
+[[portfolio](team/cx0810.md)]
 
 * Role: Project Advisor
 
-### Jane Doe
+### Syasya Azman
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/syasyazman.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/Syasyazman)]
+[[portfolio](team/Syasyazman.md)]
 
 * Role: Team Lead
 * Responsibilities: UI
 
-### Johnny Doe
+### Ting Xiao
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tigerting98.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/tigerting98)] [[portfolio](team/tigerting98.md)]
 
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Pua Xuan Ming
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/xnmng.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/xnmng)]
+[[portfolio](team/xnmng.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### You Yingfeng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/youyingfeng.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/youyingfeng)]
+[[portfolio](team/youyingfeng.md)]
 
 * Role: Developer
 * Responsibilities: UI
