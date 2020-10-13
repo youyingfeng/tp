@@ -72,6 +72,7 @@ Deletes a client from client list.
 Format : `delete --client <client id>`
 
 Deletes client identified by `<client id>`
+
 `<client id>` must exist in the client list.
 
 Example :
@@ -84,6 +85,7 @@ Deletes an order from order list.
 Format : `delete --order <order id>`
 
 Deletes order identified by `<order id>`
+
 `<order id>` must exist in the order list.
 
 Example :
@@ -96,7 +98,8 @@ Marks a certain order attached to a certain client as done.
 Format : `done --client <client id> --order <order id>`
 
 Marks `<order id>` of client identified by `<client id>` as done.
-`<client id>` must exist in the client list
+
+`<client id>` must exist in the client list<br>
 `<order id>` must exist in the client order list
 
 Example :
