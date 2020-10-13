@@ -19,4 +19,5 @@ public class CliSyntax {
     public static final Prefix CLIENT_PREFIX_PHONE = new Prefix("--phone");
     public static final Prefix DELETE_PREFIX_CLIENT = new Prefix("--client");
     public static final Prefix DELETE_PREFIX_ORDER = new Prefix("--order");
+    public static final Prefix DONE_PREFIX_ORDER = new Prefix("--order");
 }
