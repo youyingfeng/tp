@@ -2,10 +2,10 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
+import seedu.address.commons.core.index.Index;
+import seedu.address.model.Model;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -18,20 +18,40 @@ public class Client {
     private final Name name;
     private final Phone phone;
     private final Email email;
+    private final Index clientId;
 
     // Data fields
     private final Address address;
-    private final Set<Tag> tags = new HashSet<>();
+    private final Set<Tag> tags;
+    private final List<Order> orderList;
 
     /**
      * Every field must be present and not null.
      */
-    public Client(Name name, Phone phone, Email email, Address address) {
+    public Client(Name name, Phone phone, Email email, Address address, Model model) {
         requireAllNonNull(name, phone, email, address);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.tags = new HashSet<>();
+        this.orderList = new ArrayList<>();
+        this.clientId = Index.fromOneBased(model.getFilteredPersonList().size());
+    }
+
+    /**
+     * Every field must be present and not null.
+     */
+    public Client(Name name, Phone phone, Email email, Address address, Model model, Set<Tag> tags,
+                  List<Order> orderList) {
+        requireAllNonNull(name, phone, email, address);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags = tags;
+        this.orderList = orderList;
+        this.clientId = Index.fromOneBased(model.getFilteredPersonList().size());
     }
 
     public Name getName() {
@@ -49,6 +69,10 @@ public class Client {
     public Address getAddress() {
         return address;
     }
+
+    public Set<Tag> getTags() { return tags; }
+
+    public List<Order> getOrderList() { return orderList; }
 
     /**
      * Returns true if both persons of the same name have at least one other identity field that is the same.

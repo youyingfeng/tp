@@ -3,12 +3,15 @@ package seedu.address.model.person;
 // class not implemented yet
 public class Order {
 
-    // feel free to change - tx
+    private final String DESCRIPTION;
     private boolean isDone = false;
 
-    public Name getName() {
-        // not implemented yet
-        return null;
+    public Order(String description) {
+        this.DESCRIPTION = description;
+    }
+
+    public String getDescription() {
+        return this.DESCRIPTION;
     }
 
     /**
