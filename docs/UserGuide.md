@@ -59,8 +59,11 @@ Example :<br>
 
 Returns a list of orders. The token `-a` can be used to list completed orders as well. 
 
-Format : `list`<br>
+Format : `listO`<br>
 Displays a list of all orders in the order list (and the client that placed the order respectively)
+
+Format: `listC`<br>
+Displays a list of all clients in the client list 
 
 `list -a`<br>
 Displays a list of current orders, and past orders (completed)
@@ -111,5 +114,5 @@ Action | Format
 **Order** | `order --description <order description> --client <client ID>` 
 **Client** | `client --name <client name> --address <client address>`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**List** | `list`<br> `list -a`
+**List** | `listC` <br> `listO` <br> `list -a`
 **Done** | `done <order id>`
