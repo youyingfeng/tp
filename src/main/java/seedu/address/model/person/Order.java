@@ -11,6 +11,9 @@ public class Order {
         return null;
     }
 
+    /**
+     * Marks this {@code Order} as done
+     */
     public void markAsDone() {
         // feel free to change - tx
         isDone = true;
