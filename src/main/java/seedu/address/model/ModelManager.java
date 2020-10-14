@@ -23,6 +23,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Client> filteredClients;
+    private final FilteredList<Order> filteredOrders;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -36,6 +37,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredClients = new FilteredList<>(this.addressBook.getPersonList());
+        filteredOrders = new FilteredList<>(this.addressBook.getOrderList());
     }
 
     public ModelManager() {
@@ -117,23 +119,26 @@ public class ModelManager implements Model {
 
     @Override
     public boolean hasOrder(Order order) {
-        // not yet implemented
-        return false;
+        requireNonNull(order);
+        return addressBook.hasOrder(order);
     }
 
     @Override
     public void deleteOrder(Order target) {
-        // not yet implemented
+        addressBook.removeOrder(target);
     }
 
     @Override
     public void addOrder(Order order) {
-        // not yet implemented
+        addressBook.addOrder(order);
+        updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
     }
 
     @Override
     public void setOrder(Order target, Order editedOrder) {
-        // not yet implemented
+        requireAllNonNull(target, editedOrder);
+
+        addressBook.setOrder(target, editedOrder);
     }
 
 
@@ -170,7 +175,8 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
                 && userPrefs.equals(other.userPrefs)
-                && filteredClients.equals(other.filteredClients);
+                && filteredClients.equals(other.filteredClients)
+                && filteredOrders.equals(other.filteredOrders);
     }
 
     //=========== Filtered Order List Accessors =============================================================
@@ -181,12 +187,12 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Order> getFilteredOrderList() {
-        // not yet implemented
-        return null;
+        return filteredOrders;
     }
 
     @Override
     public void updateFilteredOrderList(Predicate<Order> predicate) {
-        // not yet implemented
+        requireNonNull(predicate);
+        filteredOrders.setPredicate(predicate);
     }
 }
