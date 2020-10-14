@@ -50,8 +50,8 @@
                            <children>
                               <VBox layoutY="68.0" styleClass="menupane">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="148.0" text="Clients" />
-                                    <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="148.0" text="Orders" />
+                                    <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="148.0" onAction="#handleClients" text="Clients" />
+                                    <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="148.0" onAction="#handleOrders" text="Orders" />
                                     <Button layoutX="11.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleHelp" prefHeight="74.0" prefWidth="148.0" text="Help" />
                                     <Button layoutX="11.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="74.0" prefWidth="148.0" text="Exit" />
                                  </children>
@@ -62,7 +62,7 @@
                           <items>
                               <VBox prefHeight="506.0" prefWidth="266.0">
                                  <children>
-                                    <Label prefHeight="70.0" prefWidth="250.0" text=" Clients" textFill="#7f7f7f">
+                                    <Label fx:id="listTitle" prefHeight="70.0" prefWidth="250.0" text=" Clients" textFill="#7f7f7f">
                                        <font>
                                           <Font size="36.0" />
                                        </font>

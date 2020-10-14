@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -50,6 +51,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private Label listTitle;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -135,6 +139,40 @@ public class MainWindow extends UiPart<Stage> {
         if (guiSettings.getWindowCoordinates() != null) {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
+        }
+    }
+
+    /**
+     * Changes the view to display the list of Clients.
+     */
+    @FXML
+    public void handleClients() {
+        if (!listTitle.getText().equals(" Clients")) {
+            // Only execute if clients are not already displayed
+            listTitle.setText(" Clients");
+
+            personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        } else {
+            listTitle.setText(" Kappa");
+        }
+    }
+
+    /**
+     * Changes the view to display the list of Orders.
+     */
+    @FXML
+    public void handleOrders() {
+        if (!listTitle.getText().equals(" Orders")) {
+            // Only execute if orders are not already dislayed
+            listTitle.setText(" Orders");
+
+            personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        } else {
+            listTitle.setText(" Kappa");
         }
     }
 
