@@ -9,6 +9,12 @@ public class Order {
     private boolean isDone = false;
     private final Index clientId;
 
+    /**
+     * constructor which returns an order object
+     *
+     * @param description of the order
+     * @param clientId id of the client this order is attached to
+     */
     public Order(String description, Index clientId) {
         this.description = description;
         this.clientId = clientId;
