@@ -66,6 +66,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
+        setOrders(newData.getOrderList());
     }
 
     //// person-level operations
@@ -83,6 +84,10 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The person must not already exist in the address book.
      */
     public void addClient(Client p) {
+        if (p.getClientId() == 0) {
+            int newIndex = this.getPersonList().size() + 1;
+            p.setClientId(newIndex);
+        }
         persons.add(p);
     }
 

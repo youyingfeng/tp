@@ -2,15 +2,10 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.model.Model;
-import seedu.address.model.tag.Tag;
+
 
 /**
  * Represents a Person in the address book.
@@ -22,12 +17,10 @@ public class Client {
     private final Name name;
     private final Phone phone;
     private final Email email;
-    private final Index clientId;
+    private Index clientId;
 
     // Data fields
     private final Address address;
-    private final Set<Tag> tags;
-    private final List<Order> orderList;
 
     /**
      * Every field must be present and not null.
@@ -38,24 +31,19 @@ public class Client {
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.tags = new HashSet<>();
-        this.orderList = new ArrayList<>();
-        this.clientId = Index.fromOneBased(1);
+        this.clientId = Index.fromZeroBased(0);
     }
 
     /**
-     * Every field must be present and not null.
+     * Used when loading clients from an existing file
      */
-    public Client(Name name, Phone phone, Email email, Address address, Model model, Set<Tag> tags,
-                  List<Order> orderList) {
+    public Client(Name name, Phone phone, Email email, Address address, Index clientId) {
         requireAllNonNull(name, phone, email, address);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.tags = tags;
-        this.orderList = orderList;
-        this.clientId = Index.fromOneBased(model.getFilteredPersonList().size());
+        this.clientId = clientId;
     }
 
     public Name getName() {
@@ -74,17 +62,12 @@ public class Client {
         return address;
     }
 
-    public Index getClientId() {
-        return clientId;
+    public int getClientId() {
+        return clientId.getZeroBased();
     }
 
-    public Set<Tag> getTags() {
-        return tags;
-    }
-
-
-    public List<Order> getOrderList() {
-        return orderList;
+    public void setClientId(int id) {
+        this.clientId = Index.fromZeroBased(id);
     }
 
     /**
@@ -125,7 +108,7 @@ public class Client {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, phone, email, address);
     }
 
     @Override
