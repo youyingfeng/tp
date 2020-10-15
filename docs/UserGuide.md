@@ -93,14 +93,14 @@ Example :
 
 ### Completing Orders : `done`
 
-Marks a certain order attached to a certain client as done.
+Marks a certain order as done.
 
-Format : `done --client <client id> --order <order id>`
+Format : `done --order <order id>`
 
-Marks `<order id>` of client identified by `<client id>` as done.
+Marks `Order` with `<order id>` as done.
 
-`<client id>` must exist in the client list<br>
-`<order id>` must exist in the client order list
+`<order id>` must exist in the order list.
+`<order id>` is based on the index number of orders in the GUI window.
 
 Example :
 `done --client 10 --order 3` : deletes the order no. 3 of client with client id 10 
@@ -115,4 +115,4 @@ Action | Format
 **Client** | `client --name <client name> --address <client address>`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
 **List** | `list`<br> `list -a`
-**Done** | `done <order id>`
+**Done** | `done --order <order id>`
