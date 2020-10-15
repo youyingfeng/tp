@@ -24,13 +24,17 @@ public class Order {
         return this.description;
     }
 
-    public Index getClientId() { return this.clientId; }
+    public Index getClientId() {
+        return this.clientId;
+    }
 
     /**
      * Returns true if both orders of the same id have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two orders.
      */
-    public boolean isSameOrder(Order otherOrder) { return otherOrder == this; }
+    public boolean isSameOrder(Order otherOrder) {
+        return otherOrder == this;
+    }
 
     /**
      * Marks this {@code Order} as done
