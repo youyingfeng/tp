@@ -2,7 +2,11 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
@@ -28,7 +32,7 @@ public class Client {
     /**
      * Every field must be present and not null.
      */
-    public Client(Name name, Phone phone, Email email, Address address, Model model) {
+    public Client(Name name, Phone phone, Email email, Address address) {
         requireAllNonNull(name, phone, email, address);
         this.name = name;
         this.phone = phone;
@@ -36,7 +40,7 @@ public class Client {
         this.address = address;
         this.tags = new HashSet<>();
         this.orderList = new ArrayList<>();
-        this.clientId = Index.fromOneBased(model.getFilteredPersonList().size());
+        this.clientId = Index.fromOneBased(-1);
     }
 
     /**
@@ -70,9 +74,18 @@ public class Client {
         return address;
     }
 
-    public Set<Tag> getTags() { return tags; }
+    public Index getClientId() {
+        return clientId;
+    }
 
-    public List<Order> getOrderList() { return orderList; }
+    public Set<Tag> getTags() {
+        return tags;
+    }
+
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
 
     /**
      * Returns true if both persons of the same name have at least one other identity field that is the same.

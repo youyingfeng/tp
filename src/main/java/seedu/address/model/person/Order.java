@@ -3,15 +3,15 @@ package seedu.address.model.person;
 // class not implemented yet
 public class Order {
 
-    private final String DESCRIPTION;
+    private final String description;
     private boolean isDone = false;
 
     public Order(String description) {
-        this.DESCRIPTION = description;
+        this.description = description;
     }
 
     public String getDescription() {
-        return this.DESCRIPTION;
+        return this.description;
     }
 
     /**
