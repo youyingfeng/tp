@@ -30,8 +30,7 @@ class JsonSerializableAddressBook {
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedClient> persons,
-                                       @JsonProperty("orders") List<JsonAdaptedOrder> orders) {
+    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedClient> persons) {
         this.persons.addAll(persons);
         this.orders.addAll(orders);
     }
@@ -68,6 +67,7 @@ class JsonSerializableAddressBook {
             }
             addressBook.addOrder(order);
         }
+
         return addressBook;
     }
 
