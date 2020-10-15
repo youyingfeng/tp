@@ -54,7 +54,7 @@ public class OrderCommand extends Command {
 
         Client personToEdit = lastShownList.get(clientId.getZeroBased());
         List<Order> orderList = personToEdit.getOrderList();
-        orderList.add(new Order(description));
+        orderList.add(new Order(description, clientId));
         Client editedPerson = new Client(personToEdit.getName(), personToEdit.getPhone(), personToEdit.getEmail(),
                 personToEdit.getAddress(), model, personToEdit.getTags(), orderList);
 

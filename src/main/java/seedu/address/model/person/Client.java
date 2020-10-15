@@ -40,7 +40,7 @@ public class Client {
         this.address = address;
         this.tags = new HashSet<>();
         this.orderList = new ArrayList<>();
-        this.clientId = Index.fromOneBased(-1);
+        this.clientId = Index.fromOneBased(1);
     }
 
     /**

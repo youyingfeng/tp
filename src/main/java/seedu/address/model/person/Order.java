@@ -1,13 +1,17 @@
 package seedu.address.model.person;
 
+import seedu.address.commons.core.index.Index;
+
 // class not implemented yet
 public class Order {
 
     private final String description;
     private boolean isDone = false;
+    private final Index clientId;
 
-    public Order(String description) {
+    public Order(String description, Index clientId) {
         this.description = description;
+        this.clientId = clientId;
     }
 
     public String getDescription() {
@@ -22,10 +26,7 @@ public class Order {
         if (otherOrder == this) {
             return true;
         }
-
-        // to be edited
-        return otherOrder != null
-                && otherOrder.getName().equals(getName());
+        return false;
     }
 
     /**
