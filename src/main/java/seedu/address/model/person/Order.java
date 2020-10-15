@@ -15,6 +15,20 @@ public class Order {
     }
 
     /**
+     * Returns true if both orders of the same id have at least one other identity field that is the same.
+     * This defines a weaker notion of equality between two orders.
+     */
+    public boolean isSameOrder(Order otherOrder) {
+        if (otherOrder == this) {
+            return true;
+        }
+
+        // to be edited
+        return otherOrder != null
+                && otherOrder.getName().equals(getName());
+    }
+
+    /**
      * Marks this {@code Order} as done
      */
     public void markAsDone() {
