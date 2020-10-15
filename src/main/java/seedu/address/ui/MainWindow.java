@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -68,7 +69,7 @@ public class MainWindow extends UiPart<Stage> {
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
 
-        // setAccelerators();
+        setAccelerators();
 
         helpWindow = new HelpWindow();
     }
@@ -78,7 +79,22 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void setAccelerators() {
-        // setAccelerator(helpMenuButton, KeyCombination.valueOf("F1"));
+        setButtonAccelerator(helpMenuButton, KeyCombination.valueOf("F1"));
+    }
+
+    private void setButtonAccelerator(Button button, KeyCombination keyCombination) {
+        assert(button != null);
+
+        Scene scene = button.getScene();
+        assert(scene != null);
+
+        scene.getAccelerators().put(keyCombination,
+                new Runnable() {
+                    @FXML
+                    public void run() {
+                        button.fire();
+                    }
+                });
     }
 
     /**

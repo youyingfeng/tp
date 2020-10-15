@@ -52,7 +52,7 @@
                                  <children>
                                     <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="148.0" onAction="#handleClients" text="Clients" />
                                     <Button mnemonicParsing="false" prefHeight="74.0" prefWidth="148.0" onAction="#handleOrders" text="Orders" />
-                                    <Button layoutX="11.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleHelp" prefHeight="74.0" prefWidth="148.0" text="Help" />
+                                    <Button fx:id="helpMenuButton" layoutX="11.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleHelp" prefHeight="74.0" prefWidth="148.0" text="Help" />
                                     <Button layoutX="11.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="74.0" prefWidth="148.0" text="Exit" />
                                  </children>
                               </VBox>
