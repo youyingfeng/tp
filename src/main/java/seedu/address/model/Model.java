@@ -13,7 +13,8 @@ import seedu.address.model.person.Order;
  */
 public abstract class Model {
     /** {@code Predicate} that always evaluate to true */
-    Predicate<Client> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    public static final Predicate<Client> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
+    public static final Predicate<Order> PREDICATE_SHOW_ALL_ORDERS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -85,6 +86,7 @@ public abstract class Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     public abstract void updateFilteredPersonList(Predicate<Client> predicate);
+
 
     /**
      * Returns true if a order with the same identity as {@code order} exists in the order book.
