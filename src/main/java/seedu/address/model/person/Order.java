@@ -6,8 +6,8 @@ import seedu.address.commons.core.index.Index;
 public class Order {
 
     private final String description;
-    private boolean isDone = false;
     private final Index clientId;
+    private boolean isDone = false;
 
     /**
      * constructor which returns an order object
@@ -24,15 +24,14 @@ public class Order {
         return this.description;
     }
 
+    public Index getClientId() { return this.clientId; }
+
     /**
      * Returns true if both orders of the same id have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two orders.
      */
     public boolean isSameOrder(Order otherOrder) {
-        if (otherOrder == this) {
-            return true;
-        }
-        return false;
+        return otherOrder == this;
     }
 
     /**
@@ -46,4 +45,5 @@ public class Order {
     public boolean isDone() {
         return isDone;
     }
+
 }
