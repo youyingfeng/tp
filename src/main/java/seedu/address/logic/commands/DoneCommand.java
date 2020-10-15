@@ -16,6 +16,7 @@ public class DoneCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Marked as done. ";
     public static final String MESSAGE_ALREADY_DONE = "This order is already completed. ";
+    public static final String MESSAGE_NOT_FOUND = "There is no order with this index number. ";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": marks the order identified by the index number used in the displayed order list as done.\n"
             + "Parameters: INDEX must be a positive integer.\n"
@@ -35,6 +36,10 @@ public class DoneCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Order> lastShownList = model.getFilteredOrderList();
+        requireNonNull(lastShownList);
+        if (toMarkAsDoneIndex.getOneBased() > lastShownList.size()) {
+            throw new CommandException(MESSAGE_NOT_FOUND);
+        }
         Order orderToMark = lastShownList.get(toMarkAsDoneIndex.getZeroBased());
         if (orderToMark.isDone()) {
             throw new CommandException(MESSAGE_ALREADY_DONE);
