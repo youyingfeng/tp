@@ -253,16 +253,17 @@ The product will be a base application that can be customized to fit different c
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                | I want to …​                                             | So that I can…​                                            |
-| -------- | --------------------- | ------------------------------------------------------- | --------------------------------------------------------- |
-| `* * *`  | logistics clerk       | add client information                                  | store data of clients                                     |
-| `* * *`  | logistics clerk       | add order information                                   | store order data of clients                               |          
-| `* * *`  | logistics clerk       | add warehouse inventory information                     | store inventory data of warehouse                         |
-| `* * *`  | logistics clerk       | delete client information                               | remove client from the client list                        |
-| `* * *`  | logistics clerk       | delete order information                                | remove order from the data                                |
-| `* * *`  | logistics clerk       | delete warehouse inventory information                  | remove outdated information                               |
-| `* * *`  | logistics clerk       | view details of individual orders                       | easily view the information i need for every order placed | 
-| `* * *`  | logistics clerk       | attach orders to clients                                | easily track all orders involving the particular client   | 
+| Priority | As a …​                | I want to …​                                             | So that I can…​                                                    |
+| -------- | --------------------- | ------------------------------------------------------- | ----------------------------------------------------------------- |
+| `* * *`  | logistics clerk       | add client information                                  | store data of clients                                             |
+| `* * *`  | logistics clerk       | add order information                                   | store order data of clients                                       |          
+| `* * *`  | logistics clerk       | add warehouse inventory information                     | store inventory data of warehouse                                 |
+| `* * *`  | logistics clerk       | delete client information                               | remove client from the client list                                |
+| `* * *`  | logistics clerk       | delete order information                                | remove order from the data                                        |
+| `* * *`  | logistics clerk       | delete warehouse inventory information                  | remove outdated information                                       |
+| `* * *`  | logistics clerk       | view details of individual orders                       | easily view the information i need for every order placed         | 
+| `* * *`  | logistics clerk       | view details of individual clients                      | easily view the information i need for every client in the system |
+| `* * *`  | logistics clerk       | attach orders to clients                                | easily track all orders involving the particular client           | 
 *{More to be added}*
 
 ### Use cases
