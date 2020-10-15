@@ -14,15 +14,15 @@ class JsonAdaptedOrder {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Order's %s field is missing!";
 
-    private final Index id;
+    private final int id;
     private final String description;
 
     /**
      * Constructs a {@code JsonAdaptedOrder} with the given order details.
      */
     @JsonCreator
-    public JsonAdaptedOrder(@JsonProperty("id") String id, @JsonProperty("description") String description) {
-        this.id = Index.fromZeroBased(Integer.parseInt(id));
+    public JsonAdaptedOrder(@JsonProperty("id") int id, @JsonProperty("description") String description) {
+        this.id = id;
         this.description = description;
     }
 
@@ -31,7 +31,7 @@ class JsonAdaptedOrder {
      */
     public JsonAdaptedOrder(Order source) {
         description = source.getDescription();
-        id = source.getClientId();
+        id = source.getClientId().getZeroBased();
     }
 
     /**
@@ -50,13 +50,13 @@ class JsonAdaptedOrder {
 
         // maybe need to create a new class for Description to match JsonAdaptedClient.java
 
-        if (id == null) {
+        if (id < 0) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Index.class.getSimpleName()));
         }
 
         // test for validity
 
-        return new Order(description, id);
+        return new Order(description, Index.fromZeroBased(id));
     }
 
 }
