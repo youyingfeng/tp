@@ -1,15 +1,27 @@
 package seedu.address.model.person;
 
+import seedu.address.commons.core.index.Index;
+
 // class not implemented yet
 public class Order {
 
-    // feel free to change - tx
+    private final String description;
     private boolean isDone = false;
+    private final Index clientId;
 
-    // function to be removed
-    public Name getName() {
-        // not implemented yet
-        return null;
+    /**
+     * constructor which returns an order object
+     *
+     * @param description of the order
+     * @param clientId id of the client this order is attached to
+     */
+    public Order(String description, Index clientId) {
+        this.description = description;
+        this.clientId = clientId;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
     /**
@@ -20,10 +32,7 @@ public class Order {
         if (otherOrder == this) {
             return true;
         }
-
-        // to be edited
-        return otherOrder != null
-                && otherOrder.getName().equals(getName());
+        return false;
     }
 
     /**
