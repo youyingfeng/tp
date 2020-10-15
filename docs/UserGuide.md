@@ -47,10 +47,12 @@ Example :
 
 Creates a new client with the name `<client name>` and the address `<client address>`.
 
-Format : `client --name <client name> --address <client address>`
+Format : `client --name <client name> --address <client address> --email <client email> --phone <client phone no.>`
   
 `<client name>` must not be blank.<br>
-`<client address>` must not be blank.
+`<client address>` must not be blank. <br>
+`<client email>` must not be blank. <br>
+`<client phone>` must not be blank.
 
 Example :<br>
 `client --name John Wick --address New York Continental` : adds a client named John Wick whose address is the New York Continental
@@ -116,6 +118,6 @@ Action | Format
 --------|------------------
 **Order** | `order --description <order description> --client <client ID>` 
 **Client** | `client --name <client name> --address <client address>`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
+**Delete** | `delete-order --order <order id>` <br> `delete-client --client <client id>`
 **List** | `listC` <br> `listO` <br> `list -a`
 **Done** | `done --order <order id>`

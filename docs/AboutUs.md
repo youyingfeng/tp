@@ -14,7 +14,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[github](https://github.com/cx0810)]
 [[portfolio](team/cx0810.md)]
 
-* Role: Project Advisor
+* Role: Developer
 
 ### Syasya Azman
 
@@ -23,8 +23,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[github](http://github.com/Syasyazman)]
 [[portfolio](team/Syasyazman.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Developer
 
 ### Ting Xiao
 
@@ -33,7 +32,6 @@ We are a team based in the [School of Computing, National University of Singapor
 [[github](http://github.com/tigerting98)] [[portfolio](team/tigerting98.md)]
 
 * Role: Developer
-* Responsibilities: Data
 
 ### Pua Xuan Ming
 
@@ -43,7 +41,6 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/xnmng.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
 
 ### You Yingfeng
 
