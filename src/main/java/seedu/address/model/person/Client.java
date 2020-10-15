@@ -34,6 +34,18 @@ public class Client {
         this.clientId = Index.fromZeroBased(0);
     }
 
+    /**
+     * Used when loading clients from an existing file
+     */
+    public Client(Name name, Phone phone, Email email, Address address, Index clientId) {
+        requireAllNonNull(name, phone, email, address);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.clientId = clientId;
+    }
+
     public Name getName() {
         return name;
     }

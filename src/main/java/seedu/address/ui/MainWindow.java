@@ -12,7 +12,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -38,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private OrderListPanel orderListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -137,7 +137,9 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
+        
+        personListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -191,9 +193,9 @@ public class MainWindow extends UiPart<Stage> {
             // Only execute if orders are not already dislayed
             listTitle.setText(" Orders");
 
-            personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+            orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
             personListPanelPlaceholder.getChildren().removeAll();
-            personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            personListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
         } else {
             listTitle.setText(" Kappa");
         }

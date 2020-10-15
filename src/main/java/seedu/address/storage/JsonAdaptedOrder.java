@@ -21,8 +21,8 @@ class JsonAdaptedOrder {
      * Constructs a {@code JsonAdaptedOrder} with the given order details.
      */
     @JsonCreator
-    public JsonAdaptedOrder(@JsonProperty("name") Index id, @JsonProperty("phone") String description) {
-        this.id = id;
+    public JsonAdaptedOrder(@JsonProperty("id") String id, @JsonProperty("description") String description) {
+        this.id = Index.fromZeroBased(Integer.parseInt(id));
         this.description = description;
     }
 

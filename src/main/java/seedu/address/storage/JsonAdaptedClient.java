@@ -3,6 +3,7 @@ package seedu.address.storage;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import seedu.address.commons.core.index.Index;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Client;
@@ -21,17 +22,20 @@ class JsonAdaptedClient {
     private final String phone;
     private final String email;
     private final String address;
+    private final String clientId;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
      */
     @JsonCreator
     public JsonAdaptedClient(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
-                             @JsonProperty("email") String email, @JsonProperty("address") String address) {
+                             @JsonProperty("email") String email, @JsonProperty("address") String address,
+                             @JsonProperty("clientId") String clientId) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
+        this.clientId = clientId;
     }
 
     /**
@@ -42,6 +46,7 @@ class JsonAdaptedClient {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
+        clientId = String.valueOf(source.getClientId());
     }
 
     /**
@@ -82,7 +87,19 @@ class JsonAdaptedClient {
         }
         final Address modelAddress = new Address(address);
 
-        return new Client(modelName, modelPhone, modelEmail, modelAddress);
+        if (clientId == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+        }
+
+        Index modelClientId;
+        try {
+            int index = Integer.parseInt(clientId);
+            modelClientId = Index.fromZeroBased(index);
+        } catch (NumberFormatException e) {
+            throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
+        }
+
+        return new Client(modelName, modelPhone, modelEmail, modelAddress, modelClientId);
     }
 
 }
