@@ -47,10 +47,12 @@ Example :
 
 Creates a new client with the name `<client name>` and the address `<client address>`.
 
-Format : `client --name <client name> --address <client address>`
+Format : `client --name <client name> --address <client address> --email <client email> --phone <client phone no.>`
   
 `<client name>` must not be blank.<br>
-`<client address>` must not be blank.
+`<client address>` must not be blank. <br>
+`<client email>` must not be blank. <br>
+`<client phone>` must not be blank.
 
 Example :<br>
 `client --name John Wick --address New York Continental` : adds a client named John Wick whose address is the New York Continental
@@ -59,34 +61,51 @@ Example :<br>
 
 Returns a list of orders. The token `-a` can be used to list completed orders as well. 
 
-Format : `list`<br>
+Format : `listO`<br>
 Displays a list of all orders in the order list (and the client that placed the order respectively)
+
+Format: `listC`<br>
+Displays a list of all clients in the client list 
 
 `list -a`<br>
 Displays a list of current orders, and past orders (completed)
 
-### Deleting Client Orders : `delete`
+### Deleting a Client : `delete-client`
 
-Deletes an order made by a client.
+Deletes a client from client list.
 
-Format : `delete --client <client id> --order <order id>`
+Format : `delete --client <client id>`
 
-Deletes `<order id>` of client identified by `<client id>`
+Deletes client identified by `<client id>`
+
 `<client id>` must exist in the client list.
-`<order id>` must exist in the client's order list.
 
 Example :
-`delete --client 999 --order 123` : deletes the order no. 123 of client with client id 999 
+`delete-client --client 999` : deletes the client with client id 999 
+
+### Deleting an Order : `delete-order`
+
+Deletes an order from order list.
+
+Format : `delete --order <order id>`
+
+Deletes order identified by `<order id>`
+
+`<order id>` must exist in the order list.
+
+Example :
+`delete-order --order 123` : deletes the order with order id 123
 
 ### Completing Orders : `done`
 
-Marks a certain order attached to a certain client as done.
+Marks a certain order as done.
 
-Format : `done --client <client id> --order <order id>`
+Format : `done --order <order id>`
 
-Marks `<order id>` of client identified by `<client id>` as done.
-`<client id>` must exist in the client list
-`<order id>` must exist in the client order list
+Marks `Order` with `<order id>` as done.
+
+`<order id>` must exist in the order list.
+`<order id>` is based on the index number of orders in the GUI window.
 
 Example :
 `done --client 10 --order 3` : deletes the order no. 3 of client with client id 10 
@@ -99,6 +118,6 @@ Action | Format
 --------|------------------
 **Order** | `order --description <order description> --client <client ID>` 
 **Client** | `client --name <client name> --address <client address>`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**List** | `list`<br> `list -a`
-**Done** | `done <order id>`
+**Delete** | `delete-order --order <order id>` <br> `delete-client --client <client id>`
+**List** | `listC` <br> `listO` <br> `list -a`
+**Done** | `done --order <order id>`

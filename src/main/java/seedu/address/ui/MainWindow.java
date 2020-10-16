@@ -4,10 +4,15 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
@@ -23,7 +28,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  */
 public class MainWindow extends UiPart<Stage> {
 
-    private static final String FXML = "MainWindow.fxml";
+    private static final String FXML = "NewMainWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -32,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private OrderListPanel orderListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -39,16 +45,19 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane commandBoxPlaceholder;
 
     @FXML
-    private MenuItem helpMenuItem;
+    private Button helpMenuButton;
 
     @FXML
     private StackPane personListPanelPlaceholder;
 
     @FXML
-    private StackPane resultDisplayPlaceholder;
+    private HBox resultDisplayPlaceholder;
 
     @FXML
-    private StackPane statusbarPlaceholder;
+    private HBox statusbarPlaceholder;
+
+    @FXML
+    private Label listTitle;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -73,7 +82,22 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void setAccelerators() {
-        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
+        setButtonAccelerator(helpMenuButton, KeyCombination.valueOf("F1"));
+    }
+
+    private void setButtonAccelerator(Button button, KeyCombination keyCombination) {
+        assert(button != null);
+
+        Scene scene = button.getScene();
+        assert(scene != null);
+
+        scene.getAccelerators().put(keyCombination,
+                new Runnable() {
+                    @FXML
+                    public void run() {
+                        button.fire();
+                    }
+                });
     }
 
     /**
@@ -98,6 +122,8 @@ public class MainWindow extends UiPart<Stage> {
          * help window purposely so to support accelerators even when focus is
          * in CommandBox or ResultDisplay.
          */
+
+        // basically this is to allow for kb shortcuts
         getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
             if (event.getTarget() instanceof TextInputControl && keyCombination.match(event)) {
                 menuItem.getOnAction().handle(new ActionEvent());
@@ -111,13 +137,19 @@ public class MainWindow extends UiPart<Stage> {
      */
     void fillInnerParts() {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+        orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
+
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
+        // AnchorPane.setLeftAnchor(resultDisplay.getRoot(), 10.0);
+        resultDisplayPlaceholder.setAlignment(Pos.CENTER_LEFT);
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+        // AnchorPane.setRightAnchor(statusBarFooter.getRoot(), 10.0);
+        statusbarPlaceholder.setAlignment(Pos.CENTER_RIGHT);
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -132,6 +164,40 @@ public class MainWindow extends UiPart<Stage> {
         if (guiSettings.getWindowCoordinates() != null) {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
+        }
+    }
+
+    /**
+     * Changes the view to display the list of Clients.
+     */
+    @FXML
+    public void handleClients() {
+        if (!listTitle.getText().equals(" Clients")) {
+            // Only execute if clients are not already displayed
+            listTitle.setText(" Clients");
+
+            personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        } else {
+            listTitle.setText(" Kappa");
+        }
+    }
+
+    /**
+     * Changes the view to display the list of Orders.
+     */
+    @FXML
+    public void handleOrders() {
+        if (!listTitle.getText().equals(" Orders")) {
+            // Only execute if orders are not already dislayed
+            listTitle.setText(" Orders");
+
+            orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
+            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
+        } else {
+            listTitle.setText(" Kappa");
         }
     }
 
