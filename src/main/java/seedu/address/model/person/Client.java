@@ -2,6 +2,8 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import seedu.address.commons.core.index.Index;
@@ -21,6 +23,7 @@ public class Client {
 
     // Data fields
     private final Address address;
+    private List<Index> orders;
 
     /**
      * Every field must be present and not null.
@@ -32,18 +35,20 @@ public class Client {
         this.email = email;
         this.address = address;
         this.clientId = Index.fromZeroBased(0);
+        this.orders = new ArrayList<>();
     }
 
     /**
      * Used when loading clients from an existing file
      */
-    public Client(Name name, Phone phone, Email email, Address address, Index clientId) {
+    public Client(Name name, Phone phone, Email email, Address address, Index clientId, List<Index> orders) {
         requireAllNonNull(name, phone, email, address);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.clientId = clientId;
+        this.orders = orders;
     }
 
     public Name getName() {
@@ -64,6 +69,10 @@ public class Client {
 
     public int getClientId() {
         return clientId.getZeroBased();
+    }
+
+    public List<Index> getOrders() {
+        return orders;
     }
 
     public void setClientId(int id) {

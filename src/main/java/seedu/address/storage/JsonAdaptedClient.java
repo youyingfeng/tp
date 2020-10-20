@@ -11,6 +11,12 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  * Jackson-friendly version of {@link Client}.
  */
@@ -23,6 +29,7 @@ class JsonAdaptedClient {
     private final String email;
     private final String address;
     private final String clientId;
+    private final int[] orders;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -30,12 +37,13 @@ class JsonAdaptedClient {
     @JsonCreator
     public JsonAdaptedClient(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
                              @JsonProperty("email") String email, @JsonProperty("address") String address,
-                             @JsonProperty("clientId") String clientId) {
+                             @JsonProperty("clientId") String clientId, @JsonProperty("orders") int[] orders) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.clientId = clientId;
+        this.orders = orders;
     }
 
     /**
@@ -47,6 +55,10 @@ class JsonAdaptedClient {
         email = source.getEmail().value;
         address = source.getAddress().value;
         clientId = String.valueOf(source.getClientId());
+        orders = source.getOrders().stream()
+                                   .map(order -> order.getZeroBased())
+                                   .mapToInt(Integer::intValue)
+                                   .toArray();
     }
 
     /**
@@ -88,7 +100,7 @@ class JsonAdaptedClient {
         final Address modelAddress = new Address(address);
 
         if (clientId == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Index.class.getSimpleName()));
         }
 
         Index modelClientId;
@@ -99,7 +111,19 @@ class JsonAdaptedClient {
             throw new IllegalValueException(Address.MESSAGE_CONSTRAINTS);
         }
 
-        return new Client(modelName, modelPhone, modelEmail, modelAddress, modelClientId);
+        if (orders == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Orders"));
+        }
+        for (int order : orders) {
+            if (order <= 0) {
+                throw new IllegalValueException("Bad value in order list");
+            }
+        }
+        final List<Index> modelOrders = new ArrayList<>(Arrays.stream(orders)
+                                                              .mapToObj(number -> Index.fromZeroBased(number))
+                                                              .collect(Collectors.toList()));
+
+        return new Client(modelName, modelPhone, modelEmail, modelAddress, modelClientId, modelOrders);
     }
 
 }
