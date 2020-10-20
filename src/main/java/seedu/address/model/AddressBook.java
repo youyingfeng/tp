@@ -124,6 +124,16 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The person must not already exist in the address book.
      */
     public void addOrder(Order o) {
+        requireNonNull(o);
+        if (o.getOrderId().getZeroBased() == 0) {
+            ObservableList<Order> tempOrderList = this.getOrderList();
+            if (tempOrderList.size() == 0) {
+                o.setOrderId(1);
+            } else {
+                int newOrderId = tempOrderList.get(tempOrderList.size() - 1).getOrderId().getZeroBased() + 1;
+                o.setOrderId(newOrderId);
+            }
+        }
         orders.add(o);
     }
 

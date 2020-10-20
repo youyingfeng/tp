@@ -1,5 +1,7 @@
 package seedu.address.logic.parser;
 
+import java.time.format.DateTimeFormatter;
+
 /**
  * Contains Command Line Interface (CLI) syntax definitions common to multiple commands
  */
@@ -17,9 +19,20 @@ public class CliSyntax {
     public static final Prefix CLIENT_PREFIX_ADDRESS = new Prefix("--address");
     public static final Prefix CLIENT_PREFIX_EMAIL = new Prefix("--email");
     public static final Prefix CLIENT_PREFIX_PHONE = new Prefix("--phone");
+
+    /* Prefix definitions for DELETE */
     public static final Prefix DELETE_PREFIX_CLIENT = new Prefix("--client");
     public static final Prefix DELETE_PREFIX_ORDER = new Prefix("--order");
+
+    /* Prefix definitions for DONE */
     public static final Prefix DONE_PREFIX_ORDER = new Prefix("--order");
+
+    /* Prefix definitions for ORDER */
     public static final Prefix ORDER_PREFIX_DESCRIPTION = new Prefix("--description");
     public static final Prefix ORDER_PREFIX_CLIENT = new Prefix("--client");
+    public static final Prefix ORDER_PREFIX_ADDRESS = new Prefix("--address");
+    public static final Prefix ORDER_PREFIX_DATE = new Prefix("--date");
+
+    /* Formatter for all date/time inputs */
+    public static final DateTimeFormatter DEFAULT_DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 }
