@@ -19,16 +19,16 @@ public class Assert {
         Assertions.assertThrows(expectedType, executable);
     }
 
-    /**
-     * Asserts that the {@code executable} throws the {@code expectedType} Exception with the {@code expectedMessage}.
-     * If there's no need for the verification of the exception's error message, call
-     * {@link #assertThrows(Class, Executable)} instead.
-     *
-     * @see #assertThrows(Class, Executable)
-     */
-    public static void assertThrows(Class<? extends Throwable> expectedType, String expectedMessage,
-            Executable executable) {
-        Throwable thrownException = Assertions.assertThrows(expectedType, executable);
-        Assertions.assertEquals(expectedMessage, thrownException.getMessage());
-    }
+    // /**
+    //  * Asserts that the {@code executable} throws the {@code expectedType} Exception with the {@code expectedMessage}.
+    //  * If there's no need for the verification of the exception's error message, call
+    //  * {@link #assertThrows(Class, Executable)} instead.
+    //  *
+    //  * @see #assertThrows(Class, Executable)
+    //  */
+    // public static void assertThrows(Class<? extends Throwable> expectedType, String expectedMessage,
+    //         Executable executable) {
+    //     Throwable thrownException = Assertions.assertThrows(expectedType, executable);
+    //     Assertions.assertEquals(expectedMessage, thrownException.getMessage());
+    // }
 }
