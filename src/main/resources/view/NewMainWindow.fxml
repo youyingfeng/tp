@@ -47,14 +47,14 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                      <AnchorPane styleClass="menupane" stylesheets="@LightTheme.css">
+                      <AnchorPane styleClass="menupane">
                            <children>
                               <VBox layoutY="68.0" styleClass="menupane">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#handleClients" prefHeight="74.0" prefWidth="148.0" text="Clients" />
-                                    <Button mnemonicParsing="false" onAction="#handleOrders" prefHeight="74.0" prefWidth="148.0" text="Orders" />
-                                    <Button fx:id="helpMenuButton" layoutX="11.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleHelp" prefHeight="74.0" prefWidth="148.0" text="Help" />
-                                    <Button layoutX="11.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="74.0" prefWidth="148.0" text="Exit" />
+                                    <Button styleClass="button" mnemonicParsing="false" onAction="#handleClients" prefHeight="74.0" prefWidth="148.0" text="Clients" />
+                                    <Button styleClass="button" mnemonicParsing="false" onAction="#handleOrders" prefHeight="74.0" prefWidth="148.0" text="Orders" />
+                                    <Button styleClass="button" fx:id="helpMenuButton" layoutX="11.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleHelp" prefHeight="74.0" prefWidth="148.0" text="Help" />
+                                    <Button styleClass="button" layoutX="11.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleExit" prefHeight="74.0" prefWidth="148.0" text="Exit" />
                                  </children>
                               </VBox>
                            </children>
