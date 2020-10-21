@@ -1,7 +1,10 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.DEFAULT_DATE_TIME_FORMATTER;
 
+import java.time.DateTimeException;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -121,6 +124,18 @@ public class ParserUtil {
             throw new ParseException(Email.MESSAGE_CONSTRAINTS);
         }
         return new Email(trimmedEmail);
+    }
+
+    /**
+     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
+     */
+    public static LocalDateTime parseDate(String s) throws ParseException {
+        requireNonNull(s);
+        try {
+            return LocalDateTime.parse(s, DEFAULT_DATE_TIME_FORMATTER);
+        } catch (DateTimeException e) {
+            throw new ParseException(e.getMessage());
+        }
     }
 
     /**

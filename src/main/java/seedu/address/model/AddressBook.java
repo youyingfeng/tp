@@ -85,9 +85,15 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addClient(Client p) {
         if (p.getClientId() == 0) {
-            int newIndex = this.getPersonList().size() + 1;
-            p.setClientId(newIndex);
+            ObservableList<Client> tempClientList = this.getPersonList();
+            if (tempClientList.size() == 0) {
+                p.setClientId(1);
+            } else {
+                int newIndex = tempClientList.get(tempClientList.size() - 1).getClientId() + 1;
+                p.setClientId(newIndex);
+            }
         }
+
         persons.add(p);
     }
 
@@ -124,6 +130,16 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The person must not already exist in the address book.
      */
     public void addOrder(Order o) {
+        requireNonNull(o);
+        if (o.getOrderId().getZeroBased() == 0) {
+            ObservableList<Order> tempOrderList = this.getOrderList();
+            if (tempOrderList.size() == 0) {
+                o.setOrderId(1);
+            } else {
+                int newOrderId = tempOrderList.get(tempOrderList.size() - 1).getOrderId().getZeroBased() + 1;
+                o.setOrderId(newOrderId);
+            }
+        }
         orders.add(o);
     }
 
