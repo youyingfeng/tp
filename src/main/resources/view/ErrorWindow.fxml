@@ -27,7 +27,6 @@
                         </VBox.margin>
                     </Button>
                 </children>
-                
             </VBox>
         </Scene>
     </scene>
