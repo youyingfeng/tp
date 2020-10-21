@@ -86,7 +86,7 @@ public class ErrorWindow extends UiPart<Stage> {
     public void focus() {
         getRoot().requestFocus();
     }
-    
+
     public void setErrorText(String message) {
         errorMessage.setText(message);
     }

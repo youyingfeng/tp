@@ -1,13 +1,13 @@
 package seedu.address.ui;
 
+import static seedu.address.logic.parser.CliSyntax.DEFAULT_DATE_TIME_FORMATTER;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Order;
-
-import static seedu.address.logic.parser.CliSyntax.DEFAULT_DATE_TIME_FORMATTER;
 
 /**
  * An UI component that displays information of a {@code Order}.
