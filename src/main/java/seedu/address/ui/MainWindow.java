@@ -15,7 +15,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import seedu.address.Main;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
@@ -30,13 +29,11 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "NewMainWindow.fxml";
-
+    private static MainWindow mainWindow = null;
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
     private Logic logic;
-
-    private static MainWindow mainWindow = null;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
