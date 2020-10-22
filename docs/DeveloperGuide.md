@@ -133,6 +133,35 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Find feature
+
+The find mechanism is facilitated by `FindCommand`, `FindCommandParser`, `FindOrderCommand` and `FindOrderCommandParser`. `FindCommandParser` and `FindOrderCommandParser` implement `Parser`.
+`FindCommand` and `FindOrderCommand` extend `Command`.
+
+These two commands allows the user to search for `Clients` and `Orders` by the name or description respectively.
+
+Currently, the search operations for both `Clients` and `Orders` are very similar. Given a command (e.g. `find adam jane` or `findorder iPhone iPad`), the command is processed by `AddressBookParser` and
+passed to the corresponding parsers. There, the parser will process the given arguments and will search for all `Clients`/`Orders` whose name or description contain any
+of the keywords give. For example, If there were two clients, one named 'Adam' and one named 'Jane', both clients will show up in the search results.
+
+The parsers will split the provided search terms into an array, and match them with client names or order descriptions through the use of streams. The current implementation of `FindOrderCommand`
+and `FindOrderCommandParser` are simply adapted from the `FindCommand` and `FindCommandParser` respectively. This was done to ensure a minimally functional feature
+Thus, tokens are currently unused for more specific searches.
+
+\[Proposed enhancements\]:
+
+* Usage of optional tokens such as `--date`, `--address`, `--email` to narrow down search range. It will be implemented similarly (by matching keywords). A client or an order
+must match at least one of the keywords in each category in order to be shown in the search results. The list of clients/orders will be converted
+into a stream and be filtered by multiple predicates, each corresponding to a data field within `Client`/`Order`.
+
+* A further enhncement would be to reduce the strictness of the token search. Instead of having to match at least one keyword from each category,
+any keyword match in any category would allow for the order or client to show up in the search results. This will be done by maintaining different filtered lists and combining them
+while ignoring duplicates.
+
+Given below are examples of usage scenarios and how the two commands behave at each step
+
+_{Diagram will be added at a later date}_
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -217,6 +246,16 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### Update-client feature
+
+The Update-client mechanism is facilitated by `UpdateClientCommand` and `UpdateClientCommandParser`. `UpdateClientCommandParser` implement `Parser`.
+`UpdateClientCommand` extend `Command`.
+
+This command allows the user to update an existing `Client` by their index.
+
+The parser will split the provided terms into an array, obtain what field is to be updated (`Name`, `Address`, `Email`, `Phone`) and obtain the field that is to be updated.
+
+Upon calling the `Execute` method in UpdateClientCommand, the model is queried to obtain the list of clients. From this list, the client is obtained, removed and a new client with the updated field is added into the same index as the deleted client.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -242,7 +281,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Allows for convenient and fast generation of internal documents for archiving for the logistics clerk. 
+**Value proposition**: Allows for convenient and fast generation of internal documents for archiving for the logistics clerk.
 
 The application would speed up their work as they would no longer need to fill up separate forms (invoices, 
 shipping manifests etc) with overlapping data as it would now be automated, thus increasing productivity. 
@@ -253,16 +292,17 @@ The product will be a base application that can be customized to fit different c
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                | I want to …​                                             | So that I can…​                                            |
-| -------- | --------------------- | ------------------------------------------------------- | --------------------------------------------------------- |
-| `* * *`  | logistics clerk       | add client information                                  | store data of clients                                     |
-| `* * *`  | logistics clerk       | add order information                                   | store order data of clients                               |          
-| `* * *`  | logistics clerk       | add warehouse inventory information                     | store inventory data of warehouse                         |
-| `* * *`  | logistics clerk       | delete client information                               | remove client from the client list                        |
-| `* * *`  | logistics clerk       | delete order information                                | remove order from the data                                |
-| `* * *`  | logistics clerk       | delete warehouse inventory information                  | remove outdated information                               |
-| `* * *`  | logistics clerk       | view details of individual orders                       | easily view the information i need for every order placed | 
-| `* * *`  | logistics clerk       | attach orders to clients                                | easily track all orders involving the particular client   | 
+| Priority | As a …​                | I want to …​                                             | So that I can…​                                                    |
+| -------- | --------------------- | ------------------------------------------------------- | ----------------------------------------------------------------- |
+| `* * *`  | logistics clerk       | add client information                                  | store data of clients                                             |
+| `* * *`  | logistics clerk       | add order information                                   | store order data of clients                                       |          
+| `* * *`  | logistics clerk       | add warehouse inventory information                     | store inventory data of warehouse                                 |
+| `* * *`  | logistics clerk       | delete client information                               | remove client from the client list                                |
+| `* * *`  | logistics clerk       | delete order information                                | remove order from the data                                        |
+| `* * *`  | logistics clerk       | delete warehouse inventory information                  | remove outdated information                                       |
+| `* * *`  | logistics clerk       | view details of individual orders                       | easily view the information i need for every order placed         | 
+| `* * *`  | logistics clerk       | view details of individual clients                      | easily view the information i need for every client in the system |
+| `* * *`  | logistics clerk       | attach orders to clients                                | easily track all orders involving the particular client           | 
 *{More to be added}*
 
 ### Use cases
