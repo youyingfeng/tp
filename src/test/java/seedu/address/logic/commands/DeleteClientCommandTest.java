@@ -25,27 +25,27 @@ import seedu.address.model.person.Client;
 public class DeleteClientCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
+    //    @Test
+    //    public void execute_validIndexUnfilteredList_success() {
+    //        Client clientToDelete = model.getFilteredPersonList().get(INDEX_FIRST_CLIENT.getZeroBased());
+    //        DeleteClientCommand deleteClientCommand = new DeleteClientCommand(INDEX_FIRST_CLIENT);
+    //
+    //        String expectedMessage = String.format(DeleteClientCommand.MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete);
+    //
+    //        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+    //        expectedModel.deletePerson(clientToDelete);
+    //
+    //        assertCommandSuccess(deleteClientCommand, model, expectedMessage, expectedModel);
+    //    }
+
     @Test
-    public void execute_validIndexUnfilteredList_success() {
-        Client clientToDelete = model.getFilteredPersonList().get(INDEX_FIRST_CLIENT.getZeroBased());
-        DeleteClientCommand deleteClientCommand = new DeleteClientCommand(INDEX_FIRST_CLIENT);
+    public void execute_invalidIndexUnfilteredList_throwsCommandException() {
+        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
+        DeleteClientCommand deleteClientCommand = new DeleteClientCommand(outOfBoundIndex);
 
-        String expectedMessage = String.format(DeleteClientCommand.MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete);
-
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-        expectedModel.deletePerson(clientToDelete);
-
-        assertCommandSuccess(deleteClientCommand, model, expectedMessage, expectedModel);
+        assertCommandFailure(deleteClientCommand, model, Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
     }
 
-    //    @Test
-    //    public void execute_invalidIndexUnfilteredList_throwsCommandException() {
-    //        Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
-    //        DeleteClientCommand deleteClientCommand = new DeleteClientCommand(outOfBoundIndex);
-    //
-    //        assertCommandFailure(deleteClientCommand, model, Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
-    //    }
-    //
     //    @Test
     //    public void execute_validIndexFilteredList_success() {
     //        showPersonAtIndex(model, INDEX_FIRST_CLIENT);
