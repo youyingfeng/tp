@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
 import seedu.address.model.person.UniqueOrderList;
@@ -113,6 +114,43 @@ public class AddressBook implements ReadOnlyAddressBook {
      * {@code key} must exist in the address book.
      */
     public void removeClient(Client key) {
+        int clientId = key.getClientId();
+        System.out.println("client id" + clientId);
+        assert clientId != 0;
+
+        ObservableList<Order> tempOrderList = this.getOrderList();
+        System.out.println("current order list" + tempOrderList);
+
+        // remove orders linked to client
+//        for (Order order : tempOrderList) {
+//            System.out.println("loop");
+//            System.out.println("order" + order);
+//            Index clientLinkedId = order.getClientId();
+//            System.out.println("order id" + order.getOrderId());
+//            System.out.println("order linked client id" + clientLinkedId.getZeroBased());
+//            if (clientLinkedId.getZeroBased() == clientId) {
+//                System.out.println("removed order");
+//                removeOrder(order);
+//            } else {
+//                System.out.println("didnt remove order");
+//            }
+//        }
+        System.out.println("tempOrderList size" + tempOrderList.size());
+        for (int i = 0; i < tempOrderList.size() + 1; i++) {
+            System.out.println("loop");
+            Order order = tempOrderList.get(i);
+            System.out.println("order" + order);
+            Index clientLinkedId = order.getClientId();
+            System.out.println("order id" + order.getOrderId());
+            System.out.println("order linked client id" + clientLinkedId.getZeroBased());
+            if (clientLinkedId.getZeroBased() == clientId) {
+                System.out.println("removed order");
+                removeOrder(order);
+            } else {
+                System.out.println("didnt remove order");
+            }
+        }
+        System.out.println("final order list" + this.getOrderList());
         persons.remove(key);
     }
 
