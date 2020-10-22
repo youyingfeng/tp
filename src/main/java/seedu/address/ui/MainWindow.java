@@ -29,7 +29,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "NewMainWindow.fxml";
-
+    private static MainWindow mainWindow = null;
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
@@ -63,7 +63,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public MainWindow(Stage primaryStage, Logic logic) {
+    private MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -77,6 +77,16 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
         errorWindow = new ErrorWindow();
+    }
+
+    public static MainWindow setInstance(Stage primaryStage, Logic logic) {
+        mainWindow = new MainWindow(primaryStage, logic);
+        return mainWindow;
+    }
+
+    public static MainWindow getInstance() {
+        assert mainWindow != null;
+        return mainWindow;
     }
 
     public Stage getPrimaryStage() {
@@ -192,7 +202,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleOrders() {
         if (!listTitle.getText().equals(" Orders")) {
-            // Only execute if orders are not already dislayed
+            // Only execute if orders are not already displayed
             listTitle.setText(" Orders");
 
             orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
