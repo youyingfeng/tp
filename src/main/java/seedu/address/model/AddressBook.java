@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
 import seedu.address.model.person.UniqueOrderList;
@@ -113,6 +114,18 @@ public class AddressBook implements ReadOnlyAddressBook {
      * {@code key} must exist in the address book.
      */
     public void removeClient(Client key) {
+        int clientId = key.getClientId();
+        assert clientId != 0;
+
+        ObservableList<Order> tempOrderList = this.getOrderList();
+
+        for (int i = 0; i < tempOrderList.size() + 1; i++) {
+            Order order = tempOrderList.get(i);
+            Index clientLinkedId = order.getClientId();
+            if (clientLinkedId.getZeroBased() == clientId) {
+                removeOrder(order);
+            }
+        }
         persons.remove(key);
     }
 

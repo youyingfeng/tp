@@ -133,7 +133,6 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-
 ### User Interface
 
 #### Proposed implementation
@@ -189,6 +188,55 @@ Given below are examples of usage scenarios and how the two commands behave at e
 
 _{Diagram will be added at a later date}_
 
+### Delete Feature
+
+The delete mechanism is split into two functionalities - `Delete Order` and `Delete Client`.
+
+The delete mechanism is facilitated by `DeleteOrderCommand`, `DeleteOrderCommandParser`, `DeleteClientCommand`, 
+`DeleteClientCommandParser`, `AddressBook` and `ModelManager`. 
+
+`DeleteOrderCommand` and `DeleteClientCommand` extends `Command`, `DeleteOrderCommandParser` and 
+`DeleteClientCommandParser` implements `Parser`, `AddressBook` implements `ReadOnlyAddressBook` and `ModelManager` 
+implements `Model`.
+
+These operations are exposed in the `Model` interface as `Model#deletePerson()` and `Model#deleteOrder()`. They are also
+exposed in the `AddressBook` class as `AddressBook#removeClient()` and `AddressBook#removeOrder()`.
+
+the `Delete Order` and `Delete Client` differs such that `Delete Order` is dependent on `Delete Client`. This is the 
+most distinctive difference where deleting a client from the client list will delete some orders from the order 
+list too.
+
+Given below is an example usage scenario and how the delete mechanism behaves at each step.
+
+**Delete Order**
+
+Step 1. The user launches application and views his/her list of 5 orders.
+
+Step 2. The user executes `order --description 123 --client 1 --address 123 --date 2020-12-12 2359`. An order is created
+ and appended to the end of the order list. There are now a total of 6 orders in the order list.
+
+Step 3. The user decides to remove the order he had just created. The user notes that the order is at the last index 
+of the order list. The user executes `delete-order --order 6` to remove the order from the order list.
+
+The following sequence diagram shows how the delete order operation works :
+
+_diagrams will be uploaded soon_
+
+**Delete Client**
+
+Step 1. The user launches application and views his/her list of 5 clients.
+
+Step 2. The user executes `client --name john --address 123 --email john@gmail.com --phone 12345678`. A a client is 
+created and appended to the end of the client list. There are now a total of 6 clients in the client list.
+
+Step 3. The user decides to remove the client he had just created. The user notes that the client is at the last index 
+of the client list. The user executes `delete-client --client 6` to remove the client from the client list.
+
+Step 4. When user deletes the client, all orders linked to the client will also be deleted.
+
+The following sequence diagram shows how the delete client operation works :
+
+_diagrams will be uploaded soon_
 
 ### \[Proposed\] Undo/redo feature
 

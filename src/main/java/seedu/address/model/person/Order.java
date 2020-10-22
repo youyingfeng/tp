@@ -28,7 +28,7 @@ public class Order {
                  LocalDateTime deliveryDateTime,
                  LocalDateTime creationDateTime,
                  boolean isDone) {
-        this.clientId = clientId;
+        this.clientId = Index.fromZeroBased(clientId.getOneBased());
         this.description = description;
         this.address = address;
         this.deliveryDateTime = deliveryDateTime;
@@ -47,7 +47,7 @@ public class Order {
                  LocalDateTime creationDateTime,
                  boolean isDone) {
         this.orderId = orderId;
-        this.clientId = clientId;
+        this.clientId = Index.fromZeroBased(clientId.getOneBased());
         this.description = description;
         this.address = address;
         this.deliveryDateTime = deliveryDateTime;
