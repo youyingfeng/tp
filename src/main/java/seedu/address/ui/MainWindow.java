@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import seedu.address.Main;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
@@ -34,6 +35,8 @@ public class MainWindow extends UiPart<Stage> {
 
     private Stage primaryStage;
     private Logic logic;
+
+    private static MainWindow mainWindow = null;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
@@ -63,7 +66,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
-    public MainWindow(Stage primaryStage, Logic logic) {
+    private MainWindow(Stage primaryStage, Logic logic) {
         super(FXML, primaryStage);
 
         // Set dependencies
@@ -77,6 +80,16 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
         errorWindow = new ErrorWindow();
+    }
+
+    public static MainWindow getInstance() {
+        // assert nonnull
+        return mainWindow;
+    }
+
+    public static MainWindow setInstance(Stage primaryStage, Logic logic) {
+        mainWindow = new MainWindow(primaryStage, logic);
+        return mainWindow;
     }
 
     public Stage getPrimaryStage() {
@@ -192,7 +205,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     public void handleOrders() {
         if (!listTitle.getText().equals(" Orders")) {
-            // Only execute if orders are not already dislayed
+            // Only execute if orders are not already displayed
             listTitle.setText(" Orders");
 
             orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
