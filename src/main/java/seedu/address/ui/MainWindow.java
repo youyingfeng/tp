@@ -83,7 +83,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     public static MainWindow getInstance() {
-        // assert nonnull
+        assert mainWindow != null;
         return mainWindow;
     }
 
