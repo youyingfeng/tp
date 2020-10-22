@@ -220,7 +220,7 @@ of the order list. The user executes `delete-order --order 6` to remove the orde
 
 The following sequence diagram shows how the delete order operation works :
 
--diagrams will be uploaded soon-
+_diagrams will be uploaded soon_
 
 **Delete Client**
 
@@ -236,7 +236,7 @@ Step 4. When user deletes the client, all orders linked to the client will also 
 
 The following sequence diagram shows how the delete client operation works :
 
--diagrams will be uploaded soon-
+_diagrams will be uploaded soon_
 
 ### \[Proposed\] Undo/redo feature
 
