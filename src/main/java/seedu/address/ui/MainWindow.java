@@ -79,13 +79,13 @@ public class MainWindow extends UiPart<Stage> {
         errorWindow = new ErrorWindow();
     }
 
-    public static MainWindow getInstance() {
-        assert mainWindow != null;
+    public static MainWindow setInstance(Stage primaryStage, Logic logic) {
+        mainWindow = new MainWindow(primaryStage, logic);
         return mainWindow;
     }
 
-    public static MainWindow setInstance(Stage primaryStage, Logic logic) {
-        mainWindow = new MainWindow(primaryStage, logic);
+    public static MainWindow getInstance() {
+        assert mainWindow != null;
         return mainWindow;
     }
 
