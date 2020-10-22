@@ -133,6 +133,32 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### User Interface
+
+#### Proposed implementation
+
+The updated user interface has three columns: the leftmost column acts as a navigation menu, the middle column displays 
+the list of Clients/Orders and the rightmost column is supposed to display more details about the Client/Order.
+
+The switching of views is done by calling methods defined in MainWindow from the FXML file, upon clicking on the 
+respective button. These methods are exposed in the `MainWindow` class as `handleClients()` and `handleOrders()`.
+
+UML diagrams will be inserted in at a more opportune time.
+
+Step 1. The user launches the application, and the User Interface is created.
+
+Step 2. The user clicks on the `Orders` button in order to view the orders. The button will call the function 
+`handleOrders()`, causing the view in the middle column to display the list of Orders.
+
+Step 2. The user clicks on the `Clients` button in order to view the clients. The button will call the function 
+`handleClients()`, causing the view in the middle column to display the list of Clients.
+
+Step 3. The user clicks on the `Help` button in order to find the link to the user guide. The button will call the 
+function `handleHelp()`, which will open a dialog box with the link to the user guide.
+
+Step 4. The user clicks on the `Exit` button in order to close the application. The button will call the function 
+`handleExit`, which will close the application.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
