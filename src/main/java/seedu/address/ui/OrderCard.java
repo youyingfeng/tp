@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import static seedu.address.logic.parser.CliSyntax.DEFAULT_DATE_TIME_FORMATTER;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
@@ -35,6 +37,8 @@ public class OrderCard extends UiPart<Region> {
     @FXML
     private Label clientId;
     @FXML
+    private Label date;
+    @FXML
     private FlowPane tags;
 
     /**
@@ -44,9 +48,10 @@ public class OrderCard extends UiPart<Region> {
         super(FXML);
         this.order = order;
         id.setText(displayedIndex + ". ");
-        orderId.setText(String.valueOf(order.getClientId().getZeroBased()));
+        orderId.setText("Order #" + String.format("%05d", order.getOrderId().getZeroBased()));
         description.setText(order.getDescription());
-        clientId.setText(String.valueOf(order.getClientId().getZeroBased()));
+        clientId.setText("Deliver to Client #" + String.format("%05d", order.getClientId().getZeroBased()));
+        date.setText("Delivery date: " + order.getDeliveryDateTime().format(DEFAULT_DATE_TIME_FORMATTER));
     }
 
     @Override

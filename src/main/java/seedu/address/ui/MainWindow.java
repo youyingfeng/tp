@@ -40,6 +40,7 @@ public class MainWindow extends UiPart<Stage> {
     private OrderListPanel orderListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private ErrorWindow errorWindow;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -75,6 +76,7 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
+        errorWindow = new ErrorWindow();
     }
 
     public Stage getPrimaryStage() {
@@ -233,6 +235,14 @@ public class MainWindow extends UiPart<Stage> {
         return personListPanel;
     }
 
+    private void handleError() {
+        if (!errorWindow.isShowing()) {
+            errorWindow.show();
+        } else {
+            errorWindow.focus();
+        }
+    }
+
     /**
      * Executes the command and returns the result.
      *
@@ -254,8 +264,11 @@ public class MainWindow extends UiPart<Stage> {
 
             return commandResult;
         } catch (CommandException | ParseException e) {
+            // TODO: set a popup message that can be easily closed by pressing enter
             logger.info("Invalid command: " + commandText);
-            resultDisplay.setFeedbackToUser(e.getMessage());
+            resultDisplay.setFeedbackToUser("Invalid command: " + commandText);
+            errorWindow.setErrorText(e.getMessage());
+            this.handleError();
             throw e;
         }
     }

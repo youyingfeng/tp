@@ -160,16 +160,16 @@
 }
 
 .button:hover {
-    -fx-background-color: derive(-fx-background-color, 75%);
+    -fx-background-color: derive(-color-menu, 30%);
 }
 
 .button:pressed, .button:default:hover:pressed {
-  -fx-background-color: derive(-fx-background-color, 50%);
+  -fx-background-color: derive(-color-menu, 50%);
   -fx-text-fill: #1d1d1d;
 }
 
 .button:focused {
-    -fx-background-color: derive(-fx-background-color, 75%);
+    -fx-background-color: derive(-color-menu, 50%);
 }
 
 .button:disabled, .button:default:disabled {
