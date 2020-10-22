@@ -133,6 +133,35 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Find feature
+
+The find mechanism is facilitated by `FindCommand`, `FindCommandParser`, `FindOrderCommand` and `FindOrderCommandParser`. `FindCommandParser` and `FindOrderCommandParser` implement `Parser`.
+`FindCommand` and `FindOrderCommand` extend `Command`.
+
+These two commands allows the user to search for `Clients` and `Orders` by the name or description respectively.
+
+Currently, the search operations for both `Clients` and `Orders` are very similar. Given a command (e.g. `find adam jane` or `findorder iPhone iPad`), the command is processed by `AddressBookParser` and 
+passed to the corresponding parsers. There, the parser will process the given arguments and will search for all `Clients`/`Orders` whose name or description contain any
+of the keywords give. For example, If there were two clients, one named 'Adam' and one named 'Jane', both clients will show up in the search results.
+
+The parsers will split the provided search terms into an array, and match them with client names or order descriptions through the use of streams. The current implementation of `FindOrderCommand` 
+and `FindOrderCommandParser` are simply adapted from the `FindCommand` and `FindCommandParser` respectively. This was done to ensure a minimally functional feature
+Thus, tokens are currently unused for more specific searches.
+
+\[Proposed enhancements\]:
+
+* Usage of optional tokens such as `--date`, `--address`, `--email` to narrow down search range. It will be implemented similarly (by matching keywords). A client or an order
+must match at least one of the keywords in each category in order to be shown in the search results. The list of clients/orders will be converted
+into a stream and be filtered by multiple predicates, each corresponding to a data field within `Client`/`Order`.
+
+* A further enhncement would be to reduce the strictness of the token search. Instead of having to match at least one keyword from each category,
+any keyword match in any category would allow for the order or client to show up in the search results. This will be done by maintaining different filtered lists and combining them
+while ignoring duplicates.
+
+Given below are examples of usage scenarios and how the two commands behave at each step
+
+_{Diagram will be added at a later date}_
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
