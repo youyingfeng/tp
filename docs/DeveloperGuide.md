@@ -140,11 +140,11 @@ The find mechanism is facilitated by `FindCommand`, `FindCommandParser`, `FindOr
 
 These two commands allows the user to search for `Clients` and `Orders` by the name or description respectively.
 
-Currently, the search operations for both `Clients` and `Orders` are very similar. Given a command (e.g. `find adam jane` or `findorder iPhone iPad`), the command is processed by `AddressBookParser` and 
+Currently, the search operations for both `Clients` and `Orders` are very similar. Given a command (e.g. `find adam jane` or `findorder iPhone iPad`), the command is processed by `AddressBookParser` and
 passed to the corresponding parsers. There, the parser will process the given arguments and will search for all `Clients`/`Orders` whose name or description contain any
 of the keywords give. For example, If there were two clients, one named 'Adam' and one named 'Jane', both clients will show up in the search results.
 
-The parsers will split the provided search terms into an array, and match them with client names or order descriptions through the use of streams. The current implementation of `FindOrderCommand` 
+The parsers will split the provided search terms into an array, and match them with client names or order descriptions through the use of streams. The current implementation of `FindOrderCommand`
 and `FindOrderCommandParser` are simply adapted from the `FindCommand` and `FindCommandParser` respectively. This was done to ensure a minimally functional feature
 Thus, tokens are currently unused for more specific searches.
 
@@ -271,7 +271,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Allows for convenient and fast generation of internal documents for archiving for the logistics clerk. 
+**Value proposition**: Allows for convenient and fast generation of internal documents for archiving for the logistics clerk.
 
 The application would speed up their work as they would no longer need to fill up separate forms (invoices, 
 shipping manifests etc) with overlapping data as it would now be automated, thus increasing productivity. 
