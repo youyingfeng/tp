@@ -7,7 +7,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.DescriptionContainsKeywordsPredicate;
 
 /**
- * Finds and lists all persons in address book whose name contains any of the argument keywords.
+ * Finds and lists all orders in address book whose description contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindOrderCommand extends Command {
@@ -36,6 +36,7 @@ public class FindOrderCommand extends Command {
 
     @Override
     public boolean equals(Object other) {
+        assert other != null;
         return other == this // short circuit if same object
                        || (other instanceof FindOrderCommand // instanceof handles nulls
                                    && predicate.equals(((FindOrderCommand) other).predicate)); // state check

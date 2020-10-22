@@ -133,7 +133,6 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-
 ### Delete Feature
 
 The delete mechanism is split into two functionalities - `Delete Order` and `Delete Client`.
@@ -183,6 +182,61 @@ Step 4. When user deletes the client, all orders linked to the client will also 
 The following sequence diagram shows how the delete client operation works :
 
 -diagrams will be uploaded soon-
+
+### User Interface
+
+#### Proposed implementation
+
+The updated user interface has three columns: the leftmost column acts as a navigation menu, the middle column displays 
+the list of Clients/Orders and the rightmost column is supposed to display more details about the Client/Order.
+
+The switching of views is done by calling methods defined in MainWindow from the FXML file, upon clicking on the 
+respective button. These methods are exposed in the `MainWindow` class as `handleClients()` and `handleOrders()`.
+
+_{Diagram will be added at a later date}_
+
+Step 1. The user launches the application, and the User Interface is created.
+
+Step 2. The user clicks on the `Orders` button in order to view the orders. The button will call the function 
+`handleOrders()`, causing the view in the middle column to display the list of Orders.
+
+Step 2. The user clicks on the `Clients` button in order to view the clients. The button will call the function 
+`handleClients()`, causing the view in the middle column to display the list of Clients.
+
+Step 3. The user clicks on the `Help` button in order to find the link to the user guide. The button will call the 
+function `handleHelp()`, which will open a dialog box with the link to the user guide.
+
+Step 4. The user clicks on the `Exit` button in order to close the application. The button will call the function 
+`handleExit`, which will close the application.
+
+### Find feature
+
+The find mechanism is facilitated by `FindCommand`, `FindCommandParser`, `FindOrderCommand` and `FindOrderCommandParser`. `FindCommandParser` and `FindOrderCommandParser` implement `Parser`.
+`FindCommand` and `FindOrderCommand` extend `Command`.
+
+These two commands allows the user to search for `Clients` and `Orders` by the name or description respectively.
+
+Currently, the search operations for both `Clients` and `Orders` are very similar. Given a command (e.g. `find adam jane` or `findorder iPhone iPad`), the command is processed by `AddressBookParser` and
+passed to the corresponding parsers. There, the parser will process the given arguments and will search for all `Clients`/`Orders` whose name or description contain any
+of the keywords give. For example, If there were two clients, one named 'Adam' and one named 'Jane', both clients will show up in the search results.
+
+The parsers will split the provided search terms into an array, and match them with client names or order descriptions through the use of streams. The current implementation of `FindOrderCommand`
+and `FindOrderCommandParser` are simply adapted from the `FindCommand` and `FindCommandParser` respectively. This was done to ensure a minimally functional feature
+Thus, tokens are currently unused for more specific searches.
+
+\[Proposed enhancements\]:
+
+* Usage of optional tokens such as `--date`, `--address`, `--email` to narrow down search range. It will be implemented similarly (by matching keywords). A client or an order
+must match at least one of the keywords in each category in order to be shown in the search results. The list of clients/orders will be converted
+into a stream and be filtered by multiple predicates, each corresponding to a data field within `Client`/`Order`.
+
+* A further enhncement would be to reduce the strictness of the token search. Instead of having to match at least one keyword from each category,
+any keyword match in any category would allow for the order or client to show up in the search results. This will be done by maintaining different filtered lists and combining them
+while ignoring duplicates.
+
+Given below are examples of usage scenarios and how the two commands behave at each step
+
+_{Diagram will be added at a later date}_
 
 ### \[Proposed\] Undo/redo feature
 
@@ -268,6 +322,16 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### Update-client feature
+
+The Update-client mechanism is facilitated by `UpdateClientCommand` and `UpdateClientCommandParser`. `UpdateClientCommandParser` implement `Parser`.
+`UpdateClientCommand` extend `Command`.
+
+This command allows the user to update an existing `Client` by their index.
+
+The parser will split the provided terms into an array, obtain what field is to be updated (`Name`, `Address`, `Email`, `Phone`) and obtain the field that is to be updated.
+
+Upon calling the `Execute` method in UpdateClientCommand, the model is queried to obtain the list of clients. From this list, the client is obtained, removed and a new client with the updated field is added into the same index as the deleted client.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -293,7 +357,7 @@ _{Explain here how the data archiving feature will be implemented}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: Allows for convenient and fast generation of internal documents for archiving for the logistics clerk. 
+**Value proposition**: Allows for convenient and fast generation of internal documents for archiving for the logistics clerk.
 
 The application would speed up their work as they would no longer need to fill up separate forms (invoices, 
 shipping manifests etc) with overlapping data as it would now be automated, thus increasing productivity. 
