@@ -238,6 +238,25 @@ The following sequence diagram shows how the delete client operation works :
 
 _diagrams will be uploaded soon_
 
+### List Feature
+
+The list mechanism is split into two functionalities - `List Order` and `List Client`.
+
+These two commands allows the user to list the `Clients` and `Orders` present in the system respectively.
+
+The list mechanism is facilitated by `ListCommand`, `ListOrderCommand`, `Model`, `ModelManager` and `AddressBook`.
+
+`ListCommand` and `ListOrderCommand` extends `Command`. `AddressBook` implements `ReadOnlyAddressBook` and `ModelManager` implements `Model`.
+
+These operations are exposed in the `Model` interface as `getFilteredOrderList()` and `getFilteredPersonList()`. They are also exposed in the `AddressBook` as `getOrderList` and `getPersonList`.
+
+\[Proposed enhancements\]:
+* Use `list` to display the orders of each client in the same panel. 
+
+Given below is an example usage scenario of how the list mechanism behaves at each step.
+
+_{Diagrams will be added at a later date}_
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
