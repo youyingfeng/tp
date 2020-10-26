@@ -71,7 +71,7 @@
                                     <StackPane fx:id="personListPanelPlaceholder" prefHeight="435.0" prefWidth="246.0" VBox.vgrow="ALWAYS" />
                                  </children>
                               </VBox>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                              <VBox fx:id="extraInfoPlaceholder" prefHeight="200.0" prefWidth="200.0" />
                           </items>
                         </SplitPane>
                      </children>

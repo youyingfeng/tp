@@ -63,12 +63,21 @@ public class NewClientForm extends UiPart<Region> {
                     + CLIENT_PREFIX_EMAIL + " " + emailField.getText();
 
             mainWindow.executeCommand(commandString);
+            resetForm();
         } catch (ValidationException | ParseException | CommandException e) {
             // The behaviour for validationException is already handled properly in validateInput
             // ParseException and CommandException should not occur unless the command format changes,
             // which is highly unlikely.
             // Therefore this is left blank intentionally.
         }
+    }
+
+    @FXML
+    private void resetForm() {
+        nameField.clear();
+        phoneField.clear();
+        addressField.clear();
+        emailField.clear();
     }
 
     private void validateInput() throws ValidationException {
@@ -82,21 +91,21 @@ public class NewClientForm extends UiPart<Region> {
 
         if (phoneField.getText() == null || emailField.getText().length() == 0) {
             isInputValid = false;
-            phoneErrorDisplay.setText("Name cannot be blank!");
+            phoneErrorDisplay.setText("Phone cannot be blank!");
         } else {
             phoneErrorDisplay.setText("");
         }
 
         if (addressField.getText() == null || emailField.getText().length() == 0) {
             isInputValid = false;
-            addressErrorDisplay.setText("Name cannot be blank!");
+            addressErrorDisplay.setText("Address cannot be blank!");
         } else {
             addressErrorDisplay.setText("");
         }
 
         if (emailField.getText() == null || emailField.getText().length() == 0) {
             isInputValid = false;
-            emailErrorDisplay.setText("Name cannot be blank!");
+            emailErrorDisplay.setText("Email cannot be blank!");
         } else {
             emailErrorDisplay.setText("");
         }
