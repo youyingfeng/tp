@@ -8,7 +8,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
-import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
@@ -43,9 +42,9 @@ public class OrderBuilder {
         }
     }
 
-        /**
+    /**
      * Initializes the OrderBuilder with the data of {@code orderToCopy}.
-     */
+     * */
     public OrderBuilder(Order orderToCopy) {
         clientId = orderToCopy.getClientId();
         description = orderToCopy.getDescription();
@@ -101,6 +100,9 @@ public class OrderBuilder {
         return this;
     }
 
+    /**
+     * Creates {@code Order} using the order fields.
+     */
     public Order build() {
         LocalDateTime creationDateTime = LocalDateTime.now();
         return new Order(clientId, description, address, date, creationDateTime, false);
