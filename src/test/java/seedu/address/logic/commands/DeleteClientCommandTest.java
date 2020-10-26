@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-//import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showPersonAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CLIENT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_CLIENT;
@@ -16,7 +16,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-//import seedu.address.model.person.Client;
+import seedu.address.model.person.Client;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -25,18 +25,18 @@ import seedu.address.model.UserPrefs;
 public class DeleteClientCommandTest {
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
-    //    @Test
-    //    public void execute_validIndexUnfilteredList_success() {
-    //        Client clientToDelete = model.getFilteredPersonList().get(INDEX_FIRST_CLIENT.getZeroBased());
-    //        DeleteClientCommand deleteClientCommand = new DeleteClientCommand(INDEX_FIRST_CLIENT);
-    //
-    //        String expectedMessage = String.format(DeleteClientCommand.MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete);
-    //
-    //        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-    //        expectedModel.deletePerson(clientToDelete);
-    //
-    //        assertCommandSuccess(deleteClientCommand, model, expectedMessage, expectedModel);
-    //    }
+    @Test
+    public void execute_validIndexUnfilteredList_success() {
+        Client clientToDelete = model.getFilteredPersonList().get(INDEX_FIRST_CLIENT.getZeroBased());
+        DeleteClientCommand deleteClientCommand = new DeleteClientCommand(INDEX_FIRST_CLIENT);
+
+        String expectedMessage = String.format(DeleteClientCommand.MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete);
+
+        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.deletePerson(clientToDelete);
+
+        assertCommandSuccess(deleteClientCommand, model, expectedMessage, expectedModel);
+    }
 
     @Test
     public void execute_invalidIndexUnfilteredList_throwsCommandException() {
@@ -46,21 +46,21 @@ public class DeleteClientCommandTest {
         assertCommandFailure(deleteClientCommand, model, Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
     }
 
-    //    @Test
-    //    public void execute_validIndexFilteredList_success() {
-    //        showPersonAtIndex(model, INDEX_FIRST_CLIENT);
-    //
-    //        Client clientToDelete = model.getFilteredPersonList().get(INDEX_FIRST_CLIENT.getZeroBased());
-    //        DeleteClientCommand deleteClientCommand = new DeleteClientCommand(INDEX_FIRST_CLIENT);
-    //
-    //        String expectedMessage = String.format(DeleteClientCommand.MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete);
-    //
-    //        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-    //        expectedModel.deletePerson(clientToDelete);
-    //        showNoPerson(expectedModel);
-    //
-    //        assertCommandSuccess(deleteClientCommand, model, expectedMessage, expectedModel);
-    //    }
+    @Test
+    public void execute_validIndexFilteredList_success() {
+        showPersonAtIndex(model, INDEX_FIRST_CLIENT);
+
+        Client clientToDelete = model.getFilteredPersonList().get(INDEX_FIRST_CLIENT.getZeroBased());
+        DeleteClientCommand deleteClientCommand = new DeleteClientCommand(INDEX_FIRST_CLIENT);
+
+        String expectedMessage = String.format(DeleteClientCommand.MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete);
+
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel.deletePerson(clientToDelete);
+        showNoPerson(expectedModel);
+
+        assertCommandSuccess(deleteClientCommand, model, expectedMessage, expectedModel);
+    }
 
     @Test
     public void execute_invalidIndexFilteredList_throwsCommandException() {
