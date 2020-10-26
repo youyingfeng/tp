@@ -7,6 +7,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import seedu.address.model.person.Order;
+import seedu.address.model.person.OrderIdContainsKeywordsPredicate;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
@@ -130,6 +132,12 @@ public class CommandTestUtil {
      * {@code model}'s order book.
      */
     public static void showOrderAtIndex(Model model, Index targetIndex) {
-        // not yet implemented
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredOrderList().size());
+
+        Order order = model.getFilteredOrderList().get(targetIndex.getZeroBased());
+        final Index id = order.getOrderId();
+        model.updateFilteredOrderList(new OrderIdContainsKeywordsPredicate(id));
+
+        assertEquals(1, model.getFilteredOrderList().size());
     }
 }
