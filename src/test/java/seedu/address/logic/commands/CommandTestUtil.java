@@ -19,6 +19,8 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.model.person.Order;
+import seedu.address.model.person.OrderIdContainsKeywordsPredicate;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
 
 /**
@@ -130,6 +132,12 @@ public class CommandTestUtil {
      * {@code model}'s order book.
      */
     public static void showOrderAtIndex(Model model, Index targetIndex) {
-        // not yet implemented
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredOrderList().size());
+
+        Order order = model.getFilteredOrderList().get(targetIndex.getZeroBased());
+        final Index id = order.getOrderId();
+        model.updateFilteredOrderList(new OrderIdContainsKeywordsPredicate(id));
+
+        assertEquals(1, model.getFilteredOrderList().size());
     }
 }

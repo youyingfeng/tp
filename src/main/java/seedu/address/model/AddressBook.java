@@ -119,7 +119,9 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         ObservableList<Order> tempOrderList = this.getOrderList();
 
-        for (int i = 0; i < tempOrderList.size() + 1; i++) {
+        System.out.println("size of order list" + (tempOrderList.size() + 1));
+        for (int i = 0; i < tempOrderList.size(); i++) {
+            System.out.println("index" + i);
             Order order = tempOrderList.get(i);
             Index clientLinkedId = order.getClientId();
             if (clientLinkedId.getZeroBased() == clientId) {
