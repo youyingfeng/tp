@@ -2,6 +2,7 @@ package seedu.address.ui;
 
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_CLIENT;
+import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_DESCRIPTION;
 
 import javafx.fxml.FXML;
@@ -13,7 +14,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 
 
 public class NewOrderForm extends UiPart<Region> {
-    private static final String FXML = "NewClientForm.fxml";
+    private static final String FXML = "NewOrderForm.fxml";
 
     private final MainWindow mainWindow;
 
@@ -59,7 +60,8 @@ public class NewOrderForm extends UiPart<Region> {
             String commandString = "order "
                     + ORDER_PREFIX_DESCRIPTION + " " + descriptionField.getText() + " "
                     + ORDER_PREFIX_CLIENT + " " + clientField.getText() + " "
-                    + ORDER_PREFIX_ADDRESS + " " + addressField.getText();
+                    + ORDER_PREFIX_ADDRESS + " " + addressField.getText() + " "
+                    + ORDER_PREFIX_DATE + " " + dateField.getText();
 
             mainWindow.executeCommand(commandString);
             resetForm();
@@ -91,6 +93,10 @@ public class NewOrderForm extends UiPart<Region> {
         if (clientField.getText() == null || dateField.getText().length() == 0) {
             isInputValid = false;
             clientErrorDisplay.setText("Client ID cannot be blank!");
+        } else if (!clientField.getText().matches("\\d{5}")) {
+            // this should mean "repeat digit 5 times"
+            isInputValid = false;
+            clientErrorDisplay.setText("Enter a valid 5-digit client ID!");
         } else {
             clientErrorDisplay.setText("");
         }

@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane minHeight="400.0" minWidth="200.0" prefHeight="400.0" prefWidth="600.0" HBox.hgrow="ALWAYS">
@@ -134,7 +133,7 @@
             </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <children>
-                <Button minWidth="80.0" mnemonicParsing="false" onAction="#submitForm" prefWidth="80.0" text="Create">
+                <Button minWidth="80.0" mnemonicParsing="false" onAction="#submitForm" prefWidth="160.0" text="Create">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -142,7 +141,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button minWidth="50.0" mnemonicParsing="false" onAction="#resetForm" prefWidth="80.0" text="Clear">
+                  <Button minWidth="50.0" mnemonicParsing="false" onAction="#resetForm" prefWidth="160.0" text="Clear">
                      <font>
                         <Font size="18.0" />
                      </font>

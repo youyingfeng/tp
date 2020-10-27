@@ -15,6 +15,15 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class NewClientForm extends UiPart<Region> {
     private static final String FXML = "NewClientForm.fxml";
 
+    // copied over from email
+    private static final String SPECIAL_CHARACTERS = "!#$%&'*+/=?`{|}~^.-";
+    private static final String LOCAL_PART_REGEX = "^[\\w" + SPECIAL_CHARACTERS + "]+";
+    private static final String DOMAIN_FIRST_CHARACTER_REGEX = "[^\\W_]"; // alphanumeric characters except underscore
+    private static final String DOMAIN_MIDDLE_REGEX = "[a-zA-Z0-9.-]*"; // alphanumeric, period and hyphen
+    private static final String DOMAIN_LAST_CHARACTER_REGEX = "[^\\W_]$";
+    public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@"
+            + DOMAIN_FIRST_CHARACTER_REGEX + DOMAIN_MIDDLE_REGEX + DOMAIN_LAST_CHARACTER_REGEX;
+
     private final MainWindow mainWindow;
 
     @FXML
@@ -89,14 +98,17 @@ public class NewClientForm extends UiPart<Region> {
             nameErrorDisplay.setText("");
         }
 
-        if (phoneField.getText() == null || emailField.getText().length() == 0) {
+        if (phoneField.getText() == null || phoneField.getText().length() == 0) {
             isInputValid = false;
             phoneErrorDisplay.setText("Phone cannot be blank!");
+        } else if (!phoneField.getText().matches("\\d{3,}")) {
+            isInputValid = false;
+            phoneErrorDisplay.setText("Phone number is invalid!");
         } else {
             phoneErrorDisplay.setText("");
         }
 
-        if (addressField.getText() == null || emailField.getText().length() == 0) {
+        if (addressField.getText() == null || addressField.getText().length() == 0) {
             isInputValid = false;
             addressErrorDisplay.setText("Address cannot be blank!");
         } else {
@@ -106,6 +118,9 @@ public class NewClientForm extends UiPart<Region> {
         if (emailField.getText() == null || emailField.getText().length() == 0) {
             isInputValid = false;
             emailErrorDisplay.setText("Email cannot be blank!");
+        } else if (emailField.getText().matches(VALIDATION_REGEX)) {
+            isInputValid = false;
+            emailErrorDisplay.setText("Email provided is not of a valid format!");
         } else {
             emailErrorDisplay.setText("");
         }
