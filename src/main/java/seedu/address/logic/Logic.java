@@ -40,6 +40,9 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of orders */
     ObservableList<Order> getFilteredOrderList();
 
+    /** Returns an unmodifiable view of the unfiltered list of orders */
+    ObservableList<Order> getUnfilteredOrderList();
+
     /**
      * Returns the user prefs' address book file path.
      */

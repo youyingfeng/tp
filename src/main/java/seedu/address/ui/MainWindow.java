@@ -213,7 +213,11 @@ public class MainWindow extends UiPart<Stage> {
             personListPanelPlaceholder.getChildren().removeAll();
             personListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
         } else {
-            listTitle.setText(" Kappa");
+            listTitle.setText(" Orders");
+
+            orderListPanel = new OrderListPanel(logic.getUnfilteredOrderList());
+            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
         }
     }
 

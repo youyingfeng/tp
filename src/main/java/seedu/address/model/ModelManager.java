@@ -202,4 +202,11 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredOrders.setPredicate(predicate);
     }
+
+    @Override
+    public ObservableList<Order> getUnfilteredOrderList() {
+        Predicate alwaysTrue = t -> true;
+        filteredOrders.setPredicate(alwaysTrue);
+        return filteredOrders;
+    }
 }
