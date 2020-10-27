@@ -34,6 +34,9 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of clients */
     ObservableList<Client> getFilteredPersonList();
 
+    /** Returns an unmodifiable view of the unfiltered list of clients */
+    ObservableList<Client> getUnfilteredPersonList();
+
     /** Returns an unmodifiable view of the filtered list of orders */
     ObservableList<Order> getFilteredOrderList();
 

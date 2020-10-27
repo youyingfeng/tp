@@ -87,6 +87,9 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Client> predicate);
 
+    /** Returns an unmodifiable view of the unfiltered person list */
+    ObservableList<Client> getUnfilteredPersonList();
+
     /**
      * Returns true if a order with the same identity as {@code order} exists in the order book.
      */
