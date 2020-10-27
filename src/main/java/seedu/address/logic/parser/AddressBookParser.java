@@ -94,6 +94,8 @@ public class AddressBookParser {
 
         case UpdateClientCommandParser.COMMAND_WORD:
             return new UpdateClientCommandParser().parse(arguments);
+        case UpdateOrderCommandParser.COMMAND_WORD:
+            return new UpdateOrderCommandParser().parse(arguments);
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
