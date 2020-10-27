@@ -50,6 +50,7 @@ public class Order {
                  LocalDateTime deliveryDateTime,
                  LocalDateTime creationDateTime,
                  boolean isDone) {
+        this.orderId = orderId;
         this.clientId = Index.fromZeroBased(clientId.getOneBased());
         this.description = description;
         this.address = address;
