@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -41,6 +42,11 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private ErrorWindow errorWindow;
+    private NewClientForm newClientForm;
+    private NewOrderForm newOrderForm;
+
+    // Stores the state of the view
+    private Page currentPage;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -60,6 +66,9 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private Label listTitle;
 
+    @FXML
+    private VBox extraInfoPlaceholder;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -77,6 +86,10 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
         errorWindow = new ErrorWindow();
+        newClientForm = new NewClientForm(this);
+        newOrderForm = new NewOrderForm(this);
+
+        currentPage = Page.CLIENTS;
     }
 
     public static MainWindow setInstance(Stage primaryStage, Logic logic) {
@@ -184,12 +197,12 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleClients() {
-        if (!listTitle.getText().equals(" Clients")) {
+        if (currentPage != Page.CLIENTS) {
             // Only execute if clients are not already displayed
+            currentPage = Page.CLIENTS;
             listTitle.setText(" Clients");
-
             personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().clear();
             personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
         } else {
             listTitle.setText(" Clients");
@@ -205,12 +218,12 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleOrders() {
-        if (!listTitle.getText().equals(" Orders")) {
+        if (currentPage != Page.ORDERS) {
             // Only execute if orders are not already displayed
+            currentPage = Page.ORDERS;
             listTitle.setText(" Orders");
-
             orderListPanel = new OrderListPanel(logic.getFilteredOrderList());
-            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().clear();
             personListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
         } else {
             listTitle.setText(" Orders");
@@ -261,12 +274,27 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    @FXML
+    private void handleAdd() {
+        if (currentPage == Page.CLIENTS) {
+            System.out.println("kak");
+            extraInfoPlaceholder.getChildren().clear();
+            extraInfoPlaceholder.getChildren().add(newClientForm.getRoot());
+        } else if (currentPage == Page.ORDERS) {
+            System.out.println("kek");
+            extraInfoPlaceholder.getChildren().clear();
+            extraInfoPlaceholder.getChildren().add(newOrderForm.getRoot());
+        } else {
+            extraInfoPlaceholder.getChildren().removeAll();
+        }
+    }
+
     /**
      * Executes the command and returns the result.
      *
      * @see seedu.address.logic.Logic#execute(String)
      */
-    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
+    CommandResult executeCommand(String commandText) throws CommandException, ParseException {
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
@@ -289,5 +317,9 @@ public class MainWindow extends UiPart<Stage> {
             this.handleError();
             throw e;
         }
+    }
+
+    enum Page {
+        CLIENTS, ORDERS;
     }
 }
