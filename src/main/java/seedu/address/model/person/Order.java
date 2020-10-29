@@ -15,7 +15,8 @@ public class Order {
     private Address address;
     private LocalDateTime deliveryDateTime;
     private LocalDateTime creationDateTime;
-    private boolean isDone = false;
+    private LocalDateTime lastModifiedDateTime;
+    private boolean isDone;
 
     /**
      * Constructor which returns an order object with additional fields
@@ -27,6 +28,7 @@ public class Order {
                  Address address,
                  LocalDateTime deliveryDateTime,
                  LocalDateTime creationDateTime,
+                 LocalDateTime lastModifiedDateTime,
                  boolean isDone) {
         this.orderId = Index.fromZeroBased(0);
         this.clientId = Index.fromZeroBased(clientId.getOneBased());
@@ -34,6 +36,7 @@ public class Order {
         this.address = address;
         this.deliveryDateTime = deliveryDateTime;
         this.creationDateTime = creationDateTime;
+        this.lastModifiedDateTime = lastModifiedDateTime;
         this.isDone = isDone;
     }
 
@@ -53,6 +56,29 @@ public class Order {
         this.address = address;
         this.deliveryDateTime = deliveryDateTime;
         this.creationDateTime = creationDateTime;
+        this.lastModifiedDateTime = creationDateTime;
+        this.isDone = isDone;
+    }
+
+    /**
+     * Constructor which returns an order object with additional fields
+     * This constructor takes in an additional field (orderId)
+     */
+    public Order(Index orderId,
+                 Index clientId,
+                 String description,
+                 Address address,
+                 LocalDateTime deliveryDateTime,
+                 LocalDateTime creationDateTime,
+                 LocalDateTime lastModifiedDateTime,
+                 boolean isDone) {
+        this.orderId = orderId;
+        this.clientId = Index.fromZeroBased(clientId.getOneBased());
+        this.description = description;
+        this.address = address;
+        this.deliveryDateTime = deliveryDateTime;
+        this.creationDateTime = creationDateTime;
+        this.lastModifiedDateTime = lastModifiedDateTime;
         this.isDone = isDone;
     }
 
@@ -78,6 +104,10 @@ public class Order {
 
     public LocalDateTime getCreationDateTime() {
         return creationDateTime;
+    }
+
+    public boolean getIsDone() {
+        return isDone;
     }
 
     /**

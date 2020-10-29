@@ -26,8 +26,8 @@ public class OrderCommand extends Command {
             + "Example: " + COMMAND_WORD + " " + ORDER_PREFIX_DESCRIPTION + " shoes " + ORDER_PREFIX_CLIENT + " 123"
             + ORDER_PREFIX_ADDRESS + " Jurong West Central 3" + ORDER_PREFIX_DATE + " 2020-11-30 2359";
 
-    public static final String MESSAGE_SUCCESS = "New client added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ORDER = "This client already exists in LogOnce";
+    public static final String MESSAGE_SUCCESS = "New Order added: %1$s";
+    public static final String MESSAGE_DUPLICATE_ORDER = "This Order already exists in LogOnce";
 
     private final Order toAdd;
 
