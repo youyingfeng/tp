@@ -144,8 +144,8 @@
                         <Font size="18.0" />
                      </font>
                   </Button>
-               </buttons>
-            </ButtonBar>
+               </children>
+            </HBox>
          </children>
       </GridPane>
    </children>
