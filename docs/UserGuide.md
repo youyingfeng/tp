@@ -4,6 +4,7 @@ title: User Guide
 ---
 
 # LogOnce
+![LogOnce Header](../docs/images/LogOnceHeader.png)
 
 **LogOnce** is a one-stop logistics tracker app for clerks to monitor shipping statuses of all clients and perform common logistics operations. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, LogOnce can get your tracking tasks done faster than traditional GUI apps. **This application is currently being developed and has not been deployed yet.**
 
@@ -74,27 +75,30 @@ Displays a list of current orders, and past orders (completed)
 
 Deletes a client from client list.
 
-Format : `delete --client <client id>`
+Format : `delete-client --client <client index>`
 
-Deletes client identified by `<client id>`
+Deletes client that has `<client index>` as its index on the client list. Note that `<client index>` is not the 
+unique client id given to each client when added. `<client index>` is determined solely from the client 
+list indexing.
 
-`<client id>` must exist in the client list.
+`<client index>` must exist as a valid index in the client list.
 
 Example :
-`delete-client --client 999` : deletes the client with client id 999 
+`delete-client --client 999` : deletes the client with index 999 in the client list.
 
 ### Deleting an Order : `delete-order`
 
 Deletes an order from order list.
 
-Format : `delete --order <order id>`
+Format : `delete-order --order <order id>`
 
-Deletes order identified by `<order id>`
+Deletes order that has `<order index>` as its index on the order list. Note that `<order index>` is not the unique 
+order id given to each order when added. `<order index>` is determined solely from the order list indexing.
 
-`<order id>` must exist in the order list.
+`<order id>` must exist as a valid index in the order list.
 
 Example :
-`delete-order --order 123` : deletes the order with order id 123
+`delete-order --order 123` : deletes the order with index 123 in the order list.
 
 ### Completing Orders : `done`
 
@@ -118,6 +122,6 @@ Action | Format
 --------|------------------
 **Order** | `order --description <order description> --client <client ID>` 
 **Client** | `client --name <client name> --address <client address>`
-**Delete** | `delete-order --order <order id>` <br> `delete-client --client <client id>`
+**Delete** | `delete-order --order <order index>` <br> `delete-client --client <client index>`
 **List** | `listC` <br> `listO` <br> `list -a`
 **Done** | `done --order <order id>`
