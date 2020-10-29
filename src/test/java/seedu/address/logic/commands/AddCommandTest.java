@@ -249,6 +249,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void commitAddressBook() {
+            // called by {@code AddCommand#execute()}
+        }
+
+        @Override
         public ReadOnlyAddressBook getAddressBook() {
             return new AddressBook();
         }
