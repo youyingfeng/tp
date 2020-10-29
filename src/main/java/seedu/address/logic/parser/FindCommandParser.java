@@ -55,7 +55,9 @@ public class FindCommandParser implements Parser<FindCommand> {
             );
         }
         if (argMultimap.getValue(CLIENT_PREFIX_EMAIL).isPresent()) {
-            predicates.add(new ClientEmailPredicate(ParserUtil.parseEmail(argMultimap.getValue(CLIENT_PREFIX_EMAIL).get())));
+            predicates.add(
+                new ClientEmailPredicate(ParserUtil.parseEmail(argMultimap.getValue(CLIENT_PREFIX_EMAIL).get()))
+            );
         }
         if (argMultimap.getValue(CLIENT_PREFIX_ADDRESS).isPresent()) {
             String address = argMultimap.getValue(CLIENT_PREFIX_ADDRESS).get();
