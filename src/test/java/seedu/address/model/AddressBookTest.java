@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import javafx.beans.InvalidationListener;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
@@ -103,6 +104,16 @@ public class AddressBookTest {
         public ObservableList<Order> getOrderList() {
             // not yet implemented
             return null;
+        }
+
+        @Override
+        public void addListener(InvalidationListener listener) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void removeListener(InvalidationListener listener) {
+            throw new AssertionError("This method should not be called.");
         }
     }
 
