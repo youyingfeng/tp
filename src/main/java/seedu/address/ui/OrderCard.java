@@ -3,11 +3,14 @@ package seedu.address.ui;
 import static seedu.address.logic.parser.CliSyntax.DEFAULT_DATE_TIME_FORMATTER;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Order;
+import seedu.address.ui.events.DisplayOrderEvent;
 
 /**
  * An UI component that displays information of a {@code Order}.
@@ -52,6 +55,13 @@ public class OrderCard extends UiPart<Region> {
         description.setText(order.getDescription());
         clientId.setText("Deliver to Client #" + String.format("%05d", order.getClientId().getZeroBased()));
         date.setText("Delivery date: " + order.getDeliveryDateTime().format(DEFAULT_DATE_TIME_FORMATTER));
+        setEventHandlers(this.getRoot());
+    }
+
+    private void setEventHandlers(Node node) {
+        node.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+            node.fireEvent(new DisplayOrderEvent(order));
+        });
     }
 
     @Override
