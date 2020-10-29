@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_CLIENT;
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_DESCRIPTION;
 
+import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Order;
@@ -41,7 +42,7 @@ public class OrderCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
         if (model.hasOrder(toAdd)) {

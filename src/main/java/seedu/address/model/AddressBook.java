@@ -4,8 +4,10 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
+import javafx.beans.InvalidationListener;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.InvalidationListenerManager;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
 import seedu.address.model.person.UniqueOrderList;
@@ -19,6 +21,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final UniqueOrderList orders;
+
+    private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -96,6 +100,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
 
         persons.add(p);
+        indicateModified();
     }
 
     /**
@@ -107,6 +112,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedClient);
 
         persons.setPerson(target, editedClient);
+        indicateModified();
     }
 
     /**
@@ -129,6 +135,7 @@ public class AddressBook implements ReadOnlyAddressBook {
             }
         }
         persons.remove(key);
+        indicateModified();
     }
 
     // order-level operations
@@ -156,6 +163,7 @@ public class AddressBook implements ReadOnlyAddressBook {
             }
         }
         orders.add(o);
+        indicateModified();
     }
 
     /**
@@ -167,6 +175,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedOrder);
 
         orders.setOrder(target, editedOrder);
+        indicateModified();
     }
 
     /**
@@ -175,6 +184,24 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeOrder(Order key) {
         orders.remove(key);
+        indicateModified();
+    }
+
+    @Override
+    public void addListener(InvalidationListener listener) {
+        invalidationListenerManager.addListener(listener);
+    }
+
+    @Override
+    public void removeListener(InvalidationListener listener) {
+        invalidationListenerManager.removeListener(listener);
+    }
+
+    /**
+     * Notifies listeners that the address book has been modified.
+     */
+    protected void indicateModified() {
+        invalidationListenerManager.callListeners(this);
     }
 
     //// util methods
