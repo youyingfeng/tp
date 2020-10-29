@@ -132,8 +132,18 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             @Override
+            public void onDeleteOrderEvent(Order order) {
+                assert false;
+            }
+
+            @Override
             public void onDisplayClientEvent(Client client) {
                 showClientInfo(client);
+            }
+
+            @Override
+            public void onDeleteClientEvent(Client client) {
+                assert false;
             }
         });
     }

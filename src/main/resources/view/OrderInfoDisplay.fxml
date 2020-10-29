@@ -11,6 +11,7 @@
 <?import javafx.scene.text.Text?>
 
 
+<?import javafx.scene.control.ButtonBar?>
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane prefHeight="400.0" prefWidth="618.0">
@@ -93,11 +94,20 @@
                   </Text>
                </children>
             </VBox>
-            <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="104.0" text="Edit" GridPane.columnIndex="1" GridPane.rowIndex="9">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
+             <ButtonBar GridPane.columnIndex="1" GridPane.rowIndex="9">
+                 <buttons>
+                     <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Edit">
+                         <font>
+                             <Font size="18.0" />
+                         </font>
+                     </Button>
+                     <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="150.0" text="Delete">
+                         <font>
+                             <Font size="18.0" />
+                         </font>
+                     </Button>
+                 </buttons>
+             </ButtonBar>
          </children>
       </GridPane>
    </children>
