@@ -12,7 +12,6 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-
 public class NewOrderForm extends UiPart<Region> {
     private static final String FXML = "NewOrderForm.fxml";
 

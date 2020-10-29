@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.DescriptionContainsKeywordsPredicate;
+import seedu.address.model.person.OrderMultiPredicate;
 
 /**
  * Finds and lists all orders in address book whose description contains any of the argument keywords.
@@ -20,9 +20,9 @@ public class FindOrderCommand extends Command {
                                                        + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
                                                        + "Example: " + COMMAND_WORD + "phone keyboard mouse";
 
-    private final DescriptionContainsKeywordsPredicate predicate;
+    private final OrderMultiPredicate predicate;
 
-    public FindOrderCommand(DescriptionContainsKeywordsPredicate predicate) {
+    public FindOrderCommand(OrderMultiPredicate predicate) {
         this.predicate = predicate;
     }
 

@@ -44,7 +44,7 @@ class JsonAdaptedOrder {
     }
 
     /**
-     * Converts a given {@code Person} into this class for Jackson use.
+     * Converts a given {@code Order} into this class for Jackson use.
      */
     public JsonAdaptedOrder(Order source) {
         this.orderId = source.getOrderId().getZeroBased();
@@ -57,9 +57,9 @@ class JsonAdaptedOrder {
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
+     * Converts this Jackson-friendly adapted order object into the model's {@code Order} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted order.
      */
     public Order toModelType() throws IllegalValueException {
         // Field declarations
@@ -80,7 +80,8 @@ class JsonAdaptedOrder {
         if (clientId <= 0) {
             throw new IllegalValueException("Invalid value for client ID!");
         }
-        modelClientId = Index.fromZeroBased(clientId);
+        // TODO: find a better fix for the bug where client id tied to order increments on launch
+        modelClientId = Index.fromOneBased(clientId);
 
         if (description == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, String.class.getSimpleName()));
