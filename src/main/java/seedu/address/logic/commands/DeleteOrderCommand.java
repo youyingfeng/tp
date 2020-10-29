@@ -36,11 +36,14 @@ public class DeleteOrderCommand extends Command {
         requireNonNull(model);
         List<Order> lastShownList = model.getFilteredOrderList();
 
+        System.out.println("lastShownList size" + lastShownList.size());
+        System.out.println("targetIndex deletecommand" + targetIndex.getZeroBased());
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
         }
 
         Order orderToDelete = lastShownList.get(targetIndex.getZeroBased());
+        System.out.println("client id of order to be deleted" + orderToDelete.getClientId().getZeroBased());
         model.deleteOrder(orderToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_ORDER_SUCCESS, orderToDelete));
     }

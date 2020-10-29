@@ -160,6 +160,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ObservableList<Client> getUnfilteredPersonList() {
+        Predicate alwaysTrue = t -> true;
+        filteredClients.setPredicate(alwaysTrue);
+        return filteredClients;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         // short circuit if same object
         if (obj == this) {
@@ -194,5 +201,12 @@ public class ModelManager implements Model {
     public void updateFilteredOrderList(Predicate<Order> predicate) {
         requireNonNull(predicate);
         filteredOrders.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<Order> getUnfilteredOrderList() {
+        Predicate alwaysTrue = t -> true;
+        filteredOrders.setPredicate(alwaysTrue);
+        return filteredOrders;
     }
 }

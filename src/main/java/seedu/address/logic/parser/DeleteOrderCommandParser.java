@@ -32,6 +32,7 @@ public class DeleteOrderCommandParser implements Parser<DeleteOrderCommand> {
             }
 
             Index index = ParserUtil.parseOrderIndex(argMultimap.getValue(DELETE_PREFIX_ORDER).get());
+            System.out.print("deletecommandparser index" + index.getZeroBased());
 
             return new DeleteOrderCommand(index);
         } catch (ParseException pe) {

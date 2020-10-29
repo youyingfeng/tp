@@ -133,6 +133,32 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### User Interface
+
+#### Proposed implementation
+
+The updated user interface has three columns: the leftmost column acts as a navigation menu, the middle column displays 
+the list of Clients/Orders and the rightmost column is supposed to display more details about the Client/Order.
+
+The switching of views is done by calling methods defined in MainWindow from the FXML file, upon clicking on the 
+respective button. These methods are exposed in the `MainWindow` class as `handleClients()` and `handleOrders()`.
+
+_{Diagram will be added at a later date}_
+
+Step 1. The user launches the application, and the User Interface is created.
+
+Step 2. The user clicks on the `Orders` button in order to view the orders. The button will call the function 
+`handleOrders()`, causing the view in the middle column to display the list of Orders.
+
+Step 2. The user clicks on the `Clients` button in order to view the clients. The button will call the function 
+`handleClients()`, causing the view in the middle column to display the list of Clients.
+
+Step 3. The user clicks on the `Help` button in order to find the link to the user guide. The button will call the 
+function `handleHelp()`, which will open a dialog box with the link to the user guide.
+
+Step 4. The user clicks on the `Exit` button in order to close the application. The button will call the function 
+`handleExit`, which will close the application.
+
 ### Find feature
 
 The find mechanism is facilitated by `FindCommand`, `FindCommandParser`, `FindOrderCommand` and `FindOrderCommandParser`. `FindCommandParser` and `FindOrderCommandParser` implement `Parser`.
@@ -161,6 +187,75 @@ while ignoring duplicates.
 Given below are examples of usage scenarios and how the two commands behave at each step
 
 _{Diagram will be added at a later date}_
+
+### Delete Feature
+
+The delete mechanism is split into two functionalities - `Delete Order` and `Delete Client`.
+
+The delete mechanism is facilitated by `DeleteOrderCommand`, `DeleteOrderCommandParser`, `DeleteClientCommand`, 
+`DeleteClientCommandParser`, `AddressBook` and `ModelManager`. 
+
+`DeleteOrderCommand` and `DeleteClientCommand` extends `Command`, `DeleteOrderCommandParser` and 
+`DeleteClientCommandParser` implements `Parser`, `AddressBook` implements `ReadOnlyAddressBook` and `ModelManager` 
+implements `Model`.
+
+These operations are exposed in the `Model` interface as `Model#deletePerson()` and `Model#deleteOrder()`. They are also
+exposed in the `AddressBook` class as `AddressBook#removeClient()` and `AddressBook#removeOrder()`.
+
+the `Delete Order` and `Delete Client` differs such that `Delete Order` is dependent on `Delete Client`. This is the 
+most distinctive difference where deleting a client from the client list will delete some orders from the order 
+list too.
+
+Given below is an example usage scenario and how the delete mechanism behaves at each step.
+
+**Delete Order**
+
+Step 1. The user launches application and views his/her list of 5 orders.
+
+Step 2. The user executes `order --description 123 --client 1 --address 123 --date 2020-12-12 2359`. An order is created
+ and appended to the end of the order list. There are now a total of 6 orders in the order list.
+
+Step 3. The user decides to remove the order he had just created. The user notes that the order is at the last index 
+of the order list. The user executes `delete-order --order 6` to remove the order from the order list.
+
+The following sequence diagram shows how the delete order operation works :
+
+_diagrams will be uploaded soon_
+
+**Delete Client**
+
+Step 1. The user launches application and views his/her list of 5 clients.
+
+Step 2. The user executes `client --name john --address 123 --email john@gmail.com --phone 12345678`. A a client is 
+created and appended to the end of the client list. There are now a total of 6 clients in the client list.
+
+Step 3. The user decides to remove the client he had just created. The user notes that the client is at the last index 
+of the client list. The user executes `delete-client --client 6` to remove the client from the client list.
+
+Step 4. When user deletes the client, all orders linked to the client will also be deleted.
+
+The following sequence diagram shows how the delete client operation works :
+
+_diagrams will be uploaded soon_
+
+### List Feature
+
+The list mechanism is split into two functionalities - `List Order` and `List Client`.
+
+These two commands allows the user to list the `Clients` and `Orders` present in the system respectively.
+
+The list mechanism is facilitated by `ListCommand`, `ListOrderCommand`, `Model`, `ModelManager` and `AddressBook`.
+
+`ListCommand` and `ListOrderCommand` extends `Command`. `AddressBook` implements `ReadOnlyAddressBook` and `ModelManager` implements `Model`.
+
+These operations are exposed in the `Model` interface as `getFilteredOrderList()` and `getFilteredPersonList()`. They are also exposed in the `AddressBook` as `getOrderList` and `getPersonList`.
+
+\[Proposed enhancements\]:
+* Use `list` to display the orders of each client in the same panel. 
+
+Given below is an example usage scenario of how the list mechanism behaves at each step.
+
+_{Diagrams will be added at a later date}_
 
 ### \[Proposed\] Undo/redo feature
 

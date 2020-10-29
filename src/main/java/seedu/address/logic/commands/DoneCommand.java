@@ -37,7 +37,7 @@ public class DoneCommand extends Command {
         requireNonNull(model);
         List<Order> lastShownList = model.getFilteredOrderList();
         requireNonNull(lastShownList);
-        if (toMarkAsDoneIndex.getOneBased() > lastShownList.size()) {
+        if (toMarkAsDoneIndex.getZeroBased() > lastShownList.size()) {
             throw new CommandException(MESSAGE_NOT_FOUND);
         }
         Order orderToMark = lastShownList.get(toMarkAsDoneIndex.getZeroBased());
