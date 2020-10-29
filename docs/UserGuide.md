@@ -32,24 +32,31 @@ title: User Guide
 
 ------------------------------------------------------------------------------------------------------------------------
 
-### Adding a Client Order : `order`
+### Adding an Order : `order`
 
 Creates an order made by a client. The order of the orders made by the client will be (by default) the natural ordering.<br>
 Orders will be assigned an ID number automatically when created. This ID number is not unique and must be used in conjunction with the client ID to identify an order.
 
-Format : `order --description <order description> --client <client ID>` 
+Format : `order --description <order description> --client <client ID> --address <delivery address> --date <date of delivery>`
 
 `<order description>` must exist in the order command
+
 `<client id>` must exist in the order command (an order is always linked to a client)
 
+`<address>` can be different from the client's own address
+
+`<date of delivery>` must be in the format YYYY-MM-DD HHmm
+
 Example :
-`order --description shoes --client 123` : creates an order ordered by client 123 called “shoes”
+`order --description shoes --client 123 --date 2020-02-10 1800` : creates an order ordered by client 123 called “shoes”
+to be delivered on the 10th of February, 2020 at 6pm.
 
 ------------------------------------------------------------------------------------------------------------------------
 
 ### Adding a Client : `client`
 
-Creates a new client with the name `<client name>` and the address `<client address>`.
+Creates a new client with the name `<client name>`, the address `<client address>`, the email `<client email>` and 
+the phone number `<client phone number>`.
 
 Format : `client --name <client name> --address <client address> --email <client email> --phone <client phone no.>`
   
@@ -59,7 +66,9 @@ Format : `client --name <client name> --address <client address> --email <client
 `<client phone>` must not be blank.
 
 Example :<br>
-`client --name John Wick --address New York Continental` : adds a client named John Wick whose address is the New York Continental
+`client --name John Wick --address New York Continental --email johnwick@kgoomail.com --phone 91234567` : 
+adds a client named John Wick whose address is the New York Continental, whose email is johnwick@kgoomail.com and 
+whose phone number is 91234567.
 
 ------------------------------------------------------------------------------------------------------------------------
 
