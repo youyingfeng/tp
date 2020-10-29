@@ -10,6 +10,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Client;
 
+/**
+ * Adds a client to the address book.
+ */
 public class ClientCommand extends Command {
     public static final String COMMAND_WORD = "client";
 
