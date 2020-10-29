@@ -20,4 +20,11 @@ public class ClientMultiPredicate implements Predicate<Client> {
         }
         return true;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                   || (other instanceof ClientMultiPredicate // instanceof handles nulls
+                           && toBeTested.equals(((ClientMultiPredicate) other).toBeTested));
+    }
 }

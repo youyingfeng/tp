@@ -19,4 +19,11 @@ public class OrderAddressPredicate implements Predicate<Order> {
         return keywords.stream()
                        .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(order.getAddress().toString(), keyword));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                   || (other instanceof OrderAddressPredicate // instanceof handles nulls
+                           && keywords.equals(((OrderAddressPredicate) other).keywords));
+    }
 }

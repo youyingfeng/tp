@@ -16,4 +16,11 @@ public class OrderDatePredicate implements Predicate<Order> {
         LocalDate orderDeliveryDate = order.getDeliveryDateTime().toLocalDate();
         return date.isEqual(orderDeliveryDate);
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                   || (other instanceof OrderDatePredicate // instanceof handles nulls
+                           && date.equals(((OrderDatePredicate) other).date));
+    }
 }

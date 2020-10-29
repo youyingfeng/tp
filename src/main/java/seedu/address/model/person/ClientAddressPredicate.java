@@ -18,4 +18,11 @@ public class ClientAddressPredicate implements Predicate<Client> {
         return keywords.stream()
                        .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(client.getAddress().toString(), keyword));
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                   || (other instanceof ClientAddressPredicate // instanceof handles nulls
+                           && keywords.equals(((ClientAddressPredicate) other).keywords));
+    }
 }

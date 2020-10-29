@@ -14,8 +14,13 @@ public class OrderClientIdPredicate implements Predicate<Order> {
 
     @Override
     public boolean test(Order order) {
-        int searchId = clientId.getOneBased();
-        int orderId = order.getClientId().getZeroBased();
         return clientId.getOneBased() == order.getClientId().getZeroBased();
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                   || (other instanceof OrderClientIdPredicate // instanceof handles nulls
+                           && clientId.equals(((OrderClientIdPredicate) other).clientId));
     }
 }
