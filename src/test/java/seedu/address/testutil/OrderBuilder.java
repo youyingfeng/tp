@@ -105,7 +105,7 @@ public class OrderBuilder {
      */
     public Order build() {
         LocalDateTime creationDateTime = LocalDateTime.now();
-        return new Order(clientId, description, address, date, creationDateTime, false);
+        return new Order(clientId, description, address, date, creationDateTime, creationDateTime, false);
     }
 
 }

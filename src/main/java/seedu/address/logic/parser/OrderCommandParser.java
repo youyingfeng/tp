@@ -53,7 +53,8 @@ public class OrderCommandParser {
         LocalDateTime creationDateTime = LocalDateTime.now();
         boolean isDone = false;
 
-        Order order = new Order(orderId, clientId, description, address, deliveryDateTime, creationDateTime, isDone);
+        Order order = new Order(orderId, clientId, description, address, deliveryDateTime, creationDateTime,
+                creationDateTime, false);
 
         return new OrderCommand(order);
     }
