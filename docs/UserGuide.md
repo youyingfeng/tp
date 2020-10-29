@@ -34,13 +34,17 @@ title: User Guide
 Creates an order made by a client. The order of the orders made by the client will be (by default) the natural ordering.<br>
 Orders will be assigned an ID number automatically when created. This ID number is not unique and must be used in conjunction with the client ID to identify an order.
 
-Format : `order --description <order description> --client <client ID>` 
+Format : `order --description <order description> --client <client ID> --address <address> --date <date>` 
 
 `<order description>` must exist in the order command
 `<client id>` must exist in the order command (an order is always linked to a client)
+`<address>` must exist in the order command (describes the address that the order will be sent to)
+`<date>` must exist in the order command (describes the date the order must be delivered by) 
+
+Remark: `<date>` must be in the format YYYY-MM-DD HHMM
 
 Example :
-`order --description shoes --client 123` : creates an order ordered by client 123 called “shoes”
+`order --description shoes --client 123 --address 22 college avenue drive --date 2020-10-31 2359` : creates an order ordered by client 123 called “shoes” that is to be delivered to "22 college avenue drive" by "2020-10-31 2359"
 
 
 ### Adding a Client : `client`
@@ -110,13 +114,14 @@ Marks `Order` with `<order id>` as done.
 Example :
 `done --client 10 --order 3` : deletes the order no. 3 of client with client id 10 
 
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
 Action | Format
 --------|------------------
-**Order** | `order --description <order description> --client <client ID>` 
+**Order** | `order --description <order description> --client <client ID> --address <address> --date <date>`
 **Client** | `client --name <client name> --address <client address>`
 **Delete** | `delete-order --order <order id>` <br> `delete-client --client <client id>`
 **List** | `listC` <br> `listO` <br> `list -a`
