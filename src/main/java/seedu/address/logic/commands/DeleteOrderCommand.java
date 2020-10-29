@@ -46,6 +46,7 @@ public class DeleteOrderCommand extends Command {
         Order orderToDelete = lastShownList.get(targetIndex.getZeroBased());
         System.out.println("client id of order to be deleted" + orderToDelete.getClientId().getZeroBased());
         model.deleteOrder(orderToDelete);
+        model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_DELETE_ORDER_SUCCESS, orderToDelete));
     }
 

@@ -50,6 +50,7 @@ public class DoneCommand extends Command {
         } else {
             orderToMark.markAsDone();
         }
+        model.commitAddressBook();
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
