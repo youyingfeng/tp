@@ -21,9 +21,10 @@ public class OrderCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Creates an order linked to an existing person in the address book.\n"
             + "Parameters: DESCRIPTION (string to describe the created order)"
-            + "CLIENT_ID (must be a positive integer)\n"
+            + " CLIENT_ID (must be a positive integer) ADDRESS (string to describe the delivery address)"
+            + " DATE (date of delivery in yyyy-MM-dd hhmm).\n"
             + "Example: " + COMMAND_WORD + " " + ORDER_PREFIX_DESCRIPTION + " shoes " + ORDER_PREFIX_CLIENT + " 123"
-            + ORDER_PREFIX_ADDRESS + "Jurong West Central 3" + ORDER_PREFIX_DATE + "2020-11-30 2359";
+            + ORDER_PREFIX_ADDRESS + " Jurong West Central 3" + ORDER_PREFIX_DATE + " 2020-11-30 2359";
 
     public static final String MESSAGE_SUCCESS = "New client added: %1$s";
     public static final String MESSAGE_DUPLICATE_ORDER = "This client already exists in LogOnce";
