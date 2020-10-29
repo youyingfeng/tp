@@ -13,7 +13,7 @@
 
 <HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane minHeight="400.0" minWidth="200.0" prefHeight="400.0" prefWidth="600.0" HBox.hgrow="ALWAYS">
+      <GridPane minHeight="400.0" minWidth="200.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #b0ad9e#b0ad9e;" HBox.hgrow="ALWAYS">
         <columnConstraints>
           <ColumnConstraints hgrow="NEVER" maxWidth="194.39996337890625" minWidth="0.0" prefWidth="22.399993896484375" />
           <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
@@ -32,7 +32,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Create a new client" GridPane.columnIndex="1">
+            <Label text="Create a new client" textFill="#793333" GridPane.columnIndex="1">
                <font>
                   <Font size="27.0" />
                </font>
@@ -44,7 +44,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Name">
+                        <Label text="Name" textFill="#793333">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -59,7 +59,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="nameField" promptText="Enter the client's name here" />
+                  <TextField fx:id="nameField" promptText="Enter the client's name here" style="-fx-background-color: #dedcd5#dedcd5;" />
                </children>
             </VBox>
             <VBox layoutX="35.0" layoutY="88.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -69,7 +69,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Phone">
+                        <Label text="Phone" textFill="#793333">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -81,7 +81,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="phoneField" promptText="Enter the client's phone number here" />
+                  <TextField fx:id="phoneField" promptText="Enter the client's phone number here" style="-fx-background-color: #dedcd5#dedcd5;" />
                </children>
             </VBox>
             <VBox layoutX="35.0" layoutY="177.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -91,7 +91,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Address">
+                        <Label text="Address" textFill="#793333">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -106,7 +106,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="addressField" promptText="Enter the client's physical address here" />
+                  <TextField fx:id="addressField" promptText="Enter the client's physical address here" style="-fx-background-color: #dedcd5#dedcd5;" />
                </children>
             </VBox>
             <VBox layoutX="35.0" layoutY="260.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
@@ -116,7 +116,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Email">
+                        <Label text="Email" textFill="#793333">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -128,7 +128,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="emailField" promptText="Enter the client's email address here" />
+                  <TextField fx:id="emailField" promptText="Enter the client's email address here" style="-fx-background-color: #dedcd5#dedcd5;" />
                </children>
             </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">

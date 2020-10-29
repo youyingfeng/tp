@@ -64,20 +64,20 @@
                           <items>
                               <VBox prefHeight="506.0" prefWidth="266.0">
                                  <children>
-                                    <Label fx:id="listTitle" prefHeight="70.0" prefWidth="250.0" text=" Clients" textFill="#7f7f7f">
+                                    <Label fx:id="listTitle" prefHeight="70.0" prefWidth="400.0" style="-fx-background-color: #c5d5cb;" text=" Clients" textFill="#793333">
                                        <font>
                                           <Font size="36.0" />
                                        </font>
                                     </Label>
-                                    <StackPane fx:id="personListPanelPlaceholder" prefHeight="435.0" prefWidth="246.0" VBox.vgrow="ALWAYS" />
-                                    <ButtonBar buttonOrder="" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0">
+                                    <StackPane fx:id="personListPanelPlaceholder" prefHeight="435.0" prefWidth="246.0" style="-fx-background-color: #cfccc2#cfccc2;" VBox.vgrow="ALWAYS" />
+                                    <ButtonBar buttonOrder="" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #949996;">
                                       <buttons>
-                                        <Button onAction="#handleAdd" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" text="+" />
+                                        <Button mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#handleAdd" style="-fx-background-color: #b7bdba;" text="+" />
                                       </buttons>
                                     </ButtonBar>
                                  </children>
                               </VBox>
-                              <VBox fx:id="extraInfoPlaceholder" prefHeight="200.0" prefWidth="200.0" />
+                              <VBox fx:id="extraInfoPlaceholder" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #b0ad9e#b0ad9e #b0ad9e#b0ad9e #b0ad9e#b0ad9e #b0ad9e#b0ad9e;" />
                           </items>
                         </SplitPane>
                      </children>
@@ -91,8 +91,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <HBox fx:id="resultDisplayPlaceholder" prefWidth="574.0" VBox.vgrow="NEVER" />
-                        <HBox fx:id="statusbarPlaceholder" GridPane.columnIndex="1" VBox.vgrow="NEVER" />
+                        <HBox fx:id="resultDisplayPlaceholder" prefWidth="574.0" style="-fx-background-color: #cfcbba;" VBox.vgrow="NEVER" />
+                        <HBox fx:id="statusbarPlaceholder" style="-fx-background-color: #cfcbba;" GridPane.columnIndex="1" VBox.vgrow="NEVER" />
                      </children>
                   </GridPane>
                </children>
