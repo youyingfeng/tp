@@ -1,5 +1,5 @@
 .root {
-    -color-menu: #9fa8a3;
+    -color-menu: #6e7a68;
     -color-list: #e3e0cf;
 }
 
@@ -155,7 +155,6 @@
     -fx-background-color: transparent;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 20pt;
-    -fx-text-fill: #fcfcfc;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
