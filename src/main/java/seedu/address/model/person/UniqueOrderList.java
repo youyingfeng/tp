@@ -28,7 +28,7 @@ public class UniqueOrderList implements Iterable<Order> {
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
-     * Returns true if the list contains an equivalent person as the given argument.
+     * Returns true if the list contains an equivalent order as the given argument.
      */
     public boolean contains(Order toCheck) {
         requireNonNull(toCheck);
@@ -36,8 +36,8 @@ public class UniqueOrderList implements Iterable<Order> {
     }
 
     /**
-     * Adds a person to the list.
-     * The person must not already exist in the list.
+     * Adds a order to the list.
+     * The order must not already exist in the list.
      */
     public void add(Order toAdd) {
         requireNonNull(toAdd);
@@ -48,9 +48,9 @@ public class UniqueOrderList implements Iterable<Order> {
     }
 
     /**
-     * Replaces the person {@code target} in the list with {@code editedPerson}.
+     * Replaces the order {@code target} in the list with {@code editedOrder}.
      * {@code target} must exist in the list.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the list.
+     * The order identity of {@code editedOrder} must not be the same as another existing order in the list.
      */
     public void setOrder(Order target, Order editedOrder) {
         requireAllNonNull(target, editedOrder);
@@ -68,8 +68,8 @@ public class UniqueOrderList implements Iterable<Order> {
     }
 
     /**
-     * Removes the equivalent person from the list.
-     * The person must exist in the list.
+     * Removes the equivalent order from the list.
+     * The order must exist in the list.
      */
     public void remove(Order toRemove) {
         requireNonNull(toRemove);
@@ -84,8 +84,8 @@ public class UniqueOrderList implements Iterable<Order> {
     }
 
     /**
-     * Replaces the contents of this list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Replaces the contents of this list with {@code orders}.
+     * {@code orders} must not contain duplicate orders.
      */
     public void setOrders(List<Order> orders) {
         requireAllNonNull(orders);
