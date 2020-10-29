@@ -10,6 +10,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Order;
 
+/**
+ * Marks an order as done in the addressbook.
+ */
 public class DoneCommand extends Command {
 
     public static final String COMMAND_WORD = "done";
