@@ -37,19 +37,25 @@ title: User Guide
 Creates an order made by a client. The order of the orders made by the client will be (by default) the natural ordering.<br>
 Orders will be assigned an ID number automatically when created. This ID number is not unique and must be used in conjunction with the client ID to identify an order.
 
-Format : `order --description <order description> --client <client ID> --address <delivery address> --date <date of delivery>`
+Format : `order --description <order description> --client <client ID> --address <address> --date <date>` 
+
 
 `<order description>` must exist in the order command
 
 `<client id>` must exist in the order command (an order is always linked to a client)
+`<address>` must exist in the order command (describes the address that the order will be sent to)
+`<date>` must exist in the order command (describes the date the order must be delivered by) 
+
+Remark: `<date>` must be in the format YYYY-MM-DD HHMM
 
 `<address>` can be different from the client's own address
 
 `<date of delivery>` must be in the format YYYY-MM-DD HHmm
 
 Example :
-`order --description shoes --client 123 --date 2020-02-10 1800` : creates an order ordered by client 123 called “shoes”
-to be delivered on the 10th of February, 2020 at 6pm.
+
+`order --description shoes --client 123 --address 22 college avenue drive --date 2020-10-31 2359` : creates an order ordered by client 123 called “shoes” that is to be delivered to "22 college avenue drive" by "2020-10-31 2359"
+
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -149,13 +155,16 @@ Marks `Order` with `<order id>` as done.
 Example :
 `done --client 10 --order 3` : deletes the order no. 3 of client with client id 10 
 
+
+
 ------------------------------------------------------------------------------------------------------------------------
+
 
 ## Command summary
 
 Action | Format
 --------|------------------
-**Order** | `order --description <order description> --client <client ID>` 
+**Order** | `order --description <order description> --client <client ID> --address <address> --date <date>`
 **Client** | `client --name <client name> --address <client address>`
 **Delete** | `delete-order --order <order index>` <br> `delete-client --client <client index>`
 **List** | `listC` <br> `listO` <br> `list -a`

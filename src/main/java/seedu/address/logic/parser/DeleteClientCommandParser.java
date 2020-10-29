@@ -10,7 +10,7 @@ import seedu.address.logic.commands.DeleteClientCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new DeleteCommand object
+ * Parses input arguments and creates a new DeleteCommand object for clients.
  */
 public class DeleteClientCommandParser implements Parser<DeleteClientCommand> {
 

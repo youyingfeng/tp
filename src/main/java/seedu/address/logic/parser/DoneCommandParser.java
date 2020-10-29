@@ -9,8 +9,9 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DoneCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
-
-
+/**
+ * Parses input arguments and creates a new DoneCommand object
+ */
 public class DoneCommandParser implements Parser<DoneCommand> {
 
     @Override
