@@ -53,7 +53,8 @@ public class AddCommandTest {
         AddCommand addCommand = new AddCommand(validClient);
         ModelStub modelStub = new ModelStubWithPerson(validClient);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, () -> addCommand.execute(modelStub, commandHistory));
+        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, ()
+            -> addCommand.execute(modelStub, commandHistory));
     }
 
     @Test
@@ -203,7 +204,7 @@ public class AddCommandTest {
         public void undoAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
-        
+
         @Override
         public void commitAddressBook() {
             throw new AssertionError("This method should not be called.");

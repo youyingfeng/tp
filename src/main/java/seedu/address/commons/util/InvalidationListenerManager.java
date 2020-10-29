@@ -1,11 +1,12 @@
 package seedu.address.commons.util;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
+import static java.util.Objects.requireNonNull;
 
 import java.util.ArrayList;
 
-import static java.util.Objects.requireNonNull;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+
 
 /**
  * Manages a list of {@link InvalidationListener}.

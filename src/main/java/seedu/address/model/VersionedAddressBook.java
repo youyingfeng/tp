@@ -11,6 +11,9 @@ public class VersionedAddressBook extends AddressBook {
     private final List<ReadOnlyAddressBook> addressBookStateList;
     private int currentStatePointer;
 
+    /**
+     * Creates an Versioned AddressBook using the Persons in the {@code toBeCopied}
+     */
     public VersionedAddressBook(ReadOnlyAddressBook initialState) {
         super(initialState);
 
@@ -30,6 +33,9 @@ public class VersionedAddressBook extends AddressBook {
         indicateModified();
     }
 
+    /**
+     * Removes copy of the current state at the end of the state list.
+     */
     private void removeStatesAfterCurrentPointer() {
         addressBookStateList.subList(currentStatePointer + 1, addressBookStateList.size()).clear();
     }
