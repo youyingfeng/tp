@@ -16,6 +16,9 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Order;
 
+/**
+ * Parses input arguments and creates a new OrderCommand object
+ */
 public class OrderCommandParser {
     /**
      *
