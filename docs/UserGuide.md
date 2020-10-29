@@ -77,18 +77,21 @@ whose phone number is 91234567.
 
 ------------------------------------------------------------------------------------------------------------------------
 
-### Listing Orders : `list` 
+### Listing Orders : `listO` 
 
-Returns a list of orders. The token `-a` can be used to list completed orders as well. 
+Returns a list of orders. The list will be sorted by the order ID that was assigned when the order was created.
 
 Format : `listO`<br>
-Displays a list of all orders in the order list (and the client that placed the order respectively)
+Displays a list of all orders in the order list (and the client that placed the order respectively).
+
+------------------------------------------------------------------------------------------------------------------------
+
+### Listing Clients : `listC`
+
+Returns a list of clients. The list will be sorted by the client ID that was assigned when the client was created.
 
 Format: `listC`<br>
-Displays a list of all clients in the client list 
-
-`list -a`<br>
-Displays a list of current orders, and past orders (completed)
+Displays a list of all clients in the client list.
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -221,7 +224,7 @@ Action | Format
 **Order** | `order --description <order description> --client <client ID> --address <address> --date <date>`
 **Client** | `client --name <client name> --address <client address>`
 **Delete** | `delete-order --order <order index>` <br> `delete-client --client <client index>`
-**List** | `listC` <br> `listO` <br> `list -a`
+**List** | `listC` <br> `listO` <br>
 **Done** | `done --order <order id>`
 **Find** | `find <name keywords> (--address <address keywords>) (--email <email address>) (--phone <phone number>)`
 **FindOrder**| `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
