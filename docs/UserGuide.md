@@ -33,10 +33,10 @@ title: User Guide
 
 ### Adding an Order : `order`
 
-Creates an order made by a client. The order of the orders made by the client will be (by default) the natural ordering.<br>
+**Description** : Creates an order made by a client. The order of the orders made by the client will be (by default) the natural ordering.<br>
 Orders will be assigned an ID number automatically when created. This ID number is not unique and must be used in conjunction with the client ID to identify an order.
 
-Format : `order --description <order description> --client <client ID> --address <address> --date <date>` 
+**Format** :  `order --description <order description> --client <client ID> --address <address> --date <date>` 
 
 
 `<order description>` must exist in the order command
@@ -45,14 +45,13 @@ Format : `order --description <order description> --client <client ID> --address
 `<address>` must exist in the order command (describes the address that the order will be sent to)
 `<date>` must exist in the order command (describes the date the order must be delivered by) 
 
-Remark: `<date>` must be in the format YYYY-MM-DD HHMM
+**Remark** : `<date>` must be in the format YYYY-MM-DD HHMM
 
 `<address>` can be different from the client's own address
 
 `<date of delivery>` must be in the format YYYY-MM-DD HHmm
 
-Example :
-
+**Example** :<br>
 `order --description shoes --client 123 --address 22 college avenue drive --date 2020-10-31 2359` : creates an order ordered by client 123 called “shoes” that is to be delivered to "22 college avenue drive" by "2020-10-31 2359"
 
 
@@ -60,17 +59,17 @@ Example :
 
 ### Adding a Client : `client`
 
-Creates a new client with the name `<client name>`, the address `<client address>`, the email `<client email>` and 
+**Description** : Creates a new client with the name `<client name>`, the address `<client address>`, the email `<client email>` and 
 the phone number `<client phone number>`.
 
-Format : `client --name <client name> --address <client address> --email <client email> --phone <client phone no.>`
+**Format** : `client --name <client name> --address <client address> --email <client email> --phone <client phone no.>`
   
 `<client name>` must not be blank.<br>
 `<client address>` must not be blank. <br>
 `<client email>` must not be blank. <br>
 `<client phone>` must not be blank.
 
-Example :<br>
+**Example** :<br>
 `client --name John Wick --address New York Continental --email johnwick@kgoomail.com --phone 91234567` : 
 adds a client named John Wick whose address is the New York Continental, whose email is johnwick@kgoomail.com and 
 whose phone number is 91234567.
@@ -79,18 +78,18 @@ whose phone number is 91234567.
 
 ### Listing Orders : `listO` 
 
-Returns a list of orders. The list will be sorted by the order ID that was assigned when the order was created.
+**Description** : Returns a list of orders. The list will be sorted by the order ID that was assigned when the order was created.
 
-Format : `listO`<br>
+**Format** : `listO`<br>
 Displays a list of all orders in the order list (and the client that placed the order respectively).
 
 ------------------------------------------------------------------------------------------------------------------------
 
 ### Listing Clients : `listC`
 
-Returns a list of clients. The list will be sorted by the client ID that was assigned when the client was created.
+**Description** : Returns a list of clients. The list will be sorted by the client ID that was assigned when the client was created.
 
-Format: `listC`<br>
+**Format** : `listC`<br>
 Displays a list of all clients in the client list.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -145,23 +144,23 @@ Order index should be a valid index in the order list
 
 ### Completing Orders : `done`
 
-Marks a certain order as done.
+**Description** : Marks a certain order as done.
 
-Format : `done --order <order id>`
+**Format** : `done --order <order id>`
 
 Marks `Order` with `<order id>` as done.
 
 `<order id>` must exist in the order list.
 `<order id>` is based on the index number of orders in the GUI window.
 
-Example :
+**Example** :<br>
 `done --client 10 --order 3` : deletes the order no. 3 of client with client id 10 
 
 ### Finding clients : `find`
 
-Finds clients by their name and optionally by their phone number, email address and residential address.
+**Description** : Finds clients by their name and optionally by their phone number, email address and residential address.
 
-Format : `find <name keywords> (--address <address keywords>) (--email <email address>) (--phone <phone number>)`
+**Format** : `find <name keywords> (--address <address keywords>) (--email <email address>) (--phone <phone number>)`
 
 This command will return clients that match all the tokens provided. The matching criteria for each token
 will be explained below.
@@ -192,10 +191,10 @@ each category of searching.
 
 ### Finding orders : `findorder`
 
-Finds orders by their description and optionally by their attached client IDs, delivery addresses and delivery dates.
+**Description** : Finds orders by their description and optionally by their attached client IDs, delivery addresses and delivery dates.
 Very similar usage to `find`
 
-Format : `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
+**Format** : `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
 
 This command will return orders that match all the tokens provided. The matching criteria for each token
 will be explained below.
