@@ -118,7 +118,7 @@ public class NewClientForm extends UiPart<Region> {
         if (emailField.getText() == null || emailField.getText().length() == 0) {
             isInputValid = false;
             emailErrorDisplay.setText("Email cannot be blank!");
-        } else if (emailField.getText().matches(VALIDATION_REGEX)) {
+        } else if (!emailField.getText().matches(VALIDATION_REGEX)) {
             isInputValid = false;
             emailErrorDisplay.setText("Email provided is not of a valid format!");
         } else {
