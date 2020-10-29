@@ -12,4 +12,5 @@ public class Messages {
     public static final String MESSAGE_ORDERS_LISTED_OVERVIEW = "%1$d orders listed!";
     public static final String MESSAGE_INVALID_ORDER_DISPLAYED_INDEX = "The order index provided is invalid";
     public static final String MESSAGE_CREATE_ORDER_SUCCESS = "The order has been successfully created";
+    public static final String MESSAGE_EMPTY_SEARCH_ADDRESS = "The keywords for searching by address is empty";
 }
