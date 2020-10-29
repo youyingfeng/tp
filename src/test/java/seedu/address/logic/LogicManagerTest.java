@@ -85,6 +85,7 @@ public class LogicManagerTest {
         Client expectedClient = new PersonBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addPerson(expectedClient);
+        expectedModel.commitAddressBook();
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     }
@@ -151,6 +152,7 @@ public class LogicManagerTest {
         assertThrows(expectedException, expectedMessage, () -> logic.execute(inputCommand));
         assertEquals(expectedModel, model);
     }
+
 
     /**
      * A stub class to throw an {@code IOException} when the save method is called.

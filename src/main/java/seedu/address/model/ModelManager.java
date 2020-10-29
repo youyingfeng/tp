@@ -137,7 +137,6 @@ public class ModelManager implements Model {
     @Override
     public void setOrder(Order target, Order editedOrder) {
         requireAllNonNull(target, editedOrder);
-
         versionedAddressBook.setOrder(target, editedOrder);
     }
 
