@@ -4,6 +4,7 @@ title: User Guide
 ---
 
 # LogOnce
+![LogOnce Header](../docs/images/LogOnceHeader.png)
 
 **LogOnce** is a one-stop logistics tracker app for clerks to monitor shipping statuses of all clients and perform common logistics operations. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, LogOnce can get your tracking tasks done faster than traditional GUI apps. **This application is currently being developed and has not been deployed yet.**
 
@@ -29,6 +30,8 @@ title: User Guide
 
 </div>
 
+------------------------------------------------------------------------------------------------------------------------
+
 ### Adding a Client Order : `order`
 
 Creates an order made by a client. The order of the orders made by the client will be (by default) the natural ordering.<br>
@@ -42,6 +45,7 @@ Format : `order --description <order description> --client <client ID>`
 Example :
 `order --description shoes --client 123` : creates an order ordered by client 123 called “shoes”
 
+------------------------------------------------------------------------------------------------------------------------
 
 ### Adding a Client : `client`
 
@@ -57,6 +61,8 @@ Format : `client --name <client name> --address <client address> --email <client
 Example :<br>
 `client --name John Wick --address New York Continental` : adds a client named John Wick whose address is the New York Continental
 
+------------------------------------------------------------------------------------------------------------------------
+
 ### Listing Orders : `list` 
 
 Returns a list of orders. The token `-a` can be used to list completed orders as well. 
@@ -70,31 +76,55 @@ Displays a list of all clients in the client list
 `list -a`<br>
 Displays a list of current orders, and past orders (completed)
 
+------------------------------------------------------------------------------------------------------------------------
+
 ### Deleting a Client : `delete-client`
 
-Deletes a client from client list.
+**Description** : Deletes a client from client list.
 
-Format : `delete --client <client id>`
+**Format** : `delete-client --client <client index>`
 
-Deletes client identified by `<client id>`
+Deletes client that has `<client index>` as its index in the client list. 
 
-`<client id>` must exist in the client list.
+Note that `<client index>` is not the unique client id given to each client when added. 
 
-Example :
-`delete-client --client 999` : deletes the client with client id 999 
+`<client index>` is determined solely from the client list indexing, which **starts from `1`**.
+
+`<client index>` must exist as a valid index in the client list, **starting from `1`**.
+
+**Invalid Usage Example** :
+![Invalid Delete Client Command](../docs/images/InvalidDeleteClientCommand.png)
+Client index should be a valid index in the client list
+
+**Valid Usage Example** :
+![Valid Delete Client Command](../docs/images/ValidDeleteClientCommand.png)
+`delete-client --client 1` : deletes the client with client index 1
+
+------------------------------------------------------------------------------------------------------------------------
 
 ### Deleting an Order : `delete-order`
 
-Deletes an order from order list.
+**Description** : Deletes an order from order list.
 
-Format : `delete --order <order id>`
+**Format** : `delete-order --order <order index>`
 
-Deletes order identified by `<order id>`
+Deletes order that has `<order index>` as its index in the order list. 
 
-`<order id>` must exist in the order list.
+Note that `<order index>` is not the unique order id given to each order when added. 
 
-Example :
-`delete-order --order 123` : deletes the order with order id 123
+`<order index>` is determined solely from the order list indexing, which **starts from `1`**.
+
+`<order id>` must exist as a valid index in the order list, **starting from `1`**.
+
+**Invalid Usage Example** :
+![Invalid Delete Order Command](../docs/images/InvalidDeleteOrderCommand.png)
+Order index should be a valid index in the order list
+
+**Valid Usage Example** :
+![Valid Delete Order Command](../docs/images/ValidDeleteOrderCommand.png)
+`delete-order --order 2` : deletes the order with order index 2
+
+------------------------------------------------------------------------------------------------------------------------
 
 ### Completing Orders : `done`
 
@@ -110,7 +140,7 @@ Marks `Order` with `<order id>` as done.
 Example :
 `done --client 10 --order 3` : deletes the order no. 3 of client with client id 10 
 
---------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
@@ -118,6 +148,6 @@ Action | Format
 --------|------------------
 **Order** | `order --description <order description> --client <client ID>` 
 **Client** | `client --name <client name> --address <client address>`
-**Delete** | `delete-order --order <order id>` <br> `delete-client --client <client id>`
+**Delete** | `delete-order --order <order index>` <br> `delete-client --client <client index>`
 **List** | `listC` <br> `listO` <br> `list -a`
 **Done** | `done --order <order id>`
