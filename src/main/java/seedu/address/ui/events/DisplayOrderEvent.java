@@ -8,6 +8,9 @@ public class DisplayOrderEvent extends LogOnceEvent {
             new EventType<>(LOGONCE_EVENT_TYPE, "DisplayOrderEvent");
     private final Order order;
 
+    /**
+     * Creates a new event that can pass the order around.
+     */
     public DisplayOrderEvent(Order order) {
         super(DISPLAY_ORDER_EVENT_TYPE);
         this.order = order;
