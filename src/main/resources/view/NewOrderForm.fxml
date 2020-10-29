@@ -14,7 +14,7 @@
 
 <HBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane minHeight="400.0" minWidth="200.0" prefHeight="400.0" prefWidth="600.0" HBox.hgrow="ALWAYS">
+      <GridPane minHeight="400.0" minWidth="200.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e3e0cf#e3e0cf;" HBox.hgrow="ALWAYS">
          <columnConstraints>
             <ColumnConstraints hgrow="NEVER" maxWidth="194.39996337890625" minWidth="0.0" prefWidth="22.399993896484375" />
             <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
@@ -33,7 +33,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Create a new order" GridPane.columnIndex="1">
+            <Label text="Create a new order" textFill="#a16262" GridPane.columnIndex="1">
                <font>
                   <Font size="27.0" />
                </font>
@@ -45,7 +45,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Description">
+                        <Label text="Description" textFill="#a16262">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -60,7 +60,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="descriptionField" promptText="Enter a short summary of the order here" />
+                  <TextField fx:id="descriptionField" promptText="Enter a short summary of the order here" style="-fx-background-color: #d4d2cb#d4d2cb; -fx-text-fill: #595753" />
                </children>
             </VBox>
             <VBox layoutX="35.0" layoutY="88.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -70,7 +70,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Client ID">
+                        <Label text="Client ID" textFill="#a16262">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -82,7 +82,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="clientField" promptText="Enter the unique ID of the client here" />
+                  <TextField fx:id="clientField" promptText="Enter the unique ID of the client here" style="-fx-background-color: #d4d2cb#d4d2cb; -fx-text-fill: #595753;" />
                </children>
             </VBox>
             <VBox layoutX="35.0" layoutY="177.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
@@ -92,7 +92,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Delivery address">
+                        <Label text="Delivery address" textFill="#a16262">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -107,7 +107,7 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="addressField" promptText="Enter the delivery address here" />
+                  <TextField fx:id="addressField" promptText="Enter the delivery address here" style="-fx-background-color: #d4d2cb#d4d2cb; -fx-text-fill: #595753;" />
                </children>
             </VBox>
             <VBox layoutX="35.0" layoutY="260.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
@@ -117,7 +117,7 @@
                         <Insets bottom="5.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Delivery date">
+                        <Label text="Delivery date" textFill="#a16262">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -129,17 +129,17 @@
                         </Label>
                      </children>
                   </HBox>
-                  <TextField fx:id="dateField" promptText="Enter the date of delivery here" />
+                  <TextField fx:id="dateField" promptText="Enter the date of delivery here" style="-fx-background-color: #d4d2cb#d4d2cb; -fx-text-fill: #595753;" />
                </children>
             </VBox>
-            <ButtonBar GridPane.columnIndex="1" GridPane.rowIndex="9">
-               <buttons>
-                  <Button minWidth="80.0" mnemonicParsing="false" onAction="#submitForm" prefWidth="160.0" text="Create">
+            <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <children>
+                  <Button minWidth="80.0" mnemonicParsing="false" onAction="#submitForm" prefWidth="160.0" text="Create" textFill="#545754">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button minWidth="50.0" mnemonicParsing="false" onAction="#resetForm" prefWidth="160.0" text="Clear">
+                  <Button minWidth="50.0" mnemonicParsing="false" onAction="#resetForm" prefWidth="160.0" text="Clear" textFill="#545754">
                      <font>
                         <Font size="18.0" />
                      </font>
