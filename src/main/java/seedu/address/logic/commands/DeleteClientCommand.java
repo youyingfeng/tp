@@ -36,12 +36,25 @@ public class DeleteClientCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Client> lastShownList = model.getFilteredPersonList();
+        int targetId = targetIndex.getOneBased();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+
+        boolean isClientFound = false;
+        Client clientToDelete = null;
+        for (Client client : lastShownList) {
+            if (client.getClientId() == targetId) {
+                // client is found with correct client id
+                clientToDelete = client;
+                isClientFound = true;
+                break;
+            }
+        }
+
+        if (!isClientFound) {
             throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
         }
 
-        Client clientToDelete = lastShownList.get(targetIndex.getZeroBased());
+        requireNonNull(clientToDelete);
         model.deletePerson(clientToDelete);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete));

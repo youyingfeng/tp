@@ -10,6 +10,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
 
 /**
@@ -36,15 +37,25 @@ public class DeleteOrderCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Order> lastShownList = model.getFilteredOrderList();
+        int targetId = targetIndex.getOneBased();
 
-        System.out.println("lastShownList size" + lastShownList.size());
-        System.out.println("targetIndex deletecommand" + targetIndex.getZeroBased());
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+
+        boolean isOrderFound = false;
+        Order orderToDelete = null;
+        for (Order order : lastShownList) {
+            if (order.getOrderId().getZeroBased() == targetId) {
+                // order is found with correct order id
+                orderToDelete = order;
+                isOrderFound = true;
+                break;
+            }
         }
 
-        Order orderToDelete = lastShownList.get(targetIndex.getZeroBased());
-        System.out.println("client id of order to be deleted" + orderToDelete.getClientId().getZeroBased());
+        if (!isOrderFound) {
+            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+        }
+
+        requireNonNull(orderToDelete);
         model.deleteOrder(orderToDelete);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_DELETE_ORDER_SUCCESS, orderToDelete));

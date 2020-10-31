@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javafx.beans.InvalidationListener;
@@ -121,19 +122,28 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeClient(Client key) {
         int clientId = key.getClientId();
-        assert clientId != 0;
+        assert clientId > 0;
 
         ObservableList<Order> tempOrderList = this.getOrderList();
+        List<Order> ordersToDelete = new ArrayList<>();
 
-        System.out.println("size of order list" + (tempOrderList.size() + 1));
+
+        // loop through to find out orders linked to client
         for (int i = 0; i < tempOrderList.size(); i++) {
-            System.out.println("index" + i);
             Order order = tempOrderList.get(i);
+            requireNonNull(order);
             Index clientLinkedId = order.getClientId();
+
             if (clientLinkedId.getZeroBased() == clientId) {
-                removeOrder(order);
+                ordersToDelete.add(order);
             }
         }
+
+        // remove orders that are linked to client
+        for (Order order : ordersToDelete) {
+            removeOrder(order);
+        }
+
         persons.remove(key);
         indicateModified();
     }
