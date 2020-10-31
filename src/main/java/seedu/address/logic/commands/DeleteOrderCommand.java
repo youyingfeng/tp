@@ -10,7 +10,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
 
 /**
@@ -52,7 +51,7 @@ public class DeleteOrderCommand extends Command {
         }
 
         if (!isOrderFound) {
-            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
         }
 
         requireNonNull(orderToDelete);
