@@ -15,7 +15,7 @@ import seedu.address.ui.MainWindow;
  */
 public class ListCommand extends Command {
 
-    public static final String COMMAND_WORD = "listC";
+    public static final String COMMAND_WORD = "list-client";
 
     public static final String MESSAGE_SUCCESS = "Listed all persons";
 
