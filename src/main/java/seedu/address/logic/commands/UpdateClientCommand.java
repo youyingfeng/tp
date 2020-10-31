@@ -12,6 +12,7 @@ import java.util.Objects;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Address;
@@ -60,7 +61,7 @@ public class UpdateClientCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Client> lastShownList = model.getFilteredPersonList();
 
@@ -84,6 +85,7 @@ public class UpdateClientCommand extends Command {
         List<Index> orderList = clientToUpdate.getOrders();
         Client newClient = new Client(name, phone, email, address, targetIndex, orderList);
         model.setPerson(clientToUpdate, newClient);
+        model.commitAddressBook();
 
         return new CommandResult(String.format(MESSAGE_UPDATE_CLIENT_SUCCESS, clientToUpdate));
     }

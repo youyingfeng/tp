@@ -1,5 +1,6 @@
 package seedu.address.model;
 
+import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
@@ -7,7 +8,7 @@ import seedu.address.model.person.Order;
 /**
  * Unmodifiable view of an address book
  */
-public interface ReadOnlyAddressBook {
+public interface ReadOnlyAddressBook extends Observable {
 
     /**
      * Returns an unmodifiable view of the persons list.

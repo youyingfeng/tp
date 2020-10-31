@@ -125,4 +125,19 @@ public interface Model {
 
     /** Returns an unmodifiable view of the unfiltered order list */
     ObservableList<Order> getUnfilteredOrderList();
+
+    /**
+     * Returns true if the model has previous address book states to restore.
+     */
+    boolean canUndoAddressBook();
+
+    /**
+     * Restores the model's address book to its previous state.
+     */
+    void undoAddressBook();
+
+    /**
+     * Saves the current address book state for undo/redo.
+     */
+    void commitAddressBook();
 }

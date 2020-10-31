@@ -20,7 +20,7 @@ import seedu.address.model.person.Order;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final VersionedAddressBook versionedAddressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Client> filteredClients;
     private final FilteredList<Order> filteredOrders;
@@ -34,10 +34,10 @@ public class ModelManager implements Model {
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        versionedAddressBook = new VersionedAddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredClients = new FilteredList<>(this.addressBook.getPersonList());
-        filteredOrders = new FilteredList<>(this.addressBook.getOrderList());
+        filteredClients = new FilteredList<>(versionedAddressBook.getPersonList());
+        filteredOrders = new FilteredList<>(this.versionedAddressBook.getOrderList());
     }
 
     public ModelManager() {
@@ -83,28 +83,28 @@ public class ModelManager implements Model {
 
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+        this.versionedAddressBook.resetData(addressBook);
     }
 
     @Override
     public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+        return versionedAddressBook;
     }
 
     @Override
     public boolean hasPerson(Client client) {
         requireNonNull(client);
-        return addressBook.hasClient(client);
+        return versionedAddressBook.hasClient(client);
     }
 
     @Override
     public void deletePerson(Client target) {
-        addressBook.removeClient(target);
+        versionedAddressBook.removeClient(target);
     }
 
     @Override
     public void addPerson(Client client) {
-        addressBook.addClient(client);
+        versionedAddressBook.addClient(client);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -112,7 +112,7 @@ public class ModelManager implements Model {
     public void setPerson(Client target, Client editedClient) {
         requireAllNonNull(target, editedClient);
 
-        addressBook.setClient(target, editedClient);
+        versionedAddressBook.setClient(target, editedClient);
     }
 
     //=========== OrderBook ================================================================================
@@ -120,25 +120,24 @@ public class ModelManager implements Model {
     @Override
     public boolean hasOrder(Order order) {
         requireNonNull(order);
-        return addressBook.hasOrder(order);
+        return versionedAddressBook.hasOrder(order);
     }
 
     @Override
     public void deleteOrder(Order target) {
-        addressBook.removeOrder(target);
+        versionedAddressBook.removeOrder(target);
     }
 
     @Override
     public void addOrder(Order order) {
-        addressBook.addOrder(order);
+        versionedAddressBook.addOrder(order);
         updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
     }
 
     @Override
     public void setOrder(Order target, Order editedOrder) {
         requireAllNonNull(target, editedOrder);
-
-        addressBook.setOrder(target, editedOrder);
+        versionedAddressBook.setOrder(target, editedOrder);
     }
 
 
@@ -180,7 +179,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return versionedAddressBook.equals(other.versionedAddressBook)
                 && userPrefs.equals(other.userPrefs)
                 && filteredClients.equals(other.filteredClients)
                 && filteredOrders.equals(other.filteredOrders);
@@ -208,5 +207,22 @@ public class ModelManager implements Model {
         Predicate alwaysTrue = t -> true;
         filteredOrders.setPredicate(alwaysTrue);
         return filteredOrders;
+    }
+
+    //=========== Undo ======================================================================================
+
+    @Override
+    public boolean canUndoAddressBook() {
+        return versionedAddressBook.canUndo();
+    }
+
+    @Override
+    public void undoAddressBook() {
+        versionedAddressBook.undo();
+    }
+
+    @Override
+    public void commitAddressBook() {
+        versionedAddressBook.commit();
     }
 }
