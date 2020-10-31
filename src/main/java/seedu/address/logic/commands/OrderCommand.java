@@ -1,14 +1,13 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import javafx.collections.ObservableList;
-import seedu.address.commons.core.index.Index;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_CLIENT;
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_DESCRIPTION;
 
+import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
