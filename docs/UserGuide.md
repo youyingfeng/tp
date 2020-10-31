@@ -76,20 +76,20 @@ whose phone number is 91234567.
 
 ------------------------------------------------------------------------------------------------------------------------
 
-### Listing Orders : `listO` 
+### Listing Orders : `list-order` 
 
 **Description** : Returns a list of orders. The list will be sorted by the order ID that was assigned when the order was created.
 
-**Format** : `listO`<br>
+**Format** : `list-order`<br>
 Displays a list of all orders in the order list (and the client that placed the order respectively).
 
 ------------------------------------------------------------------------------------------------------------------------
 
-### Listing Clients : `listC`
+### Listing Clients : `list-client`
 
 **Description** : Returns a list of clients. The list will be sorted by the client ID that was assigned when the client was created.
 
-**Format** : `listC`<br>
+**Format** : `list-client`<br>
 Displays a list of all clients in the client list.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -231,7 +231,7 @@ Action | Format
 **Order** | `order --description <order description> --client <client ID> --address <address> --date <date>`
 **Client** | `client --name <client name> --address <client address>`
 **Delete** | `delete-order --order <order index>` <br> `delete-client --client <client index>`
-**List** | `listC` <br> `listO` <br>
+**List** | `list-order` <br> `list-client` <br>
 **Done** | `done --order <order id>`
 **Find** | `find <name keywords> (--address <address keywords>) (--email <email address>) (--phone <phone number>)`
 **FindOrder**| `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`

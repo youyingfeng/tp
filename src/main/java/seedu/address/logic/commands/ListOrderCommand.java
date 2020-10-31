@@ -12,7 +12,7 @@ import seedu.address.ui.MainWindow;
  */
 public class ListOrderCommand extends Command {
 
-    public static final String COMMAND_WORD = "listO";
+    public static final String COMMAND_WORD = "list-order";
 
     public static final String MESSAGE_SUCCESS = "Listed all orders";
 
