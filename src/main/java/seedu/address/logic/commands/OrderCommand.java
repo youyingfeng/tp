@@ -1,6 +1,8 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import javafx.collections.ObservableList;
+import seedu.address.commons.core.index.Index;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_CLIENT;
@@ -10,6 +12,7 @@ import static seedu.address.logic.parser.CliSyntax.ORDER_PREFIX_DESCRIPTION;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
 
 /**
@@ -29,6 +32,7 @@ public class OrderCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New Order added: %1$s";
     public static final String MESSAGE_DUPLICATE_ORDER = "This Order already exists in LogOnce";
+    public static final String MESSAGE_NONEXISTENT_CLIENT = "This Order is linked to a client which does not exist";
 
     private final Order toAdd;
 
@@ -47,6 +51,23 @@ public class OrderCommand extends Command {
 
         if (model.hasOrder(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_ORDER);
+        }
+
+        int targetClientId = toAdd.getClientId().getZeroBased();
+        boolean isExistingClient = false;
+        ObservableList<Client> tempClientList = model.getFilteredPersonList();
+
+        // loop through client list to check if client linked to order exists
+        for (Client client : tempClientList) {
+            int currentClientId = client.getClientId();
+            if (currentClientId == targetClientId) {
+                isExistingClient = true;
+                break;
+            }
+        }
+
+        if (!isExistingClient) {
+            throw new CommandException(MESSAGE_NONEXISTENT_CLIENT);
         }
 
         model.addOrder(toAdd);
