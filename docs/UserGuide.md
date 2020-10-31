@@ -94,6 +94,14 @@ Displays a list of all clients in the client list.
 
 ------------------------------------------------------------------------------------------------------------------------
 
+### Undo Commands : `undo`
+
+**Description** : Restores the address book to the state before the previous undoable command was executed.
+
+**Format** : `undo` 
+ 
+------------------------------------------------------------------------------------------------------------------------
+
 ### Deleting a Client : `delete-client`
 
 **Description** : Deletes a client from client list.
@@ -227,3 +235,4 @@ Action | Format
 **Done** | `done --order <order id>`
 **Find** | `find <name keywords> (--address <address keywords>) (--email <email address>) (--phone <phone number>)`
 **FindOrder**| `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
+**Undo**| `undo`
