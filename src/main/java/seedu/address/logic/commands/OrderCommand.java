@@ -50,6 +50,7 @@ public class OrderCommand extends Command {
         }
 
         model.addOrder(toAdd);
+        model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
