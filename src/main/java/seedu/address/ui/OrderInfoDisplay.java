@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import seedu.address.model.person.Order;
+import seedu.address.ui.events.DeletionEvent;
 
 
 public class OrderInfoDisplay extends UiPart<Region> {
@@ -37,5 +38,11 @@ public class OrderInfoDisplay extends UiPart<Region> {
         client.setText(String.format("%05d", order.getClientId().getZeroBased()));
         address.setText(order.getAddress().value);
         date.setText(order.getDeliveryDateTime().format(DEFAULT_DATE_TIME_FORMATTER));
+    }
+
+    @FXML
+    private void deleteOrder() {
+        this.getRoot().fireEvent(new DeletionEvent("delete-order --order "
+                + String.format("%05d", order.getOrderId().getZeroBased())));
     }
 }
