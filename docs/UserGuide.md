@@ -154,15 +154,15 @@ Order index should be a valid index in the order list
 
 **Description** : Marks a certain order as done.
 
-**Format** : `done --order <order id>`
+**Format** : `done <order id>`
 
 Marks `Order` with `<order id>` as done.
 
 `<order id>` must exist in the order list.
-`<order id>` is based on the index number of orders in the GUI window.
+`<order id>` is a unique number assigned to each order.
 
 **Example** :<br>
-`done --client 10 --order 3` : deletes the order no. 3 of client with client id 10 
+`done 3` : deletes the order with an order ID of 3 (#00003 as represented in the GUI).
 
 ### Finding clients : `find`
 

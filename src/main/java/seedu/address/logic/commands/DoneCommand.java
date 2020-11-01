@@ -44,7 +44,7 @@ public class DoneCommand extends Command {
         for (Order order : lastShownList) {
             if (order.getOrderId().getZeroBased() == toMarkAsDoneIndex.getOneBased()) {
                 if (order.isDone()) {
-                    throw new CommandException(MESSAGE_ALREADY_DONE);
+                    return new CommandResult(MESSAGE_ALREADY_DONE);
                 } else {
                     order.markAsDone();
                     model.commitAddressBook();
