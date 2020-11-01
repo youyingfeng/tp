@@ -45,7 +45,7 @@ public class OrderCommandParser {
         }
 
         Index orderId = Index.fromZeroBased(0);
-        Index clientId = ParserUtil.parseOrderIndex(argMultimap.getValue(ORDER_PREFIX_CLIENT).get());
+        Index clientId = ParserUtil.parseClientIndex(argMultimap.getValue(ORDER_PREFIX_CLIENT).get());
         String description = argMultimap.getValue(ORDER_PREFIX_DESCRIPTION).orElse("");
         Address address = ParserUtil.parseAddress(argMultimap.getValue(ORDER_PREFIX_ADDRESS).get());
         System.out.println(argMultimap.getValue(ORDER_PREFIX_DATE).get());
