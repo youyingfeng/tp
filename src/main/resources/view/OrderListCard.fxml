@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <GridPane HBox.hgrow="ALWAYS">
@@ -37,4 +38,5 @@
          <RowConstraints />
       </rowConstraints>
     </GridPane>
+   <Rectangle fx:id="completed" arcHeight="5.0" fill="#80da32" height="100.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="8.0" />
 </HBox>
