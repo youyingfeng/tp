@@ -79,8 +79,10 @@ public class MainApp extends Application {
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a empty AddressBook");
+                initialData = new AddressBook();
+            } else {
+                initialData = addressBookOptional.get();
             }
-            initialData = new AddressBook();
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
             initialData = new AddressBook();

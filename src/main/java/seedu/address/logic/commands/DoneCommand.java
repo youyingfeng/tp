@@ -41,16 +41,17 @@ public class DoneCommand extends Command {
         requireNonNull(model);
         List<Order> lastShownList = model.getFilteredOrderList();
         requireNonNull(lastShownList);
-        if (toMarkAsDoneIndex.getZeroBased() > lastShownList.size()) {
-            throw new CommandException(MESSAGE_NOT_FOUND);
+        for (Order order : lastShownList) {
+            if (order.getOrderId().getZeroBased() == toMarkAsDoneIndex.getOneBased()) {
+                if (order.isDone()) {
+                    throw new CommandException(MESSAGE_ALREADY_DONE);
+                } else {
+                    order.markAsDone();
+                    model.commitAddressBook();
+                    return new CommandResult(MESSAGE_SUCCESS);
+                }
+            }
         }
-        Order orderToMark = lastShownList.get(toMarkAsDoneIndex.getZeroBased());
-        if (orderToMark.isDone()) {
-            throw new CommandException(MESSAGE_ALREADY_DONE);
-        } else {
-            orderToMark.markAsDone();
-        }
-        model.commitAddressBook();
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_NOT_FOUND);
     }
 }
