@@ -96,7 +96,7 @@
             </VBox>
              <ButtonBar GridPane.columnIndex="1" GridPane.rowIndex="9">
                  <buttons>
-                     <Button fx:id="editButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Edit">
+                     <Button fx:id="editButton" mnemonicParsing="false" prefHeight="44.0" prefWidth="100.0" text="Edit" onAction="#editOrder">
                          <font>
                              <Font size="18.0" />
                          </font>

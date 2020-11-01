@@ -26,7 +26,7 @@ import seedu.address.model.person.Phone;
  */
 public class UpdateClientCommand extends Command {
 
-    public static final String COMMAND_WORD = "update client";
+    public static final String COMMAND_WORD = "update-client";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the person identified "
             + "by the index number provided.\n"

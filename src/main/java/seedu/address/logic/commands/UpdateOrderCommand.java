@@ -15,7 +15,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Order;
 
 public class UpdateOrderCommand extends Command {
-    public static final String COMMAND_WORD = "update order";
+    public static final String COMMAND_WORD = "update-order";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the order identified ";
 
