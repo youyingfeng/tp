@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.DONE_PREFIX_ORDER;
 
 import java.util.List;
 
@@ -21,10 +20,10 @@ public class DoneCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Marked as done. ";
     public static final String MESSAGE_ALREADY_DONE = "This order is already completed. ";
     public static final String MESSAGE_NOT_FOUND = "There is no order with this index number. ";
-    public static final String MESSAGE_USAGE = COMMAND_WORD
+    public static final String MESSAGE_USAGE = COMMAND_WORD + " INDEX"
             + ": marks the order identified by the index number used in the displayed order list as done.\n"
             + "Parameters: INDEX must be a positive integer.\n"
-            + "Example: " + COMMAND_WORD + " " + DONE_PREFIX_ORDER + " 1";
+            + "Example: " + COMMAND_WORD + " 1";
 
     private Index toMarkAsDoneIndex;
 
