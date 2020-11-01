@@ -160,7 +160,7 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Client> getUnfilteredPersonList() {
-        Predicate alwaysTrue = t -> true;
+        Predicate<Client> alwaysTrue = t -> true;
         filteredClients.setPredicate(alwaysTrue);
         return filteredClients;
     }
@@ -204,7 +204,7 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Order> getUnfilteredOrderList() {
-        Predicate alwaysTrue = t -> true;
+        Predicate<Order> alwaysTrue = t -> true;
         filteredOrders.setPredicate(alwaysTrue);
         return filteredOrders;
     }
