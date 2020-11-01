@@ -150,7 +150,6 @@ public class MainWindow extends UiPart<Stage> {
 
             @Override
             public void onEditEvent(String command) {
-                extraInfoPlaceholder.getChildren().clear();
                 try {
                     executeCommand(command);
                     extraInfoPlaceholder.getChildren().clear();
@@ -315,6 +314,17 @@ public class MainWindow extends UiPart<Stage> {
             extraInfoPlaceholder.getChildren().add(newOrderForm.getRoot());
         } else {
             extraInfoPlaceholder.getChildren().removeAll();
+        }
+    }
+
+    @FXML
+    private void handleUndo() {
+        try {
+            executeCommand("undo");
+        } catch (CommandException | ParseException e) {
+            // there is no need to do anything as error handling has already been performed
+            // inside the method
+            // hence this catch block is empty
         }
     }
 

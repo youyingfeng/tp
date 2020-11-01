@@ -65,6 +65,7 @@ public class UpdateClientCommand extends Command {
         requireNonNull(model);
         List<Client> lastShownList = model.getFilteredPersonList();
 
+        // FIXME: Change the 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
         }
