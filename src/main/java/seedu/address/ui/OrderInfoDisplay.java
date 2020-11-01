@@ -35,6 +35,9 @@ public class OrderInfoDisplay extends UiPart<Region> {
     @FXML
     private Text completionStatus;
 
+    @FXML
+    private Text creationDate;
+
     OrderInfoDisplay(Order order) {
         super(FXML);
         this.order = order;
@@ -43,6 +46,7 @@ public class OrderInfoDisplay extends UiPart<Region> {
         client.setText(String.format("%05d", order.getClientId().getZeroBased()));
         address.setText(order.getAddress().value);
         date.setText(order.getDeliveryDateTime().format(DEFAULT_DATE_TIME_FORMATTER));
+        creationDate.setText(order.getCreationDateTime().format(DEFAULT_DATE_TIME_FORMATTER));
 
         if (order.isDone()) {
             completionStatus.setText("Completed");

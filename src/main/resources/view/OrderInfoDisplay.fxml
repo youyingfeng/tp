@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane prefHeight="400.0" prefWidth="618.0">
         <columnConstraints>
@@ -23,6 +23,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -46,7 +48,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="\$name">
+                  <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$description">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -60,7 +62,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="client" strokeType="OUTSIDE" strokeWidth="0.0" text="\$phone">
+                  <Text fx:id="client" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$clientId">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -74,7 +76,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="address" strokeType="OUTSIDE" strokeWidth="0.0" text="\$address">
+                  <Text fx:id="address" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$address">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -88,14 +90,14 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="date" strokeType="OUTSIDE" strokeWidth="0.0" text="\$email">
+                  <Text fx:id="date" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$deliverydate">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
                </children>
             </VBox>
-             <ButtonBar GridPane.columnIndex="1" GridPane.rowIndex="11">
+             <ButtonBar GridPane.columnIndex="1" GridPane.rowIndex="13">
                  <buttons>
                   <Button fx:id="doneButton" mnemonicParsing="false" onAction="#markOrderDone" prefHeight="44.0" prefWidth="100.0" text="Done">
                      <font>
@@ -122,6 +124,20 @@
                      </font>
                   </Label>
                   <Text fx:id="completionStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="Incomplete">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            <VBox layoutX="30.0" layoutY="327.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+               <children>
+                  <Label text="Created on">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="creationDate" strokeType="OUTSIDE" strokeWidth="0.0" text="\$creationdate">
                      <font>
                         <Font size="18.0" />
                      </font>

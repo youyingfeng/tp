@@ -1,13 +1,17 @@
 package seedu.address.ui;
 
+import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_CLIENTID;
+import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_PHONE;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Client;
 import seedu.address.ui.events.EditEvent;
-
-import static seedu.address.logic.parser.CliSyntax.*;
 
 
 public class EditClientForm extends UiPart<Region> {
