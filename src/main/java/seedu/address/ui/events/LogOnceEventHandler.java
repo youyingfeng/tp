@@ -17,6 +17,8 @@ public abstract class LogOnceEventHandler implements EventHandler<LogOnceEvent> 
 
     public abstract void onEditClientEvent(Client client);
 
+    public abstract void onOrderCompleteEvent(Order order);
+
     @Override
     public void handle(LogOnceEvent event) {
         event.invokeHandler(this);

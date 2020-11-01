@@ -172,6 +172,16 @@ public class MainWindow extends UiPart<Stage> {
                 extraInfoPlaceholder.getChildren().add(new EditClientForm(client).getRoot());
             }
 
+            @Override
+            public void onOrderCompleteEvent(Order order) {
+                String orderId = String.format("%05d", order.getOrderId().getZeroBased());
+                try {
+                    executeCommand("done " + orderId);
+                } catch (CommandException | ParseException e) {
+                    // do nothing because executeCommand has already handled the exception
+                }
+            }
+
         });
     }
 

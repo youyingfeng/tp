@@ -9,6 +9,7 @@ import javafx.scene.text.Text;
 import seedu.address.model.person.Order;
 import seedu.address.ui.events.DeletionEvent;
 import seedu.address.ui.events.EditOrderEvent;
+import seedu.address.ui.events.OrderCompleteEvent;
 
 
 public class OrderInfoDisplay extends UiPart<Region> {
@@ -31,6 +32,9 @@ public class OrderInfoDisplay extends UiPart<Region> {
     @FXML
     private Text date;
 
+    @FXML
+    private Text completionStatus;
+
     OrderInfoDisplay(Order order) {
         super(FXML);
         this.order = order;
@@ -39,6 +43,17 @@ public class OrderInfoDisplay extends UiPart<Region> {
         client.setText(String.format("%05d", order.getClientId().getZeroBased()));
         address.setText(order.getAddress().value);
         date.setText(order.getDeliveryDateTime().format(DEFAULT_DATE_TIME_FORMATTER));
+
+        if (order.isDone()) {
+            completionStatus.setText("Completed");
+        } else {
+            completionStatus.setText("Incomplete");
+        }
+    }
+
+    @FXML
+    private void markOrderDone() {
+        this.getRoot().fireEvent(new OrderCompleteEvent(order));
     }
 
     @FXML
