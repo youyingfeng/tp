@@ -36,15 +36,25 @@ public class DeleteOrderCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Order> lastShownList = model.getFilteredOrderList();
+        int targetId = targetIndex.getOneBased();
 
-        System.out.println("lastShownList size" + lastShownList.size());
-        System.out.println("targetIndex deletecommand" + targetIndex.getZeroBased());
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+
+        boolean isOrderFound = false;
+        Order orderToDelete = null;
+        for (Order order : lastShownList) {
+            if (order.getOrderId().getZeroBased() == targetId) {
+                // order is found with correct order id
+                orderToDelete = order;
+                isOrderFound = true;
+                break;
+            }
+        }
+
+        if (!isOrderFound) {
             throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
         }
 
-        Order orderToDelete = lastShownList.get(targetIndex.getZeroBased());
-        System.out.println("client id of order to be deleted" + orderToDelete.getClientId().getZeroBased());
+        requireNonNull(orderToDelete);
         model.deleteOrder(orderToDelete);
         model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_DELETE_ORDER_SUCCESS, orderToDelete));
