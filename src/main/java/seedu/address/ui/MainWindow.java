@@ -138,15 +138,50 @@ public class MainWindow extends UiPart<Stage> {
 
             @Override
             public void onDeletionEvent(String command) {
-                extraInfoPlaceholder.getChildren().clear();
                 try {
                     executeCommand(command);
+                    extraInfoPlaceholder.getChildren().clear();
                 } catch (CommandException | ParseException e) {
                     // there is no need to do anything as error handling has already been performed
                     // inside the method
                     // hence this catch block is empty
                 }
             }
+
+            @Override
+            public void onEditEvent(String command) {
+                try {
+                    executeCommand(command);
+                    extraInfoPlaceholder.getChildren().clear();
+                } catch (CommandException | ParseException e) {
+                    // there is no need to do anything as error handling has already been performed
+                    // inside the method
+                    // hence this catch block is empty
+                }
+            }
+
+            @Override
+            public void onEditOrderEvent(Order order) {
+                extraInfoPlaceholder.getChildren().clear();
+                extraInfoPlaceholder.getChildren().add(new EditOrderForm(order).getRoot());
+            }
+
+            @Override
+            public void onEditClientEvent(Client client) {
+                extraInfoPlaceholder.getChildren().clear();
+                extraInfoPlaceholder.getChildren().add(new EditClientForm(client).getRoot());
+            }
+
+            @Override
+            public void onOrderCompleteEvent(Order order) {
+                String orderId = String.format("%05d", order.getOrderId().getZeroBased());
+                try {
+                    executeCommand("done " + orderId);
+                } catch (CommandException | ParseException e) {
+                    // do nothing because executeCommand has already handled the exception
+                }
+            }
+
         });
     }
 
@@ -289,6 +324,17 @@ public class MainWindow extends UiPart<Stage> {
             extraInfoPlaceholder.getChildren().add(newOrderForm.getRoot());
         } else {
             extraInfoPlaceholder.getChildren().removeAll();
+        }
+    }
+
+    @FXML
+    private void handleUndo() {
+        try {
+            executeCommand("undo");
+        } catch (CommandException | ParseException e) {
+            // there is no need to do anything as error handling has already been performed
+            // inside the method
+            // hence this catch block is empty
         }
     }
 

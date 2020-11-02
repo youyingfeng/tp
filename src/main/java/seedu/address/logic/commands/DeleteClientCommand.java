@@ -36,7 +36,7 @@ public class DeleteClientCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Client> lastShownList = model.getFilteredPersonList();
-        int targetId = targetIndex.getOneBased();
+        int targetId = targetIndex.getZeroBased();
 
 
         boolean isClientFound = false;

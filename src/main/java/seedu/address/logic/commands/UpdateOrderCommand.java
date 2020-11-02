@@ -15,7 +15,7 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Order;
 
 public class UpdateOrderCommand extends Command {
-    public static final String COMMAND_WORD = "update order";
+    public static final String COMMAND_WORD = "update-order";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the order identified ";
 
@@ -45,13 +45,25 @@ public class UpdateOrderCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-        List<Order> lastShownList = model.getFilteredOrderList();
+        List<Order> lastShownList = model.getUnfilteredOrderList();
 
-        if (orderId.getZeroBased() >= lastShownList.size()) {
+        if (orderId.getZeroBased() > lastShownList.get(lastShownList.size() - 1).getOrderId().getZeroBased()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
         }
 
-        Order orderToUpdate = lastShownList.get(orderId.getZeroBased());
+        Order orderToUpdate = null;
+
+        for (Order order : lastShownList) {
+            if (order.getOrderId().getZeroBased() == orderId.getZeroBased()) {
+                orderToUpdate = order;
+                break;
+            }
+        }
+
+        if (orderToUpdate == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+        }
+
         if (Objects.isNull(clientId)) {
             clientId = orderToUpdate.getClientId();
         }

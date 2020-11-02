@@ -41,7 +41,7 @@ public class DoneCommand extends Command {
         List<Order> lastShownList = model.getFilteredOrderList();
         requireNonNull(lastShownList);
         for (Order order : lastShownList) {
-            if (order.getOrderId().getZeroBased() == toMarkAsDoneIndex.getOneBased()) {
+            if (order.getOrderId().getZeroBased() == toMarkAsDoneIndex.getZeroBased()) {
                 if (order.isDone()) {
                     return new CommandResult(MESSAGE_ALREADY_DONE);
                 } else {

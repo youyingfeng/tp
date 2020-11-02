@@ -36,7 +36,7 @@ public class DeleteOrderCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
         List<Order> lastShownList = model.getFilteredOrderList();
-        int targetId = targetIndex.getOneBased();
+        int targetId = targetIndex.getZeroBased();
 
 
         boolean isOrderFound = false;

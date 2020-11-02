@@ -31,7 +31,7 @@ public class Order {
                  LocalDateTime lastModifiedDateTime,
                  boolean isDone) {
         this.orderId = Index.fromZeroBased(0);
-        this.clientId = Index.fromZeroBased(clientId.getOneBased());
+        this.clientId = Index.fromZeroBased(clientId.getZeroBased());
         this.description = description;
         this.address = address;
         this.deliveryDateTime = deliveryDateTime;
@@ -51,7 +51,7 @@ public class Order {
                  LocalDateTime creationDateTime,
                  boolean isDone) {
         this.orderId = orderId;
-        this.clientId = Index.fromZeroBased(clientId.getOneBased());
+        this.clientId = Index.fromZeroBased(clientId.getZeroBased());
         this.description = description;
         this.address = address;
         this.deliveryDateTime = deliveryDateTime;
@@ -73,7 +73,7 @@ public class Order {
                  LocalDateTime lastModifiedDateTime,
                  boolean isDone) {
         this.orderId = orderId;
-        this.clientId = Index.fromZeroBased(clientId.getOneBased());
+        this.clientId = Index.fromZeroBased(clientId.getZeroBased());
         this.description = description;
         this.address = address;
         this.deliveryDateTime = deliveryDateTime;

@@ -72,7 +72,8 @@
                                     <StackPane fx:id="personListPanelPlaceholder" prefHeight="435.0" prefWidth="246.0" style="-fx-background-color: #DAD3BA#DAD3BA;" VBox.vgrow="ALWAYS" />
                                     <ButtonBar buttonOrder="" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #8D8F7E#8D8F7E #8D8F7E#8D8F7E;">
                                       <buttons>
-                                        <Button mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#handleAdd" style="-fx-background-color: #9fa191#9fa191;" text="+" />
+                                        <Button mnemonicParsing="false" text="Undo" onAction="#handleUndo"/>
+                                        <Button mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#handleAdd" style="-fx-background-color: #9fa191#9fa191;" text="Add" />
                                       </buttons>
                                     </ButtonBar>
                                  </children>

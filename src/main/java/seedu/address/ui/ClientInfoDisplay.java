@@ -5,6 +5,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
 import seedu.address.model.person.Client;
+import seedu.address.ui.events.DeletionEvent;
+import seedu.address.ui.events.EditClientEvent;
 
 public class ClientInfoDisplay extends UiPart<Region> {
     private static final String FXML = "ClientInfoDisplay.fxml";
@@ -34,5 +36,16 @@ public class ClientInfoDisplay extends UiPart<Region> {
         phone.setText(client.getPhone().value);
         address.setText(client.getAddress().value);
         email.setText(client.getEmail().value);
+    }
+
+    @FXML
+    private void editClient() {
+        this.getRoot().fireEvent(new EditClientEvent(client));
+    }
+
+    @FXML
+    private void deleteClient() {
+        this.getRoot().fireEvent(new DeletionEvent("delete-client --client "
+                + String.format("%05d", client.getClientId())));
     }
 }

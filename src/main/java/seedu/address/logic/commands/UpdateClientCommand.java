@@ -26,7 +26,7 @@ import seedu.address.model.person.Phone;
  */
 public class UpdateClientCommand extends Command {
 
-    public static final String COMMAND_WORD = "update client";
+    public static final String COMMAND_WORD = "update-client";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the person identified "
             + "by the index number provided.\n"
@@ -63,13 +63,25 @@ public class UpdateClientCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-        List<Client> lastShownList = model.getFilteredPersonList();
+        List<Client> lastShownList = model.getUnfilteredPersonList();
 
-        if (targetIndex.getZeroBased() >= lastShownList.size()) {
+        if (targetIndex.getZeroBased() > lastShownList.get(lastShownList.size() - 1).getClientId()) {
             throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
         }
 
-        Client clientToUpdate = lastShownList.get(targetIndex.getZeroBased());
+        Client clientToUpdate = null;
+
+        for (Client client : lastShownList) {
+            if (client.getClientId() == targetIndex.getZeroBased()) {
+                clientToUpdate = client;
+                break;
+            }
+        }
+
+        if (clientToUpdate == null) {
+            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+        }
+
         if (Objects.isNull(name)) {
             name = clientToUpdate.getName();
         }
@@ -82,6 +94,7 @@ public class UpdateClientCommand extends Command {
         if (Objects.isNull(phone)) {
             phone = clientToUpdate.getPhone();
         }
+
         List<Index> orderList = clientToUpdate.getOrders();
         Client newClient = new Client(name, phone, email, address, targetIndex, orderList);
         model.setPerson(clientToUpdate, newClient);

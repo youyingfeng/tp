@@ -81,7 +81,7 @@ class JsonAdaptedOrder {
             throw new IllegalValueException("Invalid value for client ID!");
         }
         // TODO: find a better fix for the bug where client id tied to order increments on launch
-        modelClientId = Index.fromOneBased(clientId);
+        modelClientId = Index.fromZeroBased(clientId);
 
         if (description == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, String.class.getSimpleName()));

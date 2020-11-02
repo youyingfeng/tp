@@ -14,7 +14,7 @@ public class OrderClientIdPredicate implements Predicate<Order> {
 
     @Override
     public boolean test(Order order) {
-        return clientId.getOneBased() == order.getClientId().getZeroBased();
+        return clientId.getZeroBased() == order.getClientId().getZeroBased();
     }
 
     @Override
