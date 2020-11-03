@@ -164,6 +164,8 @@ Marks `Order` with `<order id>` as done.
 **Example** :<br>
 `done 3` : deletes the order with an order ID of 3 (#00003 as represented in the GUI).
 
+------------------------------------------------------------------------------------------------------------------------
+
 ### Finding clients : `find`
 
 **Description** : Finds clients by their name and optionally by their phone number, email address and residential address.
@@ -197,6 +199,8 @@ More examples:
 live in Queenstown or Commonwealth. This would be a more general search, as each client only has to match one keyword in
 each category of searching.
 
+------------------------------------------------------------------------------------------------------------------------
+
 ### Finding orders : `findorder`
 
 **Description** : Finds orders by their description and optionally by their attached client IDs, delivery addresses and delivery dates.
@@ -221,6 +225,17 @@ For example: `findorder --client 1` will show all orders that are related to the
 `<date>` is a string of numbers separated by dashes in the format of `YYYY-MM-DD`. The date entered has to be valid and an
 exact match for the order to be displayed. For example: `findorder --date 2020-11-27` will display all orders to be
 delivered on the 27th of November, 2020.
+
+--------------------------------------------------------------------------------------------------------------------
+
+### Help Command : `help`
+
+**Description** : Displays a help window with the URL link to LogOnce's User Guide.
+
+**Format** : `help`
+
+This command allows you to copy the URL link to LogOnce's user guide for reference to the available commands which can 
+be used in the application.
 
 --------------------------------------------------------------------------------------------------------------------
 
