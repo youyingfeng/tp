@@ -4,7 +4,7 @@ title: User Guide
 ---
 
 # LogOnce
-![LogOnce Header](../docs/images/LogOnceHeader.png)
+![LogOnce Header](images/LogOnceHeader.png)
 
 **LogOnce** is a one-stop logistics tracker app for clerks to monitor shipping statuses of all clients and perform common logistics operations. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, LogOnce can get your tracking tasks done faster than traditional GUI apps. **This application is currently being developed and has not been deployed yet.**
 
@@ -120,7 +120,7 @@ the client's name. For example, if the first line of the client information is `
 client's unique client ID is `3`.
 
 **Invalid Usage Example** :
-![Invalid Delete Client Command](../docs/images/InvalidDeleteClientCommand.png)
+![Invalid Client Command](images/InvalidDeleteClientCommand.png)
 Client ID should be a valid unique client ID in the client list
 
 **Valid Usage Example** :
@@ -150,7 +150,7 @@ the client's name. For example, if the first line of the order information is `2
 order's unique order ID is `5`.
 
 **Invalid Usage Example** :
-![Invalid Delete Order Command](../docs/images/InvalidDeleteOrderCommand.png)
+![Invalid Order Command](images/InvalidDeleteOrderCommand.png)
 Order index should be a valid unique order ID in the order list
 
 **Valid Usage Example** :
