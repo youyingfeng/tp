@@ -159,6 +159,60 @@ function `handleHelp()`, which will open a dialog box with the link to the user 
 Step 4. The user clicks on the `Exit` button in order to close the application. The button will call the function 
 `handleExit`, which will close the application.
 
+### User Interface: Information panels
+
+Information panels function by taking in an object (`Client` or `Order`) and displaying its information. It provides buttons to do simple actions (e.g. mark an `Order` as done, edit the `Order`/`Client`, and delete the `Order`/`Client`).
+
+The buttons in the information panels communicate with the MainWindow through JavaFX events. When a button is clicked, it fires off a specific event, which is bubbled up to the parent nodes of the information panel. Eventually, the event will reach the MainWindow, where the event will be picked up by the event handlers set in the MainWindow. The MainWindow will then execute actions based on the type of events specified.
+
+Step 1: The information panel is accessed via the user interface. An object is passed to a new instance of the panel, which will convert all the data in the object to a displayable format.
+
+Step 2: The user clicks on the `Done` button to mark an order as complete (`Orders` only). Upon the click, the button will fire off an `OrderCompleteEvent`, which contains the order being marked as complete. The event will be bubbled up and picked up by the event handlers set in the MainWindow, which will then convert this event to a parseable command and execute it.
+
+Step 3: The user clicks on the `Edit` button to modify the Client/Order. Upon the click, the button will fire off an `EditClientEvent()`/`EditOrderEvent()` which contains the specific Client/Order to be edited, which will be bubbled up to the MainWindow and handled there.
+
+Upon receipt of the event, the MainWindow will take the Client/Order wrapped in the event and pass it to a new instance of an EditClientForm/EditOrderForm. It will then clear the side panel and set this form as the child, to replace the view with the view of the form.
+
+Step 4: The user clicks on the `Delete` button in order to delete the Client/Order. Upon clicking, the information panel will generate a command to be executed, and pass the command to a new instance of `DeletionEvent`, which will be fired off.
+
+When this event is bubbled up and captured by the MainWindow, the MainWindow will take the command string wrapped inside the DeletionEvent and execute it.
+
+### User Interface: Forms
+
+Communication between the forms and the user interface is achieves in one of two ways: the first way is through passing the MainWindow object to the creation form, and the second is through using JavaFX's inbuilt event messaging system to pass commands up to the MainWindow, where they will be executed by the handlers.
+
+#### Method 1: by passing the MainWindow object directly
+This method is only used by the client creation form `NewClientForm`.
+
+Step 1: User accesses the form through the user interface.
+
+Step 2: User fills in the text fields with the corresponding information.
+
+Step 3: User clicks `Create`. The form will first conduct rudimentary validation checks on the data (primarily to check for nulls and empty fields). 
+
+If the rudimentary checks fail, the form will update the error message display fields to show the relevant error messages.
+
+Once these checks are done, the form will concatenate the content of the fields into a parseable `client` command, and pass it to the MainWindow to be executed.
+
+Step 4: User clicks `Clear`. The form will clear all text in the text fields.
+
+#### Method 2: by messaging the MainWindow through JavaFX events
+This method is used in all other forms (both creation and update).
+
+Step 1: User accesses the form through the user interface
+
+Step 2: User fills in the text fields with the corresponding information.
+
+Step 3: User clicks `Create`/`Submit`. The form will first conduct rudimentary validation checks on the data (primarily to check for nulls and empty fields). 
+
+If these rudimentary checks fail, the form will update the error message display fields to show the relevant error messages.
+
+Once these checks are done, the form will concatenate the content of the fields into a parseable `client` command, and pass it to the MainWindow to be executed.
+
+Step 4: User clicks `Clear` (creation forms only). The form will clear all text in the text fields.
+
+Step 5: User clicks `Reset` (update forms only). The form will reset the text in the text fields to the original text of the `Client` or `Order` being updated.
+
 ### Find feature
 
 The find mechanism is facilitated by `FindCommand`, `FindCommandParser`, `FindOrderCommand` and `FindOrderCommandParser`. `FindCommandParser` and `FindOrderCommandParser` implement `Parser`.
