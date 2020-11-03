@@ -2,6 +2,7 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import seedu.address.commons.core.index.Index;
@@ -45,7 +46,12 @@ public class DoneCommand extends Command {
                 if (order.isDone()) {
                     return new CommandResult(MESSAGE_ALREADY_DONE);
                 } else {
-                    order.markAsDone();
+                    LocalDateTime currentDateTime = LocalDateTime.now();
+                    Order updatedOrder =
+                            new Order(order.getOrderId(), order.getClientId(), order.getDescription(),
+                                    order.getAddress(), order.getDeliveryDateTime(), order.getCreationDateTime(),
+                                    currentDateTime, true);
+                    model.setOrder(order, updatedOrder);
                     model.commitAddressBook();
                     return new CommandResult(MESSAGE_SUCCESS);
                 }
