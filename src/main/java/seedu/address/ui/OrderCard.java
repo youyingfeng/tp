@@ -6,9 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import seedu.address.model.person.Order;
 import seedu.address.ui.events.DisplayOrderEvent;
@@ -43,7 +43,7 @@ public class OrderCard extends UiPart<Region> {
     @FXML
     private Label date;
     @FXML
-    private Rectangle completed;
+    private AnchorPane completed;
 
     /**
      * Creates a {@code OrderCode} with the given {@code Order} and index to display.
@@ -57,12 +57,11 @@ public class OrderCard extends UiPart<Region> {
         clientId.setText("Deliver to Client #" + String.format("%05d", order.getClientId().getZeroBased()));
         date.setText("Delivery date: " + order.getDeliveryDateTime().format(DEFAULT_DATE_TIME_FORMATTER));
         setEventHandlers(this.getRoot());
-        completed.heightProperty().bind(cardPane.heightProperty());
 
         if (order.isDone()) {
-            completed.setFill(Color.GREEN);
+            completed.setStyle("-fx-background-color: #A3D62B");
         } else {
-            completed.setFill(Color.RED);
+            completed.setStyle("-fx-background-color: #E64B2C");
         }
     }
 
@@ -88,5 +87,21 @@ public class OrderCard extends UiPart<Region> {
         OrderCard card = (OrderCard) other;
         return id.getText().equals(card.id.getText())
                 && order.equals(card.order);
+    }
+
+    static class ResizableRectangle extends Rectangle {
+        ResizableRectangle(double w, double h) {
+            super(w, h);
+        }
+
+        @Override
+        public boolean isResizable() {
+            return true;
+        }
+
+        @Override
+        public double minWidth(double height) {
+            return 0.0;
+        }
     }
 }
