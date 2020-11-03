@@ -238,6 +238,47 @@ For example: `findorder --client 1` will show all orders that are related to the
 exact match for the order to be displayed. For example: `findorder --date 2020-11-27` will display all orders to be
 delivered on the 27th of November, 2020.
 
+### Editing/Updating orders: `update-order`
+**Description** : Modifies a specified order with the new information provided in this command.
+
+**Format** : `update-order --orderid <order ID of order to be changed> (--description <new order description>) (--clientid <new client id>) (--address <new address>) (--date <new delivery date>)`
+
+This command will update the data fields of the order with the new information given in the command. The criteria for each field is similar to the criteria for the fields in `order`, and are given below.
+
+Each of these fields are optional, and their parameter tags may be left out of the command if desired.
+
+`<order ID of order to be changed>` must be an existing order ID.
+
+`<new order description>` should not be blank.
+
+`<new client id>` must be a client ID of an existing client.
+
+`<new address>` should not be blank.
+
+`<new delivery date>` should not be left blank, and must be in the format `YYYY-MM-DD HHmm`.
+
+### Editing/Updating clients: `update-client`
+**Description** : Modifies a specified client with the new information provided in this command.
+
+**Format** : `update-client --clientid <client ID of client to be changed> (--name <new name>) (--phone <new phone number>) (--address <new address>) (--email <new email>)`
+
+This command will update the data fields of the client with the new information given in the command. The criteria for each field is similar to the criteria for the fields in `client`, and are given below.
+
+Each of these fields are optional, and their parameter tags may be left out of the command if desired.
+
+`<client ID of client to be changed>` should consist of only positive numbers, and should correspond to the client ID of an existing client.
+
+`<new name>` should not be blank.
+
+`<new phone>` should not be blank, and should be at least 3 digits long and must be a positive number.
+
+`<new address>` should not be blank.
+
+`<new email>` shoudl not be blank, and should be of a valid email format.
+
+
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ### Help Command : `help`
@@ -261,6 +302,8 @@ Action | Format
 **List** | `list-order` <br> `list-client` <br>
 **Done** | `done --order <order id>`
 **Find** | `find <name keywords> (--address <address keywords>) (--email <email address>) (--phone <phone number>)`
-**FindOrder** | `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
-**Undo** | `undo`
+**FindOrder**| `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
+**Undo**| `undo`
+**Update Order** | `update-order --orderid <order ID of order to be changed> (--description <new order description>) (--clientid <new client id>) (--address <new address>) (--date <new delivery date>)`
+**Update Client** | `update-client --clientid <client ID of client to be changed> (--name <new name>) (--phone <new phone number>) (--address <new address>) (--email <new email>)`
 **Help** | `help`
