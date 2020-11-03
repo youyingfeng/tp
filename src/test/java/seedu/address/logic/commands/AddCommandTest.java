@@ -25,6 +25,9 @@ import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
 import seedu.address.testutil.PersonBuilder;
 
+/**
+ * Tests both addition of clients and orders
+ */
 public class AddCommandTest {
 
     private static final CommandHistory EMPTY_COMMAND_HISTORY = new CommandHistory();
@@ -33,7 +36,7 @@ public class AddCommandTest {
 
     @Test
     public void constructor_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddCommand(null));
+        assertThrows(NullPointerException.class, () -> new ClientCommand(null));
     }
 
     @Test
@@ -41,9 +44,9 @@ public class AddCommandTest {
         ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
         Client validClient = new PersonBuilder().build();
 
-        CommandResult commandResult = new AddCommand(validClient).execute(modelStub, commandHistory);
+        CommandResult commandResult = new ClientCommand(validClient).execute(modelStub, commandHistory);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validClient), commandResult.getFeedbackToUser());
+        assertEquals(String.format(ClientCommand.MESSAGE_SUCCESS, validClient), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validClient), modelStub.personsAdded);
         assertEquals(EMPTY_COMMAND_HISTORY, commandHistory);
     }
@@ -51,35 +54,35 @@ public class AddCommandTest {
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
         Client validClient = new PersonBuilder().build();
-        AddCommand addCommand = new AddCommand(validClient);
+        ClientCommand clientCommand = new ClientCommand(validClient);
         ModelStub modelStub = new ModelStubWithPerson(validClient);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_PERSON, ()
-            -> addCommand.execute(modelStub, commandHistory));
+        assertThrows(CommandException.class, ClientCommand.MESSAGE_DUPLICATE_PERSON, ()
+            -> clientCommand.execute(modelStub, commandHistory));
     }
 
     @Test
     public void equals() {
         Client alice = new PersonBuilder().withName("Alice").build();
         Client bob = new PersonBuilder().withName("Bob").build();
-        AddCommand addAliceCommand = new AddCommand(alice);
-        AddCommand addBobCommand = new AddCommand(bob);
+        ClientCommand clientAliceCommand = new ClientCommand(alice);
+        ClientCommand clientBobCommand = new ClientCommand(bob);
 
         // same object -> returns true
-        assertTrue(addAliceCommand.equals(addAliceCommand));
+        assertTrue(clientAliceCommand.equals(clientAliceCommand));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(alice);
-        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
+        ClientCommand clientAliceCommandCopy = new ClientCommand(alice);
+        assertTrue(clientAliceCommand.equals(clientAliceCommandCopy));
 
         // different types -> returns false
-        assertFalse(addAliceCommand.equals(1));
+        assertFalse(clientAliceCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addAliceCommand.equals(null));
+        assertFalse(clientAliceCommand.equals(null));
 
         // different person -> returns false
-        assertFalse(addAliceCommand.equals(addBobCommand));
+        assertFalse(clientAliceCommand.equals(clientBobCommand));
     }
 
     /**

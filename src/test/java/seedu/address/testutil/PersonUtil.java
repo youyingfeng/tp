@@ -5,7 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 
-import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.ClientCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.model.person.Client;
 
@@ -16,10 +16,10 @@ import seedu.address.model.person.Client;
 public class PersonUtil {
 
     /**
-     * Returns an add command string for adding the {@code person}.
+     * Returns a client command string for adding the {@code client}.
      */
-    public static String getAddCommand(Client client) {
-        return AddCommand.COMMAND_WORD + " " + getPersonDetails(client);
+    public static String getClientCommand(Client client) {
+        return ClientCommand.COMMAND_WORD + " " + getPersonDetails(client);
     }
 
     /**

@@ -34,7 +34,7 @@ public class UpdateClientCommandParser implements Parser<UpdateClientCommand> {
                         UPDATE_CLIENT_PREFIX_EMAIL,
                         UPDATE_CLIENT_PREFIX_PHONE);
         if (argMultimap.getValue(UPDATE_CLIENT_PREFIX_CLIENTID).isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, OrderCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UpdateClientCommand.MESSAGE_USAGE));
         } else if (argMultimap.getValue(UPDATE_CLIENT_PREFIX_NAME).isEmpty()
                 && argMultimap.getValue(UPDATE_CLIENT_PREFIX_ADDRESS).isEmpty()
                 && argMultimap.getValue(UPDATE_CLIENT_PREFIX_EMAIL).isEmpty()
