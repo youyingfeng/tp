@@ -35,14 +35,15 @@ public class AddCommandIntegrationTest {
         expectedModel.addPerson(validClient);
         expectedModel.commitAddressBook();
 
-        assertCommandSuccess(new AddCommand(validClient), model, commandHistory,
-                String.format(AddCommand.MESSAGE_SUCCESS, validClient), expectedModel);
+        assertCommandSuccess(new ClientCommand(validClient), model, commandHistory,
+                String.format(ClientCommand.MESSAGE_SUCCESS, validClient), expectedModel);
     }
 
     @Test
     public void execute_duplicatePerson_throwsCommandException() {
         Client clientInList = model.getAddressBook().getPersonList().get(0);
-        assertCommandFailure(new AddCommand(clientInList), model, commandHistory, AddCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(new ClientCommand(clientInList), model, commandHistory,
+                ClientCommand.MESSAGE_DUPLICATE_PERSON);
     }
 
 }

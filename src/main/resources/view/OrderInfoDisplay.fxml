@@ -13,7 +13,7 @@
 
 <HBox maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <GridPane prefHeight="400.0" prefWidth="618.0">
+      <GridPane prefHeight="400.0" prefWidth="618.0" style="-fx-background-color: #e3e0cf#e3e0cf #e3e0cf#e3e0cf;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="20.0" prefWidth="20.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -36,19 +36,19 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="orderId" text="Order #00000" GridPane.columnIndex="1">
+            <Label fx:id="orderId" text="Order #00000" textFill="#a16262" GridPane.columnIndex="1">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
             <VBox GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <Label text="Description">
+                  <Label text="Description" textFill="#a16262">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="description" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$description">
+                  <Text fx:id="description" fill="#595753" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$description">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -57,12 +57,12 @@
             </VBox>
             <VBox layoutX="30.0" layoutY="46.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <Label text="Client">
+                  <Label text="Client" textFill="#a16262">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="client" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$clientId">
+                  <Text fx:id="client" fill="#595753" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$clientId">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -71,12 +71,12 @@
             </VBox>
             <VBox layoutX="30.0" layoutY="99.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
-                  <Label text="Address">
+                  <Label text="Address" textFill="#a16262">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="address" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$address">
+                  <Text fx:id="address" fill="#595753" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$address">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -85,12 +85,12 @@
             </VBox>
             <VBox layoutX="30.0" layoutY="99.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <children>
-                  <Label text="Delivery date">
+                  <Label text="Delivery date" textFill="#a16262">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="date" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$deliverydate">
+                  <Text fx:id="date" fill="#595753" strokeType="OUTSIDE" strokeWidth="0.0" text="\\$deliverydate">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -118,12 +118,12 @@
              </ButtonBar>
             <VBox layoutX="30.0" layoutY="239.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <children>
-                  <Label text="Status">
+                  <Label text="Status" textFill="#a16262">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="completionStatus" strokeType="OUTSIDE" strokeWidth="0.0" text="Incomplete">
+                  <Text fx:id="completionStatus" fill="#595753" strokeType="OUTSIDE" strokeWidth="0.0" text="Incomplete">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -132,12 +132,12 @@
             </VBox>
             <VBox layoutX="30.0" layoutY="327.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
                <children>
-                  <Label text="Created on">
+                  <Label text="Created on" textFill="#a16262">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Text fx:id="creationDate" strokeType="OUTSIDE" strokeWidth="0.0" text="\$creationdate">
+                  <Text fx:id="creationDate" fill="#595753" strokeType="OUTSIDE" strokeWidth="0.0" text="\$creationdate">
                      <font>
                         <Font size="18.0" />
                      </font>
