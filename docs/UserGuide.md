@@ -4,7 +4,7 @@ title: User Guide
 ---
 
 # LogOnce
-![LogOnce Header](../docs/images/LogOnceHeader.png)
+![LogOnce Header](images/LogOnceHeader.png)
 
 **LogOnce** is a one-stop logistics tracker app for clerks to monitor shipping statuses of all clients and perform common logistics operations. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, LogOnce can get your tracking tasks done faster than traditional GUI apps. **This application is currently being developed and has not been deployed yet.**
 
@@ -106,23 +106,29 @@ Displays a list of all clients in the client list.
 
 **Description** : Deletes a client from client list.
 
-**Format** : `delete-client --client <client index>`
+**Format** : `delete-client --client <client id>`
 
-Deletes client that has `<client index>` as its index in the client list. 
+Deletes the client who is identified as `<client id>`. 
 
-Note that `<client index>` is not the unique client id given to each client when added. 
+Note that `<client id>` is the **unique client ID** given to each client when added and is **not** based on the client 
+index in the client list. 
 
-`<client index>` is determined solely from the client list indexing, which **starts from `1`**.
+`<client id>` must exist as a valid unique client ID in the client list, **starting from `1`**.
 
-`<client index>` must exist as a valid index in the client list, **starting from `1`**.
+To identify the unique client ID of a client, view the 6 digit ID number assigned to the client in **brackets** beside 
+the client's name. For example, if the first line of the client information is `1. Kim Kardashian [ID#000003]`, then the 
+client's unique client ID is `3`.
 
 **Invalid Usage Example** :
-![Invalid Delete Client Command](../docs/images/InvalidDeleteClientCommand.png)
-Client index should be a valid index in the client list
+![Invalid Client Command](images/InvalidDeleteClientCommand.png)
+Client ID should be a valid unique client ID in the client list
 
 **Valid Usage Example** :
-![Valid Delete Client Command](../docs/images/ValidDeleteClientCommand.png)
-`delete-client --client 1` : deletes the client with client index 1
+`delete-client --client 1` : deletes the client with unique client ID #000001
+
+**Other Valid Usages** :
+Entering client ID with as many leading zeroes (e.g `00000000001`) will still work as long as the client id without the 
+leading zeroes (e.g `1`) is a valid unique client ID in the client list.
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -130,23 +136,29 @@ Client index should be a valid index in the client list
 
 **Description** : Deletes an order from order list.
 
-**Format** : `delete-order --order <order index>`
+**Format** : `delete-order --order <order id>`
 
-Deletes order that has `<order index>` as its index in the order list. 
+Deletes the order that is identified as `<order id>`. 
 
-Note that `<order index>` is not the unique order id given to each order when added. 
+Note that `<order index>` is the **unique order ID** given to each order when added and is **not** based on the order 
+index in the order list.
 
-`<order index>` is determined solely from the order list indexing, which **starts from `1`**.
+`<order id>` must exist as a valid unique order ID in the order list, **starting from `1`**.
 
-`<order id>` must exist as a valid index in the order list, **starting from `1`**.
+To identify the unique order ID of a client, view the 6 digit ID number assigned to the order to the **right** of 
+the client's name. For example, if the first line of the order information is `2. Order #000005`, then the 
+order's unique order ID is `5`.
 
 **Invalid Usage Example** :
-![Invalid Delete Order Command](../docs/images/InvalidDeleteOrderCommand.png)
-Order index should be a valid index in the order list
+![Invalid Order Command](images/InvalidDeleteOrderCommand.png)
+Order index should be a valid unique order ID in the order list
 
 **Valid Usage Example** :
-![Valid Delete Order Command](../docs/images/ValidDeleteOrderCommand.png)
-`delete-order --order 2` : deletes the order with order index 2
+`delete-order --order 2` : deletes the order with unique order ID #000002
+
+**Other Valid Usages** :
+Entering order ID with as many leading zeroes (e.g `00000000001`) will still work as long as the order id without the
+leading zeroes (e.g `1`) is a valid unique client ID in the client list.
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -163,6 +175,8 @@ Marks `Order` with `<order id>` as done.
 
 **Example** :<br>
 `done 3` : deletes the order with an order ID of 3 (#00003 as represented in the GUI).
+
+------------------------------------------------------------------------------------------------------------------------
 
 ### Finding clients : `find`
 
@@ -197,6 +211,8 @@ More examples:
 live in Queenstown or Commonwealth. This would be a more general search, as each client only has to match one keyword in
 each category of searching.
 
+------------------------------------------------------------------------------------------------------------------------
+
 ### Finding orders : `findorder`
 
 **Description** : Finds orders by their description and optionally by their attached client IDs, delivery addresses and delivery dates.
@@ -224,15 +240,27 @@ delivered on the 27th of November, 2020.
 
 --------------------------------------------------------------------------------------------------------------------
 
+### Help Command : `help`
+
+**Description** : Displays a help window with the URL link to LogOnce's User Guide.
+
+**Format** : `help`
+
+This command allows you to copy the URL link to LogOnce's user guide for reference to the available commands which can 
+be used in the application.
+
+--------------------------------------------------------------------------------------------------------------------
+
 ## Command summary
 
 Action | Format
 --------|------------------
 **Order** | `order --description <order description> --client <client ID> --address <address> --date <date>`
 **Client** | `client --name <client name> --address <client address>`
-**Delete** | `delete-order --order <order index>` <br> `delete-client --client <client index>`
+**Delete** | `delete-order --order <order id>` <br> `delete-client --client <client id>`
 **List** | `list-order` <br> `list-client` <br>
 **Done** | `done --order <order id>`
 **Find** | `find <name keywords> (--address <address keywords>) (--email <email address>) (--phone <phone number>)`
-**FindOrder**| `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
-**Undo**| `undo`
+**FindOrder** | `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
+**Undo** | `undo`
+**Help** | `help`

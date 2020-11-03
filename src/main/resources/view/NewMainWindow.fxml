@@ -64,7 +64,7 @@
                           <items>
                               <VBox prefHeight="506.0" prefWidth="266.0">
                                  <children>
-                                    <Label fx:id="listTitle" prefHeight="80.0" prefWidth="850.0" style="-fx-background-color: #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA;" text=" Clients" textFill="#a16262">
+                                    <Label fx:id="listTitle" prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA #DAD3BA#DAD3BA;" text=" Clients" textFill="#a16262">
                                        <font>
                                           <Font size="36.0" />
                                        </font>
@@ -72,7 +72,7 @@
                                     <StackPane fx:id="personListPanelPlaceholder" prefHeight="435.0" prefWidth="246.0" style="-fx-background-color: #DAD3BA#DAD3BA;" VBox.vgrow="ALWAYS" />
                                     <ButtonBar buttonOrder="" nodeOrientation="RIGHT_TO_LEFT" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #8D8F7E#8D8F7E #8D8F7E#8D8F7E;">
                                       <buttons>
-                                        <Button mnemonicParsing="false" text="Undo" onAction="#handleUndo"/>
+                                        <Button mnemonicParsing="false" onAction="#handleUndo" text="Undo" />
                                         <Button mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#handleAdd" style="-fx-background-color: #9fa191#9fa191;" text="Add" />
                                       </buttons>
                                     </ButtonBar>

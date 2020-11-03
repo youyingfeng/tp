@@ -34,7 +34,7 @@ public class UpdateOrderCommandParser implements Parser<UpdateOrderCommand> {
                         UPDATE_ORDER_PREFIX_ADDRESS,
                         UPDATE_ORDER_PREFIX_DATE);
         if (argMultimap.getValue(UPDATE_ORDER_PREFIX_ORDERID).isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, OrderCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UpdateOrderCommand.MESSAGE_USAGE));
         } else if (argMultimap.getValue(UPDATE_ORDER_PREFIX_CLIENTID).isEmpty()
                 && argMultimap.getValue(UPDATE_ORDER_PREFIX_DESCRIPTION).isEmpty()
                 && argMultimap.getValue(UPDATE_ORDER_PREFIX_ADDRESS).isEmpty()
