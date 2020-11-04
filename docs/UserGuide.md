@@ -33,6 +33,110 @@ title: User Guide
 
 </div>
 
+
+## Graphical User Interface (GUI)
+------------------------------------------------------------------------------------------------------------------------
+Upon opening the application, you will be met with something like the scene below.
+
+![Landing page](images/gui-demo/landing.png)
+
+Click on the `Clients` button to navigate back to this page, or click on the `Orders` button to navigate to the orders page.
+
+### View the list of clients
+![Client list](images/gui-demo/landing.png)
+
+The first thing you see when clicking on `Clients` from anywhere in the application is a list of all clients currently stored in the application.
+
+### Creating a new client
+
+To create a new client, click on the `Add` button to bring up the Client creation form.
+
+![Client creation form](images/gui-demo/createclient.png)
+
+Fill in all the fields in the form, then click on `Create` to create the client. If there are errors in the input, or if any of the fields are empty, a warning will be displayed in red beside the relevant field.
+
+### Viewing client information
+
+To view more information about a client, **double-click** on a client in the list to bring up the information panel.
+
+![Client information panel](images/gui-demo/clientinfo.png)
+
+Click on the `Edit` button to edit the currently selected client, or click on the `Delete` button to delete the currently selected client.
+
+### Editing the client
+
+To modify the client's information, click on the `Edit` button from the client's information panel. This will bring up a form to edit the client's information.
+
+![Client editing form](images/gui-demo/editclient.png)
+
+The form will be filled in with the client's current information by default. Make any changes you need to, then click on `Save` to save your changes.
+
+If you wish to discard any unsaved changes to the client's information, click on `Reset` to reset each field to the client's original information.
+
+### Deleting the client
+
+To delete the client, click on the `Delete` button from the client information panel. The client will be deleted, and their entry will be removed from the list of clients.
+
+### View the list of orders
+
+Upon clicking on the `Orders` button on the left navigation bar, the list of orders will be displayed.
+
+![Order list](images/gui-demo/orders.png)
+
+### Creating a new order
+
+To create a new order, click on the `Add` button at the bottom of the list of orders. This will bring up the order creation form.
+
+![Order creation form](images/gui-demo/createorder.png)
+
+Fill in all the fields in the form, then click on `Create` to create the order. If there are errors in the input, or if any of the fields are empty, a warning will be displayed in red beside the relevant field.
+
+### Viewing order information
+
+To view more information about a order, **double-click** on a order in the list to bring up the information panel.
+
+![Order information panel](images/gui-demo/orderinfo.png)
+
+Click on the `Edit` button to edit the currently selected order, or click on the `Delete` button to delete the currently selected order.
+
+### Editing the order
+
+To modify the order's information, click on the `Edit` button from the order information panel. This will bring up a form to edit the order's information.
+
+![order editing form](images/gui-demo/editorder.png)
+
+The form will be filled in with the order's current information by default. Make any changes you need to, then click on `Save` to save your changes.
+
+If you wish to discard any unsaved changes to the order information, click on `Reset` to reset each field to the order's original information.
+
+### Mark an order as completed 
+
+To mark an order as complete, click on the `Done` button from the order information panel. The status of the order will change from "Incomplete" to "Completed", and the red bar will turn to green.
+
+If the order is already completed, clicking on the `Done` button will throw an error, but will not affect the status of the order.
+
+### Deleting the order
+
+To delete the order, click on the `Delete` button from the order information panel. The order will be deleted, and the corresponding entry will be removed from the list of orders.
+
+### Undoing an action
+
+In the event that you made a mistake in the previous command/edit/creation action, simply click on the Undo button at the bottom bar of the middle panel in order to undo your last action. You can undo all actions up to the point where you first opened the application.
+
+### Help
+
+Click on the `Help` button on the left navigation bar to bring up pop-up window will appear with a button that will allow you to copy the link into your clipboard.
+
+![Help window](images/gui-demo/help.png)
+
+To access the User Guide, simply copy the link into your browser and visit it.
+
+### Exit
+
+Click on the `Exit` button on the left navigation bar to quit the application. Data will be saved automatically on exit.
+
+
+## Commands
 ------------------------------------------------------------------------------------------------------------------------
 
 ### Adding an Order : `order`
