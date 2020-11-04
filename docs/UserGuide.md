@@ -178,7 +178,7 @@ Marks `Order` with `<order id>` as done.
 `<order id>` is a unique number assigned to each order.
 
 **Example** :<br>
-`done 3` : deletes the order with an order ID of 3 (#00003 as represented in the GUI).
+`done 3` : Marks the order with an order ID of 3 as complete (#00003 as represented in the GUI).
 
 ------------------------------------------------------------------------------------------------------------------------
 
