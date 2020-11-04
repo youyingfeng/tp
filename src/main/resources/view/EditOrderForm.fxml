@@ -33,7 +33,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Create a new order" textFill="#a16262" GridPane.columnIndex="1">
+            <Label text="Edit an existing order" textFill="#a16262" GridPane.columnIndex="1">
                <font>
                   <Font size="27.0" />
                </font>
