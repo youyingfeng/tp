@@ -1,10 +1,12 @@
 package seedu.address.model.person;
 
+import static seedu.address.logic.parser.CliSyntax.DEFAULT_DATE_TIME_FORMATTER;
+
 import java.time.LocalDateTime;
 
 import seedu.address.commons.core.index.Index;
 
-// class not implemented yet
+
 public class Order {
     public static final String MESSAGE_CONSTRAINTS =
             "Order date should be in the format yyyy-mm-dd";
@@ -12,10 +14,10 @@ public class Order {
     private Index orderId;
     private final Index clientId;
     private final String description;
-    private Address address;
-    private LocalDateTime deliveryDateTime;
-    private LocalDateTime creationDateTime;
-    private LocalDateTime lastModifiedDateTime;
+    private final Address address;
+    private final LocalDateTime deliveryDateTime;
+    private final LocalDateTime creationDateTime;
+    private final LocalDateTime lastModifiedDateTime;
     private boolean isDone;
 
     /**
@@ -135,4 +137,13 @@ public class Order {
         return isDone;
     }
 
+    @Override
+    public String toString() {
+        final String stringRepresentation = "Order #" + String.format("%05d", getOrderId().getZeroBased()) + " "
+                + description
+                + " to Client #" + String.format("%05d", getClientId().getZeroBased())
+                + " at " + address
+                + " by " + deliveryDateTime.format(DEFAULT_DATE_TIME_FORMATTER);
+        return stringRepresentation;
+    }
 }
