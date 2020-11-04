@@ -40,20 +40,19 @@ title: User Guide
 **Description** : Creates an order made by a client. The order of the orders made by the client will be (by default) the natural ordering.<br>
 Orders will be assigned an ID number automatically when created. This ID number is not unique and must be used in conjunction with the client ID to identify an order.
 
-**Format** :  `order --description <order description> --client <client ID> --address <address> --date <date>` 
-
+**Format** :  `order --description <order description> --client <client ID> --address <address> --date <date of delivery>` 
 
 `<order description>` must exist in the order command
 
 `<client id>` must exist in the order command (an order is always linked to a client)
-`<address>` must exist in the order command (describes the address that the order will be sent to)
-`<date>` must exist in the order command (describes the date the order must be delivered by) 
 
-**Remark** : `<date>` must be in the format YYYY-MM-DD HHMM
+`<address>` must exist in the order command (describes the address that the order will be sent to)
+
+`<date of delivery>` must exist in the order command, and must follow the ***YYYY-MM-DD HHmm*** format (describes the date the order must be delivered by) 
+
+**Remark** : 
 
 `<address>` can be different from the client's own address
-
-`<date of delivery>` must be in the format YYYY-MM-DD HHmm
 
 **Example** :<br>
 `order --description shoes --client 123 --address 22 college avenue drive --date 2020-10-31 2359` : creates an order ordered by client 123 called “shoes” that is to be delivered to "22 college avenue drive" by "2020-10-31 2359"
