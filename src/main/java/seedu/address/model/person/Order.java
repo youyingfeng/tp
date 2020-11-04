@@ -139,9 +139,9 @@ public class Order {
 
     @Override
     public String toString() {
-        final String stringRepresentation = "Order #" + String.format("%05d", getOrderId().getZeroBased())
+        final String stringRepresentation = "Order #" + String.format("%05d", getOrderId().getZeroBased()) + " "
                 + description
-                + " to Client " + clientId.getZeroBased()
+                + " to Client #" + String.format("%05d", getClientId().getZeroBased())
                 + " at " + address
                 + " by " + deliveryDateTime.format(DEFAULT_DATE_TIME_FORMATTER);
         return stringRepresentation;
