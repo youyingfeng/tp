@@ -15,7 +15,7 @@
    <children>
       <GridPane minWidth="300.0" prefHeight="400.0" prefWidth="618.0" style="-fx-background-color: #e3e0cf#e3e0cf #e3e0cf#e3e0cf #e3e0cf#e3e0cf #e3e0cf#e3e0cf;">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="20.0" prefWidth="10.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="20.0" prefWidth="20.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="20.0" prefWidth="20.0" />
         </columnConstraints>
