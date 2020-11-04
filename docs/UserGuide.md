@@ -45,11 +45,10 @@ Orders will be assigned an ID number automatically when created. This ID number 
 `<address>` must exist in the order command (describes the address that the order will be sent to)
 `<date>` must exist in the order command (describes the date the order must be delivered by) 
 
-**Remark** : `<date>` must be in the format YYYY-MM-DD HHMM
+**Remark** : `<date>` must be in the format YYYY-MM-DD HHmm
 
 `<address>` can be different from the client's own address
 
-`<date of delivery>` must be in the format YYYY-MM-DD HHmm
 
 **Example** :<br>
 `order --description shoes --client 123 --address 22 college avenue drive --date 2020-10-31 2359` : creates an order ordered by client 123 called “shoes” that is to be delivered to "22 college avenue drive" by "2020-10-31 2359"
