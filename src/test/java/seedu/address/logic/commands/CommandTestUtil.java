@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javafx.collections.ObservableList;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -145,14 +146,31 @@ public class CommandTestUtil {
      * Updates {@code model}'s filtered list to show only the person at the given {@code targetIndex} in the
      * {@code model}'s address book.
      */
-    public static void showPersonAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredPersonList().size());
+    public static void showClientAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() > 0);
 
-        Client client = model.getFilteredPersonList().get(targetIndex.getZeroBased());
-        final String[] splitName = client.getName().fullName.split("\\s+");
-        model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        Client targetClient = null;
 
-        assertEquals(1, model.getFilteredPersonList().size());
+        // find client
+        ObservableList<Client> tempClientList = model.getFilteredPersonList();
+        int targetId = targetIndex.getZeroBased();
+        for (Client client : tempClientList) {
+            if (client.getClientId() == targetId) {
+                targetClient = client;
+                break;
+            }
+        }
+
+        if (targetClient != null) {
+            final String[] splitName = targetClient.getName().fullName.split("\\s+");
+            model.updateFilteredPersonList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+            assertEquals(1, model.getFilteredPersonList().size());
+        } else {
+            // could not find client
+            assert false;
+        }
+
     }
 
     /**
@@ -160,13 +178,28 @@ public class CommandTestUtil {
      * {@code model}'s order book.
      */
     public static void showOrderAtIndex(Model model, Index targetIndex) {
-        assertTrue(targetIndex.getZeroBased() < model.getFilteredOrderList().size());
+        assertTrue(targetIndex.getZeroBased() > 0);
 
-        Order order = model.getFilteredOrderList().get(targetIndex.getZeroBased());
-        final Index id = order.getOrderId();
-        model.updateFilteredOrderList(new OrderIdContainsKeywordsPredicate(id));
+        Order targetOrder = null;
 
-        assertEquals(1, model.getFilteredOrderList().size());
+        // find client
+        ObservableList<Order> tempOrderList = model.getFilteredOrderList();
+        for (Order order : tempOrderList) {
+            if (order.getOrderId().equals(targetIndex)) {
+                targetOrder = order;
+                break;
+            }
+        }
+
+        if (targetOrder != null) {
+            final Index id = targetOrder.getOrderId();
+            model.updateFilteredOrderList(new OrderIdContainsKeywordsPredicate(id));
+
+            assertEquals(1, model.getFilteredOrderList().size());
+        } else {
+            // could not find client
+            assert false;
+        }
     }
 
     /**

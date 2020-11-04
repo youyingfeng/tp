@@ -2,22 +2,25 @@ package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-//import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-//import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-//import static seedu.address.logic.commands.CommandTestUtil.showOrderAtIndex;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.logic.commands.CommandTestUtil.showOrderAtIndex;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ORDER;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ORDER_ZEROBASED;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ORDER;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ORDER_ZEROBASED;
 import static seedu.address.testutil.TypicalOrders.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
-//import seedu.address.commons.core.Messages;
-//import seedu.address.commons.core.index.Index;
+import javafx.collections.ObservableList;
+import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-//import seedu.address.model.person.Order;
+import seedu.address.model.person.Order;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -28,59 +31,160 @@ public class DeleteOrderCommandTest {
 
     private CommandHistory commandHistory = new CommandHistory();
 
-    // @Test
-    // public void execute_validIndexUnfilteredList_success() {
-    //     Order orderToDelete = model.getFilteredOrderList().get(INDEX_FIRST_ORDER.getZeroBased());
-    //     DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(INDEX_FIRST_ORDER);
 
-    //     String expectedMessage = String.format(DeleteOrderCommand.MESSAGE_DELETE_ORDER_SUCCESS, orderToDelete);
+    @Test
+    public void execute_validIndexUnfilteredList_success() {
+        ObservableList<Order> tempOrderList = model.getFilteredOrderList();
+        Order orderToDelete = null;
 
-    //     ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-    //     expectedModel.deleteOrder(orderToDelete);
-    //     expectedModel.commitAddressBook();
+        Index targetId = INDEX_FIRST_ORDER_ZEROBASED;
 
-    //     assertCommandSuccess(deleteOrderCommand, model, commandHistory, expectedMessage, expectedModel);
-    // }
+        for (Order order : tempOrderList) {
+            if (order.getOrderId().equals(targetId)) {
+                orderToDelete = order;
+                break;
+            }
+        }
 
-    // @Test
-    // public void execute_invalidIndexUnfilteredList_throwsCommandException() {
-    //     Index outOfBoundIndex = Index.fromOneBased(model.getFilteredOrderList().size() + 1);
-    //     DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(outOfBoundIndex);
+        if (orderToDelete != null) {
+            DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(INDEX_FIRST_ORDER_ZEROBASED);
 
-    //     assertCommandFailure(deleteOrderCommand, model,
-    //     commandHistory, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
-    // }
+            String expectedMessage = String.format(DeleteOrderCommand.MESSAGE_DELETE_ORDER_SUCCESS, orderToDelete);
 
-    // @Test
-    // public void execute_validIndexFilteredList_success() {
-    //     showOrderAtIndex(model, INDEX_FIRST_ORDER);
+            ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+            expectedModel.deleteOrder(orderToDelete);
+            expectedModel.commitAddressBook();
 
-    //     Order orderToDelete = model.getFilteredOrderList().get(INDEX_FIRST_ORDER.getZeroBased());
-    //     DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(INDEX_FIRST_ORDER);
+            assertCommandSuccess(deleteOrderCommand, model, commandHistory, expectedMessage, expectedModel);
+        } else {
+            assert false;
+        }
 
-    //     String expectedMessage = String.format(DeleteOrderCommand.MESSAGE_DELETE_ORDER_SUCCESS, orderToDelete);
+    }
 
-    //     Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
-    //     expectedModel.deleteOrder(orderToDelete);
-    //     expectedModel.commitAddressBook();
-    //     showNoOrder(expectedModel);
 
-    //     assertCommandSuccess(deleteOrderCommand, model, commandHistory, expectedMessage, expectedModel);
-    // }
+    @Test
+    public void execute_lowerBoundInvalidIndexUnfilteredList_throwsCommandException() {
+        Index outOfBoundIndex = Index.fromZeroBased(0);
+        DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(outOfBoundIndex);
 
-    // @Test
-    // public void execute_invalidIndexFilteredList_throwsCommandException() {
-    //     showOrderAtIndex(model, INDEX_FIRST_ORDER);
+        assertCommandFailure(deleteOrderCommand, model,
+                commandHistory, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+    }
 
-    //     Index outOfBoundIndex = INDEX_SECOND_ORDER;
-    //     // ensures that outOfBoundIndex is still in bounds of address book list
-    //     assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getOrderList().size());
 
-    //     DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(outOfBoundIndex);
+    @Test
+    public void execute_upperBoundInvalidIndexUnfilteredList_throwsCommandException() {
+        Index outOfBoundIndex = null;
+        int largestOrderId = 0;
 
-    //     assertCommandFailure(deleteOrderCommand, model,
-    //     commandHistory, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
-    // }
+        // find largest order id
+        ObservableList<Order> tempOrderList = model.getFilteredOrderList();
+        for (Order order : tempOrderList) {
+            int orderId = order.getOrderId().getZeroBased();
+
+            if (orderId > largestOrderId) {
+                largestOrderId = orderId;
+            }
+        }
+
+        if (largestOrderId > 0) {
+            outOfBoundIndex = Index.fromZeroBased(largestOrderId + 1);
+        }
+
+        if (outOfBoundIndex != null) {
+            DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(outOfBoundIndex);
+
+            assertCommandFailure(deleteOrderCommand, model,
+                    commandHistory, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+        } else {
+            // no client in list
+            assert false;
+        }
+    }
+
+
+    @Test
+    public void execute_validIndexFilteredList_success() {
+        showOrderAtIndex(model, INDEX_FIRST_ORDER_ZEROBASED);
+
+        Order orderToDelete = null;
+        ObservableList<Order> tempOrderList = model.getFilteredOrderList();
+        Index targetId = INDEX_FIRST_ORDER_ZEROBASED;
+        for (Order order : tempOrderList) {
+            if (order.getOrderId().equals(targetId)) {
+                orderToDelete = order;
+                break;
+            }
+        }
+
+        if (orderToDelete != null) {
+            DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(INDEX_FIRST_ORDER_ZEROBASED);
+
+            String expectedMessage = String.format(DeleteOrderCommand.MESSAGE_DELETE_ORDER_SUCCESS, orderToDelete);
+
+            Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+            expectedModel.deleteOrder(orderToDelete);
+            expectedModel.commitAddressBook();
+            showNoOrder(expectedModel);
+
+            assertCommandSuccess(deleteOrderCommand, model, commandHistory, expectedMessage, expectedModel);
+        } else {
+            assert false;
+        }
+    }
+
+
+    @Test
+    public void execute_lowerBoundInvalidIndexFilteredList_throwsCommandException() {
+        // filter list to include only the order with unique order id 1
+        showOrderAtIndex(model, INDEX_FIRST_ORDER_ZEROBASED);
+
+        // outOfBoundIndex should be an invalid index regardless of filtered or non-filtered list
+        Index outOfBoundIndex = Index.fromZeroBased(0);
+
+        boolean isInAddressBook = false;
+        ObservableList<Order> tempOrderList = model.getAddressBook().getOrderList();
+        for (Order order : tempOrderList) {
+            if (order.getOrderId().equals(outOfBoundIndex)) {
+                isInAddressBook = true;
+                break;
+            }
+        }
+
+        // ensures that outOfBoundIndex should not exist in the addressbook list
+        assertFalse(isInAddressBook);
+
+        DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(outOfBoundIndex);
+
+        assertCommandFailure(deleteOrderCommand, model,
+                commandHistory, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+    }
+
+    @Test
+    public void execute_upperBoundInvalidIndexFilteredList_throwsCommandException() {
+        // filter list to include only the client with unique client id 1
+        showOrderAtIndex(model, INDEX_FIRST_ORDER_ZEROBASED);
+
+        Index outOfBoundIndex = INDEX_SECOND_ORDER_ZEROBASED;
+
+        boolean isInAddressBook = false;
+        ObservableList<Order> tempOrderList = model.getAddressBook().getOrderList();
+        for (Order order : tempOrderList) {
+            if (order.getOrderId().equals(outOfBoundIndex)) {
+                isInAddressBook = true;
+                break;
+            }
+        }
+
+        // ensures that outOfBoundIndex still exists address book list
+        assertTrue(isInAddressBook);
+
+        DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(outOfBoundIndex);
+
+        assertCommandFailure(deleteOrderCommand, model,
+                commandHistory, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+    }
 
     @Test
     public void equals() {
