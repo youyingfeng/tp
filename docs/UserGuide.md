@@ -27,6 +27,10 @@ title: User Guide
   
 * Words within `()` indicate optional keywords or tokens (most notably for `find` and `findorder`)
 
+* In the case of duplicate parameters, the very last instance of the parameter will be used.<br>
+  e.g. `delete-order --order 00001 --order 00002 --order 00003` will delete Order #00003 instead of the other two 
+  orders.
+
 </div>
 
 ------------------------------------------------------------------------------------------------------------------------
