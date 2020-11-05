@@ -152,10 +152,9 @@ Orders will be assigned an ID number automatically when created. This ID number 
 
 `<address>` must exist in the order command (describes the address that the order will be sent to)
 
-`<date of delivery>` must exist in the order command, and must follow the ***YYYY-MM-DD HHmm*** format (describes the date the order must be delivered by) 
 
 **Remark** : 
-
+`<date of delivery>` must exist in the order command, and must follow the ***YYYY-MM-DD HHmm*** format (describes the date the order must be delivered by) 
 `<address>` can be different from the client's own address
 
 **Example** :<br>
