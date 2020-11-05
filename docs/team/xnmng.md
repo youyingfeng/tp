@@ -9,6 +9,24 @@ AddressBook - Level 3 is a desktop address book application used for teaching So
 
 Given below are my contributions to the project.
 
+* **New Feature**: Added the ability to create an Order object, through the use of an Order command.
+  * What it does: allows the user to create an Order object, which is linked to a specific Client object specified by its clientid.
+  * Justification: This feature allows LogOnce to track which Client ordered 
+  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+  * Credits: Adapted the existing feature from AB4 to fit our program.
+  
+* **New Feature**: Added the ability to edit a Client object, through the use of an UpdateClient command.
+  * What it does: allows the user to update fields of a Client object, which was previously created.
+  * Justification: This feature allows users that are able to type fast to quickly fix any typo errors during the creation of the Order object earlier.
+  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+  * Credits: Adapted the existing feature from AB4 to fit our program.
+
+* **New Feature**: Added the ability to edit an Order object, through the use of an UpdateOrder command.
+  * What it does: allows the user to update fields of a Order object, which was previously created.
+  * Justification: This feature allows users that are able to type fast to quickly fix any typo errors during the creation of the Client object earlier.
+  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+  * Credits: Adapted the existing feature from AB4 to fit our program.
+
 * **New Feature**: Added the ability to undo/redo previous commands.
   * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
   * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
