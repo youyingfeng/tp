@@ -51,7 +51,7 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 **How the architecture components interact with each other**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete-client --client 1`.
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
@@ -86,9 +86,9 @@ The `UI` component,
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete-client --client 1")` API call.
 
-![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+![Interactions Inside the Logic Component for the `delete-client --client 1` Command](images/DeleteClientSequenceDiagram.png)
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
@@ -103,11 +103,11 @@ The `Model`,
 
 * stores a `UserPref` object that represents the user’s preferences.
 * stores the address book data.
-* exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* exposes an unmodifiable `ObservableList<Client>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Client` references. <This>                                                            </This> allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object.<br>
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
@@ -264,33 +264,47 @@ Given below is an example usage scenario and how the delete mechanism behaves at
 
 **Delete Order**
 
-Step 1. The user launches application and views his/her list of 5 orders.
+Step 1. The user launches application and views his/her list of orders. In this scenario, the order list is empty.
 
 Step 2. The user executes `order --description 123 --client 1 --address 123 --date 2020-12-12 2359`. An order is created
- and appended to the end of the order list. There are now a total of 6 orders in the order list.
+ and appended to the end of the order list.
 
-Step 3. The user decides to remove the order he had just created. The user notes that the order is at the last index 
-of the order list. The user executes `delete-order --order 6` to remove the order from the order list.
+Step 3. The user decides to remove the order he had just created. The user notes that the unique order ID of the order 
+is `#00001`. The user executes `delete-order --order 1` to remove the order from the order list.
 
 The following sequence diagram shows how the delete order operation works :
 
-_diagrams will be uploaded soon_
+![Delete Order Sequence Diagram](images/DeleteOrderSequenceDiagram.png)
 
 **Delete Client**
 
-Step 1. The user launches application and views his/her list of 5 clients.
+Step 1. The user launches application and views his/her list of clients. In this scenario, the client list is empty.
 
-Step 2. The user executes `client --name john --address 123 --email john@gmail.com --phone 12345678`. A a client is 
-created and appended to the end of the client list. There are now a total of 6 clients in the client list.
+Step 2. The user executes `client --name john --address 123 --email john@gmail.com --phone 12345678`. A client is 
+created and appended to the end of the client list.
 
-Step 3. The user decides to remove the client he had just created. The user notes that the client is at the last index 
-of the client list. The user executes `delete-client --client 6` to remove the client from the client list.
+Step 3. The user decides to remove the client he had just created. The user notes that the unique client ID of the 
+client is `#00001`. The user executes `delete-client --client 1` to remove the client from the client list.
 
-Step 4. When user deletes the client, all orders linked to the client will also be deleted.
+Step 4. When user deletes the client, all orders from the order list that are linked to the client will also be deleted.
 
 The following sequence diagram shows how the delete client operation works :
 
-_diagrams will be uploaded soon_
+![Delete Client Sequence Diagram](images/DeleteClientSequenceDiagram.png)
+
+\[Proposed Enhancements\]
+
+Allow user to delete clients and orders based on specific tokens. For example, a client can be deleted as long as all 
+relevant tokens (i.e `name`, `address`, `email`, `phone`) are identified correctly and matches a client in the client 
+list. Similarly, delete-order can receive `description`, `client`, `address`, `date` in order to delete a specific 
+order.
+
+Although the mentioned enhancement might be slower than the original delete commands, it may be useful for very long 
+client or order lists, where it is time consuming to scroll through the lists in order to find a client or order's 
+unqiue ID. Accepting the mentioned tokens would be beneficial if user already has the specific client details at hand.
+
+Another enhancement would be to allow `delete-order` to delete all orders linked to a specific client ID. This would 
+allow the user to clear all orders under a client without having to delete the client itself.
 
 ### List Feature
 
@@ -382,7 +396,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 * **Alternative 2:** Individual command knows how to undo by
   itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+  * Pros: Will use less memory (e.g. for `delete-client`, just save the client being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
 
 _{more aspects and alternatives to be added}_
