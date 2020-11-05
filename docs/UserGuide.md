@@ -27,8 +27,116 @@ title: User Guide
   
 * Words within `()` indicate optional keywords or tokens (most notably for `find` and `findorder`)
 
+* In the case of duplicate parameters, the very last instance of the parameter will be used.<br>
+  e.g. `delete-order --order 00001 --order 00002 --order 00003` will delete Order #00003 instead of the other two 
+  orders.
+
 </div>
 
+
+## Graphical User Interface (GUI)
+------------------------------------------------------------------------------------------------------------------------
+Upon opening the application, you will be met with something like the scene below.
+
+![Landing page](images/gui-demo/landing.png)
+
+Click on the `Clients` button to navigate back to this page, or click on the `Orders` button to navigate to the orders page.
+
+### View the list of clients
+![Client list](images/gui-demo/landing.png)
+
+The first thing you see when clicking on `Clients` from anywhere in the application is a list of all clients currently stored in the application.
+
+### Creating a new client
+
+To create a new client, click on the `Add` button to bring up the Client creation form.
+
+![Client creation form](images/gui-demo/createclient.png)
+
+Fill in all the fields in the form, then click on `Create` to create the client. If there are errors in the input, or if any of the fields are empty, a warning will be displayed in red beside the relevant field.
+
+### Viewing client information
+
+To view more information about a client, **double-click** on a client in the list to bring up the information panel.
+
+![Client information panel](images/gui-demo/clientinfo.png)
+
+Click on the `Edit` button to edit the currently selected client, or click on the `Delete` button to delete the currently selected client.
+
+### Editing the client
+
+To modify the client's information, click on the `Edit` button from the client's information panel. This will bring up a form to edit the client's information.
+
+![Client editing form](images/gui-demo/editclient.png)
+
+The form will be filled in with the client's current information by default. Make any changes you need to, then click on `Save` to save your changes.
+
+If you wish to discard any unsaved changes to the client's information, click on `Reset` to reset each field to the client's original information.
+
+### Deleting the client
+
+To delete the client, click on the `Delete` button from the client information panel. The client will be deleted, and their entry will be removed from the list of clients.
+
+### View the list of orders
+
+Upon clicking on the `Orders` button on the left navigation bar, the list of orders will be displayed.
+
+![Order list](images/gui-demo/orders.png)
+
+### Creating a new order
+
+To create a new order, click on the `Add` button at the bottom of the list of orders. This will bring up the order creation form.
+
+![Order creation form](images/gui-demo/createorder.png)
+
+Fill in all the fields in the form, then click on `Create` to create the order. If there are errors in the input, or if any of the fields are empty, a warning will be displayed in red beside the relevant field.
+
+### Viewing order information
+
+To view more information about a order, **double-click** on a order in the list to bring up the information panel.
+
+![Order information panel](images/gui-demo/orderinfo.png)
+
+Click on the `Edit` button to edit the currently selected order, or click on the `Delete` button to delete the currently selected order.
+
+### Editing the order
+
+To modify the order's information, click on the `Edit` button from the order information panel. This will bring up a form to edit the order's information.
+
+![order editing form](images/gui-demo/editorder.png)
+
+The form will be filled in with the order's current information by default. Make any changes you need to, then click on `Save` to save your changes.
+
+If you wish to discard any unsaved changes to the order information, click on `Reset` to reset each field to the order's original information.
+
+### Mark an order as completed 
+
+To mark an order as complete, click on the `Done` button from the order information panel. The status of the order will change from "Incomplete" to "Completed", and the red bar will turn to green.
+
+If the order is already completed, clicking on the `Done` button will throw an error, but will not affect the status of the order.
+
+### Deleting the order
+
+To delete the order, click on the `Delete` button from the order information panel. The order will be deleted, and the corresponding entry will be removed from the list of orders.
+
+### Undoing an action
+
+In the event that you made a mistake in the previous command/edit/creation action, simply click on the Undo button at the bottom bar of the middle panel in order to undo your last action. You can undo all actions up to the point where you first opened the application.
+
+### Help
+
+Click on the `Help` button on the left navigation bar to bring up pop-up window will appear with a button that will allow you to copy the link into your clipboard.
+
+![Help window](images/gui-demo/help.png)
+
+To access the User Guide, simply copy the link into your browser and visit it.
+
+### Exit
+
+Click on the `Exit` button on the left navigation bar to quit the application. Data will be saved automatically on exit.
+
+
+## Commands
 ------------------------------------------------------------------------------------------------------------------------
 
 ### Adding an Order : `order`
@@ -36,19 +144,18 @@ title: User Guide
 **Description** : Creates an order made by a client. The order of the orders made by the client will be (by default) the natural ordering.<br>
 Orders will be assigned an ID number automatically when created. This ID number is not unique and must be used in conjunction with the client ID to identify an order.
 
-**Format** :  `order --description <order description> --client <client ID> --address <address> --date <date>` 
-
+**Format** :  `order --description <order description> --client <client ID> --address <address> --date <date of delivery>` 
 
 `<order description>` must exist in the order command
 
 `<client id>` must exist in the order command (an order is always linked to a client)
+
 `<address>` must exist in the order command (describes the address that the order will be sent to)
-`<date>` must exist in the order command (describes the date the order must be delivered by) 
 
-**Remark** : `<date>` must be in the format YYYY-MM-DD HHmm
 
+**Remark** : 
+`<date of delivery>` must exist in the order command, and must follow the ***YYYY-MM-DD HHmm*** format (describes the date the order must be delivered by) 
 `<address>` can be different from the client's own address
-
 
 **Example** :<br>
 `order --description shoes --client 123 --address 22 college avenue drive --date 2020-10-31 2359` : creates an order ordered by client 123 called “shoes” that is to be delivered to "22 college avenue drive" by "2020-10-31 2359"
@@ -173,7 +280,7 @@ Marks `Order` with `<order id>` as done.
 `<order id>` is a unique number assigned to each order.
 
 **Example** :<br>
-`done 3` : marks the order with an order ID of 3 (#00003 as represented in the GUI) as done.
+`done 3` : Marks the order with an order ID of 3 as complete (#00003 as represented in the GUI).
 
 ------------------------------------------------------------------------------------------------------------------------
 
