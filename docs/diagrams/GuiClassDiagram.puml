@@ -1,0 +1,44 @@
+@startuml
+
+class MainWindow
+class Idk
+class EditClientForm
+class OrderCard
+class PersonCard
+class ClientInfoDisplay
+class OrderInfoDisplay
+class EditClientEvent
+class EditOrderEvent
+class DisplayOrderEvent
+class DisplayClientEvent
+class EditEvent
+class DeleteEvent
+class EditOrderEvent
+class OrderCompleteEvent
+class LogOnceEvent
+
+MainWindow - LogOnceEvent : handles >
+Idk - "1...*" MainWindow
+Idk -- EditClientForm
+Idk -- EditOrderForm
+Idk -- OrderCard
+Idk -- PersonCard
+Idk -- ClientInfoDisplay
+Idk -- OrderInfoDisplay
+EditClientForm -- EditClientEvent : fires >
+EditOrderForm -- EditOrderEvent : fires >
+OrderCard -- DisplayOrderEvent : fires >
+PersonCard -- DisplayClientEvent : fires >
+ClientInfoDisplay -- EditEvent : fires >
+ClientInfoDisplay -- DeleteEvent : fires >
+OrderInfoDisplay -- EditOrderEvent : fires >
+OrderInfoDisplay -- OrderCompleteEvent : fires >
+EditClientEvent --|> LogOnceEvent
+EditOrderEvent --|> LogOnceEvent
+DisplayOrderEvent --|> LogOnceEvent
+DisplayClientEvent --|> LogOnceEvent
+EditEvent --|> LogOnceEvent
+DeleteEvent --|> LogOnceEvent
+OrderCompleteEvent --|> LogOnceEvent
+
+@enduml

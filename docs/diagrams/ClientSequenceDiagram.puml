@@ -1,0 +1,31 @@
+@startuml
+!include style.puml
+
+box LOGIC_COLOR_T1
+participant NewClientForm as NCF LOGIC_COLOR
+participant MainWindow as MW LOGIC_COLOR
+end box
+
+[-> NCF: submitForm
+
+activate NCF
+NCF->NCF: validateInput
+activate NCF
+deactivate NCF
+
+NCF -> MW: executeCommand(commandString)
+activate MW
+MW-[hidden]->MW
+
+MW --> NCF
+deactivate MW
+
+NCF->NCF: resetForm
+activate NCF
+deactivate NCF
+
+NCF-[hidden]->NCF
+[<--NCF
+deactivate NCF
+
+@enduml
