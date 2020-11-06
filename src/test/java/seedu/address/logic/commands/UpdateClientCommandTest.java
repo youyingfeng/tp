@@ -24,7 +24,6 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Client;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 
 /**
@@ -37,10 +36,10 @@ public class UpdateClientCommandTest {
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
         Client editedClient = new PersonBuilder().build();
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(editedClient).build();
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_CLIENT, descriptor);
+        UpdateClientDescriptor descriptor = new EditPersonDescriptorBuilder(editedClient).build();
+        UpdateClientCommand editCommand = new UpdateClientCommand(INDEX_FIRST_CLIENT, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedClient);
+        String expectedMessage = String.format(UpdateClientCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedClient);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(model.getFilteredPersonList().get(0), editedClient);
@@ -60,9 +59,9 @@ public class UpdateClientCommandTest {
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).build();
-        EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
+        UpdateClientCommand editCommand = new UpdateClientCommand(indexLastPerson, descriptor);
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedClient);
+        String expectedMessage = String.format(UpdateClientCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedClient);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setPerson(lastClient, editedClient);
@@ -73,10 +72,10 @@ public class UpdateClientCommandTest {
 
     @Test
     public void execute_noFieldSpecifiedUnfilteredList_success() {
-        EditCommand editCommand = new EditCommand(INDEX_FIRST_CLIENT, new EditPersonDescriptor());
+        UpdateClientCommand editCommand = new UpdateClientCommand(INDEX_FIRST_CLIENT, new EditPersonDescriptor());
         Client editedClient = model.getFilteredPersonList().get(INDEX_FIRST_CLIENT.getZeroBased());
 
-        String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedClient);
+        String expectedMessage = String.format(UpdateClientCommand.MESSAGE_EDIT_PERSON_SUCCESS, editedClient);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.commitAddressBook();
@@ -106,9 +105,9 @@ public class UpdateClientCommandTest {
     public void execute_duplicatePersonUnfilteredList_failure() {
         Client firstClient = model.getFilteredPersonList().get(INDEX_FIRST_CLIENT.getZeroBased());
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(firstClient).build();
-        EditCommand editCommand = new EditCommand(INDEX_SECOND_CLIENT, descriptor);
+        UpdateClientCommand editCommand = new UpdateClientCommand(INDEX_SECOND_CLIENT, descriptor);
 
-        assertCommandFailure(editCommand, model, commandHistory, EditCommand.MESSAGE_DUPLICATE_PERSON);
+        assertCommandFailure(editCommand, model, commandHistory, UpdateClientCommand.MESSAGE_DUPLICATE_PERSON);
     }
 
     //    @Test
@@ -127,7 +126,7 @@ public class UpdateClientCommandTest {
     public void execute_invalidPersonIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredPersonList().size() + 1);
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB).build();
-        EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
+        UpdateClientCommand editCommand = new UpdateClientCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, commandHistory, Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
     }
@@ -151,11 +150,11 @@ public class UpdateClientCommandTest {
 
     @Test
     public void equals() {
-        final EditCommand standardCommand = new EditCommand(INDEX_FIRST_CLIENT, DESC_AMY);
+        final UpdateClientCommand standardCommand = new UpdateClientCommand(INDEX_FIRST_CLIENT, DESC_AMY);
 
         // same values -> returns true
         EditPersonDescriptor copyDescriptor = new EditPersonDescriptor(DESC_AMY);
-        EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_CLIENT, copyDescriptor);
+        UpdateClientCommand commandWithSameValues = new UpdateClientCommand(INDEX_FIRST_CLIENT, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
         // same object -> returns true
@@ -168,9 +167,9 @@ public class UpdateClientCommandTest {
         assertFalse(standardCommand.equals(new ClearCommand()));
 
         // different index -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_CLIENT, DESC_AMY)));
+        assertFalse(standardCommand.equals(new UpdateClientCommand(INDEX_SECOND_CLIENT, DESC_AMY)));
 
         // different descriptor -> returns false
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_CLIENT, DESC_BOB)));
+        assertFalse(standardCommand.equals(new UpdateClientCommand(INDEX_FIRST_CLIENT, DESC_BOB)));
     }
 }

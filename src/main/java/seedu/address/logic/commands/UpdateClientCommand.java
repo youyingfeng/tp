@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import seedu.address.commons.util.CollectionUtil;
 import static seedu.address.logic.parser.CliSyntax.CLIENT_PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_EMAIL;
@@ -9,6 +10,7 @@ import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_PHONE;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -44,6 +46,7 @@ public class UpdateClientCommand extends Command {
     private Address address;
     private Email email;
     private Phone phone;
+    private final UpdateClientDescriptor updateClientDescriptor;
 
     /**
      * @param targetIndex index of the client the user would like to modify
@@ -58,6 +61,13 @@ public class UpdateClientCommand extends Command {
         this.address = address;
         this.email = email;
         this.phone = phone;
+
+        UpdateClientDescriptor updateClientDescriptor = new UpdateClientDescriptor();
+        updateClientDescriptor.setName(name);
+        updateClientDescriptor.setAddress(address);
+        updateClientDescriptor.setEmail(email);
+        updateClientDescriptor.setPhone(phone);
+        this.updateClientDescriptor = updateClientDescriptor;
     }
 
     @Override
@@ -108,5 +118,89 @@ public class UpdateClientCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof UpdateClientCommand // instanceof handles nulls
                 && targetIndex.equals(((UpdateClientCommand) other).targetIndex)); // state check
+    }
+
+    /**
+     * Stores the details to edit the person with. Each non-empty field value will replace the
+     * corresponding field value of the person.
+     */
+    public static class UpdateClientDescriptor {
+        private Name name;
+        private Phone phone;
+        private Email email;
+        private Address address;
+
+        public UpdateClientDescriptor() {}
+
+        /**
+         * Copy constructor.
+         * A defensive copy of {@code tags} is used internally.
+         */
+        public UpdateClientDescriptor(UpdateClientDescriptor toCopy) {
+            setName(toCopy.name);
+            setPhone(toCopy.phone);
+            setEmail(toCopy.email);
+            setAddress(toCopy.address);
+        }
+
+        /**
+         * Returns true if at least one field is edited.
+         */
+        public boolean isAnyFieldEdited() {
+            return CollectionUtil.isAnyNonNull(name, phone, email, address);
+        }
+
+        public void setName(Name name) {
+            this.name = name;
+        }
+
+        public Optional<Name> getName() {
+            return Optional.ofNullable(name);
+        }
+
+        public void setPhone(Phone phone) {
+            this.phone = phone;
+        }
+
+        public Optional<Phone> getPhone() {
+            return Optional.ofNullable(phone);
+        }
+
+        public void setEmail(Email email) {
+            this.email = email;
+        }
+
+        public Optional<Email> getEmail() {
+            return Optional.ofNullable(email);
+        }
+
+        public void setAddress(Address address) {
+            this.address = address;
+        }
+
+        public Optional<Address> getAddress() {
+            return Optional.ofNullable(address);
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            // short circuit if same object
+            if (other == this) {
+                return true;
+            }
+
+            // instanceof handles nulls
+            if (!(other instanceof UpdateClientDescriptor)) {
+                return false;
+            }
+
+            // state check
+            UpdateClientDescriptor e = (UpdateClientDescriptor) other;
+
+            return getName().equals(e.getName())
+                    && getPhone().equals(e.getPhone())
+                    && getEmail().equals(e.getEmail())
+                    && getAddress().equals(e.getAddress());
+        }
     }
 }

@@ -26,7 +26,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.ClientMultiPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
 import seedu.address.testutil.PersonUtil;
 
