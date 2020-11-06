@@ -9,38 +9,30 @@ AddressBook - Level 3 is a desktop address book application used for teaching So
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-  * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-  * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-  * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
+* **New Feature**: GUI forms for all CRUD operations (Pull requests [\#81](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/81), [\#83](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/83), and [\#159](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/159))
+  * **What it does:** Allows the user to create new clients and orders, view and update client and order information, and delete existing clients and orders from the application.
+  * **Justification:** This feature improves the product significantly because it vastly increases the ease of use for both experienced and new users. New users can use the application immediately without needing to learn a single line of code, while experienced users are given the additional option of using a GUI to perform operations.
+  * **Highlights:** This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
+  * **Credits:** GUI layout was made in SceneBuilder.
 
-* **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
-
-* **Code contributed**: [RepoSense link]()
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=youyingfeng)
 
 * **Project management**:
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+  * Helped out with releases `v1.2` - `v1.3` (2 releases) on GitHub
 
 * **Enhancements to existing features**:
-  * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
+  * Refactored existing Person class to Client (Pull requests [\#41](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/41))
+  * Augmented Client and Order with additional fields ([\#57](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/57))
+  * Reworked the GUI into a new layout (Pull requests [\#45](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/45))
+  * Integrated `update-order` and `update-client` commands into the application properly [\#159](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/159)
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `delete` and `find` [\#72]()
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+    * Added documentation for the entire GUI : [\#166](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/166)
+    * Added documentation for the features `update-order` and `update-client` : [\#161](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/161)
+    * Did bug fixes to existing documentation of features `done`, `order` : [\#164](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/164)
   * Developer Guide:
-    * Added implementation details of the `delete` feature.
+    * Added implementation details of the GUI forms and information panels : [\#161](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/161)
 
-* **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
-
-* **Tools**:
-  * Integrated a third party library (Natty) to the project ([\#42]())
-  * Integrated a new Github plugin (CircleCI) to the team repo
 
 * _{you can add/remove categories in the list above}_
