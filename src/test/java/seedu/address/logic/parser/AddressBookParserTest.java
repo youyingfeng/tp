@@ -18,8 +18,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.ClearCommand;
 //import seedu.address.logic.commands.ClientCommand;
 //import seedu.address.logic.commands.DeleteClientCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
