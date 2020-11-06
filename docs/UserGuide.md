@@ -208,6 +208,37 @@ Displays a list of all clients in the client list.
  
 ------------------------------------------------------------------------------------------------------------------------
 
+### Deleting an Order : `delete-order`
+
+**Description** : Deletes an order from order list.
+
+**Format** : `delete-order --order <order id>`
+
+Deletes the order that is identified as `<order id>`. 
+
+Note that `<order index>` is the **unique order ID** given to each order when added and is **not** based on the order 
+index in the order list.
+
+`<order id>` must exist as a valid unique order ID in the order list, **starting from `1`**.
+
+To identify the unique order ID of a client, view the 6 digit ID number assigned to the order to the **right** of 
+the client's name. For example, if the first line of the order information is `2. Order #000005`, then the 
+order's unique order ID is `5`.
+
+**Invalid Usage Example** :
+![Invalid Order Command](images/InvalidDeleteOrderCommand.png)
+Order index should be a valid unique order ID in the order list
+
+**Valid Usage Example** :
+![Valid Order Command](images/ValidDeleteOrderCommand.png)
+`delete-order --order 2` : deletes the order with unique order ID #000002
+
+**Other Valid Usages** :
+Entering order ID with as many leading zeroes (e.g `00000000001`) will still work as long as the order id without the
+leading zeroes (e.g `1`) is a valid unique client ID in the client list.
+
+------------------------------------------------------------------------------------------------------------------------
+
 ### Deleting a Client : `delete-client`
 
 **Description** : Deletes a client from client list and orders linked to that client.
@@ -247,37 +278,6 @@ All orders in order list that are linked to client with unique ID `#00004` are d
 
 **Other Valid Usages** :
 Entering client ID with as many leading zeroes (e.g `00000000001`) will still work as long as the client id without the 
-leading zeroes (e.g `1`) is a valid unique client ID in the client list.
-
-------------------------------------------------------------------------------------------------------------------------
-
-### Deleting an Order : `delete-order`
-
-**Description** : Deletes an order from order list.
-
-**Format** : `delete-order --order <order id>`
-
-Deletes the order that is identified as `<order id>`. 
-
-Note that `<order index>` is the **unique order ID** given to each order when added and is **not** based on the order 
-index in the order list.
-
-`<order id>` must exist as a valid unique order ID in the order list, **starting from `1`**.
-
-To identify the unique order ID of a client, view the 6 digit ID number assigned to the order to the **right** of 
-the client's name. For example, if the first line of the order information is `2. Order #000005`, then the 
-order's unique order ID is `5`.
-
-**Invalid Usage Example** :
-![Invalid Order Command](images/InvalidDeleteOrderCommand.png)
-Order index should be a valid unique order ID in the order list
-
-**Valid Usage Example** :
-![Valid Order Command](images/ValidDeleteOrderCommand.png)
-`delete-order --order 2` : deletes the order with unique order ID #000002
-
-**Other Valid Usages** :
-Entering order ID with as many leading zeroes (e.g `00000000001`) will still work as long as the order id without the
 leading zeroes (e.g `1`) is a valid unique client ID in the client list.
 
 ------------------------------------------------------------------------------------------------------------------------
