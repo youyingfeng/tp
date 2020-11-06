@@ -1,7 +1,6 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import seedu.address.commons.util.CollectionUtil;
 import static seedu.address.logic.parser.CliSyntax.CLIENT_PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_EMAIL;
@@ -14,6 +13,7 @@ import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -40,6 +40,7 @@ public class UpdateClientCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 " + CLIENT_PREFIX_NAME + "Peter";
 
     public static final String MESSAGE_UPDATE_CLIENT_SUCCESS = "Updated Client: %1$s";
+    public static final String MESSAGE_NOT_UPDATED = "At least one field to edit must be provided.";
 
     private final Index targetIndex;
     private Name name;
