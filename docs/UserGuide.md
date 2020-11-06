@@ -208,36 +208,6 @@ Displays a list of all clients in the client list.
  
 ------------------------------------------------------------------------------------------------------------------------
 
-### Deleting a Client : `delete-client`
-
-**Description** : Deletes a client from client list.
-
-**Format** : `delete-client --client <client id>`
-
-Deletes the client who is identified as `<client id>`. 
-
-Note that `<client id>` is the **unique client ID** given to each client when added and is **not** based on the client 
-index in the client list. 
-
-`<client id>` must exist as a valid unique client ID in the client list, **starting from `1`**.
-
-To identify the unique client ID of a client, view the 6 digit ID number assigned to the client in **brackets** beside 
-the client's name. For example, if the first line of the client information is `1. Kim Kardashian [ID#000003]`, then the 
-client's unique client ID is `3`.
-
-**Invalid Usage Example** :
-![Invalid Client Command](images/InvalidDeleteClientCommand.png)
-Client ID should be a valid unique client ID in the client list
-
-**Valid Usage Example** :
-`delete-client --client 1` : deletes the client with unique client ID #000001
-
-**Other Valid Usages** :
-Entering client ID with as many leading zeroes (e.g `00000000001`) will still work as long as the client id without the 
-leading zeroes (e.g `1`) is a valid unique client ID in the client list.
-
-------------------------------------------------------------------------------------------------------------------------
-
 ### Deleting an Order : `delete-order`
 
 **Description** : Deletes an order from order list.
@@ -260,10 +230,54 @@ order's unique order ID is `5`.
 Order index should be a valid unique order ID in the order list
 
 **Valid Usage Example** :
+![Valid Order Command](images/ValidDeleteOrderCommand.png)
 `delete-order --order 2` : deletes the order with unique order ID #000002
 
 **Other Valid Usages** :
 Entering order ID with as many leading zeroes (e.g `00000000001`) will still work as long as the order id without the
+leading zeroes (e.g `1`) is a valid unique client ID in the client list.
+
+------------------------------------------------------------------------------------------------------------------------
+
+### Deleting a Client : `delete-client`
+
+**Description** : Deletes a client from client list and orders linked to that client.
+
+**Format** : `delete-client --client <client id>`
+
+Deletes the client who is identified as `<client id>` and orders linked to `<client id>`. 
+
+Note that `<client id>` is the **unique client ID** given to each client when added and is **not** based on the client 
+index in the client list. 
+
+`<client id>` must exist as a valid unique client ID in the client list, **starting from `1`**.
+
+To identify the unique client ID of a client, view the 6 digit ID number assigned to the client in **brackets** beside 
+the client's name. For example, if the first line of the client information is `1. Kim Kardashian [ID#000003]`, then the 
+client's unique client ID is `3`.
+
+**Invalid Usage Example** :
+![Invalid Client Command](images/InvalidDeleteClientCommand.png)
+Client ID should be a valid unique client ID in the client list
+
+**Valid Usage Example 1** : Deleting Client with Empty Order List
+![Valid Client Command 1](images/ValidDeleteClientCommand.png)
+`delete-client --client 1` : deletes the client with unique client ID #000001
+In this case, no orders are deleted as no orders are linked to the client
+
+**Valid Usage Example 2** : Delete Client with Non-Empty Order List
+![Valid Client Command 2](images/DeleteClient4Command.png)
+`delete-client --client 4` : deletes the client with unique client ID #00004
+
+Original Order List :
+![Original Order List](images/OriginalOrderList.png)
+
+After client #00004 is deleted :
+![Delete Orders Linked to Client 4](images/DeletedOrdersFromDeletedClient.png)
+All orders in order list that are linked to client with unique ID `#00004` are deleted
+
+**Other Valid Usages** :
+Entering client ID with as many leading zeroes (e.g `00000000001`) will still work as long as the client id without the 
 leading zeroes (e.g `1`) is a valid unique client ID in the client list.
 
 ------------------------------------------------------------------------------------------------------------------------
