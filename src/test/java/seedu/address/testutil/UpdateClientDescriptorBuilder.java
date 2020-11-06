@@ -1,6 +1,6 @@
 package seedu.address.testutil;
 
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.UpdateClientCommand.UpdateClientDescriptor;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.Email;
@@ -10,23 +10,23 @@ import seedu.address.model.person.Phone;
 /**
  * A utility class to help with building EditPersonDescriptor objects.
  */
-public class EditPersonDescriptorBuilder {
+public class UpdateClientDescriptorBuilder {
 
-    private EditPersonDescriptor descriptor;
+    private UpdateClientDescriptor descriptor;
 
-    public EditPersonDescriptorBuilder() {
-        descriptor = new EditPersonDescriptor();
+    public UpdateClientDescriptorBuilder() {
+        descriptor = new UpdateClientDescriptor();
     }
 
-    public EditPersonDescriptorBuilder(EditPersonDescriptor descriptor) {
-        this.descriptor = new EditPersonDescriptor(descriptor);
+    public UpdateClientDescriptorBuilder(UpdateClientDescriptor descriptor) {
+        this.descriptor = new UpdateClientDescriptor(descriptor);
     }
 
     /**
      * Returns an {@code EditPersonDescriptor} with fields containing {@code person}'s details
      */
-    public EditPersonDescriptorBuilder(Client client) {
-        descriptor = new EditPersonDescriptor();
+    public UpdateClientDescriptorBuilder(Client client) {
+        descriptor = new UpdateClientDescriptor();
         descriptor.setName(client.getName());
         descriptor.setPhone(client.getPhone());
         descriptor.setEmail(client.getEmail());
@@ -36,7 +36,7 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code Name} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withName(String name) {
+    public UpdateClientDescriptorBuilder withName(String name) {
         descriptor.setName(new Name(name));
         return this;
     }
@@ -44,7 +44,7 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code Phone} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withPhone(String phone) {
+    public UpdateClientDescriptorBuilder withPhone(String phone) {
         descriptor.setPhone(new Phone(phone));
         return this;
     }
@@ -52,7 +52,7 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code Email} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withEmail(String email) {
+    public UpdateClientDescriptorBuilder withEmail(String email) {
         descriptor.setEmail(new Email(email));
         return this;
     }
@@ -60,7 +60,7 @@ public class EditPersonDescriptorBuilder {
     /**
      * Sets the {@code Address} of the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withAddress(String address) {
+    public UpdateClientDescriptorBuilder withAddress(String address) {
         descriptor.setAddress(new Address(address));
         return this;
     }
@@ -75,7 +75,7 @@ public class EditPersonDescriptorBuilder {
     //     return this;
     // }
 
-    public EditPersonDescriptor build() {
+    public UpdateClientDescriptor build() {
         return descriptor;
     }
 }
