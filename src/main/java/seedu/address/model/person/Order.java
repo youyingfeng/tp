@@ -155,7 +155,7 @@ public class Order {
                 && otherOrder.getDeliveryDateTime().format(DEFAULT_DATE_TIME_FORMATTER)
                     .equals(deliveryDateTime.format(DEFAULT_DATE_TIME_FORMATTER))
                 && otherOrder.getCreationDateTime().format(DEFAULT_DATE_TIME_FORMATTER)
-                .equals(creationDateTime.format(DEFAULT_DATE_TIME_FORMATTER))
+                    .equals(creationDateTime.format(DEFAULT_DATE_TIME_FORMATTER))
                 && otherOrder.isDone() == isDone;
     }
 

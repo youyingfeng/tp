@@ -21,12 +21,15 @@ public class OrderBuilder {
     public static final String DEFAULT_DESCRIPTION = "shoes";
     public static final String DEFAULT_DATE = "2020-12-12 2359";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final boolean DEFAULT_COMPLETION_STATUS = false;
 
     private Index clientId;
     private Index orderId;
     private String description;
-    private LocalDateTime date;
+    private LocalDateTime deliveryDate;
+    private LocalDateTime creationDate;
     private Address address;
+    private boolean isDone;
     private Set<Tag> tags;
 
     /**
@@ -34,11 +37,14 @@ public class OrderBuilder {
      */
     public OrderBuilder() {
         try {
-            clientId = ParserUtil.parseIndex(DEFAULT_CLIENTID);
+            orderId = ParserUtil.parseOrderIndex(DEFAULT_ORDERID);
+            clientId = ParserUtil.parseClientIndex(DEFAULT_CLIENTID);
             description = DEFAULT_DESCRIPTION;
             address = new Address(DEFAULT_ADDRESS);
             tags = new HashSet<>();
-            date = ParserUtil.parseDate(DEFAULT_DATE);
+            deliveryDate = ParserUtil.parseDate(DEFAULT_DATE);
+            creationDate = ParserUtil.parseDate(DEFAULT_DATE);
+            isDone = DEFAULT_COMPLETION_STATUS;
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -48,9 +54,11 @@ public class OrderBuilder {
      * Initializes the OrderBuilder with the data of {@code orderToCopy}.
      * */
     public OrderBuilder(Order orderToCopy) {
+        orderId = orderToCopy.getOrderId();
         clientId = orderToCopy.getClientId();
         description = orderToCopy.getDescription();
-        date = orderToCopy.getDeliveryDateTime();
+        deliveryDate = orderToCopy.getDeliveryDateTime();
+        creationDate = orderToCopy.getCreationDateTime();
         address = orderToCopy.getAddress();
     }
 
@@ -97,9 +105,21 @@ public class OrderBuilder {
     /**
      * Sets the {@code Date} of the {@code Order} that we are building.
      */
-    public OrderBuilder withDate(String date) {
+    public OrderBuilder withDeliveryDate(String date) {
         try {
-            this.date = ParserUtil.parseDate(DEFAULT_DATE);
+            this.deliveryDate = ParserUtil.parseDate(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    /**
+     * Sets the {@code Date} of the {@code Order} that we are building.
+     */
+    public OrderBuilder withCreationDate(String date) {
+        try {
+            this.creationDate = ParserUtil.parseDate(date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -115,11 +135,19 @@ public class OrderBuilder {
     }
 
     /**
+     * Sets the {@code description} of the {@code Order} that we are building.
+     */
+    public OrderBuilder withCompletionStatus(boolean isDone) {
+        this.isDone = isDone;
+        return this;
+    }
+
+    /**
      * Creates {@code Order} using the order fields.
      */
     public Order build() {
         LocalDateTime creationDateTime = LocalDateTime.now();
-        return new Order(orderId, clientId, description, address, date, creationDateTime, creationDateTime, false);
+        return new Order(orderId, clientId, description, address, deliveryDate, creationDate, creationDate, isDone);
     }
 
 }
