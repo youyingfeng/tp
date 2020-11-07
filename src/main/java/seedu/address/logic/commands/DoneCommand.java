@@ -44,7 +44,7 @@ public class DoneCommand extends Command {
         for (Order order : lastShownList) {
             if (order.getOrderId().getZeroBased() == toMarkAsDoneIndex.getZeroBased()) {
                 if (order.isDone()) {
-                    return new CommandResult(MESSAGE_ALREADY_DONE);
+                    throw new CommandException(MESSAGE_ALREADY_DONE);
                 } else {
                     LocalDateTime currentDateTime = LocalDateTime.now();
                     Order updatedOrder =
@@ -57,6 +57,13 @@ public class DoneCommand extends Command {
                 }
             }
         }
-        return new CommandResult(MESSAGE_NOT_FOUND);
+        throw new CommandException(MESSAGE_NOT_FOUND);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                   || (other instanceof DoneCommand // instanceof handles nulls
+                           && toMarkAsDoneIndex.equals(((DoneCommand) other).toMarkAsDoneIndex)); // state check
     }
 }
