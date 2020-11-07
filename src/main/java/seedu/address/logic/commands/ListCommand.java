@@ -17,7 +17,7 @@ public class ListCommand extends Command {
 
     public static final String COMMAND_WORD = "list-client";
 
-    public static final String MESSAGE_SUCCESS = "Listed all persons";
+    public static final String MESSAGE_SUCCESS = "Listed all clients";
 
     private static Logger logger = Logger.getLogger("list");
 
