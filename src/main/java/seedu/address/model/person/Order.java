@@ -138,6 +138,28 @@ public class Order {
     }
 
     @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Order)) {
+            return false;
+        }
+
+        Order otherOrder = (Order) other;
+        return otherOrder.getOrderId().equals(orderId)
+                && otherOrder.getClientId().equals(clientId)
+                && otherOrder.getDescription().equals(description)
+                && otherOrder.getAddress().equals(address)
+                && otherOrder.getDeliveryDateTime().format(DEFAULT_DATE_TIME_FORMATTER)
+                    .equals(deliveryDateTime.format(DEFAULT_DATE_TIME_FORMATTER))
+                && otherOrder.getCreationDateTime().format(DEFAULT_DATE_TIME_FORMATTER)
+                .equals(creationDateTime.format(DEFAULT_DATE_TIME_FORMATTER))
+                && otherOrder.isDone() == isDone;
+    }
+
+    @Override
     public String toString() {
         final String stringRepresentation = "Order #" + String.format("%05d", getOrderId().getZeroBased()) + " "
                 + " Description: " + description

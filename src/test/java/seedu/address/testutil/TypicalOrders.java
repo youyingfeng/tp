@@ -25,25 +25,25 @@ import seedu.address.model.person.Order;
 public class TypicalOrders {
 
     // Manually added
-    public static final Order SHOES = new OrderBuilder().withDescription("shoes")
+    public static final Order SHOES = new OrderBuilder().withOrderId("1").withDescription("shoes")
             .withAddress("123, Jurong West Ave 6, #08-111").withClientId("1").withDate("2020-12-12 2359")
             .withTags("important").build();
-    public static final Order DRESS = new OrderBuilder().withDescription("dress")
+    public static final Order DRESS = new OrderBuilder().withOrderId("2").withDescription("dress")
             .withAddress("311, Clementi Ave 2, #02-25").withClientId("2").withDate("2020-10-12 2359")
             .withTags("important").build();
-    public static final Order SKIRT = new OrderBuilder().withDescription("skirt")
+    public static final Order SKIRT = new OrderBuilder().withOrderId("3").withDescription("skirt")
             .withAddress("wall street").withClientId("2").withDate("2020-8-12 2359")
             .withTags("important").build();
-    public static final Order HAT = new OrderBuilder().withDescription("hat")
+    public static final Order HAT = new OrderBuilder().withOrderId("4").withDescription("hat")
             .withAddress("10th street").withClientId("3").withDate("2020-6-12 2359")
             .withTags("important").build();
-    public static final Order BRACELET = new OrderBuilder().withDescription("bracelet")
+    public static final Order BRACELET = new OrderBuilder().withOrderId("5").withDescription("bracelet")
             .withAddress("michegan ave").withClientId("4").withDate("2020-4-12 2359")
             .withTags("important").build();
-    public static final Order HELMET = new OrderBuilder().withDescription("helmet")
+    public static final Order HELMET = new OrderBuilder().withOrderId("6").withDescription("helmet")
             .withAddress("little tokyo").withClientId("5").withDate("2020-2-12 2359")
             .withTags("important").build();
-    public static final Order GLASSES = new OrderBuilder().withDescription("glasses")
+    public static final Order GLASSES = new OrderBuilder().withOrderId("7").withDescription("glasses")
             .withAddress("4th street").withClientId("6").withDate("2020-2-30 2359")
             .withTags("important").build();
 

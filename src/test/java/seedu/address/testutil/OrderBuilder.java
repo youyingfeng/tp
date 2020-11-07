@@ -17,11 +17,13 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class OrderBuilder {
     public static final String DEFAULT_CLIENTID = "2";
+    public static final String DEFAULT_ORDERID = "1";
     public static final String DEFAULT_DESCRIPTION = "shoes";
     public static final String DEFAULT_DATE = "2020-12-12 2359";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
 
     private Index clientId;
+    private Index orderId;
     private String description;
     private LocalDateTime date;
     private Address address;
@@ -53,11 +55,23 @@ public class OrderBuilder {
     }
 
     /**
+     * Sets the {@code orderId} of the {@code Order} that we are building.
+     */
+    public OrderBuilder withOrderId(String orderId) {
+        try {
+            this.orderId = ParserUtil.parseOrderIndex(orderId);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return this;
+    }
+
+    /**
      * Sets the {@code clientId} of the {@code Order} that we are building.
      */
     public OrderBuilder withClientId(String clientId) {
         try {
-            this.clientId = ParserUtil.parseIndex(clientId);
+            this.clientId = ParserUtil.parseClientIndex(clientId);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -105,7 +119,7 @@ public class OrderBuilder {
      */
     public Order build() {
         LocalDateTime creationDateTime = LocalDateTime.now();
-        return new Order(clientId, description, address, date, creationDateTime, creationDateTime, false);
+        return new Order(orderId, clientId, description, address, date, creationDateTime, creationDateTime, false);
     }
 
 }
