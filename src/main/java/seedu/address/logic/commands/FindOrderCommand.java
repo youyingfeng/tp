@@ -8,7 +8,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.OrderMultiPredicate;
 
 /**
- * Finds and lists all orders in address book whose description contains any of the argument keywords.
+ * Finds and lists all orders in order list of address book whose description contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindOrderCommand extends Command {

@@ -13,18 +13,18 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Client;
 
 /**
- * Deletes a person identified using it's displayed index from the address book.
+ * Deletes a client identified using it's unique client ID displayed in the client list of the address book.
  */
 public class DeleteClientCommand extends Command {
 
     public static final String COMMAND_WORD = "delete-client";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the person identified by the index number used in the displayed person list.\n"
+            + ": Deletes the client identified by the unique client ID in the displayed client list.\n"
             + "Parameters: CLIENT INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " " + DELETE_PREFIX_CLIENT + " 1";
 
-    public static final String MESSAGE_DELETE_CLIENT_SUCCESS = "Deleted Person: %1$s";
+    public static final String MESSAGE_DELETE_CLIENT_SUCCESS = "Deleted Client: %1$s";
 
     private final Index targetIndex;
 

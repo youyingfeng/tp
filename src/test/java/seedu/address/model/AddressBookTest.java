@@ -21,7 +21,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
+import seedu.address.model.person.exceptions.DuplicateClientException;
 import seedu.address.testutil.PersonBuilder;
 
 
@@ -54,7 +54,7 @@ public class AddressBookTest {
         List<Client> newClients = Arrays.asList(ALICE, editedAlice);
         AddressBookStub newData = new AddressBookStub(newClients);
 
-        assertThrows(DuplicatePersonException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateClientException.class, () -> addressBook.resetData(newData));
     }
 
     @Test

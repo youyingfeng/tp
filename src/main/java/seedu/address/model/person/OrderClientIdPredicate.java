@@ -4,6 +4,9 @@ import java.util.function.Predicate;
 
 import seedu.address.commons.core.index.Index;
 
+/**
+ * Tests that an {@code Order}'s {@code clientId} matches any of the keywords given.
+ */
 public class OrderClientIdPredicate implements Predicate<Order> {
 
     private Index clientId;

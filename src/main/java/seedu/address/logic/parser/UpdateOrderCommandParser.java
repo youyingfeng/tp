@@ -17,6 +17,9 @@ import seedu.address.logic.commands.UpdateOrderCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 
+/**
+ * Parses input arguments and creates a new UpdateOrderCommand object
+ */
 public class UpdateOrderCommandParser implements Parser<UpdateOrderCommand> {
     public static final String COMMAND_WORD = "update order";
     /**

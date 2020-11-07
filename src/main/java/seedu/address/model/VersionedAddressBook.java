@@ -12,7 +12,7 @@ public class VersionedAddressBook extends AddressBook {
     private int currentStatePointer;
 
     /**
-     * Creates an Versioned AddressBook using the Persons in the {@code toBeCopied}
+     * Creates an Versioned AddressBook using the Clients in the {@code toBeCopied}
      */
     public VersionedAddressBook(ReadOnlyAddressBook initialState) {
         super(initialState);

@@ -32,7 +32,7 @@ class JsonAdaptedClient {
     private final int[] orders;
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given person details.
+     * Constructs a {@code JsonAdaptedPerson} with the given client details.
      */
     @JsonCreator
     public JsonAdaptedClient(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
@@ -47,7 +47,7 @@ class JsonAdaptedClient {
     }
 
     /**
-     * Converts a given {@code Person} into this class for Jackson use.
+     * Converts a given {@code Client} into this class for Jackson use.
      */
     public JsonAdaptedClient(Client source) {
         name = source.getName().fullName;
@@ -62,9 +62,9 @@ class JsonAdaptedClient {
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
+     * Converts this Jackson-friendly adapted person object into the model's {@code Client} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted client.
      */
     public Client toModelType() throws IllegalValueException {
         if (name == null) {

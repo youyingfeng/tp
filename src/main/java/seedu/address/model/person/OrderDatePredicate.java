@@ -3,6 +3,9 @@ package seedu.address.model.person;
 import java.time.LocalDate;
 import java.util.function.Predicate;
 
+/**
+ * Tests that an {@code Order}'s {@code Date} matches any of the keywords given.
+ */
 public class OrderDatePredicate implements Predicate<Order> {
 
     private LocalDate date;

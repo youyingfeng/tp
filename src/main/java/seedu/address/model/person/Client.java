@@ -10,7 +10,7 @@ import seedu.address.commons.core.index.Index;
 
 
 /**
- * Represents a Person in the address book.
+ * Represents a Client in client list of the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Client {
@@ -80,7 +80,7 @@ public class Client {
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
+     * Returns true if both clients of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSamePerson(Client otherClient) {
@@ -94,8 +94,8 @@ public class Client {
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both clients have the same identity and data fields.
+     * This defines a stronger notion of equality between two clients.
      */
     @Override
     public boolean equals(Object other) {

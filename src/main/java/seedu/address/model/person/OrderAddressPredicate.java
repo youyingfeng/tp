@@ -5,7 +5,9 @@ import java.util.function.Predicate;
 
 import seedu.address.commons.util.StringUtil;
 
-
+/**
+ * Tests that an {@code Order}'s {@code Address} matches any of the keywords given.
+ */
 public class OrderAddressPredicate implements Predicate<Order> {
 
     private final List<String> keywords;
