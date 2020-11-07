@@ -12,7 +12,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Order;
 
 /**
- * Marks an order as done in the addressbook.
+ * Marks an order as done in order list of the addressbook.
  */
 public class DoneCommand extends Command {
 

@@ -15,14 +15,14 @@ import seedu.address.model.person.Client;
 import seedu.address.model.person.Order;
 
 /**
- * Creates an order linked to an existing person in the address book.
+ * Creates an order linked to an existing client in the address book.
  */
 public class OrderCommand extends Command {
 
     public static final String COMMAND_WORD = "order";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Creates an order linked to an existing person in the address book.\n"
+            + ": Creates an order linked to an existing client in the address book.\n"
             + "Parameters: DESCRIPTION (string to describe the created order)"
             + " CLIENT_ID (must be a positive integer) ADDRESS (string to describe the delivery address)"
             + " DATE (date of delivery in yyyy-MM-dd hhmm).\n"

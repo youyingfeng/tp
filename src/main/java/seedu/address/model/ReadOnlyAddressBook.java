@@ -11,8 +11,8 @@ import seedu.address.model.person.Order;
 public interface ReadOnlyAddressBook extends Observable {
 
     /**
-     * Returns an unmodifiable view of the persons list.
-     * This list will not contain any duplicate persons.
+     * Returns an unmodifiable view of the clients list.
+     * This list will not contain any duplicate clients.
      */
     ObservableList<Client> getPersonList();
 

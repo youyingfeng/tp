@@ -20,7 +20,7 @@ public class CliSyntax {
     public static final Prefix CLIENT_PREFIX_EMAIL = new Prefix("--email");
     public static final Prefix CLIENT_PREFIX_PHONE = new Prefix("--phone");
 
-    /* Prefix definitions for DELETE */
+    /* Prefix definitions for DELETE CLIENT AND DELETE ORDER*/
     public static final Prefix DELETE_PREFIX_CLIENT = new Prefix("--client");
     public static final Prefix DELETE_PREFIX_ORDER = new Prefix("--order");
 

@@ -20,7 +20,7 @@ import seedu.address.model.person.UniquePersonList;
  */
 public class AddressBook implements ReadOnlyAddressBook {
 
-    private final UniquePersonList persons;
+    private final UniquePersonList clients;
     private final UniqueOrderList orders;
 
     private final InvalidationListenerManager invalidationListenerManager = new InvalidationListenerManager();
@@ -33,7 +33,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        persons = new UniquePersonList();
+        clients = new UniquePersonList();
         orders = new UniqueOrderList();
     }
 
@@ -54,7 +54,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * {@code persons} must not contain duplicate persons.
      */
     public void setPersons(List<Client> clients) {
-        this.persons.setPersons(clients);
+        this.clients.setPersons(clients);
     }
 
     /**
@@ -75,14 +75,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         setOrders(newData.getOrderList());
     }
 
-    //// person-level operations
+    //// clients-level operations
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
     public boolean hasClient(Client client) {
         requireNonNull(client);
-        return persons.contains(client);
+        return clients.contains(client);
     }
 
     /**
@@ -100,7 +100,7 @@ public class AddressBook implements ReadOnlyAddressBook {
             }
         }
 
-        persons.add(p);
+        clients.add(p);
         indicateModified();
     }
 
@@ -112,7 +112,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public void setClient(Client target, Client editedClient) {
         requireNonNull(editedClient);
 
-        persons.setPerson(target, editedClient);
+        clients.setPerson(target, editedClient);
         indicateModified();
     }
 
@@ -144,7 +144,7 @@ public class AddressBook implements ReadOnlyAddressBook {
             removeOrder(order);
         }
 
-        persons.remove(key);
+        clients.remove(key);
         indicateModified();
     }
 
@@ -218,13 +218,13 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
+        return clients.asUnmodifiableObservableList().size() + " persons";
         // TODO: refine later
     }
 
     @Override
     public ObservableList<Client> getPersonList() {
-        return persons.asUnmodifiableObservableList();
+        return clients.asUnmodifiableObservableList();
     }
 
     @Override
@@ -236,13 +236,13 @@ public class AddressBook implements ReadOnlyAddressBook {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons)
+                && clients.equals(((AddressBook) other).clients)
                 && orders.equals(((AddressBook) other).orders));
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return clients.hashCode();
         // todo : implementation for orders hashcode
     }
 }

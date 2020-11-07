@@ -36,7 +36,7 @@ public class UniqueOrderList implements Iterable<Order> {
     }
 
     /**
-     * Adds a order to the list.
+     * Adds an order to the list.
      * The order must not already exist in the list.
      */
     public void add(Order toAdd) {
@@ -121,7 +121,7 @@ public class UniqueOrderList implements Iterable<Order> {
     }
 
     /**
-     * Returns true if {@code persons} contains only unique persons.
+     * Returns true if {@code orders} contains only unique orders.
      */
     private boolean ordersAreUnique(List<Order> orders) {
         for (int i = 0; i < orders.size() - 1; i++) {

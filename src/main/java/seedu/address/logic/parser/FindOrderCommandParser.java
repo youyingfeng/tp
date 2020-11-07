@@ -23,7 +23,9 @@ import seedu.address.model.person.OrderClientIdPredicate;
 import seedu.address.model.person.OrderDatePredicate;
 import seedu.address.model.person.OrderMultiPredicate;
 
-
+/**
+ * Parses input arguments and creates a new FindOrderCommand object
+ */
 public class FindOrderCommandParser implements Parser<FindOrderCommand> {
 
     private static final Logger findOrderCommandParserLogger = Logger.getLogger("focp");

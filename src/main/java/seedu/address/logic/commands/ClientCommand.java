@@ -30,7 +30,7 @@ public class ClientCommand extends Command {
     private final Client toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Person}
+     * Creates a ClientCommand to add the specified {@code Client}
      */
     public ClientCommand(Client client) {
         requireNonNull(client);

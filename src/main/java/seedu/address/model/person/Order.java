@@ -6,7 +6,10 @@ import java.time.LocalDateTime;
 
 import seedu.address.commons.core.index.Index;
 
-
+/**
+ * Represents an Order in order list of the address book.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class Order {
     public static final String MESSAGE_CONSTRAINTS =
             "Order date should be in the format yyyy-mm-dd";
