@@ -455,3 +455,5 @@ Action | Format
 **Update Order** | `update-order --orderid <order ID of order to be changed> (--description <new order description>) (--clientid <new client id>) (--address <new address>) (--date <new delivery date>)`
 **Update Client** | `update-client --clientid <client ID of client to be changed> (--name <new name>) (--phone <new phone number>) (--address <new address>) (--email <new email>)`
 **Help** | `help`
+**Clear** | `clear`
+**Exit** | `exit`
