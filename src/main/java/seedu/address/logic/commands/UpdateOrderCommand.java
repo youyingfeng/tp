@@ -35,7 +35,8 @@ public class UpdateOrderCommand extends Command {
         requireNonNull(model);
         List<Order> lastShownList = model.getUnfilteredOrderList();
 
-        if (fieldsToUpdate.getOrderId().get().getZeroBased() > lastShownList.get(lastShownList.size() - 1)
+        if (fieldsToUpdate.getOrderId().get().getZeroBased()
+                > lastShownList.get(lastShownList.size() - 1).getOrderId().getZeroBased()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ORDER_INDEX);
         }
 
