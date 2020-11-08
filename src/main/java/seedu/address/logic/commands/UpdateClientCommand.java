@@ -8,9 +8,11 @@ import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_PHONE;
 
 import java.util.List;
+import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
+import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -112,5 +114,89 @@ public class UpdateClientCommand extends Command {
         return other == this // short circuit if same object
                 || (other instanceof UpdateClientCommand // instanceof handles nulls
                 && clientId.equals(((UpdateClientCommand) other).clientId)); // state check
+    }
+
+    /**
+     * Stores the details to edit the client with. Each non-empty field value will replace the
+     * corresponding field value of the client.
+     */
+    public static class UpdateClientDescriptor {
+        private Name name;
+        private Phone phone;
+        private Email email;
+        private Address address;
+
+        public UpdateClientDescriptor() {}
+
+        /**
+         * Copy constructor.
+         * A defensive copy of {@code tags} is used internally.
+         */
+        public UpdateClientDescriptor(UpdateClientDescriptor toCopy) {
+            setName(toCopy.name);
+            setPhone(toCopy.phone);
+            setEmail(toCopy.email);
+            setAddress(toCopy.address);
+        }
+
+        /**
+         * Returns true if at least one field is edited.
+         */
+        public boolean isAnyFieldEdited() {
+            return CollectionUtil.isAnyNonNull(name, phone, email, address);
+        }
+
+        public void setName(Name name) {
+            this.name = name;
+        }
+
+        public Optional<Name> getName() {
+            return Optional.ofNullable(name);
+        }
+
+        public void setPhone(Phone phone) {
+            this.phone = phone;
+        }
+
+        public Optional<Phone> getPhone() {
+            return Optional.ofNullable(phone);
+        }
+
+        public void setEmail(Email email) {
+            this.email = email;
+        }
+
+        public Optional<Email> getEmail() {
+            return Optional.ofNullable(email);
+        }
+
+        public void setAddress(Address address) {
+            this.address = address;
+        }
+
+        public Optional<Address> getAddress() {
+            return Optional.ofNullable(address);
+        }
+
+        @Override
+        public boolean equals(Object other) {
+            // short circuit if same object
+            if (other == this) {
+                return true;
+            }
+
+            // instanceof handles nulls
+            if (!(other instanceof UpdateClientDescriptor)) {
+                return false;
+            }
+
+            // state check
+            UpdateClientDescriptor e = (UpdateClientDescriptor) other;
+
+            return getName().equals(e.getName())
+                    && getPhone().equals(e.getPhone())
+                    && getEmail().equals(e.getEmail())
+                    && getAddress().equals(e.getAddress());
+        }
     }
 }
