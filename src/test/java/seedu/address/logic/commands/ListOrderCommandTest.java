@@ -9,17 +9,15 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.storage.Storage;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.
  */
-public class ListCommandTest {
+public class ListOrderCommandTest {
+
 
     private Model model;
     private Model expectedModel;
-    private Storage storage;
-
     private CommandHistory commandHistory = new CommandHistory();
 
     @BeforeEach
@@ -37,5 +35,4 @@ public class ListCommandTest {
     public void execute_listIsFiltered_showsEverything() {
         assert true;
     }
-
 }

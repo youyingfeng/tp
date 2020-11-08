@@ -213,32 +213,82 @@ Step 4: User clicks `Clear` (creation forms only). The form will clear all text 
 
 Step 5: User clicks `Reset` (update forms only). The form will reset the text in the text fields to the original text of the `Client` or `Order` being updated.
 
-### Find feature
+### Find and FindOrder feature
 
 The find mechanism is facilitated by `FindCommand`, `FindCommandParser`, `FindOrderCommand` and `FindOrderCommandParser`. `FindCommandParser` and `FindOrderCommandParser` implement `Parser`.
 `FindCommand` and `FindOrderCommand` extend `Command`.
 
 These two commands allows the user to search for `Clients` and `Orders` by the name or description respectively.
 
-Currently, the search operations for both `Clients` and `Orders` are very similar. Given a command (e.g. `find adam jane` or `findorder iPhone iPad`), the command is processed by `AddressBookParser` and
+The implementations for search operations for both `Clients` and `Orders` are very similar. Given a command (e.g. `find adam jane` or `findorder iPhone iPad`), the command is processed by `AddressBookParser` and
 passed to the corresponding parsers. There, the parser will process the given arguments and will search for all `Clients`/`Orders` whose name or description contain any
-of the keywords give. For example, If there were two clients, one named 'Adam' and one named 'Jane', both clients will show up in the search results.
+of the keywords give. For example, If there were two clients, one named 'Adam' and one named 'Jane', both clients will show up in the search results. Likewise, if there were two orders, 
+one with the description 'iPhone' and one with the description 'iPad' will be displayed. This is the most basic use of the search operations.
+The parsers will split the provided search terms into an array, and match them with client names or order descriptions through the use of streams.
 
-The parsers will split the provided search terms into an array, and match them with client names or order descriptions through the use of streams. The current implementation of `FindOrderCommand`
-and `FindOrderCommandParser` are simply adapted from the `FindCommand` and `FindCommandParser` respectively. This was done to ensure a minimally functional feature
-Thus, tokens are currently unused for more specific searches.
+As of v1.4, the two commands have been enhanced to accept optional tokens that can increase the specificity of the search. The token search is facilitated by new predicate classes, the most crucial of which
+are the `ClientMultiPredicate` and the `OrderMultiPredicate`. These two `Predicate` classes wrap a list of other predicates and only return true if all predicates in its
+list return true when testing the give `Client`/`Order`.
 
-\[Proposed enhancements\]:
+The other predicate classes as follows:
+* for `Client`
+    * `NameContainsKeywordsPredicate`
+    * `ClientPhonePredicate`
+    * `ClientEmailPredicate`
+    * `ClientAddressPredicate`
+* for `Order` 
+    * `DescriptionContainsKeywordsPredicate`
+    * `OrderDatePredicate`
+    * `OrderAddressPredicate`
+    * `OrderClientIdPredicate`
 
-* Usage of optional tokens such as `--date`, `--address`, `--email` to narrow down search range. It will be implemented similarly (by matching keywords). A client or an order
-must match at least one of the keywords in each category in order to be shown in the search results. The list of clients/orders will be converted
-into a stream and be filtered by multiple predicates, each corresponding to a data field within `Client`/`Order`.
+Tokens:
+* for `Client`
+    * `--phone`: the phone number to be searched. A `Client` will only be displayed if its `phone` is an exact match.
+    * `--email`: the email address to be searched. A `Client` will only be displayed if its `email` is an exact match.
+    * `--address`: the address keywords to be searched. A `Client`'s `address` has to contain at least one of the searched keywords.
+* for `Order`
+    * `--date`: the delivery date to be searched. An `Order` will only be displayed if its `deliveryDate` is an exact match.
+    * `--client`: the clientID to be searched. An `Order` will only be displayed if its associated `Client`'s `clientId` is an exact match.
+    * `--address`: the address keywords to be searched. An `Order`'s `deliveryAddress` has to contain at least one of the searched keywords.
+    
+With the addition of these tokens, searching by name or description keywords is now optional as well, provided at least one other search token is present.
+For example `find-order --client 32` will now display all orders of the `Client` with a ID of #00032, regardless of their description.
 
-* A further enhncement would be to reduce the strictness of the token search. Instead of having to match at least one keyword from each category,
-any keyword match in any category would allow for the order or client to show up in the search results. This will be done by maintaining different filtered lists and combining them
-while ignoring duplicates.
+One or more of the optional tokens can be used in a single search operation regardless of their order. The only rule is that description or name keywords to be searched
+must be placed before the first optional token used. Note that using more tokens would limit the search range further, as a `Client`/`Order` must fulfil all the 
+search criteria to be displayed.
+For example, both of the following commands are valid:
+* `find-order iPhone --date 2020-10-23 --client 32 --address Pasir Ris`
+* `find-order iPhone --address Pasir Ris --client 32 --date 2020-10-23`
 
-Given below are examples of usage scenarios and how the two commands behave at each step
+Given below is an activity diagram describing how a user input for finding clients is parsed. The process for parsing commands for finding orders
+is also the same, albeit with different tokens and different predicates. Following the diagram, an example usage scenario is also given.
+![Activity diagram of FindCommandParser](images/FindActivityDiagram.png)
+
+Step 1. The user launches LogOnce and sees their list of clients. In this scenario, LogOnce has one order with description "iPhone", date "2020-10-23", address
+"Pasir Ris" and an associated client with ID #00032.
+
+Step 2. The user executes `find-order iPhone --date 2020-10-23 --client 32 --address Pasir Ris`.
+
+Step 3. `AddressBookParser` parses the command and directs it to `FindOrderCommandParser`.
+
+Step 4. `FindOrderCommandParser` checks the preamble (words before the first token) and recognizes `iPhone`. A `DescriptionContainsKeywordsPredicate` is created
+and added to the list of predicates.
+
+Step 5. `FindOrderCommandParser` checks for the presence of the `--client` token. It recognizes `32` as the client ID to be searched.
+An `OrderClientIdPredicate` is created and added to the list of predicates.
+
+Step 6. `FindOrderCommandParser` checks for the presence of the `--date` token. It recognizes `2020-10-23` as the date to be searched.
+An `OrderDatePredicate` is created and added to the list of predicates.
+
+Step 7. `FindOrderCommandParser` checks for the presence of the `--address` token. It recognizes `Pasir` and `Ris` as the address keywords to be searched.
+An `OrderAdressPredicate` is created and added to the list of predicates.
+
+Step 8. `FindOrderCommandParser` then creates a `OrderMultiPredicate` from the list of predicates and uses it to create and return a `FindOrderCommand`.
+
+Step 9. The `FindOrderCommand` is executed and the `OrderMultiPredicate` is used to update the `filteredOrderList`, which will return the only order present in the list,
+as that order fulfils all the predicates found inside the `OrderMultiPredicate`.
 
 _{Diagram will be added at a later date}_
 
@@ -261,6 +311,7 @@ most distinctive difference where deleting a client from the client list will de
 list too.
 
 Given below is an example usage scenario and how the delete mechanism behaves at each step.
+
 
 **Delete Order**
 
@@ -308,11 +359,13 @@ allow the user to clear all orders under a client without having to delete the c
 
 ### List Feature
 
-The list mechanism is split into two functionalities - `List Order` and `List Client`.
+The list mechanism is split into two functionality - `List Order` and `List Client`.
 
 These two commands allows the user to list the `Clients` and `Orders` present in the system respectively.
 
 The list mechanism is facilitated by `ListCommand`, `ListOrderCommand`, `Model`, `ModelManager` and `AddressBook`.
+
+Users can also click on the "Orders" or "Clients" GUI buttons to view the respective lists.
 
 `ListCommand` and `ListOrderCommand` extends `Command`. `AddressBook` implements `ReadOnlyAddressBook` and `ModelManager` implements `Model`.
 
@@ -321,9 +374,6 @@ These operations are exposed in the `Model` interface as `getFilteredOrderList()
 \[Proposed enhancements\]:
 * Use `list` to display the orders of each client in the same panel. 
 
-Given below is an example usage scenario of how the list mechanism behaves at each step.
-
-_{Diagrams will be added at a later date}_
 
 ### Undo Feature
 
@@ -468,11 +518,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `LogOnce` and the **Actor** is the `user`, unless specified otherwise)
       
-**Use case: create client **
+**Use case: create client**
 
 **MSS**
 
 1. User requests to create a client
+
 2. LogOnce shows a success message, along with the client that was just added.
 
     Use case ends.
@@ -491,11 +542,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         
         Use case ends.
         
-**Use case: create order **
+**Use case: create order**
 
 **MSS**
 
 1. User requests to create a order, which was ordered by a specific client.
+
 2. LogOnce shows a success message, along with the order that was just created and attached to the specified client.
 
     Use case ends.
@@ -514,11 +566,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         
         Use case ends.
         
-**Use case: delete client **
+**Use case: delete client**
 
 **MSS**
 
 1. User requests to delete a client from client list
+
 2. LogOnce shows a success message along with the client that was just removed.
 
     Use case ends.
@@ -531,11 +584,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    
         Use case ends.
         
-**Use case: delete order **
+**Use case: delete order**
 
 **MSS**
 
 1. User requests to delete an order from order list
+
 2. LogOnce shows a success message, along with the order that was just removed, and the client that initially placed the order.
 
     Use case ends.
@@ -547,21 +601,34 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. LogOnce shows an error message.
         
         Use case ends.
+        
 
-**Use case: list **
+**Use case: list order**
 
 **MSS**
 
-1. User requests to list all orders in the client list
-2. LogOnce displays a list of all orders in the order list (and the client that placed the order respectively).
+1. User requests to list all orders in the order list
+
+2. LogOnce displays a list of all orders in the order list.
 
     Use case ends.
     
-**Use case: done order **
+**Use case: list client**
+
+**MSS**
+
+1. User requests to list all clients in the client list
+
+2. LogOnce displays a list of all clients in the client list.
+
+    Use case ends.
+        
+**Use case: done order**
 
 **MSS**
 
 1. User requests to marks an order attached to a certain client as done.
+
 2. LogOnce shows a success message, along with the order that was marked done, and the client that ordered the order.
 
     Use case ends.
@@ -579,7 +646,41 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         
         Use case ends.
 
-*{More to be added}*
+**Use case: find order**
+
+**MSS**
+
+1. User requests to find an order
+
+2. LogOnce shows a success message, along with the details of the order.
+
+    Use case ends. 
+
+**Extensions**
+
+* 1a. The arguments are invalid.
+    
+   * 1a1. LogOnce shows an error message.
+   
+       Use case ends.
+      
+**Use case: find client**
+
+**MSS**
+
+1. User requests to find a client
+
+2. LogOnce shows a success message, along with the details of the client.
+
+    Use case ends. 
+
+**Extensions**
+
+* 1a. The arguments are invalid.
+    
+   * 1a1. LogOnce shows an error message.
+   
+       Use case ends.
 
 ### Non-Functional Requirements
 
