@@ -1,15 +1,17 @@
 package seedu.address.model.person;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.testutil.PersonBuilder;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.PersonBuilder;
+
 public class ClientEmailPredicateTest {
 
-    Client firstTestClient = new PersonBuilder().withEmail("test1@test.com").build();
-    Client secondTestClient = new PersonBuilder().withEmail("test2@test.com").build();
+    private Client firstTestClient = new PersonBuilder().withEmail("test1@test.com").build();
+    private Client secondTestClient = new PersonBuilder().withEmail("test2@test.com").build();
+
     @Test
     public void equals() {
 

@@ -1,18 +1,19 @@
 package seedu.address.model.person;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.commons.core.index.Index;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.commons.core.index.Index;
 
 public class OrderAddressPredicateTest {
+
     private Order firstTestOrder = new Order(Index.fromZeroBased(0),
         Index.fromZeroBased(1),
         "apple and banana",

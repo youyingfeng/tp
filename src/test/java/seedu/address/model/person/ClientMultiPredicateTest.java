@@ -1,31 +1,34 @@
 package seedu.address.model.person;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.testutil.PersonBuilder;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.function.Predicate;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.PersonBuilder;
 
 public class ClientMultiPredicateTest {
 
-    Client firstTestClient = new PersonBuilder().withName("Alice")
+    private Client firstTestClient = new PersonBuilder().withName("Alice")
                                  .withAddress("Jurong Point")
                                  .withPhone("1234")
                                  .withEmail("test1@test.com").build();
-    Client secondTestClient = new PersonBuilder().withName("Bob")
+    private Client secondTestClient = new PersonBuilder().withName("Bob")
                                   .withAddress("North Point")
                                   .withPhone("2345")
                                   .withEmail("test2@test.com").build();
 
-    ClientEmailPredicate firstPredicate = new ClientEmailPredicate(new Email("test1@test.com"));
-    ClientPhonePredicate secondPredicate = new ClientPhonePredicate(new Phone("1234"));
-    ClientAddressPredicate thirdPredicate = new ClientAddressPredicate(Arrays.asList("point"));
-    NameContainsKeywordsPredicate fourthPredicate = new NameContainsKeywordsPredicate(Arrays.asList("alice", "bob"));
-    NameContainsKeywordsPredicate fifthPredicate = new NameContainsKeywordsPredicate(Arrays.asList("alice", "charles"));
+    private ClientEmailPredicate firstPredicate = new ClientEmailPredicate(new Email("test1@test.com"));
+    private ClientPhonePredicate secondPredicate = new ClientPhonePredicate(new Phone("1234"));
+    private ClientAddressPredicate thirdPredicate = new ClientAddressPredicate(Arrays.asList("point"));
+    private NameContainsKeywordsPredicate fourthPredicate =
+        new NameContainsKeywordsPredicate(Arrays.asList("alice", "bob"));
+    private NameContainsKeywordsPredicate fifthPredicate =
+        new NameContainsKeywordsPredicate(Arrays.asList("alice", "charles"));
 
     @Test
     public void equals() {

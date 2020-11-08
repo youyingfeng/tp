@@ -1,19 +1,20 @@
 package seedu.address.model.person;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.testutil.PersonBuilder;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.PersonBuilder;
 
 public class ClientAddressPredicateTest {
 
-    Client firstTestClient = new PersonBuilder().withAddress("Jurong West Central 3").build();
-    Client secondTestClient = new PersonBuilder().withAddress("Bukit Batok West Avenue 6").build();
+    private Client firstTestClient = new PersonBuilder().withAddress("Jurong West Central 3").build();
+    private Client secondTestClient = new PersonBuilder().withAddress("Bukit Batok West Avenue 6").build();
     @Test
     public void equals() {
 
