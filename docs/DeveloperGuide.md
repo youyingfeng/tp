@@ -359,11 +359,13 @@ allow the user to clear all orders under a client without having to delete the c
 
 ### List Feature
 
-The list mechanism is split into two functionalities - `List Order` and `List Client`.
+The list mechanism is split into two functionality - `List Order` and `List Client`.
 
 These two commands allows the user to list the `Clients` and `Orders` present in the system respectively.
 
 The list mechanism is facilitated by `ListCommand`, `ListOrderCommand`, `Model`, `ModelManager` and `AddressBook`.
+
+Users can also click on the "Orders" or "Clients" GUI buttons to view the respective lists.
 
 `ListCommand` and `ListOrderCommand` extends `Command`. `AddressBook` implements `ReadOnlyAddressBook` and `ModelManager` implements `Model`.
 
@@ -372,9 +374,6 @@ These operations are exposed in the `Model` interface as `getFilteredOrderList()
 \[Proposed enhancements\]:
 * Use `list` to display the orders of each client in the same panel. 
 
-Given below is an example usage scenario of how the list mechanism behaves at each step.
-
-_{Diagrams will be added at a later date}_
 
 ### Undo Feature
 
@@ -519,11 +518,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `LogOnce` and the **Actor** is the `user`, unless specified otherwise)
       
-**Use case: create client **
+**Use case: create client**
 
 **MSS**
 
 1. User requests to create a client
+
 2. LogOnce shows a success message, along with the client that was just added.
 
     Use case ends.
@@ -542,11 +542,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         
         Use case ends.
         
-**Use case: create order **
+**Use case: create order**
 
 **MSS**
 
 1. User requests to create a order, which was ordered by a specific client.
+
 2. LogOnce shows a success message, along with the order that was just created and attached to the specified client.
 
     Use case ends.
@@ -565,11 +566,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         
         Use case ends.
         
-**Use case: delete client **
+**Use case: delete client**
 
 **MSS**
 
 1. User requests to delete a client from client list
+
 2. LogOnce shows a success message along with the client that was just removed.
 
     Use case ends.
@@ -582,11 +584,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    
         Use case ends.
         
-**Use case: delete order **
+**Use case: delete order**
 
 **MSS**
 
 1. User requests to delete an order from order list
+
 2. LogOnce shows a success message, along with the order that was just removed, and the client that initially placed the order.
 
     Use case ends.
@@ -598,21 +601,34 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1a1. LogOnce shows an error message.
         
         Use case ends.
+        
 
-**Use case: list **
+**Use case: list order**
 
 **MSS**
 
-1. User requests to list all orders in the client list
-2. LogOnce displays a list of all orders in the order list (and the client that placed the order respectively).
+1. User requests to list all orders in the order list
+
+2. LogOnce displays a list of all orders in the order list.
 
     Use case ends.
     
-**Use case: done order **
+**Use case: list client**
+
+**MSS**
+
+1. User requests to list all clients in the client list
+
+2. LogOnce displays a list of all clients in the client list.
+
+    Use case ends.
+        
+**Use case: done order**
 
 **MSS**
 
 1. User requests to marks an order attached to a certain client as done.
+
 2. LogOnce shows a success message, along with the order that was marked done, and the client that ordered the order.
 
     Use case ends.
@@ -630,7 +646,41 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         
         Use case ends.
 
-*{More to be added}*
+**Use case: find order**
+
+**MSS**
+
+1. User requests to find an order
+
+2. LogOnce shows a success message, along with the details of the order.
+
+    Use case ends. 
+
+**Extensions**
+
+* 1a. The arguments are invalid.
+    
+   * 1a1. LogOnce shows an error message.
+   
+       Use case ends.
+      
+**Use case: find client**
+
+**MSS**
+
+1. User requests to find a client
+
+2. LogOnce shows a success message, along with the details of the client.
+
+    Use case ends. 
+
+**Extensions**
+
+* 1a. The arguments are invalid.
+    
+   * 1a1. LogOnce shows an error message.
+   
+       Use case ends.
 
 ### Non-Functional Requirements
 
