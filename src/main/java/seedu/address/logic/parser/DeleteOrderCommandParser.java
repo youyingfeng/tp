@@ -31,13 +31,16 @@ public class DeleteOrderCommandParser implements Parser<DeleteOrderCommand> {
                         DeleteOrderCommand.MESSAGE_USAGE));
             }
 
-            Index index = ParserUtil.parseOrderIndex(argMultimap.getValue(DELETE_PREFIX_ORDER).get());
+            try {
+                Index index = ParserUtil.parseOrderIndex(argMultimap.getValue(DELETE_PREFIX_ORDER).get());
 
-
-            return new DeleteOrderCommand(index);
+                return new DeleteOrderCommand(index);
+            } catch (ParseException pe) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, pe.getMessage()), pe);
+            }
         } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, pe.getMessage()), pe);
+            throw new ParseException(pe.getMessage(), pe);
         }
     }
 

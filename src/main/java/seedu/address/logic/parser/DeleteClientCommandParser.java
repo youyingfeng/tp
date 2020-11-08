@@ -31,12 +31,16 @@ public class DeleteClientCommandParser implements Parser<DeleteClientCommand> {
                         DeleteClientCommand.MESSAGE_USAGE));
             }
 
-            Index index = ParserUtil.parseClientIndex(argMultimap.getValue(DELETE_PREFIX_CLIENT).get());
+            try {
+                Index index = ParserUtil.parseClientIndex(argMultimap.getValue(DELETE_PREFIX_CLIENT).get());
 
-            return new DeleteClientCommand(index);
+                return new DeleteClientCommand(index);
+            } catch (ParseException pe) {
+                throw new ParseException(
+                        String.format(MESSAGE_INVALID_COMMAND_FORMAT, pe.getMessage()), pe);
+            }
         } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, pe.getMessage()), pe);
+            throw new ParseException(pe.getMessage(), pe);
         }
     }
 
