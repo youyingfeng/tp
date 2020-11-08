@@ -1,0 +1,33 @@
+@startuml
+!include style.puml
+
+box LOGIC_COLOR_T1
+participant NewOrderForm as NOF LOGIC_COLOR
+participant MainWindow as MW LOGIC_COLOR
+end box
+
+[-> NOF: submitForm
+
+activate NOF
+NOF->NOF: validateInput
+activate NOF
+NOF-->NOF
+deactivate NOF
+
+NOF -> MW: executeCommand(commandString)
+activate MW
+MW-[hidden]->MW
+
+MW --> NOF
+deactivate MW
+
+NOF->NOF: resetForm
+activate NOF
+NOF-->NOF
+deactivate NOF
+
+NOF-[hidden]->NOF
+[<--NOF
+deactivate NOF
+
+@enduml

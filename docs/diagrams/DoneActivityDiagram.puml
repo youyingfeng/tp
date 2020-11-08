@@ -1,0 +1,34 @@
+@startuml
+(*) --> Parse args
+if "[Valid arguments with valid syntax]" then
+    --> Initialize empty predicate list
+    if "[Preamble exists]" then
+        --> Parse preamble and add predicate for client name to predicate list
+        if "[--phone token exists]" then
+            --> Parse phone number and add predicate for client phone
+            if "[--email token exists]" then
+                --> Parse email address and add predicate for client email to predicate list
+                if "[--address token exists]" then
+                    --> Parse address and add a predicate for client address to predicate list
+                        --> Create FindCommand with predicate list
+                        --> Execute FindCommand
+                        --> Display list of clients who pass all predicates present in predicate list
+                             --> (*)
+                else
+                    --> Predicate not added
+                endif
+            else
+                --> Predicate not added
+            endif
+        else
+            --> Predicate not added
+        endif
+    else
+        --> Predicate not added
+        --> Create FindCommand with predicate list
+    endif
+else
+    --> throw ParseException
+    --> (*)
+endif
+@enduml
