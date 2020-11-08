@@ -19,7 +19,7 @@ import seedu.address.model.person.Order;
 /**
  * Parses input arguments and creates a new OrderCommand object
  */
-public class OrderCommandParser {
+public class OrderCommandParser implements Parser<OrderCommand> {
     /**
      *
      * @param args full user input string
