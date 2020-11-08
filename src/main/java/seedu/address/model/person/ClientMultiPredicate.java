@@ -3,6 +3,10 @@ package seedu.address.model.person;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 
+/**
+ * Wrapper predicate that tests {@code Client} and only returns true if all predicates in the
+ * list of predicates return true when testing the {@code Client}
+ */
 public class ClientMultiPredicate implements Predicate<Client> {
 
     private ArrayList<Predicate<Client>> toBeTested;
