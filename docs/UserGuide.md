@@ -309,58 +309,68 @@ will be explained below.
 
 If any of the optional tokens are present, `<name keywords>` may be left blank.
 
-`<name keywords>` is any amount of keywords, each separated by a space. A client's whose name contains any of these
-keywords will be considered a match. For example: `find alex chungus`. Both `Alex Rider` and `Big Chungus` will be
-considered matches.
+Other than `<name keywords>` and `<address keywords>` all other search terms must be an exact match.
 
-`<address keywords>` is any amount of keywords, each separated by a space. The matching of these keywords works the same
-as it does for `<name keywords>`. For example: `find --address jurong clementi` will display clients that have their
-address as `Jurong West`, `Jurong East`, `Clementi Avenue 6`, `Clementi Mall`.
+The different fields are detailed below:
+* `<name keywords>` is any amount of keywords, each separated by a space. A client's whose name contains any of these
+keywords will be considered a match.
 
-`<email address>` is a string that should be a valid email address. The email address has to be an
- exact match for the client to be displayed. For example: `find --email doe@gmail.com`. 
+* `<address keywords>` is any amount of keywords, each separated by a space. The matching of these keywords works the same
+as it does for `<name keywords>`.
+
+* `<email address>` is a string that should be a valid email address.
  
-`<phone number>` is a string of numbers only with a minimum length of 3. The phone number also has to be an exact match
-for the client to be displayed. For example: `find --phone 99223344`.
+* `<phone number>` is a string of numbers only with a minimum length of 3.
 
-More examples:
-`find alice --phone 9123 --address changi` will display any clients with 'Alice' in their names, with a phone number of 
+**Examples**:
+* `find alice --phone 9123 --address changi` will display any clients with 'Alice' in their names, with a phone number of 
 9123 and who live in Changi. This would be a very specific search, as phone numbers must be an exact match.
 
-`find bob charles --address queenstown commonwealth` will display any clients with either 'Bob' or 'Charles' in their names who also
+* `find bob charles --address queenstown commonwealth` will display any clients with either 'Bob' or 'Charles' in their names who also
 live in Queenstown or Commonwealth. This would be a more general search, as each client only has to match one keyword in
 each category of searching.
 
 ------------------------------------------------------------------------------------------------------------------------
 
-### Finding orders : `findorder`
+### Finding orders : `find-order`
 
 **Description** : Finds orders by their description and optionally by their attached client IDs, delivery addresses and delivery dates.
 Very similar usage to `find`
 
-**Format** : `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
+**Format** : `find-order <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
 
 This command will return orders that match all the tokens provided. The matching criteria for each token
 will be explained below.
 
 If any of the optional tokens are present, `<description keywords>` may be left blank.
 
-`<description keywords>` is any amount of keywords, each separated by a space. An order whose description contains any of these
-keywords will be considered a match. For example: `findorder iphone` will display all orders involving iPhones.
+Other than `<name keywords>` and `<address keywords>` all other search terms must be an exact match
 
-`<address keywords>` is any amount of keywords, each separated by a space. Functions the same as it does in `find` except
-for orders.
+The different fields are detailed below:
+* `<description keywords>` is any amount of keywords, each separated by a space. An order whose description contains any of these
+keywords will be considered a match.
 
-`<client ID>` is an integer that should be greater than 0. The ID has to be an exact match for the order to be displayed.
-For example: `findorder --client 1` will show all orders that are related to the client with an ID of 1.
+* `<address keywords>` is any amount of keywords, each separated by a space. The matching of these keywords works the same
+as it does for `<description keywords>`.
+
+* `<client ID>` is an integer that should be between 1 and 99999 inclusive.
  
-`<date>` is a string of numbers separated by dashes in the format of `YYYY-MM-DD`. The date entered has to be valid and an
-exact match for the order to be displayed. For example: `findorder --date 2020-11-27` will display all orders to be
-delivered on the 27th of November, 2020.
+* `<date>` is a string of numbers separated by dashes in the format of `YYYY-MM-DD`.
 
+**Examples**:
+* `find-order iPhone --date 2020-10-23` will find all orders that contain `iPhone` in their description that are also deliverd
+on 23rd October 2020
+* `find-order --date 2020-11-24 --address Jurong Clementi` will find all orders delivered on 24th November 2020 that contain either
+`Jurong` or `Clementi` in their delivery address.
+
+<<<<<<< HEAD
 ------------------------------------------------------------------------------------------------------------------------
 
 ### Updating orders: `update-order`
+=======
+### Editing/Updating orders: `update-order`
+
+>>>>>>> branch-UGDG
 **Description** : Modifies a specified order with the new information provided in this command.
 
 **Format** : `update-order --orderid <order ID of order to be changed> (--description <new order description>) (--clientid <new client id>) (--address <new address>) (--date <new delivery date>)`
@@ -399,6 +409,11 @@ Each of these fields are optional, and their parameter tags may be left out of t
 `<new address>` should not be blank.
 
 `<new email>` should not be blank, and should be of a valid email format.
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> branch-UGDG
 
 ------------------------------------------------------------------------------------------------------------------------
 
