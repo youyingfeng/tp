@@ -2,8 +2,8 @@ package seedu.address.logic.parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_CLIENTID;
+import static seedu.address.logic.parser.CliSyntax.UPDATE_ORDER_PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.UPDATE_ORDER_PREFIX_CLIENTID;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_ORDER_PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_ORDER_PREFIX_DESCRIPTION;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_ORDER_PREFIX_ORDERID;
@@ -15,13 +15,13 @@ import seedu.address.logic.commands.UpdateOrderCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 public class UpdateOrderCommandParserTest {
-    private UpdateOrderCommandParser parser = new UpdateOrderCommandParser();
-    private String commandKeyword = COMMAND_WORD + " ";
-    private String validOrderId = UPDATE_ORDER_PREFIX_ORDERID.toString() + " 1 ";
-    private String validClientId = UPDATE_CLIENT_PREFIX_CLIENTID.toString() + " 1 ";
-    private String validOrderDescription = UPDATE_ORDER_PREFIX_DESCRIPTION.toString() + " valid order ";
-    private String validOrderAddress = UPDATE_CLIENT_PREFIX_ADDRESS.toString() + " valid address ";
-    private String validOrderDateTime = UPDATE_ORDER_PREFIX_DATE.toString() + " 2020-11-11 1111 ";
+    private final UpdateOrderCommandParser parser = new UpdateOrderCommandParser();
+    private final String commandKeyword = COMMAND_WORD + " ";
+    private final String validOrderId = UPDATE_ORDER_PREFIX_ORDERID.toString() + " 1 ";
+    private final String validClientId = UPDATE_ORDER_PREFIX_CLIENTID.toString() + " 1 ";
+    private final String validOrderDescription = UPDATE_ORDER_PREFIX_DESCRIPTION.toString() + " valid order ";
+    private final String validOrderAddress = UPDATE_ORDER_PREFIX_ADDRESS.toString() + " valid address ";
+    private final String validOrderDateTime = UPDATE_ORDER_PREFIX_DATE.toString() + " 2020-11-11 1111 ";
 
     @Test
     public void validParserArgsAll() {

@@ -30,10 +30,6 @@ public class UpdateOrderCommand extends Command {
         this.orderId = fieldsToUpdate.getOrderId().get();
     }
 
-    public Index getOrderId() {
-        return orderId;
-    }
-
     public UpdatedOrderFields getFieldsToUpdate() {
         return fieldsToUpdate;
     }

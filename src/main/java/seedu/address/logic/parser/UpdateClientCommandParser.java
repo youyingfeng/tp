@@ -53,8 +53,6 @@ public class UpdateClientCommandParser implements Parser<UpdateClientCommand> {
         if (args.contains(UPDATE_CLIENT_PREFIX_CLIENTID.toString())) {
             clientId = ParserUtil.parseClientIndex(argMultimap.getValue(UPDATE_CLIENT_PREFIX_CLIENTID).get());
             fieldsToUpdate.setClientId(clientId);
-        } else {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UpdateClientCommand.MESSAGE_USAGE));
         }
 
         if (args.contains(UPDATE_CLIENT_PREFIX_ADDRESS.toString())) {
