@@ -358,7 +358,9 @@ For example: `findorder --client 1` will show all orders that are related to the
 exact match for the order to be displayed. For example: `findorder --date 2020-11-27` will display all orders to be
 delivered on the 27th of November, 2020.
 
-### Editing/Updating orders: `update-order`
+------------------------------------------------------------------------------------------------------------------------
+
+### Updating orders: `update-order`
 **Description** : Modifies a specified order with the new information provided in this command.
 
 **Format** : `update-order --orderid <order ID of order to be changed> (--description <new order description>) (--clientid <new client id>) (--address <new address>) (--date <new delivery date>)`
@@ -377,7 +379,9 @@ Each of these fields are optional, and their parameter tags may be left out of t
 
 `<new delivery date>` should not be left blank, and must be in the format `YYYY-MM-DD HHmm`.
 
-### Editing/Updating clients: `update-client`
+------------------------------------------------------------------------------------------------------------------------
+
+### Updating clients: `update-client`
 **Description** : Modifies a specified client with the new information provided in this command.
 
 **Format** : `update-client --clientid <client ID of client to be changed> (--name <new name>) (--phone <new phone number>) (--address <new address>) (--email <new email>)`
@@ -396,7 +400,7 @@ Each of these fields are optional, and their parameter tags may be left out of t
 
 `<new email>` should not be blank, and should be of a valid email format.
 
---------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 ### Help Command : `help`
 
@@ -404,10 +408,30 @@ Each of these fields are optional, and their parameter tags may be left out of t
 
 **Format** : `help`
 
-This command allows you to copy the URL link to LogOnce's user guide for reference to the available commands which can 
+This command allows user to copy the URL link to LogOnce's user guide for reference to the available commands which can 
 be used in the application.
 
---------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+
+### Clear Command : `clear`
+
+**Description** : Clears all clients in client list and all orders in order list.
+
+**Format** : `clear`
+
+This command allows user to reset all existing in the client list and order list permanently.
+
+------------------------------------------------------------------------------------------------------------------------
+
+### Exit Command : `exit`
+
+**Description** : Exits application
+
+**Format** : `exit`
+
+This command allows user to exit from the LogOnce application window.
+
+------------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
