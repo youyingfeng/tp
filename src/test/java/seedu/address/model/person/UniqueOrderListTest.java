@@ -175,4 +175,12 @@ public class UniqueOrderListTest {
         assertThrows(UnsupportedOperationException.class, ()
             -> uniqueOrderList.asUnmodifiableObservableList().remove(0));
     }
+
+    @Test
+    public void checkHashCode_sameOrderLists() {
+        int hashCode = uniqueOrderList.hashCode();
+        UniqueOrderList newUniqueOrderList = new UniqueOrderList();
+        int newHashCode = newUniqueOrderList.hashCode();
+        assertEquals(hashCode, newHashCode);
+    }
 }
