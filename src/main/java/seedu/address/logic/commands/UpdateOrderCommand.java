@@ -21,10 +21,6 @@ public class UpdateOrderCommand extends Command {
     public static final String MESSAGE_UPDATE_CLIENT_SUCCESS = "Updated Order: %1$s";
     private UpdatedOrderFields fieldsToUpdate;
     private Index orderId;
-    private Index clientId;
-    private String description;
-    private LocalDateTime dateTime;
-    private Address address;
 
     /**
      * @param fieldsToUpdate contains all the fields to update for the respective Order object.
@@ -57,24 +53,28 @@ public class UpdateOrderCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
         }
 
+        Index clientId;
         if (fieldsToUpdate.getClientId().isEmpty()) {
             clientId = orderToUpdate.getClientId();
         } else {
             clientId = fieldsToUpdate.getClientId().get();
         }
 
+        String description;
         if (fieldsToUpdate.getDescription().isEmpty()) {
             description = orderToUpdate.getDescription();
         } else {
             description = fieldsToUpdate.getDescription().get();
         }
 
+        LocalDateTime dateTime;
         if (fieldsToUpdate.getDateTime().isEmpty()) {
             dateTime = orderToUpdate.getDeliveryDateTime();
         } else {
             dateTime = fieldsToUpdate.getDateTime().get();
         }
 
+        Address address;
         if (fieldsToUpdate.getAddress().isEmpty()) {
             address = orderToUpdate.getAddress();
         } else {
