@@ -21,18 +21,28 @@ Given below are my contributions to the project.
   * Helped out with releases `v1.2` - `v1.3` (2 releases) on GitHub
 
 * **Enhancements to existing features**:
-  * Refactored existing Person class to Client (Pull requests [\#41](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/41))
-  * Augmented Client and Order with additional fields ([\#57](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/57))
-  * Reworked the GUI into a new layout (Pull requests [\#45](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/45))
-  * Integrated `update-order` and `update-client` commands into the application properly [\#159](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/159)
+  * Refactored existing Person class to Client 
+    (Pull requests [\#41](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/41))
+  * Augmented Client and Order with additional fields 
+    ([\#57](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/57))
+  * Reworked the GUI into a new layout 
+    (Pull requests [\#45](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/45))
+  * Integrated `update-order` and `update-client` commands into the application properly 
+    ([\#159](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/159))
+  * Wrote additional tests for existing features to increase coverage from 88% to 92%  
+    ([\#174](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/174))
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the entire GUI : [\#166](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/166)
-    * Added documentation for the features `update-order` and `update-client` : [\#161](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/161)
-    * Did bug fixes to existing documentation of features `done`, `order` : [\#164](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/164)
+    * Added documentation for the entire GUI : 
+      [\#166](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/166)
+    * Added documentation for the features `update-order` and `update-client` : 
+      [\#161](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/161)
+    * Did bug fixes to existing documentation of features `done`, `order` : 
+      [\#164](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/164)
   * Developer Guide:
-    * Added implementation details of the GUI forms and information panels : [\#161](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/161)
+    * Added implementation details of the GUI forms and information panels : 
+    [\#161](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/161)
 
 
 * _{you can add/remove categories in the list above}_
