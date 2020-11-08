@@ -30,6 +30,14 @@ public class UpdateOrderCommand extends Command {
         this.orderId = fieldsToUpdate.getOrderId().get();
     }
 
+    public Index getOrderId() {
+        return orderId;
+    }
+
+    public UpdatedOrderFields getFieldsToUpdate() {
+        return fieldsToUpdate;
+    }
+
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);

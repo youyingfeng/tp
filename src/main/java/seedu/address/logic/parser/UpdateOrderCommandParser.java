@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_ORDER_PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_ORDER_PREFIX_CLIENTID;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_ORDER_PREFIX_DATE;
@@ -50,30 +49,28 @@ public class UpdateOrderCommandParser implements Parser<UpdateOrderCommand> {
 
         // check for the tokens present, and add them to UpdatedOrderFields
         if (args.contains(UPDATE_ORDER_PREFIX_ORDERID.toString())) {
-            orderId = ParserUtil.parseOrderIndex(argMultimap.getValue(UPDATE_ORDER_PREFIX_ORDERID).get());
+            orderId = ParserUtil.parseOrderIndex(argMultimap.getValue(UPDATE_ORDER_PREFIX_ORDERID).get().trim());
             fieldsToUpdate.setOrderId(orderId);
-        } else {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, UpdateOrderCommand.MESSAGE_USAGE));
         }
 
 
         if (args.contains(UPDATE_ORDER_PREFIX_CLIENTID.toString())) {
-            clientId = ParserUtil.parseClientIndex(argMultimap.getValue(UPDATE_ORDER_PREFIX_CLIENTID).get());
+            clientId = ParserUtil.parseClientIndex(argMultimap.getValue(UPDATE_ORDER_PREFIX_CLIENTID).get().trim());
             fieldsToUpdate.setClientId(clientId);
         }
 
         if (args.contains(UPDATE_ORDER_PREFIX_DESCRIPTION.toString())) {
-            description = argMultimap.getValue(UPDATE_ORDER_PREFIX_DESCRIPTION).get();
+            description = argMultimap.getValue(UPDATE_ORDER_PREFIX_DESCRIPTION).get().trim();
             fieldsToUpdate.setDescription(description);
         }
 
         if (args.contains(UPDATE_ORDER_PREFIX_ADDRESS.toString())) {
-            address = ParserUtil.parseAddress(argMultimap.getValue(UPDATE_ORDER_PREFIX_ADDRESS).get());
+            address = ParserUtil.parseAddress(argMultimap.getValue(UPDATE_ORDER_PREFIX_ADDRESS).get().trim());
             fieldsToUpdate.setAddress(address);
         }
 
         if (args.contains(UPDATE_ORDER_PREFIX_DATE.toString())) {
-            dateTime = ParserUtil.parseDate(argMultimap.getValue(UPDATE_ORDER_PREFIX_DATE).get());
+            dateTime = ParserUtil.parseDate(argMultimap.getValue(UPDATE_ORDER_PREFIX_DATE).get().trim());
             fieldsToUpdate.setDateTime(dateTime);
         }
 
