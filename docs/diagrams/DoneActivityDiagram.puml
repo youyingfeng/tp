@@ -13,9 +13,7 @@ if "[Valid arguments with valid syntax]" then
                         --> Create FindCommand with predicate list
                         --> Execute FindCommand
                         --> Display list of clients who pass all predicates present in predicate list
-                            if "" then
-                                --> (*)
-                            endif
+                             --> (*)
                 else
                     --> Predicate not added
                 endif

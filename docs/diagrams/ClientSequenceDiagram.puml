@@ -11,6 +11,7 @@ end box
 activate NCF
 NCF->NCF: validateInput
 activate NCF
+NCF-->NCF
 deactivate NCF
 
 NCF -> MW: executeCommand(commandString)
@@ -22,6 +23,7 @@ deactivate MW
 
 NCF->NCF: resetForm
 activate NCF
+NCF-->NCF
 deactivate NCF
 
 NCF-[hidden]->NCF

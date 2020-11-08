@@ -11,6 +11,7 @@ end box
 activate NOF
 NOF->NOF: validateInput
 activate NOF
+NOF-->NOF
 deactivate NOF
 
 NOF -> MW: executeCommand(commandString)
@@ -22,6 +23,7 @@ deactivate MW
 
 NOF->NOF: resetForm
 activate NOF
+NOF-->NOF
 deactivate NOF
 
 NOF-[hidden]->NOF

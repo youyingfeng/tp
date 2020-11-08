@@ -1,7 +1,6 @@
 @startuml
 
 class MainWindow
-class Idk
 class EditClientForm
 class OrderCard
 class PersonCard
@@ -18,13 +17,12 @@ class OrderCompleteEvent
 class LogOnceEvent
 
 MainWindow - LogOnceEvent : handles >
-Idk - "1...*" MainWindow
-Idk -- EditClientForm
-Idk -- EditOrderForm
-Idk -- OrderCard
-Idk -- PersonCard
-Idk -- ClientInfoDisplay
-Idk -- OrderInfoDisplay
+MainWindow -- EditClientForm : contains >
+MainWindow -- EditOrderForm : contains >
+MainWindow -- OrderCard : contains >
+MainWindow -- PersonCard : contains >
+MainWindow -- ClientInfoDisplay : contains >
+MainWindow -- OrderInfoDisplay : contains >
 EditClientForm -- EditClientEvent : fires >
 EditOrderForm -- EditOrderEvent : fires >
 OrderCard -- DisplayOrderEvent : fires >
@@ -33,6 +31,7 @@ ClientInfoDisplay -- EditEvent : fires >
 ClientInfoDisplay -- DeleteEvent : fires >
 OrderInfoDisplay -- EditOrderEvent : fires >
 OrderInfoDisplay -- OrderCompleteEvent : fires >
+OrderInfoDisplay -- EditEvent : fires >
 EditClientEvent --|> LogOnceEvent
 EditOrderEvent --|> LogOnceEvent
 DisplayOrderEvent --|> LogOnceEvent
