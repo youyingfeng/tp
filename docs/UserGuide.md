@@ -363,14 +363,9 @@ on 23rd October 2020
 * `find-order --date 2020-11-24 --address Jurong Clementi` will find all orders delivered on 24th November 2020 that contain either
 `Jurong` or `Clementi` in their delivery address.
 
-<<<<<<< HEAD
-------------------------------------------------------------------------------------------------------------------------
 
-### Updating orders: `update-order`
-=======
 ### Editing/Updating orders: `update-order`
 
->>>>>>> branch-UGDG
 **Description** : Modifies a specified order with the new information provided in this command.
 
 **Format** : `update-order --orderid <order ID of order to be changed> (--description <new order description>) (--clientid <new client id>) (--address <new address>) (--date <new delivery date>)`
