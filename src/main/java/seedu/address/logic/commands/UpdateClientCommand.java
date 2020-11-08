@@ -51,6 +51,10 @@ public class UpdateClientCommand extends Command {
         this.clientId = fieldsToUpdate.getClientId().get();
     }
 
+    public UpdatedClientFields getFieldsToUpdate() {
+        return fieldsToUpdate;
+    }
+
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
