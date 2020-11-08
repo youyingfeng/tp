@@ -124,6 +124,7 @@ public class MainWindow extends UiPart<Stage> {
                 });
     }
 
+    // Solution adapted from https://stackoverflow.com/questions/46649406/custom-javafx-events
     void setEventHandlers() {
         this.getRoot().addEventHandler(LogOnceEvent.LOGONCE_EVENT_TYPE, new LogOnceEventHandler() {
             @Override

@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,6 +18,7 @@ import seedu.address.model.person.Order;
  */
 class JsonAdaptedOrder {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Order's %s field is missing!";
+    public static final String INVALID_FORMAT_MESSAGE_FORMAT = "Order's %s field is of an invalid format!";
     private final int orderId;
     private final int clientId;
     private final String description;
@@ -73,36 +75,44 @@ class JsonAdaptedOrder {
         // Safety checks and value assignment
 
         if (orderId <= 0) {
-            throw new IllegalValueException("Invalid value for order ID!");
+            throw new IllegalValueException(String.format(INVALID_FORMAT_MESSAGE_FORMAT, "Order ID"));
         }
         modelOrderId = Index.fromZeroBased(orderId);
 
         if (clientId <= 0) {
-            throw new IllegalValueException("Invalid value for client ID!");
+            throw new IllegalValueException(String.format(INVALID_FORMAT_MESSAGE_FORMAT, "Client ID"));
         }
         // TODO: find a better fix for the bug where client id tied to order increments on launch
         modelClientId = Index.fromZeroBased(clientId);
 
-        if (description == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, String.class.getSimpleName()));
+        if (description == null || description.trim().length() == 0) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, "Description"));
         }
 
-        if (address == null) {
+        if (address == null || address.trim().length() == 0) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
         }
         modelAddress = new Address(address);
 
-        if (deliveryDateTime == null) {
+        if (deliveryDateTime == null || deliveryDateTime.trim().length() == 0) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    LocalDateTime.class.getSimpleName()));
+                    "Delivery Date/Time"));
         }
-        modelDeliveryDateTime = LocalDateTime.parse(deliveryDateTime);
+        try {
+            modelDeliveryDateTime = LocalDateTime.parse(deliveryDateTime);
+        } catch (DateTimeParseException e) {
+            throw new IllegalValueException(String.format(INVALID_FORMAT_MESSAGE_FORMAT, "Delivery Date/Time"));
+        }
 
-        if (creationDateTime == null) {
+        if (creationDateTime == null || creationDateTime.trim().length() == 0) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    LocalDateTime.class.getSimpleName()));
+                    "Creation Date/Time"));
         }
-        modelCreationDateTime = LocalDateTime.parse(creationDateTime);
+        try {
+            modelCreationDateTime = LocalDateTime.parse(creationDateTime);
+        } catch (DateTimeParseException e) {
+            throw new IllegalValueException(String.format(INVALID_FORMAT_MESSAGE_FORMAT, "Creation Date/Time"));
+        }
 
         return new Order(modelOrderId,
                          modelClientId,
