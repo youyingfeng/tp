@@ -394,10 +394,7 @@ Each of these fields are optional, and their parameter tags may be left out of t
 
 `<new address>` should not be blank.
 
-`<new email>` shoudl not be blank, and should be of a valid email format.
-
-
-
+`<new email>` should not be blank, and should be of a valid email format.
 
 --------------------------------------------------------------------------------------------------------------------
 
