@@ -6,7 +6,10 @@ import java.time.LocalDateTime;
 
 import seedu.address.commons.core.index.Index;
 
-
+/**
+ * Represents an Order in order list of the address book.
+ * Guarantees: details are present and not null, field values are validated, immutable.
+ */
 public class Order {
     public static final String MESSAGE_CONSTRAINTS =
             "Order date should be in the format yyyy-mm-dd";
@@ -135,6 +138,26 @@ public class Order {
 
     public boolean isDone() {
         return isDone;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Order)) {
+            return false;
+        }
+
+        Order otherOrder = (Order) other;
+        return otherOrder.getOrderId().equals(orderId)
+                && otherOrder.getClientId().equals(clientId)
+                && otherOrder.getDescription().equals(description)
+                && otherOrder.getAddress().equals(address)
+                && otherOrder.getDeliveryDateTime().format(DEFAULT_DATE_TIME_FORMATTER)
+                    .equals(deliveryDateTime.format(DEFAULT_DATE_TIME_FORMATTER))
+                && otherOrder.isDone() == isDone;
     }
 
     @Override

@@ -20,14 +20,14 @@ import seedu.address.model.person.Order;
 @JsonRootName(value = "addressbook")
 class JsonSerializableAddressBook {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_PERSON = "Clients list contains duplicate client(s).";
     public static final String MESSAGE_DUPLICATE_ORDER = "Orders list contain duplicate order(s).";
 
     private final List<JsonAdaptedClient> persons = new ArrayList<>();
     private final List<JsonAdaptedOrder> orders = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableAddressBook} with the given clients.
      */
     @JsonCreator
     public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedClient> persons,

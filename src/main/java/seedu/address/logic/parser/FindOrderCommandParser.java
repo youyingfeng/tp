@@ -23,10 +23,15 @@ import seedu.address.model.person.OrderClientIdPredicate;
 import seedu.address.model.person.OrderDatePredicate;
 import seedu.address.model.person.OrderMultiPredicate;
 
-
+/**
+ * Parses input arguments and creates a new FindOrderCommand object
+ */
 public class FindOrderCommandParser implements Parser<FindOrderCommand> {
 
+    public static final String MESSAGE_INVALID_SEARCH_ID = "Index must be an integer between 1 and 99999 inclusive";
+
     private static final Logger findOrderCommandParserLogger = Logger.getLogger("focp");
+
 
     /**
      * Parses the given {@code String} of arguments in the context of the FindOrderCommand
@@ -53,7 +58,8 @@ public class FindOrderCommandParser implements Parser<FindOrderCommand> {
         }
         if (argMultimap.getValue(ORDER_PREFIX_CLIENT).isPresent()) {
             predicates.add(
-                new OrderClientIdPredicate(ParserUtil.parseClientIndex(argMultimap.getValue(ORDER_PREFIX_CLIENT).get()))
+                new OrderClientIdPredicate(
+                    ParserUtil.parseClientIndex(argMultimap.getValue(ORDER_PREFIX_CLIENT).get()))
             );
         }
         if (argMultimap.getValue(ORDER_PREFIX_DATE).isPresent()) {

@@ -2,6 +2,9 @@ package seedu.address.model.person;
 
 import java.util.function.Predicate;
 
+/**
+ * Tests that a {@code Client}'s {@code Email} matches any of the keywords given.
+ */
 public class ClientEmailPredicate implements Predicate<Client> {
 
     private final Email email;

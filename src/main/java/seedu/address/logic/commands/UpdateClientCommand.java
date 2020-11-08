@@ -24,13 +24,13 @@ import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 
 /**
- * Updates the fields of an existing person in the address book.
+ * Updates the fields of an existing client in client list of the address book.
  */
 public class UpdateClientCommand extends Command {
 
     public static final String COMMAND_WORD = "update-client";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the person identified "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the client identified "
             + "by the index number provided.\n"
             + "Parameters: INDEX (must be a positive integer representing a client in LogOnce; must not be empty) "
             + UPDATE_CLIENT_PREFIX_NAME + "NAME "
@@ -122,8 +122,8 @@ public class UpdateClientCommand extends Command {
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the client with. Each non-empty field value will replace the
+     * corresponding field value of the client.
      */
     public static class UpdateClientDescriptor {
         private Name name;

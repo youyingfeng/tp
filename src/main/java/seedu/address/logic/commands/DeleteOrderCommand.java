@@ -13,15 +13,15 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Order;
 
 /**
- * Deletes an order identified using it's displayed index from the address book.
+ * Deletes an order identified using it's unique order ID displayed in the order list of the address book.
  */
 public class DeleteOrderCommand extends Command {
 
     public static final String COMMAND_WORD = "delete-order";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the order identified by the index number used in the displayed order list.\n"
-            + "Parameters: CLIENTID (must be a positive integer)\n"
+            + ": Deletes the order identified by the unique order ID in the displayed order list.\n"
+            + "Parameters: CLIENT ID (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " " + DELETE_PREFIX_ORDER + " 1";
 
     public static final String MESSAGE_DELETE_ORDER_SUCCESS = "Deleted Order: %1$s";
