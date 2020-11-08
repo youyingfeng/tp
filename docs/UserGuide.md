@@ -184,7 +184,8 @@ whose phone number is 91234567.
 
 ### Listing Orders : `list-order` 
 
-**Description** : Returns a list of orders. The list will be sorted by the order ID that was assigned when the order was created.
+**Description** : Returns a list of orders. The list will be sorted by the order ID that was assigned when the order was created. 
+The feature also works when clicking on the "Orders" GUI button.
 
 **Format** : `list-order`<br>
 Displays a list of all orders in the order list (and the client that placed the order respectively).
@@ -194,6 +195,7 @@ Displays a list of all orders in the order list (and the client that placed the 
 ### Listing Clients : `list-client`
 
 **Description** : Returns a list of clients. The list will be sorted by the client ID that was assigned when the client was created.
+The feature also works when clicking on the "Clients" GUI button.
 
 **Format** : `list-client`<br>
 Displays a list of all clients in the client list.
