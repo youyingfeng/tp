@@ -23,7 +23,9 @@ import seedu.address.model.tag.Tag;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer between "
+                                                           + "1 and 99999 inclusive.";
+    private static final int MAX_INDEX = 99999;
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -35,7 +37,11 @@ public class ParserUtil {
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
-        return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+        int indexToBe = Integer.parseInt(trimmedIndex);
+        if (indexToBe > MAX_INDEX) {
+            throw new ParseException(MESSAGE_INVALID_INDEX);
+        }
+        return Index.fromOneBased(indexToBe);
     }
 
     /**
@@ -49,7 +55,11 @@ public class ParserUtil {
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
-        return Index.fromZeroBased(Integer.parseInt(trimmedIndex));
+        int indexToBe = Integer.parseInt(trimmedIndex);
+        if (indexToBe > MAX_INDEX) {
+            throw new ParseException(MESSAGE_INVALID_INDEX);
+        }
+        return Index.fromZeroBased(indexToBe);
     }
 
     /**
@@ -63,7 +73,11 @@ public class ParserUtil {
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
-        return Index.fromZeroBased(Integer.parseInt(trimmedIndex));
+        int indexToBe = Integer.parseInt(trimmedIndex);
+        if (indexToBe > MAX_INDEX) {
+            throw new ParseException(MESSAGE_INVALID_INDEX);
+        }
+        return Index.fromZeroBased(indexToBe);
     }
 
     /**
