@@ -3,44 +3,83 @@ layout: page
 title: Syasya Azman's Project Portfolio Page
 ---
 
-## Project: AddressBook Level 3
+## Project: LogOnce
 
-AddressBook - Level 3 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+LogOnce is a one-stop logistics tracker app for clerks to monitor shipping statuses of all clients and perform common 
+logistics operations. It is optimized for use via a Command Line Interface (CLI) while still having the benefits of a 
+Graphical User Interface (GUI).
 
 Given below are my contributions to the project.
 
-* **New Feature**: Added the ability to undo/redo previous commands.
-  * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-  * Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-  * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-  * Credits: *{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}*
+* **New Feature**: Delete Client
+  [\#155](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/155)
+  [\#79](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/79)
+  [\#71](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/71)
+  [\#43](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/43)
+  * What it does: allows the user to delete a client from the client list along with all orders in the order list that
+  are linked to that client
+  * Justification: This feature enhances the delete function as users will not need to manually delete orders made by a
+  certain client when the company wishes to cease collaborations or connections with the client.
+  * Highlights: This affects commands to be added in the future. The delete client functionality is tailored to 
+  complement a unique client ID system instead of ID detection via displayed index of the client list.
 
-* **New Feature**: Added a history command that allows the user to navigate to previous commands using up/down keys.
+* **New Feature**: Delete Order
+  [\#155](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/155)
+  [\#43](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/43)
+  * What it does: Similar to delete client, it allows the user to delete an order from the order list.
+  * Justification: This feature helps to differentiate deletion of orders from deletion of clients. Users can delete 
+  individual orders without having to delete the client who made the order or any other important orders linked to that 
+  client.
+  * Highlights: This enhancement follows a unique order ID system which is different from the unique client ID system so
+  that the Client and Order deletion will not have unexpected dependencies in future command implementations.
 
-* **Code contributed**: [RepoSense link]()
+* **Code contributed**: 
+[RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=syasyazman)
 
 * **Project management**:
-  * Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
+  * Helped out with label indicators and linking of pull requests to issues on GitHub
+  * Helped out with milestone indicators for pull requests on GitHub
+  * Helped out with `v1.2` JAR release
+  * Helped out with the management of LogOnce's landing page and About Us page
 
 * **Enhancements to existing features**:
-  * Updated the GUI color scheme (Pull requests [\#33](), [\#34]())
-  * Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests [\#36](), [\#38]())
-
+  * Updated the GUI color scheme : (Credits: changes were made using SceneBuilder)
+  [\#87](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/87)
+  * Wrote additional tests for `UniqueOrderList` to increase its method test coverage from 90% to 100%
+  [\#184](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/184)
+  * Wrote additional tests for `UniquePersonList` to increase its method test coverage from 81% to 100%
+  [\#184](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/184)
+  * Wrote additional tests for delete commands
+  [\#165](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/165)
+ 
+* **Testing**:
+  * Added tests for `delete-client` and `delete-order`
+  [\#165](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/165)
+  [\#43](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/43)
+  * Added tests for `UniqueOrderList` and `UniquePersonList`
+  [\#184](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/184)   
+  
 * **Documentation**:
   * User Guide:
-    * Added documentation for the features `delete` and `find` [\#72]()
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit`: [\#74]()
+    * Added LogOnce logo as header for the user guide (Credit: used Wix to make logo)
+    [\#85](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/85)
+    * Added documentation for the features `delete client` and `delete order`
+    [\#171](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/171)
+    [\#85](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/85)
+    [\#55](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/55)
+    * Did cosmetic tweaks to documentation of features `clear`, `exit` and `help`
+    [\#162](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/162)
   * Developer Guide:
-    * Added implementation details of the `delete` feature.
-
-* **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
-
-* **Tools**:
-  * Integrated a third party library (Natty) to the project ([\#42]())
-  * Integrated a new Github plugin (CircleCI) to the team repo
-
-* _{you can add/remove categories in the list above}_
+    * Added Non-Functional Requirements for LogOnce
+    [\#21](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/21)
+    * Added Glossary for LogOnce
+    [\#21](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/21)
+    * Added implementation details of the `delete client` feature.
+    [\#169](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/169)
+    * Added implementation details of the `delete order` feature.
+    [\#169](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/169)
+    * Added UML diagrams for `delete client` and `delete order`
+    [\#169](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/169)
+    * Helped with usage of PlantUML to make UML diagrams for LogOnce's commands
+    [\#182](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/182) 
+    

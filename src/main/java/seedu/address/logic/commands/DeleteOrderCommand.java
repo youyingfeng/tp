@@ -51,7 +51,7 @@ public class DeleteOrderCommand extends Command {
         }
 
         if (!isOrderFound) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_INDEX);
         }
 
         requireNonNull(orderToDelete);

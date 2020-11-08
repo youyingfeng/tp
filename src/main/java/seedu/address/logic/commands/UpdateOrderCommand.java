@@ -36,8 +36,7 @@ public class UpdateOrderCommand extends Command {
         List<Order> lastShownList = model.getUnfilteredOrderList();
 
         if (fieldsToUpdate.getOrderId().get().getZeroBased() > lastShownList.get(lastShownList.size() - 1)
-                .getOrderId().getZeroBased()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_INDEX);
         }
 
         Order orderToUpdate = null;
@@ -50,7 +49,7 @@ public class UpdateOrderCommand extends Command {
         }
 
         if (orderToUpdate == null) {
-            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_ORDER_INDEX);
         }
 
         Index clientId;

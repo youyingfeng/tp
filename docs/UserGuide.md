@@ -184,7 +184,8 @@ whose phone number is 91234567.
 
 ### Listing Orders : `list-order` 
 
-**Description** : Returns a list of orders. The list will be sorted by the order ID that was assigned when the order was created.
+**Description** : Returns a list of orders. The list will be sorted by the order ID that was assigned when the order was created. 
+The feature also works when clicking on the "Orders" GUI button.
 
 **Format** : `list-order`<br>
 Displays a list of all orders in the order list (and the client that placed the order respectively).
@@ -194,6 +195,7 @@ Displays a list of all orders in the order list (and the client that placed the 
 ### Listing Clients : `list-client`
 
 **Description** : Returns a list of clients. The list will be sorted by the client ID that was assigned when the client was created.
+The feature also works when clicking on the "Clients" GUI button.
 
 **Format** : `list-client`<br>
 Displays a list of all clients in the client list.
@@ -219,10 +221,10 @@ Deletes the order that is identified as `<order id>`.
 Note that `<order index>` is the **unique order ID** given to each order when added and is **not** based on the order 
 index in the order list.
 
-`<order id>` must exist as a valid unique order ID in the order list, **starting from `1`**.
+`<order id>` must exist as a valid unique order ID in the order list **between `1` and `99999` inclusive**.
 
-To identify the unique order ID of a client, view the 6 digit ID number assigned to the order to the **right** of 
-the client's name. For example, if the first line of the order information is `2. Order #000005`, then the 
+To identify the unique order ID of a client, view the 5 digit ID number assigned to the order to the **right** of 
+the client's name. For example, if the first line of the order information is `2. Order #00005`, then the 
 order's unique order ID is `5`.
 
 **Invalid Usage Example** :
@@ -231,7 +233,7 @@ Order index should be a valid unique order ID in the order list
 
 **Valid Usage Example** :
 ![Valid Order Command](images/ValidDeleteOrderCommand.png)
-`delete-order --order 2` : deletes the order with unique order ID #000002
+`delete-order --order 2` : deletes the order with unique order ID #00002
 
 **Other Valid Usages** :
 Entering order ID with as many leading zeroes (e.g `00000000001`) will still work as long as the order id without the
@@ -250,10 +252,10 @@ Deletes the client who is identified as `<client id>` and orders linked to `<cli
 Note that `<client id>` is the **unique client ID** given to each client when added and is **not** based on the client 
 index in the client list. 
 
-`<client id>` must exist as a valid unique client ID in the client list, **starting from `1`**.
+`<client id>` must exist as a valid unique client ID in the client list **between `1` and `99999` inclusive**.
 
-To identify the unique client ID of a client, view the 6 digit ID number assigned to the client in **brackets** beside 
-the client's name. For example, if the first line of the client information is `1. Kim Kardashian [ID#000003]`, then the 
+To identify the unique client ID of a client, view the 5 digit ID number assigned to the client in **brackets** beside 
+the client's name. For example, if the first line of the client information is `1. Kim Kardashian [ID#00003]`, then the 
 client's unique client ID is `3`.
 
 **Invalid Usage Example** :
@@ -262,7 +264,7 @@ Client ID should be a valid unique client ID in the client list
 
 **Valid Usage Example 1** : Deleting Client with Empty Order List
 ![Valid Client Command 1](images/ValidDeleteClientCommand.png)
-`delete-client --client 1` : deletes the client with unique client ID #000001
+`delete-client --client 1` : deletes the client with unique client ID #00001
 In this case, no orders are deleted as no orders are linked to the client
 
 **Valid Usage Example 2** : Delete Client with Non-Empty Order List
@@ -309,56 +311,63 @@ will be explained below.
 
 If any of the optional tokens are present, `<name keywords>` may be left blank.
 
-`<name keywords>` is any amount of keywords, each separated by a space. A client's whose name contains any of these
-keywords will be considered a match. For example: `find alex chungus`. Both `Alex Rider` and `Big Chungus` will be
-considered matches.
+Other than `<name keywords>` and `<address keywords>` all other search terms must be an exact match.
 
-`<address keywords>` is any amount of keywords, each separated by a space. The matching of these keywords works the same
-as it does for `<name keywords>`. For example: `find --address jurong clementi` will display clients that have their
-address as `Jurong West`, `Jurong East`, `Clementi Avenue 6`, `Clementi Mall`.
+The different fields are detailed below:
+* `<name keywords>` is any amount of keywords, each separated by a space. A client's whose name contains any of these
+keywords will be considered a match.
 
-`<email address>` is a string that should be a valid email address. The email address has to be an
- exact match for the client to be displayed. For example: `find --email doe@gmail.com`. 
+* `<address keywords>` is any amount of keywords, each separated by a space. The matching of these keywords works the same
+as it does for `<name keywords>`.
+
+* `<email address>` is a string that should be a valid email address.
  
-`<phone number>` is a string of numbers only with a minimum length of 3. The phone number also has to be an exact match
-for the client to be displayed. For example: `find --phone 99223344`.
+* `<phone number>` is a string of numbers only with a minimum length of 3.
 
-More examples:
-`find alice --phone 9123 --address changi` will display any clients with 'Alice' in their names, with a phone number of 
+**Examples**:
+* `find alice --phone 9123 --address changi` will display any clients with 'Alice' in their names, with a phone number of 
 9123 and who live in Changi. This would be a very specific search, as phone numbers must be an exact match.
 
-`find bob charles --address queenstown commonwealth` will display any clients with either 'Bob' or 'Charles' in their names who also
+* `find bob charles --address queenstown commonwealth` will display any clients with either 'Bob' or 'Charles' in their names who also
 live in Queenstown or Commonwealth. This would be a more general search, as each client only has to match one keyword in
 each category of searching.
 
 ------------------------------------------------------------------------------------------------------------------------
 
-### Finding orders : `findorder`
+### Finding orders : `find-order`
 
 **Description** : Finds orders by their description and optionally by their attached client IDs, delivery addresses and delivery dates.
 Very similar usage to `find`
 
-**Format** : `findorder <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
+**Format** : `find-order <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
 
 This command will return orders that match all the tokens provided. The matching criteria for each token
 will be explained below.
 
 If any of the optional tokens are present, `<description keywords>` may be left blank.
 
-`<description keywords>` is any amount of keywords, each separated by a space. An order whose description contains any of these
-keywords will be considered a match. For example: `findorder iphone` will display all orders involving iPhones.
+Other than `<name keywords>` and `<address keywords>` all other search terms must be an exact match
 
-`<address keywords>` is any amount of keywords, each separated by a space. Functions the same as it does in `find` except
-for orders.
+The different fields are detailed below:
+* `<description keywords>` is any amount of keywords, each separated by a space. An order whose description contains any of these
+keywords will be considered a match.
 
-`<client ID>` is an integer that should be greater than 0. The ID has to be an exact match for the order to be displayed.
-For example: `findorder --client 1` will show all orders that are related to the client with an ID of 1.
+* `<address keywords>` is any amount of keywords, each separated by a space. The matching of these keywords works the same
+as it does for `<description keywords>`.
+
+* `<client ID>` is an integer that should be between 1 and 99999 inclusive.
  
-`<date>` is a string of numbers separated by dashes in the format of `YYYY-MM-DD`. The date entered has to be valid and an
-exact match for the order to be displayed. For example: `findorder --date 2020-11-27` will display all orders to be
-delivered on the 27th of November, 2020.
+* `<date>` is a string of numbers separated by dashes in the format of `YYYY-MM-DD`.
+
+**Examples**:
+* `find-order iPhone --date 2020-10-23` will find all orders that contain `iPhone` in their description that are also deliverd
+on 23rd October 2020
+* `find-order --date 2020-11-24 --address Jurong Clementi` will find all orders delivered on 24th November 2020 that contain either
+`Jurong` or `Clementi` in their delivery address.
+
 
 ### Editing/Updating orders: `update-order`
+
 **Description** : Modifies a specified order with the new information provided in this command.
 
 **Format** : `update-order --orderid <order ID of order to be changed> (--description <new order description>) (--clientid <new client id>) (--address <new address>) (--date <new delivery date>)`
@@ -377,7 +386,9 @@ Each of these fields are optional, and their parameter tags may be left out of t
 
 `<new delivery date>` should not be left blank, and must be in the format `YYYY-MM-DD HHmm`.
 
-### Editing/Updating clients: `update-client`
+------------------------------------------------------------------------------------------------------------------------
+
+### Updating clients: `update-client`
 **Description** : Modifies a specified client with the new information provided in this command.
 
 **Format** : `update-client --clientid <client ID of client to be changed> (--name <new name>) (--phone <new phone number>) (--address <new address>) (--email <new email>)`
@@ -394,12 +405,9 @@ Each of these fields are optional, and their parameter tags may be left out of t
 
 `<new address>` should not be blank.
 
-`<new email>` shoudl not be blank, and should be of a valid email format.
+`<new email>` should not be blank, and should be of a valid email format.
 
-
-
-
---------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
 
 ### Help Command : `help`
 
@@ -407,10 +415,30 @@ Each of these fields are optional, and their parameter tags may be left out of t
 
 **Format** : `help`
 
-This command allows you to copy the URL link to LogOnce's user guide for reference to the available commands which can 
+This command allows user to copy the URL link to LogOnce's user guide for reference to the available commands which can 
 be used in the application.
 
---------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+
+### Clear Command : `clear`
+
+**Description** : Clears all clients in client list and all orders in order list.
+
+**Format** : `clear`
+
+This command allows user to reset all existing in the client list and order list permanently.
+
+------------------------------------------------------------------------------------------------------------------------
+
+### Exit Command : `exit`
+
+**Description** : Exits application
+
+**Format** : `exit`
+
+This command allows user to exit from the LogOnce application window.
+
+------------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
@@ -427,3 +455,5 @@ Action | Format
 **Update Order** | `update-order --orderid <order ID of order to be changed> (--description <new order description>) (--clientid <new client id>) (--address <new address>) (--date <new delivery date>)`
 **Update Client** | `update-client --clientid <client ID of client to be changed> (--name <new name>) (--phone <new phone number>) (--address <new address>) (--email <new email>)`
 **Help** | `help`
+**Clear** | `clear`
+**Exit** | `exit`
