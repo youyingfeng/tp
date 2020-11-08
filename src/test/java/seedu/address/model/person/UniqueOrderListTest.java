@@ -2,9 +2,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BRACELET;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_DATE_BRACELET;
-import seedu.address.model.person.Order;
-import seedu.address.model.person.UniqueOrderList;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalOrders.BRACELET;
 import static seedu.address.testutil.TypicalOrders.GLASSES;
@@ -15,8 +12,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.person.exceptions.OrderNotFoundException;
+import seedu.address.model.person.Order;
+import seedu.address.model.person.UniqueOrderList;
 import seedu.address.model.person.exceptions.DuplicateOrderException;
+import seedu.address.model.person.exceptions.OrderNotFoundException;
 import seedu.address.testutil.OrderBuilder;
 
 public class UniqueOrderListTest {
@@ -42,9 +41,18 @@ public class UniqueOrderListTest {
     @Test
     public void contains_orderWithSameIdentityFieldsInList_returnsTrue() {
         uniqueOrderList.add(BRACELET);
-        Order editedBracelet = new OrderBuilder(BRACELET).withAddress(VALID_ADDRESS_BRACELET)
-                .withDate(VALID_DATE_BRACELET).build();
-        assertTrue(uniqueOrderList.contains(editedBracelet));
+        Order editedBracelet = new OrderBuilder(BRACELET).withAddress(VALID_ADDRESS_BRACELET).build();
+        boolean isExistingBracelet = false;
+
+        // loop through unique order list to check if it contains edited bracelet
+        for (Order order : uniqueOrderList) {
+            if (order.equals(editedBracelet)) {
+                isExistingBracelet = true;
+                break;
+            }
+        }
+
+        assertTrue(isExistingBracelet);
     }
 
     @Test
@@ -165,6 +173,6 @@ public class UniqueOrderListTest {
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-                -> uniqueOrderList.asUnmodifiableObservableList().remove(0));
+            -> uniqueOrderList.asUnmodifiableObservableList().remove(0));
     }
 }
