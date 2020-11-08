@@ -23,7 +23,7 @@ public class DoneCommand extends Command {
     public static final String MESSAGE_NOT_FOUND = "There is no order with this index number. ";
     public static final String MESSAGE_USAGE = COMMAND_WORD + " INDEX"
             + ": marks the order identified by the index number used in the displayed order list as done.\n"
-            + "Parameters: INDEX must be a positive integer.\n"
+            + "Parameters: INDEX must be a positive integer less than 99999 inclusive.\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     private Index toMarkAsDoneIndex;

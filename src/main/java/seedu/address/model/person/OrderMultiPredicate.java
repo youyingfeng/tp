@@ -3,6 +3,10 @@ package seedu.address.model.person;
 import java.util.ArrayList;
 import java.util.function.Predicate;
 
+/**
+ * Wrapper predicate that tests {@code Order} and only returns true if all predicates in the
+ * list of predicates return true when testing the {@code Order}
+ */
 public class OrderMultiPredicate implements Predicate<Order> {
 
     private final ArrayList<Predicate<Order>> toBeTested;
