@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -20,26 +19,19 @@ public class UpdateOrderCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the order identified ";
 
     public static final String MESSAGE_UPDATE_CLIENT_SUCCESS = "Updated Order: %1$s";
-    private final Index orderId;
+    private UpdatedOrderFields fieldsToUpdate;
+    private Index orderId;
     private Index clientId;
     private String description;
-    private Address address;
     private LocalDateTime dateTime;
+    private Address address;
 
     /**
-     * @param orderId order to update
-     * @param clientId (if applicable) modified client this order is tied to
-     * @param description (if applicable) modified description of this order
-     * @param address (if applicable) modified address of this order
-     * @param dateTime (if applicable) modified LocalDateTime of this order
+     * @param fieldsToUpdate contains all the fields to update for the respective Order object.
      */
-    public UpdateOrderCommand(Index orderId, Index clientId, String description, Address address,
-                              LocalDateTime dateTime) {
-        this.orderId = orderId;
-        this.clientId = clientId;
-        this.description = description;
-        this.address = address;
-        this.dateTime = dateTime;
+    public UpdateOrderCommand(UpdatedOrderFields fieldsToUpdate) {
+        this.fieldsToUpdate = fieldsToUpdate;
+        this.orderId = fieldsToUpdate.getOrderId().get();
     }
 
     @Override
@@ -47,7 +39,8 @@ public class UpdateOrderCommand extends Command {
         requireNonNull(model);
         List<Order> lastShownList = model.getUnfilteredOrderList();
 
-        if (orderId.getZeroBased() > lastShownList.get(lastShownList.size() - 1).getOrderId().getZeroBased()) {
+        if (fieldsToUpdate.getOrderId().get().getZeroBased() > lastShownList.get(lastShownList.size() - 1)
+                .getOrderId().getZeroBased()) {
             throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
         }
 
@@ -64,15 +57,30 @@ public class UpdateOrderCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
         }
 
-        if (Objects.isNull(clientId)) {
+        if (fieldsToUpdate.getClientId().isEmpty()) {
             clientId = orderToUpdate.getClientId();
+        } else {
+            clientId = fieldsToUpdate.getClientId().get();
         }
-        if (Objects.isNull(description)) {
+
+        if (fieldsToUpdate.getDescription().isEmpty()) {
             description = orderToUpdate.getDescription();
+        } else {
+            description = fieldsToUpdate.getDescription().get();
         }
-        if (Objects.isNull(dateTime)) {
+
+        if (fieldsToUpdate.getDateTime().isEmpty()) {
             dateTime = orderToUpdate.getDeliveryDateTime();
+        } else {
+            dateTime = fieldsToUpdate.getDateTime().get();
         }
+
+        if (fieldsToUpdate.getAddress().isEmpty()) {
+            address = orderToUpdate.getAddress();
+        } else {
+            address = fieldsToUpdate.getAddress().get();
+        }
+
         LocalDateTime creationDateTime = orderToUpdate.getCreationDateTime();
         LocalDateTime lastModifiedDateTime = LocalDateTime.now();
         boolean isDone = orderToUpdate.getIsDone();
@@ -83,3 +91,4 @@ public class UpdateOrderCommand extends Command {
         return new CommandResult(String.format(MESSAGE_UPDATE_CLIENT_SUCCESS, orderToUpdate));
     }
 }
+
