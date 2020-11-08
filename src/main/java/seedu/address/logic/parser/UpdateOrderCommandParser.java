@@ -21,7 +21,7 @@ import seedu.address.model.person.Address;
  * Parses input arguments and creates a new UpdateOrderCommand object
  */
 public class UpdateOrderCommandParser implements Parser<UpdateOrderCommand> {
-    public static final String COMMAND_WORD = "update order";
+    public static final String COMMAND_WORD = "update-order";
     /**
      * @param args full user input string
      * @return an UpdateOrderCommand object for execution

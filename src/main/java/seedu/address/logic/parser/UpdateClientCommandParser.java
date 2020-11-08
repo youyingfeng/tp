@@ -21,7 +21,7 @@ import seedu.address.model.person.Phone;
  * Parses input arguments and creates a new UpdateClientCommand object
  */
 public class UpdateClientCommandParser implements Parser<UpdateClientCommand> {
-    public static final String COMMAND_WORD = "update client";
+    public static final String COMMAND_WORD = "update-client";
     /**
      * Parses the given {@code String} of arguments in the context of the UpdateClientCommand
      * and returns an UpdateClientCommand object for execution.
