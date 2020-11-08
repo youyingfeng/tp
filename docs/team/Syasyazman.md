@@ -58,7 +58,7 @@ Given below are my contributions to the project.
     [\#171](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/171)
     [\#85](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/85)
     [\#55](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/55)
-    * Did cosmetic tweaks to existing documentation of features `clear`, `exit` and `help`
+    * Edited existing documentation of features `clear`, `exit` and `help`
     [\#162](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/162)
   * Developer Guide:
     * Added implementation details of the `delete client` feature.
