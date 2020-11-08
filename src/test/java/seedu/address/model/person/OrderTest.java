@@ -76,10 +76,6 @@ public class OrderTest {
                 .build();
         assertFalse(SHOES.equals(editedShoes));
 
-        editedShoes = new OrderBuilder(SHOES)
-                .withCreationDate(LocalDateTime.now().format(DEFAULT_DATE_TIME_FORMATTER)).build();
-        assertFalse(SHOES.equals(editedShoes));
-
         editedShoes = new OrderBuilder(SHOES).withCompletionStatus(!SHOES.isDone()).build();
         assertFalse(SHOES.equals(editedShoes));
     }
