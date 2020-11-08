@@ -74,12 +74,13 @@ Given below are my contributions to the project.
     * Added UML diagrams for `delete client` and `delete order`
     [\#169](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/169)
     * Helped with usage of PlantUML to make UML diagrams for LogOnce's commands
-    [\#182](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/182)    
-
+    [\#182](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/182) 
+      
 * **Testing**:
   * Added tests for `delete-client` and `delete-order`
   [\#165](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/165)
   [\#43](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/43)
   * Added tests for `UniqueOrderList` and `UniquePersonList`
-  [\#184](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/184)
-    
+  [\#184](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/184) 
+ 
+   
