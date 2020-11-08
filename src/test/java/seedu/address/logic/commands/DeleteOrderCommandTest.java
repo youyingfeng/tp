@@ -69,7 +69,7 @@ public class DeleteOrderCommandTest {
         DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(outOfBoundIndex);
 
         assertCommandFailure(deleteOrderCommand, model,
-                commandHistory, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+                commandHistory, Messages.MESSAGE_INVALID_ORDER_INDEX);
     }
 
 
@@ -96,7 +96,7 @@ public class DeleteOrderCommandTest {
             DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(outOfBoundIndex);
 
             assertCommandFailure(deleteOrderCommand, model,
-                    commandHistory, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+                    commandHistory, Messages.MESSAGE_INVALID_ORDER_INDEX);
         } else {
             // no client in list
             assert false;
@@ -158,7 +158,7 @@ public class DeleteOrderCommandTest {
         DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(outOfBoundIndex);
 
         assertCommandFailure(deleteOrderCommand, model,
-                commandHistory, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+                commandHistory, Messages.MESSAGE_INVALID_ORDER_INDEX);
     }
 
     @Test
@@ -183,7 +183,7 @@ public class DeleteOrderCommandTest {
         DeleteOrderCommand deleteOrderCommand = new DeleteOrderCommand(outOfBoundIndex);
 
         assertCommandFailure(deleteOrderCommand, model,
-                commandHistory, Messages.MESSAGE_INVALID_ORDER_DISPLAYED_INDEX);
+                commandHistory, Messages.MESSAGE_INVALID_ORDER_INDEX);
     }
 
     @Test

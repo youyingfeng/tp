@@ -77,7 +77,7 @@ public class UpdateClientCommand extends Command {
         List<Client> lastShownList = model.getUnfilteredPersonList();
 
         if (targetIndex.getZeroBased() > lastShownList.get(lastShownList.size() - 1).getClientId()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_INDEX);
         }
 
         Client clientToUpdate = null;
@@ -90,7 +90,7 @@ public class UpdateClientCommand extends Command {
         }
 
         if (clientToUpdate == null) {
-            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_INDEX);
         }
 
         if (Objects.isNull(name)) {

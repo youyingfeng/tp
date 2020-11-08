@@ -1,6 +1,8 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_CLIENT_INDEX;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ORDER_INDEX;
 import static seedu.address.logic.parser.CliSyntax.DEFAULT_DATE_TIME_FORMATTER;
 
 import java.time.DateTimeException;
