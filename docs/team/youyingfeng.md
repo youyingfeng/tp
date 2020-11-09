@@ -40,10 +40,8 @@ Given below are my contributions to the project.
     [\#41](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/41)
   * Augmented Client and Order with additional fields : 
     [\#57](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/57)
-  * Reworked the GUI into a new layout 
+  * Reworked the GUI into a new layout : 
     [\#45](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/45)
-  * Integrated `update-order` and `update-client` commands into the application properly : 
-    [\#159](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/159)
   * Wrote additional tests for existing features to increase coverage from 50% to 54% : 
     [\#174](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/174)
 
@@ -57,7 +55,7 @@ Given below are my contributions to the project.
       [\#166](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/166)
     * Added documentation for the features `update-order` and `update-client` : 
       [\#161](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/161)
-    * Did bug fixes to existing documentation of features `done`, `order` : 
+    * Performed bug fixes for the existing documentation of features `done`, `order` : 
       [\#164](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/164)
   * Developer Guide:
     * Added implementation details of the GUI forms and information panels : 
