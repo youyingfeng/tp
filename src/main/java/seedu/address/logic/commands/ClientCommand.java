@@ -12,17 +12,17 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Client;
 
 /**
- * Adds a client to the address book.
+ * Adds a client to LogOnce.
  */
 public class ClientCommand extends Command {
     public static final String COMMAND_WORD = "client";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a client to LogOnce. "
             + "Parameters: "
-            + CLIENT_PREFIX_NAME + "NAME "
-            + CLIENT_PREFIX_ADDRESS + "ADDRESS "
-            + CLIENT_PREFIX_EMAIL + "EMAIL "
-            + CLIENT_PREFIX_PHONE + "PHONE";
+            + CLIENT_PREFIX_NAME + " NAME "
+            + CLIENT_PREFIX_ADDRESS + " ADDRESS "
+            + CLIENT_PREFIX_EMAIL + " EMAIL "
+            + CLIENT_PREFIX_PHONE + " PHONE";
 
     public static final String MESSAGE_SUCCESS = "New client added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This client already exists in LogOnce";
