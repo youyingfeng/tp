@@ -14,9 +14,9 @@ title: LogOnce
 
 ## Site Map
 
-* [About Us](https://github.com/AY2021S1-CS2103-F09-4/tp/blob/master/docs/AboutUs.md)
-* [User Guide](https://github.com/AY2021S1-CS2103-F09-4/tp/blob/master/docs/UserGuide.md)
-* [Developer Guide](https://github.com/AY2021S1-CS2103-F09-4/tp/blob/master/docs/DeveloperGuide.md)
+* [About Us](https://ay2021s1-cs2103-f09-4.github.io/tp/AboutUs.html)
+* [User Guide](https://ay2021s1-cs2103-f09-4.github.io/tp/UserGuide.html)
+* [Developer Guide](https://ay2021s1-cs2103-f09-4.github.io/tp/DeveloperGuide.html)
 
 
 ## Acknowledgements

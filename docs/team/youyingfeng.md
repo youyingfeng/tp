@@ -15,8 +15,9 @@ Given below are my contributions to the project.
     Pull requests [\#81](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/81), 
     [\#83](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/83), 
     and [\#159](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/159)
-  * **What it does:** Allows the user to create new clients and orders, view and update client and order information, 
-    and delete existing clients and orders from the application.
+  * **What it does:** Allows the user to view detailed information about clients and orders 
+  from within the GUI. In addition, it allows the user to create new clients and orders 
+  using GUI forms, and also allows the user to edit the information of clients and orders.
   * **Justification:** This feature improves the product significantly because it vastly increases the ease of use for 
     both experienced and new users. New users can use the application immediately without needing to learn a single 
     line of code, while experienced users are given the additional option of using a GUI to perform operations.
