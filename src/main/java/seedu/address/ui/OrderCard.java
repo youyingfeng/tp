@@ -14,7 +14,7 @@ import seedu.address.model.person.Order;
 import seedu.address.ui.events.DisplayOrderEvent;
 
 /**
- * An UI component that displays information of a {@code Order}.
+ * A UI component that displays information of a {@code Order}.
  */
 public class OrderCard extends UiPart<Region> {
 

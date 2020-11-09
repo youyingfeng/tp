@@ -91,11 +91,19 @@ public class MainWindow extends UiPart<Stage> {
         currentPage = Page.CLIENTS;
     }
 
+    /**
+     * Sets and returns the singleton instance of the MainWindow.
+     * @return The MainWindow singleton.
+     */
     public static MainWindow setInstance(Stage primaryStage, Logic logic) {
         mainWindow = new MainWindow(primaryStage, logic);
         return mainWindow;
     }
 
+    /**
+     * Returns the singleton instance of the MainWindow if it is instantiated.
+     * @return The MainWindow singleton.
+     */
     public static MainWindow getInstance() {
         assert mainWindow != null;
         return mainWindow;
@@ -186,11 +194,17 @@ public class MainWindow extends UiPart<Stage> {
         });
     }
 
+    /**
+     * Displays the order information on the application.
+     */
     void showOrderInfo(Order order) {
         extraInfoPlaceholder.getChildren().clear();
         extraInfoPlaceholder.getChildren().add(new OrderInfoDisplay(order).getRoot());
     }
 
+    /**
+     * Displays the client information on the application.
+     */
     void showClientInfo(Client client) {
         extraInfoPlaceholder.getChildren().clear();
         extraInfoPlaceholder.getChildren().add(new ClientInfoDisplay(client).getRoot());
@@ -247,7 +261,7 @@ public class MainWindow extends UiPart<Stage> {
             listTitle.setText(" Clients");
 
             personListPanel = new PersonListPanel(logic.getUnfilteredPersonList());
-            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().clear();
             personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
         }
     }
@@ -268,7 +282,7 @@ public class MainWindow extends UiPart<Stage> {
             listTitle.setText(" Orders");
 
             orderListPanel = new OrderListPanel(logic.getUnfilteredOrderList());
-            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().clear();
             personListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
         }
     }

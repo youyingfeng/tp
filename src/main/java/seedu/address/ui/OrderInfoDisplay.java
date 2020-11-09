@@ -11,7 +11,9 @@ import seedu.address.ui.events.DeletionEvent;
 import seedu.address.ui.events.EditOrderEvent;
 import seedu.address.ui.events.OrderCompleteEvent;
 
-
+/**
+ * A UI component that displays more information of a {@code Order}.
+ */
 public class OrderInfoDisplay extends UiPart<Region> {
     private static final String FXML = "OrderInfoDisplay.fxml";
 
@@ -38,6 +40,9 @@ public class OrderInfoDisplay extends UiPart<Region> {
     @FXML
     private Text creationDate;
 
+    /**
+     * Creates a new {@code OrderInfoDisplay} with the provided {@code Order}.
+     */
     OrderInfoDisplay(Order order) {
         super(FXML);
         this.order = order;
