@@ -7,20 +7,26 @@ import static seedu.address.commons.core.Messages.MESSAGE_PERSONS_LISTED_OVERVIE
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Optional;
 import java.util.function.Predicate;
 
+import javafx.stage.Stage;
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.logic.CommandHistory;
-import seedu.address.model.Model;
-import seedu.address.model.ModelManager;
-import seedu.address.model.UserPrefs;
+import seedu.address.logic.LogicManager;
+import seedu.address.model.*;
 import seedu.address.model.person.Client;
 import seedu.address.model.person.ClientMultiPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
+import seedu.address.storage.Storage;
+import seedu.address.ui.MainWindow;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -65,20 +71,6 @@ public class FindCommandTest {
         // different command with different value -> returns false
         assertFalse(findFirstCommand.equals(findSecondCommand));
     }
-
-    @Test
-    public void execute_zeroKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
-        NameContainsKeywordsPredicate predicate = preparePredicate(" ");
-        ArrayList<Predicate<Client>> predicates = new ArrayList<>();
-        predicates.add(predicate);
-        ClientMultiPredicate multiPredicate = new ClientMultiPredicate(predicates);
-        FindCommand command = new FindCommand(multiPredicate);
-        expectedModel.updateFilteredPersonList(multiPredicate);
-        assertCommandSuccess(command, model, commandHistory, expectedMessage, expectedModel);
-        assertEquals(Collections.emptyList(), model.getFilteredPersonList());
-    }
-
 
     /**
      * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}.

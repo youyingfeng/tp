@@ -61,15 +61,4 @@ public class FindOrderCommandTest {
         // different command with different value -> returns false
         assertFalse(findFirstCommand.equals(findSecondCommand));
     }
-
-    @Test
-    public void execute_zeroKeywords_noOrderFound() {
-        String expectedMessage = String.format(MESSAGE_ORDERS_LISTED_OVERVIEW, 0);
-        ArrayList<Predicate<Order>> predicates = new ArrayList<>();
-        OrderMultiPredicate multiPredicate = new OrderMultiPredicate(predicates);
-        FindOrderCommand command = new FindOrderCommand(multiPredicate);
-        expectedModel.updateFilteredOrderList(multiPredicate);
-        assertCommandSuccess(command, model, commandHistory, expectedMessage, expectedModel);
-        assertEquals(Collections.emptyList(), model.getFilteredOrderList());
-    }
 }
