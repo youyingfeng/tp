@@ -315,7 +315,7 @@ list too.
 Given below is an example usage scenario and how the delete mechanism behaves at each step.
 
 
-####Delete Order
+**Delete Order**
 
 Step 1. The user launches application and views his/her list of orders. In this case, the order list is empty.
 
@@ -329,7 +329,7 @@ The following sequence diagram shows how the delete order operation works :
 
 ![Delete Order Sequence Diagram](images/DeleteOrderSequenceDiagram.png)
 
-####Delete Client
+**Delete Client**
 
 Step 1. The user launches application and views his/her list of clients. In this scenario, the client list is empty.
 
