@@ -135,7 +135,9 @@ This section describes some noteworthy details on how certain features are imple
 
 ### User Interface
 
-#### Proposed implementation
+<img src = "images/UiClassDiagram" width = "574">
+
+#### Implementation
 
 The updated user interface has three columns: the leftmost column acts as a navigation menu, the middle column displays 
 the list of Clients/Orders and the rightmost column is supposed to display more details about the Client/Order.
@@ -182,6 +184,9 @@ When this event is bubbled up and captured by the MainWindow, the MainWindow wil
 Communication between the forms and the user interface is achieves in one of two ways: the first way is through passing the MainWindow object to the creation form, and the second is through using JavaFX's inbuilt event messaging system to pass commands up to the MainWindow, where they will be executed by the handlers.
 
 #### Method 1: by passing the MainWindow object directly
+
+<img src = "images/OrderSequenceDiagram" width = "574">
+
 This method is only used by the client creation form `NewClientForm`.
 
 Step 1: User accesses the form through the user interface.
