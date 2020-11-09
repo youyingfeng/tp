@@ -315,7 +315,7 @@ list too.
 Given below is an example usage scenario and how the delete mechanism behaves at each step.
 
 
-####Delete Order
+**Delete Order**
 
 Step 1. The user launches application and views his/her list of orders. In this case, the order list is empty.
 
@@ -329,7 +329,7 @@ The following sequence diagram shows how the delete order operation works :
 
 ![Delete Order Sequence Diagram](images/DeleteOrderSequenceDiagram.png)
 
-####Delete Client
+**Delete Client**
 
 Step 1. The user launches application and views his/her list of clients. In this scenario, the client list is empty.
 
@@ -819,12 +819,3 @@ point for testers and does not encompass the whole set of available commands.
    1. Other incorrect delete commands to try: `delete-client`, `delete-client --client x`, `...` (where x is larger than
       the list size)<br>
       Expected: Similar to previous.
-
-
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
