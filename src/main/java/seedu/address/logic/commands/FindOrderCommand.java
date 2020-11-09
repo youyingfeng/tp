@@ -18,9 +18,9 @@ public class FindOrderCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all orders whose descriptions contain any of "
            + "the specified keywords (case-insensitive) and displays "
            + "them as a list with index numbers.\n"
-           + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
+           + "Parameters: KEYWORD [MORE_KEYWORDS]..."
            + " --date DATE --address KEYWORD [MORE_KEYWORDS]... --client CLIENTID\n"
-           + "Example: " + COMMAND_WORD + "iPhone --date 2020-10-23 --address jurong --client 32";
+           + "Example: " + COMMAND_WORD + " iPhone --date 2020-10-23 --address jurong --client 32";
 
     private final OrderMultiPredicate predicate;
 
