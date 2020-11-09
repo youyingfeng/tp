@@ -8,7 +8,6 @@ import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.UPDATE_CLIENT_PREFIX_PHONE;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
@@ -40,35 +39,20 @@ public class UpdateClientCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 " + CLIENT_PREFIX_NAME + "Peter";
 
     public static final String MESSAGE_UPDATE_CLIENT_SUCCESS = "Updated Client: %1$s";
-    public static final String MESSAGE_NOT_UPDATED = "At least one field to edit must be provided.";
 
-    private final Index targetIndex;
-    private Name name;
-    private Address address;
-    private Email email;
-    private Phone phone;
-    private final UpdateClientDescriptor updateClientDescriptor;
+    private final Index clientId;
+    private final UpdatedClientFields fieldsToUpdate;
 
     /**
-     * @param targetIndex index of the client the user would like to modify
-     * @param name (if applicable) modified name of the client
-     * @param address (if applicable) modified address of the client
-     * @param email (if applicable) modified email of the client
-     * @param phone (if applicable) modified phone of the client
+     * @param fieldsToUpdate contains all the fields to update for the respective Client object.
      */
-    public UpdateClientCommand(Index targetIndex, Name name, Address address, Email email, Phone phone) {
-        this.targetIndex = targetIndex;
-        this.name = name;
-        this.address = address;
-        this.email = email;
-        this.phone = phone;
+    public UpdateClientCommand(UpdatedClientFields fieldsToUpdate) {
+        this.fieldsToUpdate = fieldsToUpdate;
+        this.clientId = fieldsToUpdate.getClientId().get();
+    }
 
-        UpdateClientDescriptor updateClientDescriptor = new UpdateClientDescriptor();
-        updateClientDescriptor.setName(name);
-        updateClientDescriptor.setAddress(address);
-        updateClientDescriptor.setEmail(email);
-        updateClientDescriptor.setPhone(phone);
-        this.updateClientDescriptor = updateClientDescriptor;
+    public UpdatedClientFields getFieldsToUpdate() {
+        return fieldsToUpdate;
     }
 
     @Override
@@ -76,38 +60,53 @@ public class UpdateClientCommand extends Command {
         requireNonNull(model);
         List<Client> lastShownList = model.getUnfilteredPersonList();
 
-        if (targetIndex.getZeroBased() > lastShownList.get(lastShownList.size() - 1).getClientId()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+        if (clientId.getZeroBased() > lastShownList.get(lastShownList.size() - 1).getClientId()) {
+            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_INDEX);
         }
 
         Client clientToUpdate = null;
 
         for (Client client : lastShownList) {
-            if (client.getClientId() == targetIndex.getZeroBased()) {
+            if (client.getClientId() == clientId.getZeroBased()) {
                 clientToUpdate = client;
                 break;
             }
         }
 
         if (clientToUpdate == null) {
-            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_INDEX);
         }
 
-        if (Objects.isNull(name)) {
+        Name name;
+        if (fieldsToUpdate.getName().isEmpty()) {
             name = clientToUpdate.getName();
+        } else {
+            name = fieldsToUpdate.getName().get();
         }
-        if (Objects.isNull(address)) {
+
+        Address address;
+        if (fieldsToUpdate.getAddress().isEmpty()) {
             address = clientToUpdate.getAddress();
+        } else {
+            address = fieldsToUpdate.getAddress().get();
         }
-        if (Objects.isNull(email)) {
+
+        Email email;
+        if (fieldsToUpdate.getEmail().isEmpty()) {
             email = clientToUpdate.getEmail();
+        } else {
+            email = fieldsToUpdate.getEmail().get();
         }
-        if (Objects.isNull(phone)) {
+
+        Phone phone;
+        if (fieldsToUpdate.getPhone().isEmpty()) {
             phone = clientToUpdate.getPhone();
+        } else {
+            phone = fieldsToUpdate.getPhone().get();
         }
 
         List<Index> orderList = clientToUpdate.getOrders();
-        Client newClient = new Client(name, phone, email, address, targetIndex, orderList);
+        Client newClient = new Client(name, phone, email, address, clientId, orderList);
         model.setPerson(clientToUpdate, newClient);
         model.commitAddressBook();
 
@@ -118,7 +117,7 @@ public class UpdateClientCommand extends Command {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof UpdateClientCommand // instanceof handles nulls
-                && targetIndex.equals(((UpdateClientCommand) other).targetIndex)); // state check
+                && clientId.equals(((UpdateClientCommand) other).clientId)); // state check
     }
 
     /**

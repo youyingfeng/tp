@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CLIENT_ZEROBASED;
 
 import org.junit.jupiter.api.Test;
@@ -43,5 +44,10 @@ public class DeleteClientCommandParserTest {
                 DeleteClientCommand.MESSAGE_USAGE));
     }
 
+    @Test
+    public void parse_outOfRangeArg_throwsParseException() {
+        assertParseFailure(parser, " --client 9999999", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                MESSAGE_INVALID_INDEX));
+    }
 }
 
