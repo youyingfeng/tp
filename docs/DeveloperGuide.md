@@ -135,7 +135,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### User Interface
 
-<img src = "images/UiClassDiagram" width = "574">
+<img src = "images/UiClassDiagram.png" width = "574">
 
 #### Implementation
 
@@ -144,8 +144,6 @@ the list of Clients/Orders and the rightmost column is supposed to display more 
 
 The switching of views is done by calling methods defined in MainWindow from the FXML file, upon clicking on the 
 respective button. These methods are exposed in the `MainWindow` class as `handleClients()` and `handleOrders()`.
-
-_{Diagram will be added at a later date}_
 
 Step 1. The user launches the application, and the User Interface is created.
 
@@ -185,7 +183,7 @@ Communication between the forms and the user interface is achieves in one of two
 
 #### Method 1: by passing the MainWindow object directly
 
-<img src = "images/OrderSequenceDiagram" width = "574">
+<img src = "images/OrderSequenceDiagram.png" width = "574">
 
 This method is only used by the client creation form `NewClientForm`.
 
@@ -295,7 +293,6 @@ Step 8. `FindOrderCommandParser` then creates a `OrderMultiPredicate` from the l
 Step 9. The `FindOrderCommand` is executed and the `OrderMultiPredicate` is used to update the `filteredOrderList`, which will return the only order present in the list,
 as that order fulfils all the predicates found inside the `OrderMultiPredicate`.
 
-_{Diagram will be added at a later date}_
 
 ### Delete Feature
 
