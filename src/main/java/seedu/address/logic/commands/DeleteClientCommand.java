@@ -51,7 +51,7 @@ public class DeleteClientCommand extends Command {
         }
 
         if (!isClientFound) {
-            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_INDEX);
         }
 
         requireNonNull(clientToDelete);
