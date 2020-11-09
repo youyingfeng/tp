@@ -6,6 +6,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.logic.CommandHistory;
 import seedu.address.model.Model;
 import seedu.address.model.person.OrderMultiPredicate;
+import seedu.address.ui.MainWindow;
 
 /**
  * Finds and lists all orders in order list of address book whose description contains any of the argument keywords.
@@ -36,6 +37,7 @@ public class FindOrderCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) {
         requireNonNull(model);
         assert predicate != null;
+        MainWindow.getInstance().handleOrders();
         model.updateFilteredOrderList(predicate);
         return new CommandResult(
                 String.format(Messages.MESSAGE_ORDERS_LISTED_OVERVIEW, model.getFilteredOrderList().size()));

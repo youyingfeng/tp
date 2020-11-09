@@ -261,7 +261,7 @@ public class MainWindow extends UiPart<Stage> {
             listTitle.setText(" Clients");
 
             personListPanel = new PersonListPanel(logic.getUnfilteredPersonList());
-            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().clear();
             personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
         }
     }
@@ -282,7 +282,7 @@ public class MainWindow extends UiPart<Stage> {
             listTitle.setText(" Orders");
 
             orderListPanel = new OrderListPanel(logic.getUnfilteredOrderList());
-            personListPanelPlaceholder.getChildren().removeAll();
+            personListPanelPlaceholder.getChildren().clear();
             personListPanelPlaceholder.getChildren().add(orderListPanel.getRoot());
         }
     }
