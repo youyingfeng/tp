@@ -185,7 +185,7 @@ Communication between the forms and the user interface is achieves in one of two
 
 <img src = "images/OrderSequenceDiagram.png" width = "574">
 
-This method is only used by the client creation form `NewClientForm`.
+This method is only used by the client creation form `NewClientForm`, and the order creation form `NewOrderForm`.
 
 Step 1: User accesses the form through the user interface.
 

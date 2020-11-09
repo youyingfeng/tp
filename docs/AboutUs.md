@@ -15,6 +15,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/cx0810.md)]
 
 * Role: Developer
+* Responsibilities: List and Undo commands
 
 ### Syasya Azman
 
@@ -24,6 +25,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/Syasyazman.md)]
 
 * Role: Developer
+* Responsibilities: Deletion commands
 
 ### Ting Xiao
 
@@ -32,6 +34,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[github](http://github.com/tigerting98)] [[portfolio](team/tigerting98.md)]
 
 * Role: Developer
+* Responsibilities: Search commands
 
 ### Pua Xuan Ming
 
@@ -41,6 +44,7 @@ We are a team based in the [School of Computing, National University of Singapor
 [[portfolio](team/xnmng.md)]
 
 * Role: Developer
+* Responsibilities: Update commands and Order classes
 
 ### You Yingfeng
 
