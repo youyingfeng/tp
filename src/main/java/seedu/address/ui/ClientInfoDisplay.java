@@ -8,6 +8,9 @@ import seedu.address.model.person.Client;
 import seedu.address.ui.events.DeletionEvent;
 import seedu.address.ui.events.EditClientEvent;
 
+/**
+ * A UI component that displays more information of a {@code Client}.
+ */
 public class ClientInfoDisplay extends UiPart<Region> {
     private static final String FXML = "ClientInfoDisplay.fxml";
 
@@ -28,6 +31,9 @@ public class ClientInfoDisplay extends UiPart<Region> {
     @FXML
     private Text email;
 
+    /**
+     * Creates a new {@code ClientInfoDisplay} with the provided {@code Client}.
+     */
     ClientInfoDisplay(Client client) {
         super(FXML);
         this.client = client;

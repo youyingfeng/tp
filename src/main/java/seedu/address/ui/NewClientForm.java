@@ -12,6 +12,9 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * UI for creating a new Client in the application.
+ */
 public class NewClientForm extends UiPart<Region> {
     private static final String FXML = "NewClientForm.fxml";
 

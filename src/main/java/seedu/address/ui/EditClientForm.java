@@ -13,7 +13,9 @@ import javafx.scene.layout.Region;
 import seedu.address.model.person.Client;
 import seedu.address.ui.events.EditEvent;
 
-
+/**
+ * A UI component that allows the user to edit a {@code Client}.
+ */
 public class EditClientForm extends UiPart<Region> {
     private static final String FXML = "EditClientForm.fxml";
 
@@ -53,7 +55,7 @@ public class EditClientForm extends UiPart<Region> {
     private Label emailErrorDisplay;
 
     /**
-     * Creates a {@code NewClientForm}.
+     * Creates a {@code EditClientForm}.
      */
     public EditClientForm(Client client) {
         super(FXML);

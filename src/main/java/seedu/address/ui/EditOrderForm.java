@@ -14,7 +14,9 @@ import javafx.scene.layout.Region;
 import seedu.address.model.person.Order;
 import seedu.address.ui.events.EditEvent;
 
-
+/**
+ * A UI component that allows the user to edit an {@code Order}.
+ */
 public class EditOrderForm extends UiPart<Region> {
     private static final String FXML = "EditOrderForm.fxml";
 
@@ -45,7 +47,7 @@ public class EditOrderForm extends UiPart<Region> {
     private Label dateErrorDisplay;
 
     /**
-     * Creates a {@code NewClientForm}.
+     * Creates a {@code EditOrderForm}.
      */
     public EditOrderForm(Order order) {
         super(FXML);

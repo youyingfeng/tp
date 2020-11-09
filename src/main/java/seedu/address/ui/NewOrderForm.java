@@ -12,6 +12,9 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * UI for creating a new Order in the application.
+ */
 public class NewOrderForm extends UiPart<Region> {
     private static final String FXML = "NewOrderForm.fxml";
 
@@ -42,7 +45,7 @@ public class NewOrderForm extends UiPart<Region> {
     private Label dateErrorDisplay;
 
     /**
-     * Creates a {@code NewClientForm}.
+     * Creates a {@code NewOrderForm}.
      */
     public NewOrderForm(MainWindow mainWindow) {
         super(FXML);
