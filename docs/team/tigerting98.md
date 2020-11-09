@@ -31,7 +31,7 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=tigerting98)
 
 * **Project management**:
-  * Managed releases `v1.2.1` - `v1.4` (3 releases) on GitHub
+  * Managed releases `v1.2.1` - `v1.4` (4 releases) on GitHub
   * Created GitHub team and team repository on GitHub
   * Created labels used for issues on GitHub
   * Helped out with label indicators and pull requests on GitHub
@@ -57,12 +57,5 @@ Given below are my contributions to the project.
 * **Community**:
   * Reported bugs and suggestions for other teams in the class (examples:
   [1](https://github.com/tigerting98/ped/issues/2), 
-  [2](https://github.com/tigerting98/ped/issues/2),
-  [3](https://github.com/tigerting98/ped/issues/2))
-
-* **Testing**
-  * Added tests to cover all new classes authored by me
-  [\#173](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/173)
-  [\#183](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/183)
-  [\#185](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/185)
-  [\#186](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/186)
+  [2](https://github.com/tigerting98/ped/issues/3),
+  [3](https://github.com/tigerting98/ped/issues/4))
