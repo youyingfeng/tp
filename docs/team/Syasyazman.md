@@ -21,7 +21,8 @@ Given below are my contributions to the project.
   * Justification: This feature enhances the delete function as users will not need to manually delete orders made by a
   certain client when the company wishes to cease collaborations or connections with the client.
   * Highlights: This affects commands to be added in the future. The delete client functionality is tailored to 
-  complement a unique client ID system instead of ID detection via displayed index of the client list.
+  complement a unique client ID system instead of ID detection via displayed index of the client list. This increases 
+  flexibility in future command implementations that are similar to delete.
 
 * **New Feature**: Delete Order
   [\#155](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/155)
@@ -41,6 +42,7 @@ Given below are my contributions to the project.
   * Helped out with milestone indicators for pull requests on GitHub
   * Helped out with `v1.2` JAR release
   * Helped out with the management of LogOnce's landing page and About Us page
+  * Helped out with logo making of LogOnce (Credits: used Wix to make logo)
 
 * **Enhancements to existing features**:
   * Updated the GUI color scheme : (Credits: changes were made using SceneBuilder)
@@ -61,7 +63,7 @@ Given below are my contributions to the project.
   
 * **Documentation**:
   * User Guide:
-    * Added LogOnce logo as header for the user guide (Credit: used Wix to make logo)
+    * Added LogOnce logo as header for the user guide
     [\#85](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/85)
     * Added documentation for the features `delete client` and `delete order`
     [\#171](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/171)
@@ -82,4 +84,6 @@ Given below are my contributions to the project.
     [\#169](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/169)
     * Helped with usage of PlantUML to make UML diagrams for LogOnce's commands
     [\#182](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/182) 
+    * Helped to update UML diagrams for main components of LogOnce
+    [\#201](https://github.com/AY2021S1-CS2103-F09-4/tp/pull/201)
     
