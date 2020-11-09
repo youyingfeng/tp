@@ -313,12 +313,12 @@ list too.
 Given below is an example usage scenario and how the delete mechanism behaves at each step.
 
 
-**Delete Order**
+####Delete Order
 
-Step 1. The user launches application and views his/her list of orders. In this scenario, the order list is empty.
+Step 1. The user launches application and views his/her list of orders. In this case, the order list is empty.
 
-Step 2. The user executes `order --description 123 --client 1 --address 123 --date 2020-12-12 2359`. An order is created
- and appended to the end of the order list.
+Step 2. The user executes `order --description book --client 1 --address 123 --date 2020-12-12 2359`. An order is 
+created and appended to the end of the order list.
 
 Step 3. The user decides to remove the order he had just created. The user notes that the unique order ID of the order 
 is `#00001`. The user executes `delete-order --order 1` to remove the order from the order list.
@@ -327,7 +327,7 @@ The following sequence diagram shows how the delete order operation works :
 
 ![Delete Order Sequence Diagram](images/DeleteOrderSequenceDiagram.png)
 
-**Delete Client**
+####Delete Client
 
 Step 1. The user launches application and views his/her list of clients. In this scenario, the client list is empty.
 
@@ -448,12 +448,8 @@ The following activity diagram summarizes what happens when a user executes a ne
   itself.
   * Pros: Will use less memory (e.g. for `delete-client`, just save the client being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
+  
+  
 
 ### Update-client feature
 
@@ -484,7 +480,7 @@ Upon calling the `Execute` method in UpdateClientCommand, the model is queried t
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of client contacts and their respective list of orders
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
@@ -741,8 +737,8 @@ warehousing, and fulfillment services
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting 
+point for testers and does not encompass the whole set of available commands.
 
 </div>
 
@@ -760,25 +756,68 @@ testers are expected to do more *exploratory* testing.
 
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
+       
+1. Viewing available commands
 
-1. _{ more test cases …​ }_
+   1. Type `help` in the command box
+   
+   1. A pop-up window will appear with the URL link to the user guide.
+   
+   1. Alternatively, the `help` button on the left panel can be clicked to open the same pop-up window. 
+   
+1. Shutdown application
 
-### Deleting a person
+   1. Type `exit` in the command box
+   
+   1. Application will automatically close and save the current client and order list details, if any.
+   
+   1. Alternatively, the `exit` button on the left panel also closes the application.
 
-1. Deleting a person while all persons are being shown
+### Adding a client
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+1. Adding a client to the client list
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   1. Prerequisite(s): Client to be added must not exist in the client list.
+   
+   1. Test case: `client --name John Doe --address Blk 123 --email john@gmail.com --phone 87654321`<br>
+      Expected: Client is added to the list. Details of added client shown in status message. Upon clicking the client, 
+      client details will be shown as an enlarged version on the right panel.
+      
+   1. Test case: `client --name John Doe --address Blk 123 --email john@gmail.com --phone 87654321`(add same client)<br>
+      Expected: Client is not added to list as it already exists. Error details shown in status message.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+### Adding an order
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
+1. Adding an order to the order list
+
+   1. Prerequisite(s): Order to be added must be linked to an existing client in the client list.
+   
+   1. Test case: `order --description shoes --client 1 --date 2020-12-12 2359 --address Blk 123`<br>
+      Expected: Order is added to the list. Details of added order shown in status message. Order is linked to an 
+      existing client with ID `#00001` which was added previously. Upon clicking the order, order details will be shown 
+      as an enlarged version on the right panel.
+      
+   1. Test case: `order --description shoes --client 1 --date 2020-12-12 2359 --address Blk 123`<br>
+      Exapected: Similar to previous. There are now two identical orders linked to the same client.
+
+### Deleting a client
+
+1. Deleting a client while all clients are being shown
+
+   1. Prerequisites: List all persons using the `list-client` command. There should only be one client in the 
+      client list.
+
+   1. Test case: `delete--client --client 1`<br>
+      Expected: Client with unique client ID `#00001` is deleted. Details of the deleted client shown in the status 
+      message. 
+      
+   1. Both orders in the order list will also be deleted as they are linked to the deleted client. Type `list-order` to 
+      confirm the deletion of orders.
+
+   1. Other incorrect delete commands to try: `delete-client`, `delete-client --client x`, `...` (where x is larger than
+      the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
 
 ### Saving data
 
