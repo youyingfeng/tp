@@ -370,7 +370,7 @@ on 23rd October 2020
 
 **Description** : Modifies a specified order with the new information provided in this command.
 
-**Format** : `update-order --orderid <order ID of order to be changed> (--description <new order description>) (--clientid <new client id>) (--address <new address>) (--date <new delivery date>)`
+**Format** : `update-order --order <order ID of order to be changed> (--description <new order description>) (--client <new client id>) (--address <new address>) (--date <new delivery date>)`
 
 This command will update the data fields of the order with the new information given in the command. The criteria for each field is similar to the criteria for the fields in `order`, and are given below.
 
@@ -391,7 +391,7 @@ Each of these fields are optional, and their parameter tags may be left out of t
 ### Updating clients: `update-client`
 **Description** : Modifies a specified client with the new information provided in this command.
 
-**Format** : `update-client --clientid <client ID of client to be changed> (--name <new name>) (--phone <new phone number>) (--address <new address>) (--email <new email>)`
+**Format** : `update-client --client <client ID of client to be changed> (--name <new name>) (--phone <new phone number>) (--address <new address>) (--email <new email>)`
 
 This command will update the data fields of the client with the new information given in the command. The criteria for each field is similar to the criteria for the fields in `client`, and are given below.
 
@@ -452,8 +452,8 @@ Action | Format
 **Find** | `find <name keywords> (--address <address keywords>) (--email <email address>) (--phone <phone number>)`
 **FindOrder**| `find-order <description keywords> (--address <address keywords>) (--date <date>) (--client <client ID>)`
 **Undo**| `undo`
-**Update Order** | `update-order --orderid <order ID of order to be changed> (--description <new order description>) (--clientid <new client id>) (--address <new address>) (--date <new delivery date>)`
-**Update Client** | `update-client --clientid <client ID of client to be changed> (--name <new name>) (--phone <new phone number>) (--address <new address>) (--email <new email>)`
+**Update Order** | `update-order --order <order ID of order to be changed> (--description <new order description>) (--client <new client id>) (--address <new address>) (--date <new delivery date>)`
+**Update Client** | `update-client --client <client ID of client to be changed> (--name <new name>) (--phone <new phone number>) (--address <new address>) (--email <new email>)`
 **Help** | `help`
 **Clear** | `clear`
 **Exit** | `exit`
